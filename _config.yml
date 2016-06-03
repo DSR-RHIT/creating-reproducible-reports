@@ -8,7 +8,7 @@ highlighter: rouge
 # Themes are encouraged to use these universal variables
 # so be sure to set them if your theme uses them.
 #
-title : workshop on creating reproducible reports
+title : creating reproducible reports workshop
 author :
   name : Richard Layton
   email : layton@rose-hulman.edu
