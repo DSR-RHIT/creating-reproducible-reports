@@ -2,7 +2,14 @@
 
 The workshop introduces reproducible reporting---a component of the  larger reproducible research ecosystem---to the R novice. No prior experience with R or RStudio is required.
 
-The website for the workshop is [here](http://dsr-rhit.github.io/creating-reproducible-reports).
+The workshop website on GitHub: [http://dsr-rhit.github.io/creating-reproducible-reports](http://dsr-rhit.github.io/creating-reproducible-reports)
+
+
+
+
+
+
+
 
 --- 
 
