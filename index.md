@@ -41,4 +41,4 @@ Resources
 
 ---
 
-The source for this material is [on github](http://github.com/DSR-RHIT/creating-reproducible-reports). 
+Repo that creates this website: http://github.com/DSR-RHIT/creating-reproducible-reports 
