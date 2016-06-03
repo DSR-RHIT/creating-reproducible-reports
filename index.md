@@ -14,8 +14,8 @@ This 6-hour workshop introduces essential elements of reproducible reporting to 
 
 Getting started
 
-- <a href="pages/pre-workshop-hw.html" target="_blank">pre-workshop homework</a>
-- [agenda](assets/agenda.pdf) 
+- <a href="pages/pre-workshop-hw.html" target="_blank">pre-workshop homework</a> 
+- <a href="assets/agenda.pdf" target="_blank">agenda</a> 
 - surveying the reproducible research ecosystem 
 
 Touring a dynamic document 
