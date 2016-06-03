@@ -1,7 +1,7 @@
 ---
 layout: page
-title: welcome
-tagline: a workshop in reproducible research for the R novice
+title: a workshop
+tagline: in reproducible research for the R novice
 ---
 
 This 6-hour workshop introduces essential elements of reproducible reporting to the absolute beginner. No prior experience with R or RStudio is required. We focus on common tasks associated with producing a project report: 
