@@ -1,6 +1,6 @@
 ---
 title: Workshop agenda
-date: 2016-05-31
+date: 2016-08-24
 output:
   tufte::tufte_handout: default
 ---
@@ -19,7 +19,7 @@ opts_chunk$set(include=TRUE, echo=FALSE, message=FALSE)
 ```{r}
 library(readxl)
 library(dplyr)
-df <- read_excel("pages/agenda.xlsx") %>% 
+df <- read_excel("assets/agenda.xlsx") %>% 
   select(time, activity, format)
 
 sel1 <- df$activity == 'day 1'
