@@ -5,7 +5,6 @@ _site
 .Rproj.user
 
 
-*.html
 *.Rproj
 
 assets/agenda.xlsx
