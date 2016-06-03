@@ -1,0 +1,12 @@
+_site
+
+.Renviron
+.Rhistory
+.Rproj.user
+
+
+*.html
+*.Rproj
+
+assets/agenda.xlsx
+
