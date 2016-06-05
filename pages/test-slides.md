@@ -1,9 +1,9 @@
 ---
 layout: page
-title:  pre-workshop homework
+title:  slides
 ---
 
 ### slides
 
-- [test day 1](slides/01-slides.pdf)
+- [test day 1](../slides/01-slides.pdf)
 
