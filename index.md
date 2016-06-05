@@ -19,7 +19,6 @@ Getting started
 - [pre-workshop homework](pages/pre-workshop-hw.html) 
 - [agenda](print-pages/agenda.pdf) 
 - surveying the reproducible research ecosystem 
-- [slides](pages/test-slides.html)
 
 Touring a dynamic document 
 
