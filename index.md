@@ -17,7 +17,7 @@ The workshop entails two 3-hour sessions. We focus on these tasks, commonly enco
 Getting started
 
 - [pre-workshop homework](pages/pre-workshop-hw.html) 
-- [agenda](assets/agenda.pdf) 
+- [agenda](print-pages/agenda.pdf) 
 - surveying the reproducible research ecosystem 
 
 Touring a dynamic document 

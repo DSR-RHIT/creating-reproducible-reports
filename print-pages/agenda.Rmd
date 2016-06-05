@@ -41,7 +41,7 @@ df2[is.na(df2)] <- " " # replaces NAs with blanks
 To get the most out of the first session, do the pre-workshop homework before arriving. 
 
 ```{r}
-kable(df1, format.args = list())
+kable(df1)
 ```
 
 ## Session 2
