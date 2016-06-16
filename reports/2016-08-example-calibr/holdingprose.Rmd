@@ -1,0 +1,85 @@
+# Analysis
+
+```{r regression}
+# perform the regression
+regr_results <- lm(output_mV ~ input_lb, data = df_long)
+
+# y-fitted values are used o graph the linear regression curve
+y_fit <- regr_results$fitted.values
+
+# span is needed to determine accuracy in percentage form
+output_span  <- max(y_fit) - min(y_fit)
+
+# selected regression results for printing to the document
+regr_summ <- summary.lm(regr_results)
+residuals <- regr_summ$residuals
+intercept <- regr_summ$coefficients[1]
+slope     <- regr_summ$coefficients[2]
+adj_r_sq  <- regr_summ$adj.r.squared
+
+# compute accuracy in mV and as a percentage for reporting
+acc_plus  <- max(residuals)
+acc_minus <- min(residuals)
+
+acc_plus_pct  <- acc_plus / output_span * 100
+acc_minus_pct <- acc_minus / output_span * 100
+
+accuracy <- max(abs(c(acc_plus_pct, acc_minus_pct)))
+
+# create a data frame for printing a table of results
+Result <- c('slope', 'intercept', 'adjusted $R^2$', 'max residual', 'min residual')
+Value  <- c(slope, intercept, adj_r_sq, acc_plus, acc_minus)
+Units  <- c('mV/lb', 'mV', 'mV', 'mV', 'mV')
+tabulated_results <- data.frame(Result, Value, Units)
+```
+
+_Calibration curve._ The independent variable in this calibration is the sensor input (force) and the dependent variable is the sensor output (voltage readings). Performing a linear regression yields the results summarized in Table 2.
+
+```{r regression_results, include = TRUE, results = 'asis'}
+# print the table to the document
+kable(tabulated_results, caption = 'Table 2: Regression results')
+```
+
+The calibration equation, in terms of force $F$ (lb) and sensor readout $R$ (mV), is given by
+$$
+R = `r slope`  \ F  + `r abs(intercept)`
+$$
+and the calibration curve is shown in Figure 2. The data markers in the graph have been jittered to reduce overprinting, but the regression line is based on non-jittered values.
+
+```{r calibr_plot, include = TRUE, fig.cap = 'Figure 2: Calibration curve.'}
+# graph the sensor readings (mV) as a function of the test points (lb)
+
+# subset the x-col and y-col from the data frame
+x = df_long$input_lb
+y = df_long$output_mV
+
+# a scatterplot is the correct form for bivariate data
+plot(jitter(x, 0.5), jitter(y, 0.5)
+     , xlab = 'Force (lb)'
+     , ylab = 'Readout (mV)'
+     )
+
+# overlay the linear regression curve
+lines(y_fit ~ x)
+```
+
+_Accuracy._ Accuracy is defined as the largest positive and negative residuals. Thus, from Table 2, the accuracy bounds are $`r acc_plus`$ mV and $`r acc_minus`$ mV. The residuals are plotted in Figure 3 with the upper and lower bounds on accuracy indicated.
+
+```{r residuals_plot, include = TRUE, fig.cap = 'Figure 3: Residuals from the linear regression'}
+# graph the residuals as a function of the test points
+plot(residuals ~ x
+     , xlab = 'Test point (lb)'
+     , ylab = 'Residuals (mV)'
+     )
+
+# a reference line at zero to help orient the reader
+abline(h = 0)
+
+# reference lines indicating how accuracy is a bounding estimate
+abline(h = c(acc_plus, acc_minus))
+```
+
+The calibration output span is `r output_span` mV. As a percentage of span, therefore, sensor accuracy is $+ `r acc_plus_pct`$ and  $`r acc_minus_pct`$ %.
+
+Many users prefer a single value for estimatingsystematic uncertainty in a measurement. In that case, I'll report the more conservative of the two bounds and report that the load cell accuracy is $\pm `r accuracy` \%$ of reading.
+
