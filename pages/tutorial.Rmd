@@ -3,6 +3,7 @@ title: "tutorial"
 output:
   html_document:
     toc: yes
+    keep_md: true
 tagline: creating a dynamic document
 layout: page
 ---
@@ -60,7 +61,7 @@ output: "word_document"
 To *knit* the Rmd file and create the Word document, 
 
 - Save the file 
-- ![Knit Word](../manage/resources/knitword.png)
+- Knit Word
 
 *Save and Knit* anytime you want to see how your changes appear in the output. Remember, this is not a WYSIWYG environment---until you knit it, you won't see it. We could call it WYKIWYS (What You *Knit* Is What You *See*). 
 

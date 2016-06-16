@@ -26,6 +26,7 @@ Touring a dynamic document
 - writing an R script 
 - creating a dynamic document 
 - review 
+- [tutorial](pages/tutorial.html)
 
 Planning for reproducibility 
 
