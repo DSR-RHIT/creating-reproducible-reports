@@ -1,6 +1,7 @@
 ---
 layout: page
 title:  tutorial
+tagline: creating a dynamic document
 ---
 
 
