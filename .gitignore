@@ -8,5 +8,6 @@ _site
 *.Rproj
 
 
-pages/*.docx
+*.docx
+*./*.docx
 pages/*.html

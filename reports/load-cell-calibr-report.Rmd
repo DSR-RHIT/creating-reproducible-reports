@@ -1,0 +1,38 @@
+---
+title: 'Load cell calibration report'
+author: 'Richard Layton'
+date: '2016-08-24'
+output: word_document
+---
+
+```{r setup, include = FALSE}
+library(knitr)
+opts_knit$set(root.dir = '../')
+opts_chunk$set(echo = FALSE, include = FALSE, message = FALSE)
+```
+
+# Introduction   
+
+Calibrating a _load cell_ (a sensor for measuring uniaxial force) yields two main results: a calibration equation relating output voltage (mV) to input force (lb); and an estimate of sensor accuracy as a percentage of full span. In this report, I present the test results for an Omega LCL-005 load cell calibrated following the ANSI/ISA procedure.
+
+
+![Figure 1. Omega LCL005 load cell (replace stock photo with image of our setup)](load-cell-setup.png)
+
+```{r data_tidying}
+# read the data, keep in wide form for the printed table
+library(readr)
+calibr_data <- read_csv('data/load-cell-calibr-W3.csv')
+```
+
+The data are shown in Table 1. Per the ANSI/ISA standard, the test begins and ends at a midspan test point in the same direction, thus the first and last cycle are incomplete (indicated by NA).
+ 
+```{r data_table, include = TRUE, results = 'asis'}
+# print the table to the document
+kable(calibr_data, caption = 'Table 1: Calibration data')
+```
+
+
+
+
+
+
