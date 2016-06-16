@@ -1,4 +1,7 @@
-# tutorial
+---
+layout: page
+title:  tutorial
+---
 
 
 
