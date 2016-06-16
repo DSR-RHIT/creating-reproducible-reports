@@ -7,6 +7,5 @@ _site
 
 *.Rproj
 
-assets/agenda.xlsx
-reports/notebook*
 
+pages/*.docx
