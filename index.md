@@ -16,14 +16,14 @@ The workshop entails two 3-hour sessions. We focus on these tasks, commonly enco
 - managing headings, references, and external media 
 - organizing your overall workflow for reproducibility 
 
-### Getting started
+### getting started
 
 - [pre-workshop homework](pages/pre-workshop-hw.html) 
 - [agenda](pages/agenda.html) 
 - surveying the reproducible research ecosystem 
 - considering a sample report 
 
-### Tutorial 
+### tutorial 
 
 - [creating the file structure](pages/getting-started.html) 
 - [initializing the Rmd report file](pages/initialize-Rmd.html) 
@@ -38,13 +38,13 @@ The workshop entails two 3-hour sessions. We focus on these tasks, commonly enco
 - adding a citation 
 - updating the report when the data change 
 
-### Planning for reproducibility 
+### planning for reproducibility 
 
 - planning for reproducibility 
 - starting your own project 
 - looking ahead 
 
-### Resources 
+### resources 
 
 - [Karl Broman's tutorials](http://kbroman.org/pages/tutorials.html) 
 - [Jenny Bryan's Stats 545](http://stat545.com/) 
