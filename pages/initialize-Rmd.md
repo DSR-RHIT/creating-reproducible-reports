@@ -33,7 +33,7 @@ output: word_document
 ---
 ```
 
-### Create a Word doc
+### Render Rmd to docx 
 
 To *knit* the Rmd file and create the Word document, 
 
