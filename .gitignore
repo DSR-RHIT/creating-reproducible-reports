@@ -12,4 +12,5 @@ _site
 */*.docx
 */notebook*
 pages/*.html
+index.html
 

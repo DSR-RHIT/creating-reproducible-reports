@@ -2,6 +2,8 @@
 layout: page
 title: workshop
 tagline: reproducible research for the R novice
+description: Introduces R, RStudio, and R Markdown as tools to create
+             a dynamically repoducible report. For R noviscs. 
 ---
 
 The workshop introduces reproducible reporting---a component of the  larger reproducible research ecosystem---to the R novice. No prior experience with R or RStudio is required. 
