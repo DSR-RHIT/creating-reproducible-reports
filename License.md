@@ -1,6 +1,7 @@
 
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br /> Creating reproducible reports by <a href="https://github.com/graphdr">Richard Layton</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"> Creative Commons Attribution 4.0 International License</a>. 
-<p>
+
+--- 
 Software, code, and tools are licensed under the Modified Berkeley Software Distribution (BSD-3-clause), as follows: Copyright (c) 2016, Richard Layton. All rights reserved. Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
 1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
