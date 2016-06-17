@@ -4,9 +4,12 @@ title:  tutorial
 tagline: initializing the Rmd report file
 ---
 
+### Launch your RProject environment
 In your workshop main directory, find the file with the *.Rproj* suffix. It will have the same name as the directory. I'll refer to this file as  *workshop.Rproj*. 
 
 - Launch your *workshop.Rproj*.  
+
+### Create an Rmd file 
 
 From RStudio,  
 
@@ -28,6 +31,8 @@ date: date
 output: word_document
 ---
 ```
+
+# Create a Word doc
 
 To *knit* the Rmd file and create the Word document, 
 
