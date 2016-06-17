@@ -27,3 +27,4 @@ workshop\
   \-- .Renviron
 ```
 
+Navigate to my [workshop downloads](https://github.com/DSR-RHIT/creating-reproducible-reports/tree/gh-pages/assets/downloads) folder 
