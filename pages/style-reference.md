@@ -27,7 +27,10 @@ In this case, the assigned style is *Title*.
 
 Caution. You may reformat assigned styles only. Neither add new styles, change a style name, nor assign styles different from the rendered defaults. 
 
-Returning to the Rmd file, edit the YAML header as follows. Save and Knit. 
+Returning to the Rmd file, 
+
+- Edit the YAML header as follows. 
+- Save and Knit. 
 
 ```
 ---
@@ -40,7 +43,7 @@ output:
 ---
 ```
 
-The new Word document that appears should have the reformatted title. 
+The new Word document that appears should have the reformatted title. In the Word document: 
 
 Format your name. 
 
