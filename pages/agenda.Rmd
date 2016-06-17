@@ -1,0 +1,50 @@
+---
+layout: page
+title:  agenda
+tagline: two 3-hour sessions
+output:
+  html_document:
+    keep_md: true
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+opts_knit$set(root.dir="../")
+opts_chunk$set(include=TRUE, echo=FALSE, message=FALSE)
+```
+
+```{r}
+library(readxl)
+library(dplyr)
+df <- read_excel("data/agenda.xlsx") %>% 
+  select(time, activity, format)
+
+sel1 <- df$activity == 'day 1'
+sel2 <- df$activity == 'day 2'
+
+idx1 <- which(df$activity %in% 'day 1')
+idx2 <- which(df$activity %in% 'day 2')
+n <- length(df$activity)
+
+df1 <- df[(idx1 + 1):(idx2 - 1), ]
+df2 <- df[(idx2 + 1):n, ]
+
+df1[is.na(df1)] <- " " # replaces NAs with blanks
+df2[is.na(df2)] <- " " # replaces NAs with blanks
+```
+
+### Session 1
+
+To get the most out of the first session, do the pre-workshop homework before arriving. 
+
+```{r}
+kable(df1)
+```
+
+### Session 2
+
+To get the most out of the second session, complete the sample report tutorial before the second session.  
+
+```{r}
+kable(df2)
+```
