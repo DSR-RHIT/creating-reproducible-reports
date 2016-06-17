@@ -41,14 +41,13 @@ The asterisks around *load cell* are markdown for italics.
 <pre><code>The load-cell setup is shown in Figure 1. A known weight is suspended from the eyehook, causing the thin-beam load cell to deform. A Wheatstone bridge on the beam detects the deformation, producing a voltage signal we read with a meter. 
 </code></pre>
 
-- Add the following snippet to place the image file in the document. 
+- Add the following snippet to place the image file in the document. Save and Knit. 
 
 ```
 ![Figure 1. Applying a force to the load cell using a precision weight](load-cell-setup.png)
 ```
 The square brackets enclose the figure caption and the parentheses enclose the file path to the image file. In this case, the Rmd and image file are in the same directory, so no additional relative path information is needed. 
 
-- Save and Knit 
 
 
 
