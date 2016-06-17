@@ -19,7 +19,7 @@ The workshop entails two 3-hour sessions. We focus on these tasks, commonly enco
 ### Getting started
 
 - [pre-workshop homework](pages/pre-workshop-hw.html) 
-- [agenda](pages/agenda.Rmd) 
+- [agenda](pages/agenda.md) 
 - surveying the reproducible research ecosystem 
 - considering a sample report 
 
