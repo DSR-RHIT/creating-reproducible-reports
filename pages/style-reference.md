@@ -49,7 +49,7 @@ output:
 ```
 
 
-### Continue to edit the style reference docx  
+### Edit styles   
 
 
 The new Word document that appears should have the reformatted title. In the Word document: 
