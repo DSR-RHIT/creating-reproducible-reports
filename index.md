@@ -25,7 +25,8 @@ Tutorial
 
 - [getting started](pages/getting-started.html) 
 - [initializing an Rmd file](pages/initialize-Rmd.html) 
-- [composing the report](pages/composing.html) 
+- [headings and external images](pages/headings-and-images.html) 
+- [applying styles](style-reference.html)
 
 
 Planning for reproducibility 
