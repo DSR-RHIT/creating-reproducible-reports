@@ -1,7 +1,7 @@
 ---
 layout: page
-title:  agenda
-tagline: two 3-hour sessions
+title:  getting started
+tagline: agenda 
 output: html_document
 ---
 

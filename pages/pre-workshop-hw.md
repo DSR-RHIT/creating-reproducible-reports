@@ -1,6 +1,7 @@
 ---
 layout: page
-title:  pre-workshop homework
+title:  getting started 
+tagline: pre-workshop homework
 ---
 
 Participants, install R and RStudio before the workshop: 
