@@ -123,6 +123,19 @@ When you are finished formatting,
 - Save and Knit the Rnmd file 
 - Review the new Word document that appears and check that your style changes have been correctly applied. 
 
+The reports directory should look like this. 
+
+```
+reports\
+  |-- load-cell-setup.png
+  |-- load-cell-calibr-report.Rmd 
+  |-- load-cell-calibr-report.docx
+  \-- mystyles-01.docx
+```
+
+
+
+
 Now go to the page about (add link)
 
 
