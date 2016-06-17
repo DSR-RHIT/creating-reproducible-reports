@@ -27,4 +27,11 @@ workshop\
   \-- .Renviron
 ```
 
-Navigate to my [workshop downloads](https://github.com/DSR-RHIT/creating-reproducible-reports/tree/gh-pages/assets/downloads) folder 
+Navigate to my [workshop downloads](https://github.com/DSR-RHIT/creating-reproducible-reports/tree/gh-pages/assets/downloads) folder. To download a file, 
+
+- Click the file name 
+- Right-click Raw --> Save link as... 
+- Save the CSV files to the `data` directory 
+- Save the PNG file to the `reports` directory 
+
+
