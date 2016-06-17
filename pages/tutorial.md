@@ -1,7 +1,7 @@
 ---
 layout: page
-title:  getting started
-tagline: tutorial
+title:  tutorial
+tagline: getting started
 ---
 
 ### Setting up a directory tree
