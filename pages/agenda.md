@@ -24,9 +24,9 @@ To get the most out of the first session, do the pre-workshop homework before ar
 |    5|   |Considering a sample report     |lecture          |
 |   10|   |Identifying manual operations   |pair-share       |
 |   15|   |*break*                         |                 |
-|   50|   |Tutorial                        |individual work  |
+|   50|   |Creating a dynamic report       |individual work  |
 |   15|   |*break*                         |                 |
-|   40|   |Tutorial                        |individual work  |
+|   40|   |Continue the tutorials          |individual work  |
 |   10|   |Submitting questions            |reflection       |
 
 ### Session 2
@@ -37,7 +37,7 @@ To get the most out of the second session, complete the sample report tutorial b
 | time|   |activity                       |format          |
 |----:|:--|:------------------------------|:---------------|
 |   10|   |Answering questions            |discussion      |
-|   30|   |Tutorial                       |individual work |
+|   30|   |Continue the tutorials         |individual work |
 |    5|   |The day the data changed       |demo            |
 |    5|   |Reviewing tasks we've scripted |lecture         |
 |   15|   |*break*                        |                |
