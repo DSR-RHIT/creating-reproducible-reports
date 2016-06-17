@@ -24,9 +24,6 @@ output: word_document
 
 ```
 
-
-
-
 - Add the following text to the report introduction (copy-paste works fine). 
 
 <pre><code>Calibrating a *load cell* (a sensor for measuring uniaxial force) yields two main results: a calibration equation relating output voltage (mV) to input force (lb); and an estimate of sensor accuracy as a percentage of full span. In this report, I present the test results for an Omega LCL-005 load cell calibrated following the ANSI/ISA procedure.
@@ -47,6 +44,21 @@ The asterisks around *load cell* are markdown for italics.
 ![Figure 1. Applying a force to the load cell using a precision weight](load-cell-setup.png)
 ```
 The square brackets enclose the figure caption and the parentheses enclose the file path to the image file. In this case, the Rmd and image file are in the same directory, so no additional relative path information is needed. 
+
+### Using Word styles
+
+You can specify a style reference for producing a docx file. In brief, the steps are: 
+
+- Use R Markdown to create a Word document (we've done this step) 
+- Save this Word document as the style reference 
+- Edit the styles in the style reference. Save. 
+- To the YAML header, add a `reference_docx` argument 
+
+
+
+
+
+
 
 
 
