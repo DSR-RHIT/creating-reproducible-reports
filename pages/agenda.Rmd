@@ -2,21 +2,16 @@
 layout: page
 title:  agenda
 tagline: two 3-hour sessions
-output:
-  html_document:
-    keep_md: true
+output: html_document
 ---
 
 ```{r setup, include=FALSE}
 library(knitr)
-opts_knit$set(root.dir="../")
 opts_chunk$set(include=TRUE, echo=FALSE, message=FALSE)
-```
 
-```{r}
 library(readxl)
 library(dplyr)
-df <- read_excel("data/agenda.xlsx") %>% 
+df <- read_excel("../data/agenda.xlsx") %>% 
   select(time, activity, format)
 
 sel1 <- df$activity == 'day 1'
