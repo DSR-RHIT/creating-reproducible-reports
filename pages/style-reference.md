@@ -4,7 +4,7 @@ title:  tutorial
 tagline: specifying a style reference
 ---
 
-#### Create the style reference docx 
+### Create the style reference docx 
 
 You can control the formatting of the Word document by specifying a style reference. First, create the style reference document. 
 
