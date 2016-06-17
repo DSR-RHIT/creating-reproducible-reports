@@ -45,14 +45,24 @@ The asterisks around *load cell* are markdown for italics.
 ```
 The square brackets enclose the figure caption and the parentheses enclose the file path to the image file. In this case, the Rmd and image file are in the same directory, so no additional relative path information is needed. 
 
-### Using Word styles
+### Applying a style reference 
 
 You can control the formatting of the Word document by specifying a style reference. In brief, the steps are: 
 
-- Use R Markdown to create a Word document (we've done this step) 
-- Save this Word document as the style reference 
-- Edit the styles in the style reference. Save. 
-- To the YAML header, add a `reference_docx` argument 
+1. Use R Markdown to create a Word document (we've done this step) 
+1. Save this Word document as the style reference 
+1. Edit the styles in the style reference. Save. 
+1. To the YAML header, add a `reference_docx` argument 
+
+Create the style reference document 
+
+- Save and Knit the current report Rmd file. 
+- Save the Word document in the report directory using a new file name, e.g., *mystyles-01.docx* 
+
+Edit the Word styles you find there 
+
+
+
 
 
 
