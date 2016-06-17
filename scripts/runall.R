@@ -22,6 +22,9 @@ file.copy(from = "assets/images/load-cell-setup.png"
 # cleanup, main directory
 unlink(".Rhistory")
 
+# cleanup, assets directory
+unlink("assets/*.html")
+
 # cleanup, pages directory
 unlink("pages/*.html")
 
