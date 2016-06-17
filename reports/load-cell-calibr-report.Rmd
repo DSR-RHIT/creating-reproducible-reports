@@ -1,7 +1,7 @@
 ---
 title: Calibration report
-author: your name
-date: date
+author: Richard Layton
+date: 2016-08-24
 output:
   word_document:
     reference_docx: mystyles-01.docx
