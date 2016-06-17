@@ -15,9 +15,9 @@ opts_chunk$set(include=TRUE, echo=FALSE, message=FALSE)
 library(readxl)
 library(dplyr)
 df <- read_excel("../data/agenda.xlsx") %>% 
-	mutate(space = NA) %>%
-  select(time, space, activity, format) %>%
-	rename(' ' = space)
+	mutate(space1 = NA, space2 = NA) %>%
+  select(time, space1, activity, space2, format) %>%
+	rename(' ' = space1, ' ' = space2)
 
 sel1 <- df$activity == 'day 1'
 sel2 <- df$activity == 'day 2'
