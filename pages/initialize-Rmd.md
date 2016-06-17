@@ -1,7 +1,7 @@
 ---
 layout: page
 title:  tutorial
-tagline: initializing an R Markdown file
+tagline: initializing the Rmd report file
 ---
 
 In your workshop main directory, find the file with the *.Rproj* suffix. It will have the same name as the directory. I'll refer to this file as  *workshop.Rproj*. 

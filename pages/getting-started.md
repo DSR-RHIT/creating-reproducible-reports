@@ -1,7 +1,7 @@
 ---
 layout: page
 title:  tutorial
-tagline: getting started
+tagline: creating the file structure
 ---
 
 ### Setting up a directory tree
@@ -47,4 +47,4 @@ reports\
   \-- load-cell-setup.png
 ```
 
-Now go to the page about [initializing an R Markdown file](initialize-Rmd.html)
+Now go to the page about [initializing the Rmd report file](initialize-Rmd.html)

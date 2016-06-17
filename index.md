@@ -23,11 +23,18 @@ Getting started
 
 Tutorial 
 
-- [getting started](pages/getting-started.html) 
-- [initializing an R Markdown file](pages/initialize-Rmd.html) 
+- [creating the file structure](pages/getting-started.html) 
+- [initializing the Rmd report file](pages/initialize-Rmd.html) 
 - [adding headings and images](pages/headings-and-images.html) 
 - [specifying a style reference](pages/style-reference.html)
-
+- reading a data file  
+- making a table 
+- performing a linear regression  
+- reporting results in-line 
+- graphing results  
+- writing an equation 
+- adding a citation 
+- updating the report when the data change 
 
 Planning for reproducibility 
 
