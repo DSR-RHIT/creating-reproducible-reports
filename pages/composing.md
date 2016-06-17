@@ -4,7 +4,7 @@ title:  tutorial
 tagline: composing the report
 ---
 
-I'll introduce markdown syntax as we need it in the report, but you can refer to RStudio's [Markdown basics](http://rmarkdown.rstudio.com/authoring_basics.html) anytime. 
+I'll introduce R Markdown syntax as we need it in the report. [Markdown basics](http://rmarkdown.rstudio.com/authoring_basics.html) is a quick reference to the most commonly used syntax. 
 
 ### Creating a heading 
 
