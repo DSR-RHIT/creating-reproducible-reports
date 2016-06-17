@@ -19,12 +19,11 @@ Getting started
 - [pre-workshop homework](pages/pre-workshop-hw.html) 
 - [agenda](print-pages/agenda.pdf) 
 - surveying the reproducible research ecosystem 
-
-Creating a dynamic document 
-
 - considering a sample report 
-- [tutorial](pages/tutorial.html)
-- review 
+
+Tutorial 
+
+- [getting started](pages/tutorial-getting-started.html) 
 
 Planning for reproducibility 
 
