@@ -4,8 +4,11 @@ title:  tutorial
 tagline: composing the report
 ---
 
+I'll introduce markdown syntax as we need it in the report, but you can refer to RStudio's [Markdown basics](http://rmarkdown.rstudio.com/authoring_basics.html) anytime. 
+
 ### Creating a heading 
 
+Markdown uses hashtags to indicate heading levels in the final document. 
 
 - Add `## Introduction` below the header. Save and Knit. 
 
@@ -21,7 +24,7 @@ output: word_document
 
 ```
 
-The double hashtag `##` is markdown for a second-level heading in the output document. (RStudio provides a handy reference for [Markdown basics](http://rmarkdown.rstudio.com/authoring_basics.html).) 
+
 
 
 - Add the following text to the report introduction (copy-paste works fine). 
