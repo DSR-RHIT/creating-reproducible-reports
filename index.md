@@ -25,6 +25,8 @@ Tutorial
 
 - [getting started](pages/getting-started.html) 
 - [initializing an Rmd file](pages/initialize-Rmd.html) 
+- [composing the report](pages/composing.html) 
+
 
 Planning for reproducibility 
 

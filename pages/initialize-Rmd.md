@@ -17,14 +17,15 @@ From RStudio,
 The Rmd file is pre-populated with prose and some markdown syntax. Edit the header (called a *YAML* header): 
 
 - Change the title to _Calibration report_
-- Output should be *word_document* (if Word is not installed on your machine, change the output to _html_ and Save)
+- Output should be *word_document* (if Word is not installed on your machine, change the output to _html_) 
+- Save
 
 ```
 ---
-title:  "Calibration report"
-author: "your name"
-date:   "date"
-output: "word_document"
+title: Calibration report
+author: your name
+date: date
+output: word_document
 ---
 ```
 
@@ -44,11 +45,14 @@ reports\
   \-- load-cell-calibr-report.docx
 ```
 
+We can dispense with the default prose. In the Rmd file, 
+
+- Delete everything below the YAML header 
+- Save and Knit 
 
 
 
 
 
 
-
-Now go to the page about ...
+Now go to the page about [composing the report](composing.html)
