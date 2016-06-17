@@ -4,6 +4,8 @@ title:  tutorial
 tagline: specifying a style reference
 ---
 
+#### Create the style reference docx 
+
 You can control the formatting of the Word document by specifying a style reference. First, create the style reference document. 
 
 - Save and Knit the current report Rmd file. 
@@ -27,6 +29,9 @@ In this case, the assigned style is *Title*.
 
 Caution. You may reformat assigned styles only. Neither add new styles, change a style name, nor assign styles different from the rendered defaults. 
 
+
+#### Edit the YAML header 
+
 Returning to the Rmd file, 
 
 - Edit the YAML header as follows. 
@@ -42,6 +47,10 @@ output:
     reference_docx: mystyles-01.docx
 ---
 ```
+
+
+#### Continue to edit the style reference docx  
+
 
 The new Word document that appears should have the reformatted title. In the Word document: 
 
