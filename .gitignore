@@ -9,7 +9,7 @@ _site
 
 
 *.docx
-*./*.docx
-*./notebook*
+*/*.docx
+*/notebook*
 pages/*.html
 
