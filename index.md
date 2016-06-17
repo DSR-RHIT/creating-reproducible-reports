@@ -23,7 +23,8 @@ Getting started
 
 Tutorial 
 
-- [getting started](pages/tutorial-getting-started.html) 
+- [getting started](pages/getting-started.html) 
+- [initializing an Rmd file](pages/initialize-Rmd.html) 
 
 Planning for reproducibility 
 
