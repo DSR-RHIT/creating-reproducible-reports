@@ -11,17 +11,17 @@ tagline: composing the report
 
 ```
 ---
-title:  "Calibration report"
-author: "your name"
-date:   "date"
-output: "word_document"
+title:  Calibration report
+author: your name
+date:   date
+output: word_document
 ---
 
 ## Introduction
 
 ```
 
-The double hashtag `##` is markdown for a second-level heading in the output document. I will introduce markdown syntax as needed, but RStudio provides a handy reference for [Markdown basics](http://rmarkdown.rstudio.com/authoring_basics.html).  
+The double hashtag `##` is markdown for a second-level heading in the output document. (RStudio provides a handy reference for [Markdown basics](http://rmarkdown.rstudio.com/authoring_basics.html).) 
 
 
 - Add the following text to the report introduction (copy-paste works fine). 
@@ -30,6 +30,16 @@ The double hashtag `##` is markdown for a second-level heading in the output doc
 </code></pre>
 
 The asterisks around *load cell* are markdown for italics. 
+
+### Inserting an external image
+
+
+- Add the following snippet to the Rmd file to place the image file in the document. 
+
+```
+![Figure 1. Applying a force to the load cell using a precision weight](load-cell-setup.png)
+```
+The square brackets enclose the figure caption and the parentheses enclose the file path to the image file. In this case, the Rmd and image file are in the same directory, so no additional relative path information is needed. 
 
 
 
