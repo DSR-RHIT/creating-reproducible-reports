@@ -23,7 +23,7 @@ Getting started
 Creating a dynamic document 
 
 - considering a sample report 
-- [creating a dynamic document](pages/tutorial.html)
+- [tutorial](pages/tutorial.html)
 - review 
 
 Planning for reproducibility 
