@@ -1,7 +1,7 @@
 ---
 layout: page
-title:  tutorial
-tagline: creating a dynamic document
+title:  getting started
+tagline: tutorial
 ---
 
 ### Getting started
@@ -10,11 +10,11 @@ tagline: creating a dynamic document
 - If you haven't created an RStudio project and the *.Renviron* file for the workshop, [please do](https://github.com/DSR-RHIT/install-R-and-RStudio/blob/master/pages/setup_R_project.md). 
 
 
-In your main project directory (I'll call it `workshop` for convenience), create three folders (sub-directories)
+In your main project directory (I'll call it *workshop* for convenience), create three folders (sub-directories)
 
-- Create a `data` directory
-- Create a `reports` directory
-- Create a `scripts` directory
+- Create a *data* directory
+- Create a *reports* directory
+- Create a *scripts* directory
 
 Your main directory for the workshop should look like this: 
 
@@ -31,7 +31,18 @@ Navigate to my [workshop downloads](https://github.com/DSR-RHIT/creating-reprodu
 
 - Click the file name 
 - Right-click Raw --> Save link as... 
-- Save the CSV files to the `data` directory 
-- Save the PNG file to the `reports` directory 
+- Save the CSV files to the *data* directory 
+- Save the PNG file to the *reports* directory 
+
+The data and reports directories should look like this. 
+
+```
+data\
+  |-- load-cell-calibration-L3.csv
+  \-- load-cell-calibration-L6.csv
+  
+reports\
+  \-- load-cell-setup.png
+```
 
 
