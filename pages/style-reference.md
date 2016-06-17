@@ -1,7 +1,7 @@
 ---
 layout: page
 title:  tutorial
-tagline: applying styles
+tagline: specifying a style reference
 ---
 
 You can control the formatting of the Word document by specifying a style reference. First, create the style reference document. 

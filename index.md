@@ -24,9 +24,9 @@ Getting started
 Tutorial 
 
 - [getting started](pages/getting-started.html) 
-- [initializing an Rmd file](pages/initialize-Rmd.html) 
+- [initializing an R Markdown file](pages/initialize-Rmd.html) 
 - [adding headings and images](pages/headings-and-images.html) 
-- [applying styles](style-reference.html)
+- [specifying a style reference](style-reference.html)
 
 
 Planning for reproducibility 

@@ -49,7 +49,7 @@ The asterisks around *load cell* are markdown for italics.
 The square brackets enclose the figure caption and the parentheses enclose the file path to the image file. In this case, the Rmd and image file are in the same directory, so no additional relative path information is needed. 
 
 
-Now go to the page about [applying styles](style-reference.html)
+Now go to the page about [specifying a style reference](style-reference.html)
 
 
 
