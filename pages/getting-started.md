@@ -47,4 +47,4 @@ reports\
   \-- load-cell-setup.png
 ```
 
-
+Now go to the page about [initializing an Rmd file](pages/initialize-Rmd.html)
