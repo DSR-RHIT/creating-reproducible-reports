@@ -47,30 +47,16 @@ The square brackets enclose the figure caption and the parentheses enclose the f
 
 ### Applying a style reference 
 
-You can control the formatting of the Word document by specifying a style reference. In brief, the steps are: 
-
-1. Use R Markdown to create a Word document (we've done this step) 
-1. Save this Word document as the style reference 
-1. Edit the styles in the style reference. Save. 
-1. To the YAML header, add a `reference_docx` argument 
-
-Create the style reference document 
+You can control the formatting of the Word document by specifying a style reference. First, create the style reference document. 
 
 - Save and Knit the current report Rmd file. 
 - Save the Word document in the report directory using a new file name, e.g., *mystyles-01.docx* 
 
-Edit the Word styles you find there 
+Now edit the Word styles you find there. For example, suppose we want to change the style of the report title. 
 
+- Select the Home ribbon tab, Styles group, click the Styles window launcher (in the lower right corner of the group). 
 
-
-
-
-
-
-
-
-
-
+![](../assets/images/styles-bar-02.png)
 
 
 
