@@ -47,7 +47,7 @@ The square brackets enclose the figure caption and the parentheses enclose the f
 
 ### Using Word styles
 
-You can specify a style reference for producing a docx file. In brief, the steps are: 
+You can control the formatting of the Word document by specifying a style reference. In brief, the steps are: 
 
 - Use R Markdown to create a Word document (we've done this step) 
 - Save this Word document as the style reference 
