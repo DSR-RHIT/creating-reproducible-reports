@@ -1,4 +1,5 @@
 # runs all R scripts 
+# copies and removes files
 
 # Knit Rmd -> md to auto-produce the correct header
 # used by all .md files in the pages directroy
@@ -13,6 +14,8 @@ file.copy(from = "data/load-cell-calibr-L6.csv"
 					, to = "assets/downloads/")
 file.copy(from = "assets/images/load-cell-setup.png"
 					, to = "assets/downloads/")
+
+# copy files used by me to test the report.Rmd
 file.copy(from = "assets/images/load-cell-setup.png"
 					, to = "reports/")
 
@@ -24,3 +27,6 @@ unlink("pages/*.html")
 
 # cleanup, reports directory
 unlink("reports/*.html")
+
+
+
