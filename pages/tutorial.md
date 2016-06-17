@@ -4,7 +4,7 @@ title:  getting started
 tagline: tutorial
 ---
 
-### Getting started
+### Setting up a directory tree
 
 - If you haven't installed R and RStudio, [please do](https://github.com/DSR-RHIT/install-R-and-RStudio/blob/master/pages/install_R.md). 
 - If you haven't created an RStudio project and the *.Renviron* file for the workshop, [please do](https://github.com/DSR-RHIT/install-R-and-RStudio/blob/master/pages/setup_R_project.md). 
@@ -27,6 +27,8 @@ workshop\
   \-- .Renviron
 ```
 
+### Download prepared files 
+ 
 Navigate to my [workshop downloads](https://github.com/DSR-RHIT/creating-reproducible-reports/tree/gh-pages/assets/downloads) folder. To download a file, 
 
 - Click the file name 
