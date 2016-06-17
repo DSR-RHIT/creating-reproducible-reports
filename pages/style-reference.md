@@ -30,7 +30,7 @@ In this case, the assigned style is *Title*.
 Caution. You may reformat assigned styles only. Neither add new styles, change a style name, nor assign styles different from the rendered defaults. 
 
 
-#### Edit the YAML header 
+### Edit the YAML header 
 
 Returning to the Rmd file, 
 
@@ -49,7 +49,7 @@ output:
 ```
 
 
-#### Continue to edit the style reference docx  
+### Continue to edit the style reference docx  
 
 
 The new Word document that appears should have the reformatted title. In the Word document: 
