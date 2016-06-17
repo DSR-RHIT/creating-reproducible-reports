@@ -20,13 +20,11 @@ Getting started
 - [agenda](print-pages/agenda.pdf) 
 - surveying the reproducible research ecosystem 
 
-Touring a dynamic document 
+Creating a dynamic document 
 
 - considering a sample report 
-- writing an R script 
-- creating a dynamic document 
+- [creating a dynamic document](pages/tutorial.html)
 - review 
-- [tutorial](pages/tutorial.html)
 
 Planning for reproducibility 
 
