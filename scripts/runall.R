@@ -6,6 +6,16 @@ library(knitr)
 opts_chunk$set(include=TRUE, echo=FALSE, message=FALSE)
 knit('pages/agenda.Rmd', output = 'pages/agenda.md')
 
+# copy files to be used by particpants to the downloads folder
+file.copy(from = "data/load-cell-calibr-L3.csv"
+					, to = "assets/downloads/")
+file.copy(from = "data/load-cell-calibr-L6.csv"
+					, to = "assets/downloads/")
+file.copy(from = "assets/images/load-cell-setup.png"
+					, to = "assets/downloads/")
+file.copy(from = "assets/images/load-cell-setup.png"
+					, to = "reports/")
+
 # cleanup, main directory
 unlink(".Rhistory")
 
