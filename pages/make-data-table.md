@@ -42,7 +42,14 @@ You should find that the code chunk was printed to the report. To prevent this, 
  - Change the chunk heading ````{r setup, include = FALSE}`  
  - Save and Knit 
  
- 
+### Install the *readr* package 
+
+In the pre-workshop homework you installed the *plyr* package for practice. We'll need the *readr* package next. 
+
+- In RStudio, lower right pane, *Packages -> Install* 
+- Type *readr* 
+
+
  
 ### Read the data file
 
