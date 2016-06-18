@@ -104,8 +104,8 @@ reports\
 
 
 
-
-Now go to the page about (add link)
+--- 
+Now go to the page about [making a data table](make-data-table.html)
 
 
 
