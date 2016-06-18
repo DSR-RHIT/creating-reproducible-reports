@@ -24,7 +24,7 @@ output: word_document
 
 ```
 
-- Add the following text to the report introduction (copy-paste works fine). 
+- Add the following text to the report introduction (copy-paste from the web box to your Rmd document to save time). 
 - Save and Knit 
 
 <pre><code>Calibrating a *load cell* (a sensor for measuring uniaxial force) yields two main results: a calibration equation relating output voltage (mV) to input force (lb); and an estimate of sensor accuracy as a percentage of full span. This report presents the test results for an Omega LCL-005 load cell calibrated following the ANSI/ISA procedure.
