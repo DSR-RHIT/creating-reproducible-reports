@@ -51,5 +51,5 @@ To get the most out of the second session, complete the sample report tutorial b
 
 
 --- 
-Now go to the page about [tbd](tbd.html) 
+Return to the [main page](../index.html) 
 
