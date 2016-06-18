@@ -5,7 +5,7 @@
 # used by all .md files in the pages directroy
 library(knitr)
 opts_chunk$set(include=TRUE, echo=FALSE, message=FALSE)
-knit('pages/agenda.Rmd', output = 'pages/agenda.md')
+knit('pages/02-agenda.Rmd', output = 'pages/agenda.md')
 
 # copy files to be used by particpants to the downloads folder
 file.copy(from = "data/load-cell-calibr-L3.csv"
