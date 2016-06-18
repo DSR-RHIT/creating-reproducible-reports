@@ -3,7 +3,7 @@ layout: page
 title: workshop
 tagline: reproducible research for the R novice
 description: Introduces R, RStudio, and R Markdown as tools to create
-             a dynamically repoducible report. For R noviscs. 
+             a dynamically reproducible report. For R novices. 
 ---
 
 The workshop introduces reproducible reporting---a component of the  larger reproducible research ecosystem---to the R novice. No prior experience with R or RStudio is required. 
@@ -45,10 +45,20 @@ The workshop entails two 3-hour sessions. We focus on these tasks, commonly enco
 - starting your own project 
 - looking ahead 
 
-### resources 
+### acknowledgments 
 
-- [Karl Broman's tutorials](http://kbroman.org/pages/tutorials.html) 
-- [Jenny Bryan's Stats 545](http://stat545.com/) 
+Many thanks to many folks in the R community for posting their work in their blogs and repos. I would especially like to thank: 
+
+- [Karl Broman](http://kbroman.org) for his  [tutorials](http://kbroman.org/pages/tutorials.html) that made the creation of these GitHub-hosted webpages *almost* painless 
+- [Jenny Bryan](https://github.com/jennybc) for her [Stats545 material](http://stat545.com/) and for the
+[Good enough practices  paper](https://swcarpentry.github.io/good-enough-practices-in-scientific-computing/) for helping me think effectively about directory organization.  
+
+
+
+
+
+
+
 
 
 ---
