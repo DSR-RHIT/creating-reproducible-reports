@@ -30,7 +30,8 @@ The workshop entails two 3-hour sessions. We focus on these tasks, commonly enco
 - [adding headings and images](pages/05-headings-and-images.html) 
 - [specifying a style reference](pages/06-style-reference.html)
 - [set up knitr and readr](pages/07-setup-knitr-and-readr.html)
-- [read a data file and make a table](pages/08-read-data-make-table.html) 
+- [read a data file and make a table](pages/08-read-data-make-table.html)
+- [inline code and table formatting](pages/09-inline-code.html)
 - performing a linear regression  
 - reporting results in-line 
 - graphing results  

@@ -3,7 +3,7 @@ layout: page
 title:  tutorial
 tagline: read a data file and make a table
 ---
- 
+
 ### Read a data file
 
 At the bottom of the current Rmd file, after the figure caption, 
@@ -40,12 +40,12 @@ The simplest of all R functions for printing a table is the *kable()* function i
 - Add a new code chunk 
 - Use the *kable* function to print the *calibr_data* data frame 
 
-	<pre class="r"><code>```{r echo = FALSE, include = TRUE}
+	<pre class="r"><code>```{r print-table, echo = FALSE, include = TRUE, results='asis'}
 	kable(calibr_data)
 	<code>```</code>
 	</code></pre>
 
-The code chunk header includes `echo = FALSE` to prevent printing the R code in the document, but `include = TRUE` to require printing the code output, the table.  
+The code chunk header includes `echo = FALSE` to prevent printing the R code, `include = TRUE` to require printing the code output (the data table), and `results = 'asis'` to ensure that the raw table output isn't processed further by knitr. 
 
 - Save 
 - Knit 
@@ -53,19 +53,8 @@ The code chunk header includes `echo = FALSE` to prevent printing the R code in 
 
 
 
-
- 
- 
- 
-
-
-
-
-
-
-
 --- 
-Now go to the page about (add link)
+Now go to the page about [inline code and table formatting](09-inline-code.html) 
 
 
 
