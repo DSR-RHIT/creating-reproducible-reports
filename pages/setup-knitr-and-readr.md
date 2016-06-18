@@ -1,7 +1,7 @@
 ---
 layout: page
 title:  tutorial
-tagline: making a data table
+tagline: set up knitr and readr
 ---
 
 We're ready to add some R code to the document to read the calibration data file and print it to the report as a table. The *knitr* package enables integration of R code with the prose of the report. (An R *package* is like an app in R. Your packages are stored in the `C:/R/library` directory you created in the pre-workshop homework.)
@@ -42,54 +42,15 @@ You should find that the code chunk was printed to the report. To prevent this, 
  - Change the chunk heading ````{r setup, include = FALSE}`  
  - Save and Knit 
  
-### Install the *readr* package 
+### Install readr 
 
 In the pre-workshop homework you installed the *plyr* package for practice. We'll need the *readr* package next. 
 
 - In RStudio, lower right pane, *Packages -> Install* 
 - Type *readr* 
 
-
- 
-### Read the data file
-
-At the bottom of the current Rmd file, after the figure caption, 
-
-- add a code chunk labeled *read-data* 
-- Save and Knit 
-
-	<pre class="r"><code>```{r read-data}
-	# a package for fast and easy file reading
-	library(readr)
-	
-	# assign the CSV data to a variable for further manipulation
-	calibr_data <- read_csv('data/load-cell-calibr-L3.csv')
-	<code>```</code></code></pre>
-
-Note the *read_csv()* argument includes the path/filename to the CSV file relative to the working directory for the project. The path argument is a character string, denoted in R with single quotes (or double quotes, no distinction). 
-
-In the RStudio window, in the upper right pane, 
-
-- Select the *Environment* tab 
-- Click *calibr_data*  
-
-The data set should appear in the *Source* pane (upper left). You can see the names of the data columns and the entries. This data set is *tidy*, i.e., variables are in columns and observations are in rows.  
-
-The simplest of all R functions for printing a table is the *kable()* function in the *knitr* package.  
-
-
- 
- 
- 
-
-
-
-
-
-
-
 --- 
-Now go to the page about (add link)
+Now go to the page to [read a data file and make a table](read-data-make-table.html)
 
 
 

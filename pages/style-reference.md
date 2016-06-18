@@ -105,7 +105,7 @@ reports\
 
 
 --- 
-Now go to the page about [making a data table](make-data-table.html)
+Now go to the page to [set up knitr and readr](setup-knitr-and-readr.html)
 
 
 

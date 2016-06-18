@@ -29,8 +29,8 @@ The workshop entails two 3-hour sessions. We focus on these tasks, commonly enco
 - [initializing the Rmd report file](pages/initialize-Rmd.html) 
 - [adding headings and images](pages/headings-and-images.html) 
 - [specifying a style reference](pages/style-reference.html)
-- reading a data file  
-- making a table 
+- [set up knitr and readr](pages/setup-knitr-and-readr.html)
+- [read a data file and make a table](pages/read-data-make-table.html) 
 - performing a linear regression  
 - reporting results in-line 
 - graphing results  
