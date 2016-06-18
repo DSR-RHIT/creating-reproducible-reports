@@ -27,7 +27,7 @@ output: word_document
 - Add the following text to the report introduction (copy-paste works fine). 
 - Save and Knit 
 
-<pre><code>Calibrating a *load cell* (a sensor for measuring uniaxial force) yields two main results: a calibration equation relating output voltage (mV) to input force (lb); and an estimate of sensor accuracy as a percentage of full span. In this report, I present the test results for an Omega LCL-005 load cell calibrated following the ANSI/ISA procedure.
+<pre><code>Calibrating a *load cell* (a sensor for measuring uniaxial force) yields two main results: a calibration equation relating output voltage (mV) to input force (lb); and an estimate of sensor accuracy as a percentage of full span. This report presents the test results for an Omega LCL-005 load cell calibrated following the ANSI/ISA procedure.
 </code></pre>
 
 The asterisks around *load cell* are markdown for italics. 
@@ -37,7 +37,7 @@ The asterisks around *load cell* are markdown for italics.
 - Add the next paragraph to precede Figure 1. 
 - Save and Knit 
 
-<pre><code>The load-cell setup is shown in Figure 1. A known weight is suspended from the eyehook, causing the thin-beam load cell to deform. A Wheatstone bridge on the beam detects the deformation, producing a voltage signal we read with a meter. 
+<pre><code>The load-cell setup is shown in Figure 1. A known weight is suspended from the eye-hook, causing the thin-beam load cell to deform. A Wheatstone bridge on the beam detects the deformation and produces a voltage output signal that is  recorded.
 </code></pre>
 
 - Add the following snippet to place the image file in the document. 
