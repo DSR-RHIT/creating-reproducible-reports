@@ -4,7 +4,7 @@ title:  tutorial
 tagline: read a data file and make a table
 ---
  
-### Read the data file
+### Read a data file
 
 At the bottom of the current Rmd file, after the figure caption, 
 
@@ -28,7 +28,30 @@ In the RStudio window, in the upper right pane,
 
 The data set should appear in the *Source* pane (upper left). You can see the names of the data columns and the entries. This data set is *tidy*, i.e., variables are in columns and observations are in rows.  
 
+### Make a table 
+
+ - Add this prose to the end of the Rmd file. 
+ 
+	<pre><code>The calibration data are shown in Table 1.
+	</code></pre>
+
 The simplest of all R functions for printing a table is the *kable()* function in the *knitr* package.  
+
+- Add a new code chunk 
+- Use the *kable* function to print the *calibr_data* data frame 
+
+	<pre class="r"><code>```{r echo = FALSE, include = TRUE}
+	kable(calibr_data)
+	<code>```</code>
+	</code></pre>
+
+The code chunk header includes `echo = FALSE` to prevent printing the R code in the document, but `include = TRUE` to require printing the code output, the table.  
+
+- Save 
+- Knit 
+
+
+
 
 
  

@@ -34,6 +34,12 @@ library(readr)
 calibr_data <- read_csv('data/load-cell-calibr-L3.csv')
 ```
 
+The calibration data are shown in Table 1. 
+
+```{r echo = FALSE, include = TRUE}
+kable(calibr_data)
+```
+
  
 
 
