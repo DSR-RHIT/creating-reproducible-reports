@@ -4,7 +4,7 @@ title:  tutorial
 tagline: making a data table
 ---
 
-We're ready to add some R code to the document to read the calibration data file and print it to the report as a table. The *knitr* package enables integration of R code with the prose of the report. (An R *package* is like an app in R. Your packages are stored in the `C:/R/library` directory you created in the pre-workshop homework. )
+We're ready to add some R code to the document to read the calibration data file and print it to the report as a table. The *knitr* package enables integration of R code with the prose of the report. (An R *package* is like an app in R. Your packages are stored in the `C:/R/library` directory you created in the pre-workshop homework.)
 
 ### Initialize knitr
 
