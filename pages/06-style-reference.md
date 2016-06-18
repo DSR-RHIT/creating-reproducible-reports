@@ -105,7 +105,7 @@ reports\
 
 
 --- 
-Now go to the page to [set up knitr and readr](setup-knitr-and-readr.html)
+Now go to the page to [set up knitr and readr](07-setup-knitr-and-readr.html)
 
 
 

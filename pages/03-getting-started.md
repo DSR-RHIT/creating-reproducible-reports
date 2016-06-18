@@ -48,4 +48,4 @@ reports\
 ```
 
 --- 
-Now go to the page about [initializing the Rmd report file](initialize-Rmd.html)
+Now go to the page about [initializing the Rmd report file](04-initialize-Rmd.html)

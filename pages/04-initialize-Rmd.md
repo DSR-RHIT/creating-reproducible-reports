@@ -61,4 +61,4 @@ We can dispense with the default prose. In the Rmd file,
 
 
 --- 
-Now go to the page about [adding headings and images](headings-and-images.html) 
+Now go to the page about [adding headings and images](05-headings-and-images.html) 

@@ -18,19 +18,19 @@ The workshop entails two 3-hour sessions. We focus on these tasks, commonly enco
 
 ### getting started
 
-- [pre-workshop homework](pages/pre-workshop-hw.html) 
-- [agenda](pages/agenda.html) 
+- [pre-workshop homework](pages/01-pre-workshop-hw.html) 
+- [agenda](pages/02-agenda.html) 
 - surveying the reproducible research ecosystem 
 - considering a sample report 
 
 ### tutorial 
 
-- [creating the file structure](pages/getting-started.html) 
-- [initializing the Rmd report file](pages/initialize-Rmd.html) 
-- [adding headings and images](pages/headings-and-images.html) 
-- [specifying a style reference](pages/style-reference.html)
-- [set up knitr and readr](pages/setup-knitr-and-readr.html)
-- [read a data file and make a table](pages/read-data-make-table.html) 
+- [creating the file structure](pages/03-getting-started.html) 
+- [initializing the Rmd report file](pages/04-initialize-Rmd.html) 
+- [adding headings and images](pages/05-headings-and-images.html) 
+- [specifying a style reference](pages/06-style-reference.html)
+- [set up knitr and readr](pages/07-setup-knitr-and-readr.html)
+- [read a data file and make a table](pages/08-read-data-make-table.html) 
 - performing a linear regression  
 - reporting results in-line 
 - graphing results  

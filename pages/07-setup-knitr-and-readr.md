@@ -50,7 +50,7 @@ In the pre-workshop homework you installed the *plyr* package for practice. We'l
 - Type *readr* 
 
 --- 
-Now go to the page to [read a data file and make a table](read-data-make-table.html)
+Now go to the page to [read a data file and make a table](08-read-data-make-table.html)
 
 
 
