@@ -6,18 +6,11 @@ description: Introduces R, RStudio, and R Markdown as tools to create
              a dynamically reproducible report. For R novices. 
 ---
 
-The workshop introduces reproducible reporting---a component of the  larger reproducible research ecosystem---to the R novice. No prior experience with R or RStudio is required. 
-
-The workshop entails two 3-hour sessions. We focus on these tasks, commonly encountered in technical writing:
-
-- reading, manipulating, and analyzing data 
-- creating tables and graphs 
-- writing equations and in-line results 
-- managing headings, references, and external media 
-- organizing your overall workflow for reproducibility 
+Welcome! The goal of the workshop is to introduce the R novice to reproducible research in the context of creating a reproducible report using R, RStudio, and knitr.  
 
 ### getting started
 
+- [goals and objectives](pages/00-goals.html)
 - [pre-workshop homework](pages/01-pre-workshop-hw.html) 
 - [agenda](pages/02-agenda.html) 
 - surveying the reproducible research ecosystem 

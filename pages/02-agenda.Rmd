@@ -48,3 +48,8 @@ To get the most out of the second session, complete the sample report tutorial b
 ```{r}
 kable(df2)
 ```
+
+
+--- 
+Now go to the page about [tbd](tbd.html) 
+

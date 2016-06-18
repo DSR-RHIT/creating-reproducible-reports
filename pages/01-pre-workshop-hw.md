@@ -17,3 +17,8 @@ Once the software is installed, practice setting up an RStudio project.
 Optional tasks 
 
 - For session 2, bring a report of your own to remake as a reproducible report. 
+
+--- 
+Now go to the page about [workshop agenda](02-agenda.html) 
+
+
