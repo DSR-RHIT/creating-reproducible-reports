@@ -56,4 +56,4 @@ Many thanks to many folks in the R community for posting their work in their blo
 
 ---
 
-Repo that creates this website: [http://github.com/DSR-RHIT/me497--reproducible-reports](http://github.com/DSR-RHIT/me497-reproducible-research) 
+Repo that creates this website: [http://github.com/DSR-RHIT/me497-reproducible-research](http://github.com/DSR-RHIT/me497-reproducible-research) 
