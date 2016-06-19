@@ -28,11 +28,14 @@ set_path_for_runall <- function(proj_dir, file_dir) {
 }
 ```
 
-```{r create-agenda}
+```{r set-file-path}
+# required to run this Rmd from runall.R script
 proj_dir <- 'creating-reproducible-reports'
 file_dir <- 'data/agenda.xlsx'
 file_dir <- set_path_for_runall(proj_dir, file_dir)
+```
 
+```{r create-agenda}
 df <- read_excel(file_dir) %>% 
 	mutate(space1 = NA, space2 = NA) %>%
   select(time, space1, activity, space2, format) %>%
