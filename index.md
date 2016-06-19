@@ -1,12 +1,12 @@
 ---
 layout: page
-title: course map
+title: workshop
 tagline: reproducible research for the R novice
 description: Introduces R, RStudio, and R Markdown as tools to create
              a dynamically reproducible report. For R novices. 
 ---
 
-Welcome! The goal of the course is ...  
+Welcome! The goal of the workshop is to introduce the R novice to reproducible research in the context of creating a reproducible report using R, RStudio, and knitr.  
 
 ### getting started
 
@@ -56,4 +56,4 @@ Many thanks to many folks in the R community for posting their work in their blo
 
 ---
 
-Repo that creates this website: [http://github.com/DSR-RHIT/me497-reproducible-research](http://github.com/DSR-RHIT/me497-reproducible-research) 
+Repo that creates this website: [http://github.com/DSR-RHIT/creating-reproducible-reports](http://github.com/DSR-RHIT/creating-reproducible-reports) 
