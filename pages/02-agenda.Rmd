@@ -1,20 +1,39 @@
 ---
 layout: page
-title:  getting started
+title: getting started
 tagline: agenda 
-output: html_document
+output: html_document 
 ---
 
-<!-- because this Rmd file is executed from the runall script, I use relative paths from the pages directory, thus to read the data file, "../data/file" 
-The file can still be run on its own.-->
-
-```{r setup, include=FALSE}
+```{r setup, include = FALSE}
 library(knitr)
-opts_chunk$set(include=TRUE, echo=FALSE, message=FALSE)
+opts_knit$set(root.dir = '../')
+opts_chunk$set(include = FALSE, echo = FALSE, message = FALSE, warning = FALSE)
+```
 
+```{r lib}
 library(readxl)
 library(dplyr)
-df <- read_excel("../data/agenda.xlsx") %>% 
+```
+
+```{r agenda-functions}
+# include set_path_for_runall in every Rmd script run from the 
+# runall.R script if the goal is to knit(Rmd) to create the 
+# md file correctly formatted for gh-pages 
+set_path_for_runall <- function(proj_dir, file_dir) {
+	if (exists('runall_obj')) { # does the object exist?
+			file_dir <- paste0(proj_dir, '/', file_dir)
+			} 
+	file_dir <- file_dir
+}
+```
+
+```{r create-agenda}
+proj_dir <- 'creating-reproducible-reports'
+file_dir <- 'data/agenda.xlsx'
+file_dir <- set_path_for_runall(proj_dir, file_dir)
+
+df <- read_excel(file_dir) %>% 
 	mutate(space1 = NA, space2 = NA) %>%
   select(time, space1, activity, space2, format) %>%
 	rename(' ' = space1, ' ' = space2)
@@ -37,7 +56,7 @@ df2[is.na(df2)] <- " " # replaces NAs with 2 blanks
 
 To get the most out of the first session, do the pre-workshop homework before arriving. 
 
-```{r}
+```{r agenda-1, include = TRUE}
 kable(df1)
 ```
 
@@ -45,7 +64,7 @@ kable(df1)
 
 To get the most out of the second session, complete the sample report tutorial before the second session.  
 
-```{r}
+```{r agenda-2, include = TRUE}
 kable(df2)
 ```
 
