@@ -47,13 +47,3 @@ Many thanks to many folks in the R community for posting their work in their blo
 [Good enough practices  paper](https://swcarpentry.github.io/good-enough-practices-in-scientific-computing/) for helping me think effectively about directory organization.  
 
 
-
-
-
-
-
-
-
----
-
-Repo that creates this website: [http://github.com/DSR-RHIT/creating-reproducible-reports](http://github.com/DSR-RHIT/creating-reproducible-reports) 
