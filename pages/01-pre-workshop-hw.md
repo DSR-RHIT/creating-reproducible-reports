@@ -10,11 +10,11 @@ Install the most recent version of each: R first, then RStudio.
 
 ### Windows
 
-Windows users, you might find that you have to login to your machine as an adminstrator before installing R and RStudio. 
+Windows users, you might have to install as an adminstrator. 
 
 - [Download R for Windows](https://cran.r-project.org/) from the Comprehensive R Archive Network (CRAN) -> Install R for the very first time 
 - [Download RStudio](http://www.rstudio.com/products/rstudio/download/)
-- [Video instructions](https://www.youtube.com/watch?v=eD07NznguA4) for R and RStudio 
+- [Video instructions](https://www.youtube.com/watch?v=eD07NznguA4) for installing R and RStudio 
 - [R installation manual](https://cran.r-project.org/doc/manuals/r-release/R-admin.html#Installing-R-under-Windows) for the brave if you need the minutiae 
 
 
@@ -22,26 +22,28 @@ Windows users, you might find that you have to login to your machine as an admin
 
 - [Download R for (Mac) OS X](https://cran.r-project.org/) from the Comprehensive R Archive Network (CRAN). 
 - [Download RStudio](http://www.rstudio.com/products/rstudio/download/)
-- [Video instructions](https://www.youtube.com/watch?v=Ywj6yNfc5nM) for R and RStudio  
+- [Video instructions](https://www.youtube.com/watch?v=Ywj6yNfc5nM) for installing R and RStudio  
 - [R installation manual](https://cran.r-project.org/doc/manuals/r-release/R-admin.html#Installing-R-under-OS-X) for the brave if you need the minutiae 
 
 
 ### Unix-alikes
 
-- [R installation manual](https://cran.r-project.org/doc/manuals/r-release/R-admin.html#Installing-R-under-Unix_002dalikes) because you are running a Unix-alike machine. 
+- [R installation manual](https://cran.r-project.org/doc/manuals/r-release/R-admin.html#Installing-R-under-Unix_002dalikes) 
 
 ### Testing
 
+- Create a desktop icon for RStudio. 
+- You may delete the desktop icons (if any) for R. 
 - Launch RStudio. You should get a window similar to this [screenshot](http://www.rstudio.com/products/rstudio/). 
-- Place your cursor in the *Console* pane. (For MATLAB users, the Console is similar to the MATLAB Command Window.)
-- In the Console, type `x <- 4^3` and Enter. In R, assignment operator is `<-`. 
+- Place your cursor in the *Console* pane. (For MATLAB users, the Console is similar to the MATLAB Command Window.) 
+- In the Console, type `x <- 4^3` and Enter. In R, the assignment operator is `<-`.  
 - In the Console, type `x`, and you should see the value  `64` printed to the Console. 
+- `Ctrl+L` clears the console. 
+- Session -> Restart R to clear all variables from the Environment
 
 
 
 
-
-Put your cursor in the pane labelled Console, which is where you interact with the live R process. Create a simple object with code like x <- 2 * 4 (followed by enter or return). Then inspect the x object by typing x followed by enter or return. Obviously you should see the value 8 print to screen. If yes, you are good to go.
 
 
 
