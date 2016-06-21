@@ -3,7 +3,7 @@
 # runs R scripts 
 
 # load my functions
-source('R/hskp00_housekeeping-functions.R')
+source('R/house_00_housekeeping-functions.R')
 
 # ----------------------------------------------------
 # knit Rmd -> md with the correct header for gh-pages
@@ -54,14 +54,17 @@ file.copy(from = "resources/images/load-cell-setup.png"
 unlink(".Rhistory")
 unlink("*.html")
 
-# cleanup, assets directory
-unlink("assets/*.html")
+# cleanup all readme.html
+unlink("*/readme.html")
 
-# cleanup, pages directory
-unlink("pages/*.html")
-
-# cleanup, reports directory
-unlink("reports/*.html")
+# # cleanup, assets directory
+# unlink("assets/*.html")
+# 
+# # cleanup, pages directory
+# unlink("pages/*.html")
+# 
+# # cleanup, reports directory
+# unlink("reports/*.html")
 
 
 
