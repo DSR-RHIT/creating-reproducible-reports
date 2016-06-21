@@ -13,7 +13,6 @@ module\_nnn\_slug.ext
 - start\_001\_goals-and-objectives.md 
 - start\_002\_pre-homework-install.md 
 - start\_003\_pre-homework-rproject.md 
- 
 - intro\_001\_agenda.md 
 - intro\_002\_the-rr-ecosystem.md 
 - intro\_003\_sample-report.md 
