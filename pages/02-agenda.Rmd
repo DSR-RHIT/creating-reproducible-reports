@@ -16,7 +16,7 @@ library(dplyr)
 ```
 
 ```{r create-agenda}
-df <- read_excel('../data/agenda.xlsx') %>% 
+df <- read_excel('../data/2016-06-21-raw/agenda.xlsx') %>% 
 	mutate(space1 = NA, space2 = NA) %>%
   select(time, space1, activity, space2, format) %>%
 	rename(' ' = space1, ' ' = space2)

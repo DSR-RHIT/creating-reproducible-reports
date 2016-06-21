@@ -5,19 +5,16 @@ The workshop introduces reproducible reporting---a component of the  larger repr
 The workshop website on GitHub: [http://dsr-rhit.github.io/creating-reproducible-reports](http://dsr-rhit.github.io/creating-reproducible-reports)
 
 
-*Guide to file naming* 
+*Guide to file naming for pages*. Can add optional slugs, e.g., \_slides.ext, \_instr-notes.ext
 
-module\_nnn\_slug.ext 
-
-- start\_001\_slides.Rmd 
-- start\_001\_goals-and-objectives.md 
-- start\_002\_pre-homework-install.md 
-- start\_003\_pre-homework-rproject.md 
-- intro\_001\_agenda.md 
-- intro\_002\_the-rr-ecosystem.md 
-- intro\_003\_sample-report.md 
-
-
+- nnn\_chunk\_topic.ext
+- 010\_preworkshop\_goals-and-objectives.md 
+- 020\_preworkshop\_pre-hw-install-software.md 
+- 030\_preworkshop\_pre-hw-setup-rproject.md 
+- 040\_introduction\_agenda.md 
+- 042\_introduction\_added-a-new-page.md 
+- 050\_introduction\_the-rr-ecosystem.md 
+- 060\_introduction\_sample-report.md 
 
 
 
