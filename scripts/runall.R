@@ -3,7 +3,7 @@
 # runs R scripts 
 
 # load my functions
-source('R/house_00_housekeeping-functions.R')
+source('scripts/house_00_housekeeping-functions.R')
 
 # ----------------------------------------------------
 # knit Rmd -> md with the correct header for gh-pages
@@ -35,13 +35,13 @@ cat("\nRmd files not rendered\n", not_knitted, sep = "\n")
 
 # ----------------------------------------------------
 # copy files to be used by particpants to the downloads folder
-
+download_to <- "resources/downloads/"
 file.copy(from = "data/load-cell-calibr-L3.csv"
-					, to = "downloads/")
+					, to = download_to)
 file.copy(from = "data/load-cell-calibr-L6.csv"
-					, to = "downloads/")
+					, to = download_to)
 file.copy(from = "resources/images/load-cell-setup.png"
-					, to = "downloads/")
+					, to = download_to)
 
 # copy files used by me to test the report.Rmd
 file.copy(from = "resources/images/load-cell-setup.png"
