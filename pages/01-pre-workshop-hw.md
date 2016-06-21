@@ -1,14 +1,14 @@
 ---
 layout: page
 title:  getting started 
-tagline: pre-workshop homework
+tagline: pre-workshop installation
 ---
 
 Prior to the workshop, please download and install R and RStudio. [R](https://www.r-project.org/) is a free software environment for statistical computing and graphics. [RStudio](https://www.rstudio.com/) is a user interface for R. 
 
 Install the most recent version of each: R first, then RStudio. 
 
-### Windows
+### windows
 
 Windows users, you might have to install as an adminstrator. 
 
@@ -18,7 +18,7 @@ Windows users, you might have to install as an adminstrator.
 - [R installation manual](https://cran.r-project.org/doc/manuals/r-release/R-admin.html#Installing-R-under-Windows) for the brave if you need the minutiae 
 
 
-### Mac OS
+### mac OS
 
 - [Download R for (Mac) OS X](https://cran.r-project.org/) from the Comprehensive R Archive Network (CRAN). 
 - [Download RStudio](http://www.rstudio.com/products/rstudio/download/)
@@ -26,11 +26,11 @@ Windows users, you might have to install as an adminstrator.
 - [R installation manual](https://cran.r-project.org/doc/manuals/r-release/R-admin.html#Installing-R-under-OS-X) for the brave if you need the minutiae 
 
 
-### Unix-alikes
+### unix-alikes
 
 - [R installation manual](https://cran.r-project.org/doc/manuals/r-release/R-admin.html#Installing-R-under-Unix_002dalikes) 
 
-### Testing
+### testing
 
 - Create a desktop icon for RStudio. 
 - You may delete the desktop icons (if any) for R. 
@@ -42,32 +42,11 @@ Windows users, you might have to install as an adminstrator.
 - Session -> Restart R to clear all variables from the Environment
 
 
+### people and credits
 
-
-
-
-
-
-
-
-
-
-
-<!--
-S
-    
-    
-    
-
-Once the software is installed, practice setting up an RStudio project. 
-
-- [Setup an R project](https://github.com/DSR-RHIT/install-R-and-RStudio/blob/master/pages/setup_R_project.md) 
-
-Optional tasks 
-
-- For session 2, bring a report of your own to remake as a reproducible report. 
+Thanks to the [Reproducible Science Curriculum](https://github.com/Reproducible-Science-Curriculum/rr-intro) team, from whom I borrowed the download and install guidelines. 
 
 --- 
-Now go to the page about [workshop agenda](02-agenda.html) 
+Now go to the page about [setup an R project](setup-an-R-project.html) 
 
--->
+
