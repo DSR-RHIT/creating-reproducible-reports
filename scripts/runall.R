@@ -57,14 +57,9 @@ unlink("*.html")
 # cleanup all readme.html
 unlink("*/readme.html")
 
-# # cleanup, assets directory
-# unlink("assets/*.html")
-# 
-# # cleanup, pages directory
-# unlink("pages/*.html")
-# 
-# # cleanup, reports directory
-# unlink("reports/*.html")
+# cleanup html from directories with Rmd source files
+unlink("pages/*.html")
+unlink("reports/*.html")
 
 
 

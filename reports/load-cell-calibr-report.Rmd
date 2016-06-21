@@ -1,8 +1,9 @@
 ---
-title: Calibration report
-author: Richard Layton
-date: 2016-08-24
+title: "Calibration report"
+author: "Richard Layton"
+date: '2016-08-24'
 output:
+  html_document: default
   word_document:
     reference_docx: mystyles-01.docx
 ---
@@ -24,7 +25,7 @@ Calibrating a *load cell* (a sensor for measuring uniaxial force) yields two mai
 
 The load-cell setup is shown in Figure 1. A known weight is suspended from the eye-hook, causing the thin-beam load cell to deform. A Wheatstone bridge on the beam detects the deformation and produces a voltage output signal that is  recorded.
 
-![Figure 1. Applying a force to the load cell using a precision weight](load-cell-setup.png)
+![Figure 1. Applying a force to the load cell using a precision weight](load-cell-setup-smaller.png)
 
 ```{r read-data}
 # a package for fast and easy file reading
