@@ -18,6 +18,9 @@ Welcome! The goal of the workshop is to introduce the R novice to reproducible r
 
 ### tutorial 
 
+- [reshape wide data to long](pages/set001_calibr_03_tidy-data)
+
+<!--
 - [creating the file structure](pages/03-getting-started.html) 
 - [initializing the Rmd report file](pages/04-initialize-Rmd.html) 
 - [adding headings and images](pages/05-headings-and-images.html) 
@@ -31,6 +34,7 @@ Welcome! The goal of the workshop is to introduce the R novice to reproducible r
 - writing an equation 
 - adding a citation 
 - updating the report when the data change 
+-->
 
 ### planning for reproducibility 
 
