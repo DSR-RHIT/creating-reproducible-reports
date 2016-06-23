@@ -6,41 +6,42 @@ tagline: reproducible research for the R novice
 
 Welcome! The goal of the workshop is to introduce the R novice to reproducible research in the context of creating a reproducible report using R, RStudio, and knitr.  
 
+
+
 ### getting started
 
-- [goals and objectives](pages/001_goals.html)
+- [description and objectives](pages/001_goals.html)
 - [pre-workshop homework](pages/002_pre-hw.html) 
 - [agenda](pages/003_agenda.html) 
 - surveying the reproducible research ecosystem 
 - considering a sample report 
 
+
+
 ### tutorial 
 
-- [creating the file structure](pages/0201_create-file-structure.html)
-- [initialize an Rmd script](pages/0202_doc_initial-script.html)
-- [reshape wide data to long](pages/0205_data_tidy-data.html)
-
-<!--
-- [creating the file structure](pages/03-getting-started.html) 
-- [initializing the Rmd report file](pages/04-initialize-Rmd.html) 
-- [adding headings and images](pages/05-headings-and-images.html) 
-- [specifying a style reference](pages/06-style-reference.html)
-- [set up knitr and readr](pages/07-setup-knitr-and-readr.html)
-- [read a data file and make a table](pages/08-read-data-make-table.html)
-- [inline code and table formatting](pages/09-inline-code.html)
-- performing a linear regression  
+- creating the file structure 
+- initializing the Rmd report file 
+- adding headings and images 
+- read a data file 
+- reshape the data 
+- simple table 
 - reporting results in-line 
-- graphing results  
+- performing a linear regression 
+- graphing results 
 - writing an equation 
 - adding a citation 
 - updating the report when the data change 
--->
+
+
 
 ### planning for reproducibility 
 
 - planning for reproducibility 
 - starting your own project 
 - looking ahead 
+
+
 
 ### acknowledgments 
 
