@@ -29,7 +29,7 @@ rr-workshop\
 
 ### Download prepared files 
  
-Navigate to my [workshop downloads](https://github.com/DSR-RHIT/creating-reproducible-reports/tree/gh-pages/assets/downloads) folder. To download a file, 
+Navigate to my [workshop downloads](../resources/downloads) folder. To download a file, 
 
 - Click the file name 
 - Right-click Raw --> Save link as... 
@@ -40,11 +40,10 @@ The data and reports directories should look like this.
 
 ```
 data\
-  |-- load-cell-calibration-L3.csv
-  \-- load-cell-calibration-L6.csv
+  \-- 007_wide-data.csv
   
 reports\
-  \-- load-cell-setup.png
+  \-- load-cell-setup-smaller.png
 ```
 
 --- 

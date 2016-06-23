@@ -29,18 +29,19 @@ file.rename(from = 'pages/index.md', to = './index.md')
 # copy files to be used by particpants to the downloads folder
 download_to <- "resources/downloads/"
 
-file.copy(from = "resources/images/load-cell-setup.png"
+file.copy(from = "resources/images/load-cell-setup-smaller.png"
 					, to = download_to
 )
 
 # copy files used by me to test the report.Rmd
-file.copy(from = "resources/images/load-cell-setup.png"
+file.copy(from = "resources/images/load-cell-setup-smaller.png"
 					, to = "reports/"
 )
 
-# file.copy(from = "data/load-cell-calibr-L3.csv"
-# 					, to = download_to
-# )
+file.copy(from = "data/007_wide-data.csv"
+					, to = download_to
+)
+
 # file.copy(from = "data/load-cell-calibr-L6.csv"
 # 					, to = download_to
 # )
