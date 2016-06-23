@@ -41,4 +41,4 @@ To get the most out of the second session, complete the sample report tutorial b
 
 ------------------------------------------------------------------------
 
-back [pre-workshop homework](0102_pre-hw.html)<br> next [main page](../index.html)
+back [pre-workshop homework](002_pre-hw.html)<br> next [main page](../index.html)
