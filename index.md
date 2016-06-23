@@ -18,7 +18,7 @@ Welcome! The goal of the workshop is to introduce the R novice to reproducible r
 
 - [set up directories](pages/0201_directory_setup.html)
 - [initialize an Rmd script](pages/0202_doc_initial-script.html)
-- [reshape wide data to long](pages/0205_tidy-data.html)
+- [reshape wide data to long](pages/0205_data_tidy-data.html)
 
 <!--
 - [creating the file structure](pages/03-getting-started.html) 
