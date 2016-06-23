@@ -2,7 +2,6 @@
 layout: page
 title: tidying the data 
 tagline: load cell calibration 
-output: html_document
 ---
 
 ### Initialize the workspace.
@@ -12,9 +11,6 @@ output: html_document
 # set root directory for knitr to match the working directory for R
 library(knitr) 
 opts_knit$set(root.dir = '../')
-
-# clear environment
-rm(list=ls())
 
 # load libraries used by this script
 library(readr)   # for read_csv() and write_csv()
@@ -28,18 +24,18 @@ library(stringr) # for str_split_fixed()
 
 ```r
 wide_data <- read_csv('data/set001_calibr_02_gather-wide-data.csv')
-```
-
-```
-## Error: 'data/set001_calibr_02_gather-wide-data.csv' does not exist in current working directory ('C:/Users/layton/C-Users-layton-docs/workshops').
-```
-
-```r
 head(wide_data, n = 4L)
 ```
 
 ```
-## Error in head(wide_data, n = 4L): object 'wide_data' not found
+## Source: local data frame [4 x 5]
+## 
+##   test_point input_lb cycle_1 cycle_2 cycle_3
+##        (chr)    (dbl)   (dbl)   (dbl)   (dbl)
+## 1       2 up      1.5      NA    29.9    30.2
+## 2       3 up      2.5    51.1    49.4    49.7
+## 3       4 up      3.5    70.4    70.0      NA
+## 4       5 up      4.5    88.8    91.6      NA
 ```
 
 ### Reshape the data from wide to long format
@@ -59,31 +55,42 @@ We start by rearranging the table to have the cycle numbers all in one column an
 ```r
 # indices of which columns to gather
 is_a_cycle_col <- grep('cycle', names(wide_data), ignore.case = TRUE)
-```
 
-```
-## Error in grep("cycle", names(wide_data), ignore.case = TRUE): object 'wide_data' not found
-```
-
-```r
 # convert to long form, 
 # create new column 'cycle' to gather column headings 
 # create new column 'output_mV' to gather numerical readings
 tidy_data <- wide_data %>%
 	gather(cycle, output_mV, is_a_cycle_col) %>%
 	as.data.frame()
-```
-
-```
-## Error in eval(expr, envir, enclos): object 'wide_data' not found
-```
-
-```r
 print(tidy_data)
 ```
 
 ```
-## Error in print(tidy_data): object 'tidy_data' not found
+##    test_point input_lb   cycle output_mV
+## 1        2 up      1.5 cycle_1        NA
+## 2        3 up      2.5 cycle_1      51.1
+## 3        4 up      3.5 cycle_1      70.4
+## 4        5 up      4.5 cycle_1      88.8
+## 5        4 dn      3.5 cycle_1      69.4
+## 6        3 dn      2.5 cycle_1      49.5
+## 7        2 dn      1.5 cycle_1      30.7
+## 8        1 dn      0.5 cycle_1       8.7
+## 9        2 up      1.5 cycle_2      29.9
+## 10       3 up      2.5 cycle_2      49.4
+## 11       4 up      3.5 cycle_2      70.0
+## 12       5 up      4.5 cycle_2      91.6
+## 13       4 dn      3.5 cycle_2      69.0
+## 14       3 dn      2.5 cycle_2      50.1
+## 15       2 dn      1.5 cycle_2      30.8
+## 16       1 dn      0.5 cycle_2      10.9
+## 17       2 up      1.5 cycle_3      30.2
+## 18       3 up      2.5 cycle_3      49.7
+## 19       4 up      3.5 cycle_3        NA
+## 20       5 up      4.5 cycle_3        NA
+## 21       4 dn      3.5 cycle_3        NA
+## 22       3 dn      2.5 cycle_3        NA
+## 23       2 dn      1.5 cycle_3        NA
+## 24       1 dn      0.5 cycle_3        NA
 ```
 
 Examine the structure of the data frame and find there are 2 character columns and 2 numerical columns. The two numerical columns are the data the are used for the calibration curve. 
@@ -94,7 +101,11 @@ str(tidy_data)
 ```
 
 ```
-## Error in str(tidy_data): object 'tidy_data' not found
+## 'data.frame':	24 obs. of  4 variables:
+##  $ test_point: chr  "2 up" "3 up" "4 up" "5 up" ...
+##  $ input_lb  : num  1.5 2.5 3.5 4.5 3.5 2.5 1.5 0.5 1.5 2.5 ...
+##  $ cycle     : chr  "cycle_1" "cycle_1" "cycle_1" "cycle_1" ...
+##  $ output_mV : num  NA 51.1 70.4 88.8 69.4 49.5 30.7 8.7 29.9 49.4 ...
 ```
 
 Now remove the test points for which there are no readings.
@@ -103,18 +114,28 @@ Now remove the test points for which there are no readings.
 ```r
 tidy_data <- tidy_data %>%
 	filter(!output_mV %in% NA)
-```
-
-```
-## Error in eval(expr, envir, enclos): object 'tidy_data' not found
-```
-
-```r
 print(tidy_data)
 ```
 
 ```
-## Error in print(tidy_data): object 'tidy_data' not found
+##    test_point input_lb   cycle output_mV
+## 1        3 up      2.5 cycle_1      51.1
+## 2        4 up      3.5 cycle_1      70.4
+## 3        5 up      4.5 cycle_1      88.8
+## 4        4 dn      3.5 cycle_1      69.4
+## 5        3 dn      2.5 cycle_1      49.5
+## 6        2 dn      1.5 cycle_1      30.7
+## 7        1 dn      0.5 cycle_1       8.7
+## 8        2 up      1.5 cycle_2      29.9
+## 9        3 up      2.5 cycle_2      49.4
+## 10       4 up      3.5 cycle_2      70.0
+## 11       5 up      4.5 cycle_2      91.6
+## 12       4 dn      3.5 cycle_2      69.0
+## 13       3 dn      2.5 cycle_2      50.1
+## 14       2 dn      1.5 cycle_2      30.8
+## 15       1 dn      0.5 cycle_2      10.9
+## 16       2 up      1.5 cycle_3      30.2
+## 17       3 up      2.5 cycle_3      49.7
 ```
 
 ```r
@@ -122,7 +143,11 @@ str(tidy_data)
 ```
 
 ```
-## Error in str(tidy_data): object 'tidy_data' not found
+## 'data.frame':	17 obs. of  4 variables:
+##  $ test_point: chr  "3 up" "4 up" "5 up" "4 dn" ...
+##  $ input_lb  : num  2.5 3.5 4.5 3.5 2.5 1.5 0.5 1.5 2.5 3.5 ...
+##  $ cycle     : chr  "cycle_1" "cycle_1" "cycle_1" "cycle_1" ...
+##  $ output_mV : num  51.1 70.4 88.8 69.4 49.5 30.7 8.7 29.9 49.4 70 ...
 ```
 
 
@@ -133,18 +158,28 @@ The data are in the order observed, so we can add a column to list the observati
 
 ```r
 tidy_data$observ <- row.names(tidy_data)
-```
-
-```
-## Error in row.names(tidy_data): object 'tidy_data' not found
-```
-
-```r
 print(tidy_data)
 ```
 
 ```
-## Error in print(tidy_data): object 'tidy_data' not found
+##    test_point input_lb   cycle output_mV observ
+## 1        3 up      2.5 cycle_1      51.1      1
+## 2        4 up      3.5 cycle_1      70.4      2
+## 3        5 up      4.5 cycle_1      88.8      3
+## 4        4 dn      3.5 cycle_1      69.4      4
+## 5        3 dn      2.5 cycle_1      49.5      5
+## 6        2 dn      1.5 cycle_1      30.7      6
+## 7        1 dn      0.5 cycle_1       8.7      7
+## 8        2 up      1.5 cycle_2      29.9      8
+## 9        3 up      2.5 cycle_2      49.4      9
+## 10       4 up      3.5 cycle_2      70.0     10
+## 11       5 up      4.5 cycle_2      91.6     11
+## 12       4 dn      3.5 cycle_2      69.0     12
+## 13       3 dn      2.5 cycle_2      50.1     13
+## 14       2 dn      1.5 cycle_2      30.8     14
+## 15       1 dn      0.5 cycle_2      10.9     15
+## 16       2 up      1.5 cycle_3      30.2     16
+## 17       3 up      2.5 cycle_3      49.7     17
 ```
 
 ```r
@@ -152,7 +187,12 @@ str(tidy_data)
 ```
 
 ```
-## Error in str(tidy_data): object 'tidy_data' not found
+## 'data.frame':	17 obs. of  5 variables:
+##  $ test_point: chr  "3 up" "4 up" "5 up" "4 dn" ...
+##  $ input_lb  : num  2.5 3.5 4.5 3.5 2.5 1.5 0.5 1.5 2.5 3.5 ...
+##  $ cycle     : chr  "cycle_1" "cycle_1" "cycle_1" "cycle_1" ...
+##  $ output_mV : num  51.1 70.4 88.8 69.4 49.5 30.7 8.7 29.9 49.4 70 ...
+##  $ observ    : chr  "1" "2" "3" "4" ...
 ```
 
 ### Split the string variables
@@ -162,28 +202,21 @@ The *test_point* variable is a character string that can be split to form *test_
 
 ```r
 split_column <- str_split_fixed(tidy_data$test_point, pattern = ' ', 2)
-```
-
-```
-## Error in stri_split_regex(string, pattern, n = n, simplify = TRUE, opts_regex = attr(pattern, : object 'tidy_data' not found
-```
-
-```r
 tidy_data <- tidy_data %>%
 	mutate(N = split_column[ , 1]) %>%
 	mutate(direction = split_column[ , 2])
-```
-
-```
-## Error in eval(expr, envir, enclos): object 'tidy_data' not found
-```
-
-```r
 str(tidy_data)
 ```
 
 ```
-## Error in str(tidy_data): object 'tidy_data' not found
+## 'data.frame':	17 obs. of  7 variables:
+##  $ test_point: chr  "3 up" "4 up" "5 up" "4 dn" ...
+##  $ input_lb  : num  2.5 3.5 4.5 3.5 2.5 1.5 0.5 1.5 2.5 3.5 ...
+##  $ cycle     : chr  "cycle_1" "cycle_1" "cycle_1" "cycle_1" ...
+##  $ output_mV : num  51.1 70.4 88.8 69.4 49.5 30.7 8.7 29.9 49.4 70 ...
+##  $ observ    : chr  "1" "2" "3" "4" ...
+##  $ N         : chr  "3" "4" "5" "4" ...
+##  $ direction : chr  "up" "up" "up" "dn" ...
 ```
 
 Remove the original *test_point* column and rename *N* as *test_point*
@@ -193,18 +226,17 @@ Remove the original *test_point* column and rename *N* as *test_point*
 tidy_data <- tidy_data %>%
 	select(-test_point) %>%
 	rename(test_point = N)
-```
-
-```
-## Error in eval(expr, envir, enclos): object 'tidy_data' not found
-```
-
-```r
 str(tidy_data)
 ```
 
 ```
-## Error in str(tidy_data): object 'tidy_data' not found
+## 'data.frame':	17 obs. of  6 variables:
+##  $ input_lb  : num  2.5 3.5 4.5 3.5 2.5 1.5 0.5 1.5 2.5 3.5 ...
+##  $ cycle     : chr  "cycle_1" "cycle_1" "cycle_1" "cycle_1" ...
+##  $ output_mV : num  51.1 70.4 88.8 69.4 49.5 30.7 8.7 29.9 49.4 70 ...
+##  $ observ    : chr  "1" "2" "3" "4" ...
+##  $ test_point: chr  "3" "4" "5" "4" ...
+##  $ direction : chr  "up" "up" "up" "dn" ...
 ```
 
 Similarly, split the cycle string and keep only the cycle number, N. 
@@ -212,36 +244,33 @@ Similarly, split the cycle string and keep only the cycle number, N.
 
 ```r
 split_column <- str_split_fixed(tidy_data$cycle, pattern = '_', 2)
-```
-
-```
-## Error in stri_split_regex(string, pattern, n = n, simplify = TRUE, opts_regex = attr(pattern, : object 'tidy_data' not found
-```
-
-```r
 tidy_data$cycle <- split_column[ , 2]
-```
 
-```
-## Error in eval(expr, envir, enclos): object 'split_column' not found
-```
-
-```r
 # arrange the column order
 tidy_data <- tidy_data %>%
 	select(observ, cycle, test_point, direction, input_lb, output_mV)
-```
-
-```
-## Error in eval(expr, envir, enclos): object 'tidy_data' not found
-```
-
-```r
 print(tidy_data, row.names = FALSE)
 ```
 
 ```
-## Error in print(tidy_data, row.names = FALSE): object 'tidy_data' not found
+##  observ cycle test_point direction input_lb output_mV
+##       1     1          3        up      2.5      51.1
+##       2     1          4        up      3.5      70.4
+##       3     1          5        up      4.5      88.8
+##       4     1          4        dn      3.5      69.4
+##       5     1          3        dn      2.5      49.5
+##       6     1          2        dn      1.5      30.7
+##       7     1          1        dn      0.5       8.7
+##       8     2          2        up      1.5      29.9
+##       9     2          3        up      2.5      49.4
+##      10     2          4        up      3.5      70.0
+##      11     2          5        up      4.5      91.6
+##      12     2          4        dn      3.5      69.0
+##      13     2          3        dn      2.5      50.1
+##      14     2          2        dn      1.5      30.8
+##      15     2          1        dn      0.5      10.9
+##      16     3          2        up      1.5      30.2
+##      17     3          3        up      2.5      49.7
 ```
 
 ```r
@@ -249,7 +278,13 @@ str(tidy_data)
 ```
 
 ```
-## Error in str(tidy_data): object 'tidy_data' not found
+## 'data.frame':	17 obs. of  6 variables:
+##  $ observ    : chr  "1" "2" "3" "4" ...
+##  $ cycle     : chr  "1" "1" "1" "1" ...
+##  $ test_point: chr  "3" "4" "5" "4" ...
+##  $ direction : chr  "up" "up" "up" "dn" ...
+##  $ input_lb  : num  2.5 3.5 4.5 3.5 2.5 1.5 0.5 1.5 2.5 3.5 ...
+##  $ output_mV : num  51.1 70.4 88.8 69.4 49.5 30.7 8.7 29.9 49.4 70 ...
 ```
 
 
@@ -263,18 +298,17 @@ tidy_data <- tidy_data %>%
 	mutate(observ = as.integer(observ)) %>%
 	mutate(cycle = as.integer(cycle)) %>%
 	mutate(test_point = as.integer(test_point))
-```
-
-```
-## Error in eval(expr, envir, enclos): object 'tidy_data' not found
-```
-
-```r
 str(tidy_data)
 ```
 
 ```
-## Error in str(tidy_data): object 'tidy_data' not found
+## 'data.frame':	17 obs. of  6 variables:
+##  $ observ    : int  1 2 3 4 5 6 7 8 9 10 ...
+##  $ cycle     : int  1 1 1 1 1 1 1 2 2 2 ...
+##  $ test_point: int  3 4 5 4 3 2 1 2 3 4 ...
+##  $ direction : chr  "up" "up" "up" "dn" ...
+##  $ input_lb  : num  2.5 3.5 4.5 3.5 2.5 1.5 0.5 1.5 2.5 3.5 ...
+##  $ output_mV : num  51.1 70.4 88.8 69.4 49.5 30.7 8.7 29.9 49.4 70 ...
 ```
 
 ### Save the tidy data for analysis
@@ -284,10 +318,6 @@ These data are saved in CSV form for calibration analysis.
 
 ```r
 write_csv(tidy_data, 'data/set001_calibr_03_tidy-data.csv')
-```
-
-```
-## Error in is.data.frame(x): object 'tidy_data' not found
 ```
  
 
