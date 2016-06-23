@@ -1,27 +1,57 @@
 # renders Rmd scripts to execute R code 
-# creates html pages that I don't need
+# creates gh-pages/md files from selected Rmds
 
 # load my functions
 source('scripts/house_00_housekeeping-functions.R')
 
-# execute and render index.Rmd
-scripts_Rmd <- list.files(path = "./"
-													, pattern = "*index.Rmd"
-													, full.names = TRUE)
-sapply(scripts_Rmd, FUN = execute_Rmds)
 
-# execute and render all the Rmds in scripts
+# ----------------------------------------------------
+# render index.Rmd -> index.md in main directory
+index_Rmd <- list.files(path = "./"
+													, pattern = "*index.Rmd"
+													, full.names = TRUE
+												)
+sapply(index_Rmd, FUN = execute_Rmds)
+
+# render scripts.Rmd to execute their R code
 scripts_Rmd <- list.files(path = "scripts"
 													, pattern = "*data.Rmd"
-													, full.names = TRUE)
+													, full.names = TRUE
+													)
 sapply(scripts_Rmd, FUN = execute_Rmds)
 
+
+
+# ----------------------------------------------------
 # create gh-pages from selected Rmds 
 Rmd_file <- c('scripts/set001_calibr_02_gather-wide-data.Rmd'
 							, 'scripts/set001_calibr_03_tidy-data.Rmd'
-)
+							)
 sapply(Rmd_file, Rmd_to_gh_pages)
 
+
+
+# ----------------------------------------------------
+# copy files to be used by particpants to the downloads folder
+download_to <- "resources/downloads/"
+
+# file.copy(from = "data/load-cell-calibr-L3.csv"
+# 					, to = download_to
+# )
+# file.copy(from = "data/load-cell-calibr-L6.csv"
+# 					, to = download_to
+# )
+file.copy(from = "resources/images/load-cell-setup.png"
+					, to = download_to
+					)
+
+# copy files used by me to test the report.Rmd
+file.copy(from = "resources/images/load-cell-setup.png"
+					, to = "reports/"
+					)
+
+
+# ----------------------------------------------------
 # cleanup after
 unlink("./*.html")
 unlink("pages/*.html")
@@ -95,20 +125,7 @@ unlink("scripts/*.md")
 # # cat("\n\nRmd files rendered by runall.R\n", Rmd_to_knit, sep = "\n")
 # # cat("\nRmd files not rendered\n", not_knitted, sep = "\n")
 # 
-# # ----------------------------------------------------
-# # copy files to be used by particpants to the downloads folder
-# # download_to <- "resources/downloads/"
-# 
-# # file.copy(from = "data/load-cell-calibr-L3.csv"
-# # 					, to = download_to)
-# # file.copy(from = "data/load-cell-calibr-L6.csv"
-# # 					, to = download_to)
-# # file.copy(from = "resources/images/load-cell-setup.png"
-# # 					, to = download_to)
-# # 
-# # # copy files used by me to test the report.Rmd
-# # file.copy(from = "resources/images/load-cell-setup.png"
-# # 					, to = "reports/")
+
 # 
 # 
 # 
