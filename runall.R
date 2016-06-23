@@ -13,7 +13,6 @@ scripts <- list.files(path = "scripts"
 													)
 sapply(scripts, FUN = execute_Rmds)
 
-
 # create gh-pages from selected Rmds 
 sapply(scripts, FUN = Rmd_to_gh_pages)
 
