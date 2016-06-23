@@ -2,9 +2,9 @@
 layout: page
 title: getting started
 tagline: agenda
-output: 
-  html_document:
-    keep_md: TRUE
+output:
+  md_document:
+    variant: markdown_github
 ---
 
 ```{r setup, include = FALSE}
@@ -42,16 +42,27 @@ df2[is.na(df2)] <- " " # replaces NAs with 2 blanks
 
 To get the most out of the first session, do the pre-workshop homework before arriving. 
 
-```{r agenda-1, include = TRUE}
+```{r agenda-1, include = TRUE, results = 'asis'}
 kable(df1)
+# library(xtable)
+# session1 <- xtable(df1, display = c('d', 'd', 's', 's', 's', 's')
+# 									 , align = c('r', 'c', 'c', 'l', 'c', 'l')
+# 									 , digits = 0)
+# print.xtable(session1, type = 'html', include.rownames = FALSE, html.table.attributes = getOption("xtable.html.table.attributes",
+#                                     "border=0"))
 ```
 
 ### Session 2
 
 To get the most out of the second session, complete the sample report tutorial before the second session.  
 
-```{r agenda-2, include = TRUE}
+```{r agenda-2, include = TRUE, results = 'asis'}
 kable(df2)
+# session2 <- xtable(df2, display = c('d', 'd', 's', 's', 's', 's')
+# 									 , align = c('r', 'c', 'c', 'l', 'c', 'l')
+# 									 , digits = 0)
+# print.xtable(session2, type = 'html', include.rownames = FALSE, html.table.attributes = getOption("xtable.html.table.attributes",
+#                                     "border=0"))
 ```
 
 
