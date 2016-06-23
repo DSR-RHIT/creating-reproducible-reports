@@ -29,7 +29,7 @@ rr-workshop\
 
 ### Download prepared files 
  
-Navigate to my [workshop downloads](../resources/downloads) folder. To download a file, 
+Navigate to my [workshop downloads](../resources/downloads/) folder. To download a file, 
 
 - Click the file name 
 - Right-click Raw --> Save link as... 
