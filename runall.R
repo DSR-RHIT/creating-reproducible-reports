@@ -26,7 +26,7 @@ sapply(Rmd_file, Rmd_to_gh_pages)
 unlink("./*.html")
 unlink("pages/*.html")
 unlink("scripts/*.html")
-
+unlink("scripts/*.md")
 
 
 
