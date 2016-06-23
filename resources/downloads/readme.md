@@ -8,3 +8,11 @@ To download a file,
 - Right-click Raw --> Save link as... 
 - Save the CSV files to the *data* directory 
 - Save the PNG file to the *reports* directory 
+
+
+---
+[return to the workshop](https://dsr-rhit.github.io/creating-reproducible-reports/]
+
+
+
+
