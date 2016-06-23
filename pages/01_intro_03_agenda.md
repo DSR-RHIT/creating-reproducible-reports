@@ -15,7 +15,7 @@ tagline: agenda
 To get the most out of the first session, do the pre-workshop homework before arriving. 
 
 <!-- html table generated in R 3.3.0 by xtable 1.8-2 package -->
-<!-- Thu Jun 23 09:46:07 2016 -->
+<!-- Thu Jun 23 09:50:28 2016 -->
 <table border=0>
 <tr> <th> time </th> <th>   </th> <th> activity </th> <th>   </th> <th> format </th>  </tr>
   <tr> <td align="center"> 10 </td> <td align="center">   </td> <td> Finding partners and the wi-fi </td> <td align="center">   </td> <td>   </td> </tr>
@@ -36,7 +36,7 @@ To get the most out of the first session, do the pre-workshop homework before ar
 To get the most out of the second session, complete the sample report tutorial before the second session.  
 
 <!-- html table generated in R 3.3.0 by xtable 1.8-2 package -->
-<!-- Thu Jun 23 09:46:07 2016 -->
+<!-- Thu Jun 23 09:50:28 2016 -->
 <table border=0>
 <tr> <th> time </th> <th>   </th> <th> activity </th> <th>   </th> <th> format </th>  </tr>
   <tr> <td align="center"> 10 </td> <td align="center">   </td> <td> Answering questions </td> <td align="center">   </td> <td> discussion </td> </tr>
