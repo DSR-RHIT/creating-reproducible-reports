@@ -16,7 +16,7 @@ In your main project directory (I'll call it *rr-workshop* for convenience), cre
 - Create a *reports* directory
 - Create a *scripts* directory
 
-Your main directory for the workshop should look like this: 
+Your main directory for the workshop should look like this, but your folder name appears where I've used *rr-workshop*. 
 
 ```
 rr-workshop\
@@ -40,11 +40,12 @@ The data and reports directories should look like this.
 
 ```
 data\
-  \-- 007_wide-data.csv
+  `-- 007_wide-data.csv
   
 reports\
-  \-- load-cell-setup-smaller.png
+  `-- load-cell-setup-smaller.png
 ```
 
 --- 
-Now go to the page about [initializing the Rmd report file](04-initialize-Rmd.html)
+back [main page](../index.html)<br> 
+back [initializing the Rmd file](005-start-script.html)
