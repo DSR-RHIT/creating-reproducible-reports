@@ -1,20 +1,24 @@
 # renders Rmd scripts to execute R code 
 # creates gh-pages/md files from selected Rmds
 
-# load my functions
-source('scripts/helper_01_housekeeping-functions.R')
-
-
 # ----------------------------------------------------
 # render scripts.Rmd to execute their R code
+library(rmarkdown)
 scripts <- list.files(path = "scripts"
 													, pattern = "*.Rmd$"
 													, full.names = TRUE
 													)
-sapply(scripts, FUN = execute_Rmds)
+sapply(scripts, function(x) render(x))
 
-# create gh-pages from selected Rmds 
-sapply(scripts, FUN = Rmd_to_gh_pages)
+
+
+# ----------------------------------------------------
+# create gh-pages from selected Rmds. 
+source('scripts/helper-01_create-gh-pages.R')
+
+# plyr::failwith() allows completion even if an error occurs
+library(plyr)
+sapply(scripts, failwith(NULL, Rmd_to_gh_pages))
 
 # move index.md from pages to top level
 file.rename(from = 'pages/index.md', to = './index.md')
@@ -25,20 +29,22 @@ file.rename(from = 'pages/index.md', to = './index.md')
 # copy files to be used by particpants to the downloads folder
 download_to <- "resources/downloads/"
 
+file.copy(from = "resources/images/load-cell-setup.png"
+					, to = download_to
+)
+
+# copy files used by me to test the report.Rmd
+file.copy(from = "resources/images/load-cell-setup.png"
+					, to = "reports/"
+)
+
 # file.copy(from = "data/load-cell-calibr-L3.csv"
 # 					, to = download_to
 # )
 # file.copy(from = "data/load-cell-calibr-L6.csv"
 # 					, to = download_to
 # )
-file.copy(from = "resources/images/load-cell-setup.png"
-					, to = download_to
-					)
 
-# copy files used by me to test the report.Rmd
-file.copy(from = "resources/images/load-cell-setup.png"
-					, to = "reports/"
-					)
 
 
 # ----------------------------------------------------
@@ -48,6 +54,9 @@ unlink("pages/*.html")
 unlink("scripts/*.html")
 unlink("scripts/*.md")
 
+
+
+# last line
 
 
 
