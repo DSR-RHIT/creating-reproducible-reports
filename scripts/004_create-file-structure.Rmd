@@ -8,11 +8,11 @@ output:
 
 ### Setting up a directory tree
 
-- If you haven't installed R and RStudio, [please do](pages/002_pre-hw.html). 
-- If you haven't created an RStudio project and the *.Renviron* file for the workshop, [please do](pages/002_pre-hw.html). 
+- If you haven't installed R and RStudio, [please do](002_pre-hw.html). 
+- If you haven't created an RStudio project and the *.Renviron* file for the workshop, [please do](002_pre-hw.html). 
 
 
-In your main project directory (I'll call it *workshop* for convenience), create three folders (sub-directories)
+In your main project directory (I'll call it *rr-workshop* for convenience), create three folders (sub-directories)
 
 - Create a *data* directory
 - Create a *reports* directory
@@ -21,12 +21,12 @@ In your main project directory (I'll call it *workshop* for convenience), create
 Your main directory for the workshop should look like this: 
 
 ```
-workshop\
+rr-workshop\
   |-- data\
   |-- reports\
   |-- scripts\
-  |-- workshop.Rproj
-  \-- .Renviron
+  |-- rr-workshop.Rproj
+  `-- .Renviron
 ```
 
 ### Download prepared files 
