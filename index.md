@@ -8,9 +8,9 @@ Welcome! The goal of the workshop is to introduce the R novice to reproducible r
 
 ### getting started
 
-- [goals and objectives](pages/0101_goals.html)
-- [pre-workshop homework](pages/0102_pre-hw.html) 
-- [agenda](pages/0103_agenda.html) 
+- [goals and objectives](pages/001_goals.html)
+- [pre-workshop homework](pages/002_pre-hw.html) 
+- [agenda](pages/003_agenda.html) 
 - surveying the reproducible research ecosystem 
 - considering a sample report 
 
