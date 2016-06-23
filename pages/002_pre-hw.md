@@ -96,10 +96,6 @@ In RStudio Tools -> Global options,
 - Sweave: Weave Rnw file using, set to *knitr*
 
 
-### acknowledgments
-
-Thanks to the [Reproducible Science Curriculum](https://github.com/Reproducible-Science-Curriculum/rr-intro) team, from whom I borrowed the download and install guidelines. 
-
 --- 
 back [goals](001_goals.html)<br>
 next [workshop agenda](003_agenda.html) 
