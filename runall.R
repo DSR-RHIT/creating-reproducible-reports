@@ -2,32 +2,23 @@
 # creates gh-pages/md files from selected Rmds
 
 # load my functions
-source('scripts/house_00_housekeeping-functions.R')
+source('scripts/helper_01_housekeeping-functions.R')
 
 
 # ----------------------------------------------------
-# render index.Rmd -> index.md in main directory
-index_Rmd <- list.files(path = "./"
-													, pattern = "*index.Rmd"
-													, full.names = TRUE
-												)
-sapply(index_Rmd, FUN = execute_Rmds)
-
 # render scripts.Rmd to execute their R code
-scripts_Rmd <- list.files(path = "scripts"
-													, pattern = "*data.Rmd"
+scripts <- list.files(path = "scripts"
+													, pattern = "*.Rmd$"
 													, full.names = TRUE
 													)
-sapply(scripts_Rmd, FUN = execute_Rmds)
+sapply(scripts, FUN = execute_Rmds)
 
 
-
-# ----------------------------------------------------
 # create gh-pages from selected Rmds 
-Rmd_file <- c('scripts/set001_calibr_02_gather-wide-data.Rmd'
-							, 'scripts/set001_calibr_03_tidy-data.Rmd'
-							)
-sapply(Rmd_file, Rmd_to_gh_pages)
+sapply(scripts, FUN = Rmd_to_gh_pages)
+
+# move index.md from pages to top level
+file.rename(from = 'pages/index.md', to = './index.md')
 
 
 
