@@ -4,6 +4,7 @@
       |-- raw\
       |    |-- source material
       |    `--including my own "raw" spreadsheets
+      |-- data at intermediate stages of carpentry
       `-- data ready for analysis
 
 

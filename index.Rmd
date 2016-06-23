@@ -18,7 +18,8 @@ Welcome! The goal of the workshop is to introduce the R novice to reproducible r
 
 ### tutorial 
 
-- [reshape wide data to long](pages/set001_calibr_03_tidy-data)
+- [gather wide data](pages/set001_calibr_02_gather-wide-data.html)
+- [reshape wide data to long](pages/set001_calibr_03_tidy-data.html)
 
 <!--
 - [creating the file structure](pages/03-getting-started.html) 
