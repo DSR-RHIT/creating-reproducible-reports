@@ -20,7 +20,7 @@ Welcome! The goal of the workshop is to introduce the R novice to reproducible r
 
 ### tutorial 
 
-- creating the file structure 
+- [creating the file structure](pages/004_create-file-structure.html)
 - initializing the Rmd report file 
 - adding headings and images 
 - read a data file 
