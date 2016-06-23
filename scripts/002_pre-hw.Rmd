@@ -66,6 +66,7 @@ These steps will make it easier to manage R updates and package updates.
 - In your root drive (for example, on Windows, the C: drive), create a new directory (folder) named *R* 
 - In RStudio, open a new text file using File -> New File -> Text File 
 - Windows users, write the following line of text in the text file. (Mac OS and Unix-alike users, type the equivalent path to the R folder you just made.)
+
 ```
 R_LIBS_USER="C:/R/library" 
 ```
