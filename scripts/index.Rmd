@@ -55,5 +55,4 @@ Many thanks to many folks in the R community for posting their work in their blo
 - [Karl Broman](http://kbroman.org) for his  [tutorials](http://kbroman.org/pages/tutorials.html) that made the creation of these GitHub-hosted webpages *almost* painless 
 - [Jenny Bryan](https://github.com/jennybc) for her [Stats545 material](http://stat545.com/) and for the
 [Good enough practices  paper](https://swcarpentry.github.io/good-enough-practices-in-scientific-computing/) for helping me think effectively about directory organization.  
-
-
+- [Reproducible Science  Curriculum](https://github.com/Reproducible-Science-Curriculum) contributors for creating a great collection of teaching materials for reproducible research  
