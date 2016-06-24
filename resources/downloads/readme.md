@@ -6,8 +6,8 @@ To download a file,
 
 - Click the file name 
 - Right-click Raw --> Save link as... 
-- Save the CSV files to the *data* directory 
-- Save the PNG file to the *reports* directory 
+- Save the CSV files to your workshop *data* directory 
+- Save the PNG file to your workshop *resources* directory 
 
 
 ---
