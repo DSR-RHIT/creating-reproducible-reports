@@ -9,16 +9,16 @@
 # render scripts.Rmd to execute their R code
 library(rmarkdown)
 Rmd_scripts <- list.files(path = "scripts"
-													, pattern = "*.Rmd$"
+													, pattern = "*.Rmd"
 													, full.names = TRUE
 													)
 
 # files to omit
-omit_files <- list.files(path = "scripts"
-											, pattern = "calibration-analysis.Rmd"
-											, full.names = TRUE
-)
-Rmd_scripts <- Rmd_scripts[Rmd_scripts != omit_files]
+# omit_files <- list.files(path = "scripts"
+# 											, pattern = "calibration-analysis.Rmd"
+# 											, full.names = TRUE
+# )
+# Rmd_scripts <- Rmd_scripts[Rmd_scripts != omit_files]
 
 sapply(Rmd_scripts, function(x) render(x))
 
