@@ -14,7 +14,7 @@ In your workshop main directory,
 - Launch your *rr-workshop.Rproj* 
 - File --> New File --> R Markdown 
 - Output Format -> HTML 
-- Save As --> to the `scripts/` directory, using the filename  `008_examine-wide-data.Rmd` 
+- Save As --> to the `scripts/` directory, using the filename  `009_tidying-wide-data.Rmd` 
 
 The Rmd file is pre-populated with prose and some markdown syntax. Edit the meta-data header as shown:
 
@@ -71,8 +71,8 @@ If you were able to render the Rmd script to all three output formats, your scri
 
 ```
 scripts\
-  |-- 008_examine-wide-data.html
-  `-- 008_examine-wide-data.Rmd 
+  |-- 009_tidying-wide-data.html
+  `-- 009_tidying-wide-data.Rmd 
 ```
 
 

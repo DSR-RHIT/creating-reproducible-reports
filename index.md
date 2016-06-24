@@ -30,6 +30,7 @@ Welcome! The goal of the workshop is to introduce the R novice to reproducible r
 
 ### tutorials 
 
+- [tidying wide data](pages/009_tidying-wide-data.html)
 - adding headings and images 
 - read a data file 
 - reshape the data 
