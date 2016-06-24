@@ -3,4 +3,4 @@
 To download files for the workshop, select the downloads folder and follow the instructions
 
 ---
-Return to the workshop: https://dsr-rhit.github.io/creating-reproducible-reports/
+Return to the workshop: https://dsr-rhit.github.io/creating-reproducible-reports/pages/004_organize-files.html

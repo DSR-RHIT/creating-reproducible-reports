@@ -11,7 +11,7 @@ To download a file,
 
 
 ---
-Return to the workshop: https://dsr-rhit.github.io/creating-reproducible-reports/
+Return to the workshop: https://dsr-rhit.github.io/creating-reproducible-reports/pages/004_organize-files.html
 
 
 
