@@ -1,0 +1,71 @@
+---
+title: getting started
+tagline: workshop agenda
+output:
+  md_document:
+    variant: markdown_github
+---
+
+```{r setup, include = FALSE}
+library(knitr)
+opts_knit$set(root.dir = '../')
+opts_chunk$set(include = FALSE, echo = FALSE, message = FALSE, warning = FALSE)
+```
+
+```{r lib}
+library(readxl)
+library(dplyr)
+```
+
+```{r create-agenda}
+df <- read_excel('data/2016-06-raw/agenda.xlsx') %>% 
+	mutate(space1 = NA, space2 = NA) %>%
+  select(time, space1, activity, space2, format) %>%
+	rename(' ' = space1, ' ' = space2)
+
+sel1 <- df$activity == 'day 1'
+sel2 <- df$activity == 'day 2'
+
+idx1 <- which(df$activity %in% 'day 1')
+idx2 <- which(df$activity %in% 'day 2')
+n <- length(df$activity)
+
+df1 <- df[(idx1 + 1):(idx2 - 1), ]
+df2 <- df[(idx2 + 1):n, ]
+
+df1[is.na(df1)] <- " " # replaces NAs with blank
+df2[is.na(df2)] <- " " # replaces NAs with blank
+```
+
+### Session 1
+
+To get the most out of the first session, do the pre-workshop homework before arriving. 
+
+```{r agenda-1, include = TRUE, results = 'asis'}
+kable(df1)
+# library(xtable)
+# session1 <- xtable(df1, display = c('d', 'd', 's', 's', 's', 's')
+# 									 , align = c('r', 'c', 'c', 'l', 'c', 'l')
+# 									 , digits = 0)
+# print.xtable(session1, type = 'html', include.rownames = FALSE, html.table.attributes = getOption("xtable.html.table.attributes",
+#                                     "border=0"))
+```
+
+### Session 2
+
+To get the most out of the second session, complete the sample report tutorial before the second session.  
+
+```{r agenda-2, include = TRUE, results = 'asis'}
+kable(df2)
+# session2 <- xtable(df2, display = c('d', 'd', 's', 's', 's', 's')
+# 									 , align = c('r', 'c', 'c', 'l', 'c', 'l')
+# 									 , digits = 0)
+# print.xtable(session2, type = 'html', include.rownames = FALSE, html.table.attributes = getOption("xtable.html.table.attributes",
+#                                     "border=0"))
+```
+
+
+--- 
+back [pre-workshop homework](002_pre-workshop-hw.html)<br>
+next [main page](../index.html)
+
