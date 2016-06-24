@@ -46,6 +46,32 @@ The report should appear in the RStudio *Viewer* pane. Compare the output docume
 
 
 
+### including R code 
+
+When we write R code inside an Rmd file, we place it inside special delimiters: 
+
+<pre class="r"><code>```{r}
+write some R code
+<code>```</code>
+</code></pre>
+
+For example, in the pre-populated script you can see two lines of R code in their own chunks, 
+
+<pre class="r"><code>```{r cars}
+summary(cars)
+<code>```</code>
+</code></pre>
+
+and 
+
+<pre class="r"><code>```{r pressure, echo=FALSE}
+plot(pressure)
+<code>```</code>
+</code></pre>
+
+Expressions like `echo=FALSE` are *knitr* options that help control the way the code is evaluated and presented in the output document. 
+
+
 
 
 ### output to alternative formats 
@@ -65,13 +91,20 @@ We'll use HTML output for analysis and later switch to Word output for a client 
 
 
 
-### cleanup your directory 
+### cleanup  
 
-If you were able to render the Rmd script to all three output formats, your scripts directory will contain html, docx, and pdf output files. You may delete the docx and pdf files if you like. The scripts directory should contain at least:  
+In the Rmd file, 
+
+- Keep the meta-data header 
+- Delete all the rest of the pre-populated text
+
+In the directory, 
+
+- Delete the docx and pdf output files (if any), leaving the directory with: 
 
 ```
 scripts\
-  |-- 009_tidying-wide-data.html
+  |-- 009_tidying-wide-data.html 
   `-- 009_tidying-wide-data.Rmd 
 ```
 
