@@ -15,9 +15,12 @@ Welcome! The goal of the workshop is to introduce the R novice to reproducible r
 
 ### getting started
 
-- [description and objectives](pages/001_goals.html)
-- [pre-workshop homework](pages/002_pre-hw.html) 
-- [agenda](pages/003_agenda.html) 
+- [learning objectives](pages/001_learning-objectives.html)
+- [pre-workshop homework](pages/002_pre-workshop-hw.html) 
+- [workshop agenda](pages/003_workshop-agenda.html) 
+
+### introduction to reproducible research 
+
 - surveying the reproducible research ecosystem 
 - considering a sample report 
 
@@ -25,8 +28,8 @@ Welcome! The goal of the workshop is to introduce the R novice to reproducible r
 
 ### tutorial 
 
-- [creating the file structure](pages/004_create-file-structure.html)
-- initializing the Rmd report file 
+- [organize files](pages/004_organize-files.html)
+- [initialize script](pages/005_initialize-script.html)
 - adding headings and images 
 - read a data file 
 - reshape the data 
@@ -54,5 +57,5 @@ Many thanks to many folks in the R community for posting their work in their blo
 
 - [Karl Broman](http://kbroman.org) for his  [tutorials](http://kbroman.org/pages/tutorials.html) that made the creation of these GitHub-hosted webpages *almost* painless 
 - [Jenny Bryan](https://github.com/jennybc) for her [Stats545 material](http://stat545.com/) and for the
-[Good enough practices  paper](https://swcarpentry.github.io/good-enough-practices-in-scientific-computing/) for helping me think effectively about directory organization.  
+[Good enough practices](https://swcarpentry.github.io/good-enough-practices-in-scientific-computing/) paper for guidance on file naming and directory organization. 
 - [Reproducible Science  Curriculum](https://github.com/Reproducible-Science-Curriculum) contributors for creating a great collection of teaching materials for reproducible research  

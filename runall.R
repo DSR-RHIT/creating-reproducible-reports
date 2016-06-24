@@ -1,45 +1,54 @@
-# renders Rmd scripts to execute R code 
-# creates gh-pages/md files from selected Rmds
+# render scripts.Rmd to execute the R code and create md files
+# create gh-pages from selected Rmds. 
+# move and copy files 
+# delete byproduct files
+
+
 
 # ----------------------------------------------------
 # render scripts.Rmd to execute their R code
 library(rmarkdown)
-scripts <- list.files(path = "scripts"
+Rmd_scripts <- list.files(path = "scripts"
 													, pattern = "*.Rmd$"
 													, full.names = TRUE
 													)
-sapply(scripts, function(x) render(x))
+
+# files to omit
+omit_files <- list.files(path = "scripts"
+											, pattern = "calibration-analysis.Rmd"
+											, full.names = TRUE
+)
+Rmd_scripts <- Rmd_scripts[Rmd_scripts != omit_files]
+
+sapply(Rmd_scripts, function(x) render(x))
 
 
 
 # ----------------------------------------------------
-# create gh-pages from selected Rmds. 
+# create gh-pages from selected Rmds
 source('scripts/helper-01_create-gh-pages.R')
 
 # plyr::failwith() allows completion even if an error occurs
 library(plyr)
-sapply(scripts, failwith(NULL, Rmd_to_gh_pages))
-
-# move index.md from pages to top level
-file.rename(from = 'pages/index.md', to = './index.md')
+sapply(Rmd_scripts, failwith(NULL, Rmd_to_gh_pages))
 
 
 
 # ----------------------------------------------------
-# copy files to be used by particpants to the downloads folder
-download_to <- "resources/downloads/"
+# move and copy files 
 
-file.copy(from = "resources/images/load-cell-setup-smaller.png"
-					, to = download_to
-)
+# move index.md from pages to top level
+file.rename(from = 'pages/index.md', to = './index.md')
 
-# copy files used by me to test the report.Rmd
-file.copy(from = "resources/images/load-cell-setup-smaller.png"
-					, to = "reports/"
+# copy particpant files to the downloads folder
+download_dir <- "resources/downloads/"
+
+file.copy(from = "resources/images/load-cell-setup-315x396px.png"
+					, to = download_dir
 )
 
 file.copy(from = "data/007_wide-data.csv"
-					, to = download_to
+					, to = download_dir
 )
 
 # file.copy(from = "data/load-cell-calibr-L6.csv"
@@ -49,7 +58,7 @@ file.copy(from = "data/007_wide-data.csv"
 
 
 # ----------------------------------------------------
-# cleanup after
+# delete byproduct files
 unlink("./*.html")
 unlink("pages/*.html")
 unlink("scripts/*.html")
