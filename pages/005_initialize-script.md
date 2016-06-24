@@ -12,7 +12,7 @@ In your workshop main directory,
 - Launch your *rr-workshop.Rproj* 
 - File --> New File --> R Markdown 
 - Output Format -> HTML 
-- Save As --> to the `scripts/` directory, using the filename  `009_tidying-wide-data.Rmd` 
+- Save As --> to the `scripts/` directory, using the filename  `007_introducing-the-topic.Rmd` 
 
 The Rmd file is pre-populated with prose and some markdown syntax. Edit the meta-data header as shown:
 
@@ -102,8 +102,8 @@ In the directory,
 
 ```
 scripts\
-  |-- 009_tidying-wide-data.html 
-  `-- 009_tidying-wide-data.Rmd 
+  |-- 007_introducing-the-topic.html 
+  `-- 007_introducing-the-topic.Rmd 
 ```
 
 

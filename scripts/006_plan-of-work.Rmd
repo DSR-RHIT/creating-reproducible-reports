@@ -11,13 +11,14 @@ output:
 Here's what to expect in the tutorials: 
 
 - We break the analysis into logical chunks, each with its own script limited to   60--100 lines 
-- A script writes outputs named for the script, for example, the script  `scripts/009_tidying-wide-data.Rmd` might produce   `data/009_tidying-wide-data.csv`. 
 - File names follow the scheme `nnn_descriptive-title.ext`, where `nnn` is a number to order files in the directory and `descriptive-title` is specific and helpful. 
+- Output is named for the script that produces it, e.g., the Rmd analysis script  `010_tidy-data.Rmd` might produce a CSV data file called    `010_tidy-data.csv`. 
 
-Because your first script mimics my ninth script and because you start your analysis with data in wide form, your first script is named `009_tidying-wide-data.Rmd`. You can of course develop your own naming scheme, but this is the one I'll assume you are using for the workshop. 
+
+Because your first script mimics my 7th script and because it introduces the calibration analysis topic, its file name is `007_introducing-the-topic.Rmd`. You can of course develop your own naming scheme, but this is the one I'll assume you are using for the workshop. 
 
 
-### types of scripts  
+### two types of reports   
 
 I use the Rmd scripts in what could be called a *literate programming* mode, that is, 
 
