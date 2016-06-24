@@ -4,56 +4,51 @@ tagline: tutorial
 output:
   html_document:
     keep_md: yes
-  pdf_document: default
 ---
 
 
-### create a file  for analysis 
+### create an R markdown script 
 
 In your workshop main directory, 
 
 - Launch your *rr-workshop.Rproj* 
 - File --> New File --> R Markdown 
-- Output Format --> HTML 
-- In the *scripts* directory, Save As --> *calibration-analysis.Rmd*
+- Output Format -> HTML 
+- Save As --> to the `scripts/` directory, using the filename  `008_examine-wide-data.Rmd` 
 
-The Rmd file is pre-populated with prose and some markdown syntax. Edit the header (called a *YAML* header): 
-
-- Change the title to *Analysis of load-cell calibration data*
-- Output should be *html_document* 
-- Save
+The Rmd file is pre-populated with prose and some markdown syntax. Edit the meta-data header as shown:
 
 ```
 ---
-title: Analysis of load-cell calibration data
+title: Load-cell calibration --- examine wide data
 author: your name
-date: today's date
+date: 2016-08-24
 output: html_document
 ---
 ```
 
 
 
-### render the Rmd script 
+### render the script 
 
 To *knit* the Rmd file and create the output document, 
 
 - Save the file 
 - ![knit html icon](../resources/images/knit-html-icon.png) 
 
-The report should appear in the RStudio *Viewer* pane. Compare the pre-populated text in the Rmd file to the output document in the Viewer pane. You'll see how we use R Markdown syntax to: 
+The report should appear in the RStudio *Viewer* pane. Compare the output document in the Viewer pane to  the text in the Rmd file. While you don't have learn all the syntax details at once (I'll introduce them as needed), the pre-populated file does illustrate commonly-needed syntax to:  
 
+- write headings and paragraphs 
 - include executable chunks of R code 
-- assign a heading 
 - link to a URL 
-- mark text as bold 
+- mark bold text  
 - create a graph 
 
-You don't have to absorb the markup language in any detail yet; we'll encounter each component as we go. 
 
 
 
-### alternative output formats 
+
+### output to alternative formats 
 
 If you have MS Word installed on your machine (or Libre/Open Office on Unix-alikes), you can render the Rmd to Word using the Knit pull-down menu.
 
@@ -68,18 +63,17 @@ We'll use HTML output for analysis and later switch to Word output for a client 
 - ![knit html icon](../resources/images/knit-html-icon.png) 
 
 
+
+
 ### cleanup your directory 
 
-If you were able to render Rmd to all three output formats, your scripts directory will contain: 
+If you were able to render the Rmd script to all three output formats, your scripts directory will contain html, docx, and pdf output files. You may delete the docx and pdf files if you like. The scripts directory should contain at least:  
 
 ```
 scripts\
-  |-- calibration-analysis.docx
-  |-- calibration-analysis.html
-  |-- calibration-analysis.pdf 
-  `-- calibration-analysis.Rmd 
+  |-- 008_examine-wide-data.html
+  `-- 008_examine-wide-data.Rmd 
 ```
-
 
 
 

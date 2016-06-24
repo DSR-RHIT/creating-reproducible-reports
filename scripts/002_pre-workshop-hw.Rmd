@@ -1,6 +1,6 @@
 ---
 title:  pre-workshop homework 
-tagline: getting started
+tagline: 
 output: 
   html_document:
     keep_md: TRUE

@@ -1,6 +1,6 @@
 ---
 title: workshop agenda
-tagline: getting started
+tagline: 
 output:
   md_document:
     variant: markdown_github
