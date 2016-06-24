@@ -1,7 +1,7 @@
 ---
 layout: page
-title:  tutorial
-tagline: organizing files
+title:  organizing files
+tagline: tutorial
 ---
 
 ### set up a directory tree

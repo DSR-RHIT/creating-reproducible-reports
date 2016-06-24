@@ -1,7 +1,7 @@
 ---
 layout: page
-title: getting started
-tagline: workshop agenda
+title: workshop agenda
+tagline: getting started
 ---
 
 To get the most out of the first session, do the pre-workshop homework before arriving.

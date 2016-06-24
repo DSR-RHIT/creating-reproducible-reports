@@ -1,7 +1,7 @@
 ---
 layout: page
-title: tutorial
-tagline: initialize a script
+title: initializing a script
+tagline: tutorial
 ---
 
 

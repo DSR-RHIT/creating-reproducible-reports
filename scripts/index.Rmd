@@ -28,8 +28,8 @@ Welcome! The goal of the workshop is to introduce the R novice to reproducible r
 
 ### tutorial 
 
-- [organize files](pages/004_organize-files.html)
-- [initialize script](pages/005_initialize-script.html)
+- [organizing files](pages/004_organize-files.html)
+- [initializing a script](pages/005_initialize-script.html)
 - adding headings and images 
 - read a data file 
 - reshape the data 
