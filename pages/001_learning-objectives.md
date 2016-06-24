@@ -1,7 +1,7 @@
 ---
 layout: page
 title: learning objectives 
-tagline: getting started
+tagline: 
 ---
 
 ### description 

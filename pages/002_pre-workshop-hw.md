@@ -1,7 +1,7 @@
 ---
 layout: page
 title:  pre-workshop homework 
-tagline: getting started
+tagline: 
 ---
 
 Prior to the workshop, complete the work on this page to 
