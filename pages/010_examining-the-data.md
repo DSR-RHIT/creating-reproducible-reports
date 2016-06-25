@@ -136,29 +136,33 @@ summary(wide_data)
 ##  NA's   :6
 ```
 
-- *kable()* is a *knitr* function that prints the full data frame --- perfectly OK for small data sets like this one 
+- the data set is small enough in this case that we can print the full set to the output document using *print()*  
 
 
 ```r
-kable(wide_data)
+print(wide_data)
 ```
 
+```
+## Source: local data frame [8 x 5]
+## 
+##   test_point input_lb cycle_1 cycle_2 cycle_3
+##        (chr)    (dbl)   (dbl)   (dbl)   (dbl)
+## 1       2 up      1.5      NA    29.9    30.2
+## 2       3 up      2.5    51.1    49.4    49.7
+## 3       4 up      3.5    70.4    70.0      NA
+## 4       5 up      4.5    88.8    91.6      NA
+## 5       4 dn      3.5    69.4    69.0      NA
+## 6       3 dn      2.5    49.5    50.1      NA
+## 7       2 dn      1.5    30.7    30.8      NA
+## 8       1 dn      0.5     8.7    10.9      NA
+```
 
-
-test_point    input_lb   cycle_1   cycle_2   cycle_3
------------  ---------  --------  --------  --------
-2 up               1.5        NA      29.9      30.2
-3 up               2.5      51.1      49.4      49.7
-4 up               3.5      70.4      70.0        NA
-5 up               4.5      88.8      91.6        NA
-4 dn               3.5      69.4      69.0        NA
-3 dn               2.5      49.5      50.1        NA
-2 dn               1.5      30.7      30.8        NA
-1 dn               0.5       8.7      10.9        NA
-
-We see from this initial exploration that the data consist of 8 measurements per cycle with 3 cycles. 
+We see from this initial exploration that the data consist of 8 measurements per cycle with 3 cycles. Some data are missing from some cycles (indicated by NA)  which is consistent with the ANSI/ISA standard by which the data were obtained. 
 
 The data are in *wide format* making them easy to read but difficult for analysis. Reshaping the data from wide format to long format is the next topic. 
 
+A reminder, in your scripts, you should: 
 
-
+- Type (or copy and paste) the R code chunks in full
+- Type (or copy and paste) enough of the prose to explain the analysis.
