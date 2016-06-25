@@ -30,7 +30,7 @@ Welcome! The goal of the workshop is to introduce the R novice to reproducible r
 
 ### tutorials 
 
-- [introducing the topic](pages/007_introducing-the-topic.html) 
+- [establishing context](pages/007_introducing-the-topic.html) 
 - [examining the data](pages/010_examining-the-data.html) 
 - [tidying the data set](pages/011_tidying-the-data-set.html)
 - simple table 

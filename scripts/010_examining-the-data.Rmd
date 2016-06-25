@@ -9,14 +9,26 @@ output:
 
 If you haven't already, install the *readr* package from RStudio using *Packages -> Install -> readr*. 
 
-Add this text to your Rmd file. Save and Knit. 
+Insert a code chunk and add this R code: 
 
-```{r include = FALSE}
+```{r include=FALSE}
+library(knitr) 
+opts_chunk$set(echo = TRUE, results = 'hold')
+```
+
+```{r}
 # match the knitr root directory to the project working directory
 library(knitr) 
 opts_knit$set(root.dir = '../')
-opts_chunk$set(echo = FALSE, results = 'hide')
 ```
+
+Add this explanatory prose
+
+```
+Input the data file that was provided. 
+``` 
+ 
+followed by the next code chunk with this R script: 
 
 ```{r}
 # assign the data to a variable name
@@ -24,105 +36,38 @@ library(readr)
 wide_data <- read_csv('data/009_wide-data.csv')
 ```
 
-<pre class="r"><code>```{r include = FALSE}
-# match the knitr root directory to the project working directory
-library(knitr) 
-opts_knit$set(root.dir = '../')
-<code>```</code>
-
-Input the data file that was provided. 
-
-<code>```</code>{r}
-# assign the data to a variable name
-library(readr)
-wide_data <- read_csv('data/009_wide-data.csv')
-<code>```</code>
-</code></pre>
-
-What the script does: 
-
-R:
+Notes on the script: 
 
 - `# comment` a hash tag in R denotes a comment 
 - `library()` loads a package so we can use its functions 
-- `read_csv()` reads a CSV file. The path to the data file (`'data/009_wide-data.csv'`) file is relative to the project working directory  
 - `<-` is the R assignment operator 
-
-knitr: 
-
-- We match the working directory of the *knitr* package to the working directory of the project folder to allow us to render the Rmd script (which also executes all the R code) or to run the R code alone (without rendering the script) using *Run All* . 
+- `read_csv()` the path to the CSV file is relative to the project working directory  
 
 
+### structure 
 
-### data structure
+Add prose
 
-Add the following. Save and Knit.  
+```
+Examine the data object's structure.
+```
+
+followed by a code chunk with this R code: 
 
 ```{r}
 str(wide_data)
 ```
 
-<pre class="r"><code>Examine the data.
+Add prose:
 
-<code>```</code>{r}
-str(wide_data)
-<code>```</code>
-</code></pre>
+```
+The data frame has `r nrow(wide_data)` observations (rows) of `r ncol(wide_data)` variables (columns). Several columns are separate test cycles, indicating we have a "wide" rather than a "long" data set. 
 
-What the script does: 
-
-- `str()` returns the structure of the R object. The output printed to your Viewer screen shows the object `wide_data` is a data frame having `r nrow(wide_data)` observations (rows) of `r ncol(wide_data)` variables (columns) 
-
-### data frame characteristics
-
-Add the following. Save and Knit. 
-
-```{r}
-# data frame dimension
-dim(wide_data)
-
-# column names
-names(wide_data)
-
-# first few rows
-head(wide_data, n = 3L)
-
-# last few rows
-tail(wide_data, n = 3L)
-
-# descriptive statistics of each column
-summary(wide_data)
+The column headings tell us that the applied force is in pounds (lb). From a conversation with the test lab, we know the readings are in mV. 
 ```
 
-<pre class="r"><code>Look at the characteristics of the data frame. 
+Notes on the script: 
 
-<code>```</code>{r}
-# data frame dimension
-dim(wide_data)
-
-# column names
-names(wide_data)
-
-# first few rows
-head(wide_data, n = 3L)
-
-# last few rows
-tail(wide_data, n = 3L)
-
-# descriptive statistics of each column
-summary(wide_data)
-<code>```</code>
-
-We see from this initial exploration that the data consist of `r dim(wide_data)[1]` measurements per cycle with `r length(grep('cycle', names(wide_data)))` cycles. Some data are missing from some cycles (indicated by NA)  which is consistent with the ANSI/ISA standard by which the data were obtained. 
-</code></pre>
-
-What the script does:
-
-- `dim()` returns the dimensions of the object 
-- `names()` returns the columns names 
-- `head()` and `tail()` return the first few and last few rows of the data frame. The number of rows is given by the `n =` argument. 
-- `3L` declares the number 3 as an integer (instead of a floating point number) 
-- `summary()` returns descriptive statistics for every column 
-
+- `str()` returns the structure of the R object. Whe we read a csv file using `read_csv()` the object typically belongs to three R *classes*: tbl_df, tbl, and data.frame. The data frame class is the one we will use regularly. 
 
 

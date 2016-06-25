@@ -7,94 +7,74 @@ title: examining the data
 
 If you haven't already, install the *readr* package from RStudio using *Packages -> Install -> readr*. 
 
-Add this text to your Rmd file. Save and Knit. 
+Insert a code chunk and add this R code: 
 
 
 
 
-
-<pre class="r"><code>```{r include = FALSE}
+```r
 # match the knitr root directory to the project working directory
 library(knitr) 
 opts_knit$set(root.dir = '../')
-<code>```</code>
+```
 
+Add this explanatory prose
+
+```
 Input the data file that was provided. 
+``` 
+ 
+followed by the next code chunk with this R script: 
 
-<code>```</code>{r}
+
+```r
 # assign the data to a variable name
 library(readr)
 wide_data <- read_csv('data/009_wide-data.csv')
-<code>```</code>
-</code></pre>
+```
 
-What the script does: 
-
-R:
+Notes on the script: 
 
 - `# comment` a hash tag in R denotes a comment 
 - `library()` loads a package so we can use its functions 
-- `read_csv()` reads a CSV file. The path to the data file (`'data/009_wide-data.csv'`) file is relative to the project working directory  
 - `<-` is the R assignment operator 
-
-knitr: 
-
-- We match the working directory of the *knitr* package to the working directory of the project folder to allow us to render the Rmd script (which also executes all the R code) or to run the R code alone (without rendering the script) using *Run All* . 
+- `read_csv()` the path to the CSV file is relative to the project working directory  
 
 
+### structure 
 
-### data structure
+Add prose
 
-Add the following. Save and Knit.  
+```
+Examine the data object's structure.
+```
+
+followed by a code chunk with this R code: 
 
 
-
-<pre class="r"><code>Examine the data.
-
-<code>```</code>{r}
+```r
 str(wide_data)
-<code>```</code>
-</code></pre>
+```
 
-What the script does: 
+```
+## Classes 'tbl_df', 'tbl' and 'data.frame':	8 obs. of  5 variables:
+##  $ test_point: chr  "2 up" "3 up" "4 up" "5 up" ...
+##  $ input_lb  : num  1.5 2.5 3.5 4.5 3.5 2.5 1.5 0.5
+##  $ cycle_1   : num  NA 51.1 70.4 88.8 69.4 49.5 30.7 8.7
+##  $ cycle_2   : num  29.9 49.4 70 91.6 69 50.1 30.8 10.9
+##  $ cycle_3   : num  30.2 49.7 NA NA NA NA NA NA
+```
 
-- `str()` returns the structure of the R object. The output printed to your Viewer screen shows the object `wide_data` is a data frame having 8 observations (rows) of 5 variables (columns) 
+Add prose:
 
-### data frame characteristics
+```
+The data frame has 8 observations (rows) of 5 variables (columns). Several columns are separate test cycles, indicating we have a "wide" rather than a "long" data set. 
 
-Add the following. Save and Knit. 
+The column headings tell us that the applied force is in pounds (lb). From a conversation with the test lab, we know the readings are in mV. 
+```
 
+Notes on the script: 
 
-
-<pre class="r"><code>Look at the characteristics of the data frame. 
-
-<code>```</code>{r}
-# data frame dimension
-dim(wide_data)
-
-# column names
-names(wide_data)
-
-# first few rows
-head(wide_data, n = 3L)
-
-# last few rows
-tail(wide_data, n = 3L)
-
-# descriptive statistics of each column
-summary(wide_data)
-<code>```</code>
-
-We see from this initial exploration that the data consist of 8 measurements per cycle with 3 cycles. Some data are missing from some cycles (indicated by NA)  which is consistent with the ANSI/ISA standard by which the data were obtained. 
-</code></pre>
-
-What the script does:
-
-- `dim()` returns the dimensions of the object 
-- `names()` returns the columns names 
-- `head()` and `tail()` return the first few and last few rows of the data frame. The number of rows is given by the `n =` argument. 
-- `3L` declares the number 3 as an integer (instead of a floating point number) 
-- `summary()` returns descriptive statistics for every column 
-
+- `str()` returns the structure of the R object. Whe we read a csv file using `read_csv()` the object typically belongs to three R *classes*: tbl_df, tbl, and data.frame. The data frame class is the one we will use regularly. 
 
 

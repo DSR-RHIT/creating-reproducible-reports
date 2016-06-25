@@ -13,3 +13,135 @@ opts_knit$set(root.dir = '../')
 
 ### instructions
 
+Install the following packages:
+
+- *dplyr* 
+- *tidyr* 
+- *stringr* 
+
+
+
+
+### Reshape the data from wide to long format
+
+
+```{r}
+library(readr)
+wide_data <- read_csv('data/009_wide-data.csv')
+```
+
+
+Data are best analyzed after they have been *tidied*, that is, every column is one variable and every row is one observation. The final tidy data set should have these columns:
+
+- observation number
+- cycle number
+- test\_point number
+- direction (up or down)
+- input\_lb
+- output\_mV
+
+We start by rearranging the table to have the cycle numbers all in one column and the mV readings all in one column.
+
+```{r message = FALSE}
+# indices of which columns to gather
+is_a_cycle_col <- grep('cycle', names(wide_data), ignore.case = TRUE)
+
+# convert to long form, 
+# create new column 'cycle' to gather column headings 
+# create new column 'output_mV' to gather numerical readings
+library(dplyr)
+library(tidyr)
+tidy_data <- wide_data %>%
+	gather(cycle, output_mV, is_a_cycle_col) %>%
+	as.data.frame()
+print(tidy_data)
+```
+
+Examine the structure of the data frame and find there are 2 character columns and 2 numerical columns. The two numerical columns are the data the are used for the calibration curve. 
+
+```{r}
+str(tidy_data)
+```
+
+Now remove the test points for which there are no readings.
+
+```{r}
+tidy_data <- tidy_data %>%
+	filter(!output_mV %in% NA)
+print(tidy_data)
+str(tidy_data)
+```
+
+
+### Add the observation number
+
+The data are in the order observed, so we can add a column to list the observation number.
+
+```{r}
+tidy_data$observ <- row.names(tidy_data)
+print(tidy_data)
+str(tidy_data)
+```
+
+### Split the string variables
+
+The *test_point* variable is a character string that can be split to form *test_point* and *direction* columns.
+
+```{r}
+library(stringr)
+split_column <- str_split_fixed(tidy_data$test_point, pattern = ' ', 2)
+tidy_data <- tidy_data %>%
+	mutate(N = split_column[ , 1]) %>%
+	mutate(direction = split_column[ , 2])
+str(tidy_data)
+```
+
+Remove the original *test_point* column and rename *N* as *test_point*
+
+```{r}
+tidy_data <- tidy_data %>%
+	select(-test_point) %>%
+	rename(test_point = N)
+str(tidy_data)
+```
+
+Similarly, split the cycle string and keep only the cycle number, N. 
+
+```{r}
+split_column <- str_split_fixed(tidy_data$cycle, pattern = '_', 2)
+tidy_data$cycle <- split_column[ , 2]
+
+# arrange the column order
+tidy_data <- tidy_data %>%
+	select(observ, cycle, test_point, direction, input_lb, output_mV)
+print(tidy_data, row.names = FALSE)
+str(tidy_data)
+```
+
+
+### Convert numerical strings to integers
+
+The first three columns (observ, cycle, and test_point) are characters because they were split from character strings. For analysis, these may be better if converted to integers. 
+
+```{r}
+tidy_data <- tidy_data %>%
+	mutate(observ = as.integer(observ)) %>%
+	mutate(cycle = as.integer(cycle)) %>%
+	mutate(test_point = as.integer(test_point))
+str(tidy_data)
+```
+
+### Save the tidy data for analysis
+
+These data are saved in CSV form for calibration analysis. 
+
+```{r}
+write_csv(tidy_data, 'data/008_tidy-data.csv')
+```
+ 
+```{r}
+# unload dplyr in case plyr is loaded in a subsequent script.
+# always load plyr before dplyr.
+detach(package:dplyr,  unload = TRUE)
+```
+
