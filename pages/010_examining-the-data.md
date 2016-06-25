@@ -157,8 +157,7 @@ print(wide_data)
 ```
 
 > We see from this initial exploration that the data consist of 8 measurements per cycle with 3 cycles. Some data are missing from some cycles (indicated by NA)  which is consistent with the ANSI/ISA standard by which the data were obtained.
-> 
-> 
+
 > The data are in *wide format* making them easy to read but difficult for analysis. Reshaping the data from wide format to long format is the next topic.
 
 A reminder, in your scripts, you should: 
