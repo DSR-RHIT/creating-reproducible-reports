@@ -47,7 +47,7 @@ file.copy(from = "resources/images/load-cell-setup-315x396px.png"
 					, to = download_dir
 )
 
-file.copy(from = "data/007_wide-data.csv"
+file.copy(from = "data/009_wide-data.csv"
 					, to = download_dir
 )
 

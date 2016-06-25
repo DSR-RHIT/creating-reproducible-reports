@@ -1,0 +1,90 @@
+---
+title: examining the data 
+tagline: load cell calibration 
+output: 
+  html_document:
+    keep_md: TRUE
+---
+
+```{r include = FALSE}
+library(knitr) 
+opts_knit$set(root.dir = '../')
+```
+
+### instructions
+
+In the pre-workshop homework you installed the *readr* library. If not, the instructions are repeated here: 
+
+- In RStudio, lower right pane, select Packages -> Install 
+- In the dialog box, type `readr` 
+- Check the box to install dependencies 
+- Select Install 
+
+In the Rmd output document (Viewer pane), 
+
+- R code is boxed  
+- results of the R code are boxed and are denoted by a double hash tag 
+
+In your Rmd file 
+
+- Add a new section heading `## Examine the data`
+
+
+### examine the data 
+
+Use the *readr* package *read_csv()* function to bring the calibration data (the data you downloaded earlier) into the R workspace. In a code chunk,  add 
+
+```{r}
+library(readr)
+wide_data <- read_csv('data/009_wide-data.csv')
+```
+
+
+- *library()* loads a package so we can use its functions 
+- *read_csv()* reads a CSV file 
+
+Examine the data: 
+
+- *str()* is an R function that describes the structure of its argument
+
+```{r}
+str(wide_data)
+```
+
+- *dim()* is an R function that returns the row by column dimensions of the data frame
+
+```{r}
+dim(wide_data)
+```
+
+- *names()* is an R function that returns the columns headings in a data frame
+
+```{r}
+names(wide_data)
+```
+
+- *head()* and *tail()* are R functions for examining the first *n* rows and the last *n* rows of a data frame. `3L` is R-syntax declaring that 3 is an integer, not a floating-point number.
+
+```{r}
+head(wide_data, n = 3L)
+tail(wide_data, n = 3L)
+```
+
+- *summary()* provides the descriptive statistics of each column 
+
+```{r}
+summary(wide_data)
+```
+
+- *kable()* is a *knitr* function that prints the full data frame --- perfectly OK for small data sets like this one 
+
+```{r}
+kable(wide_data)
+```
+
+We see from this initial exploration that the data consist of `r dim(wide_data)[1]` measurements per cycle with `r length(grep('cycle', names(wide_data)))` cycles. 
+
+The data are in *wide format* making them easy to read but difficult for analysis. Reshaping the data from wide format to long format is the next topic. 
+
+
+
