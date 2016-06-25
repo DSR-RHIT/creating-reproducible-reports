@@ -48,13 +48,6 @@ is_a_cycle_col <- grep('cycle', names(wide_data), ignore.case = TRUE)
 # create new column 'output_mV' to gather numerical readings
 library(dplyr)
 library(tidyr)
-```
-
-```
-## Warning: package 'tidyr' was built under R version 3.3.1
-```
-
-```r
 tidy_data <- wide_data %>%
 	gather(cycle, output_mV, is_a_cycle_col) %>%
 	as.data.frame()

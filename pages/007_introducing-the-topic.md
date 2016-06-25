@@ -28,7 +28,9 @@ Notes on R Markdown:
 
 Note that the image is imported using a relative file path:  `../` takes us up one level from `scripts` (where this file resides) to `rr-workshop` (the project main directory), then `resources/` takes us into the resources folder and `load-cell-setup-315x396px.png` finds the image you downloaded earlier. 
 
+
 ![Figure 1. Applying a force to the load cell using a precision weight](../resources/images/load-cell-setup-315x396px.png)
+
 
 
 
