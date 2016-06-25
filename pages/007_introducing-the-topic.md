@@ -10,28 +10,27 @@ tagline: load cell calibration
 - Save and Knit to see the output of each chunk of text or code.   
 - I'll introduce R Markdown syntax as we need it. For a quick reference to the most commonly used syntax, see [Markdown basics](http://rmarkdown.rstudio.com/authoring_basics.html) by RStudio. 
 - Insert a code chunk ![insert code chunk button](../resources/images/insert-code-chunk-icon.png) for each chunk of R code   
-- To match the *knitr* working directory to the RStudio project working directory, insert a code chunk and type (or copy and paste):
-
-
-```r
-library(knitr) 
-opts_knit$set(root.dir = '../')
-```
 
 
 ### introducing the subject  
 
-- Markdown uses hash tags to format heading levels. Add `## Introduction`. 
+[//]: this is a comment
+
+
+
+Markdown uses hash tags to format heading levels. Add ## Introduction. 
+
 
 Prose that should be copied verbatim to your Rmd script is offest as shown in this next paragraph. 
 
-> In this report, we analyze calibration data from our testing lab for an Omega LCL-005 *load cell* (a force sensor). The goal of the analysis is to produce a calibration equation relating output voltage (mV) to input force (lb) and an estimate of sensor accuracy as a percentage of full span. 
+In this report, we analyze calibration data from our testing lab for an Omega LCL-005 *load cell* (a force sensor). The goal of the analysis is to produce a calibration equation relating output voltage (mV) to input force (lb) and an estimate of sensor accuracy as a percentage of full span. 
 
 
 
 - Add the paragraph above ("in this report, we analyze ...") to your file. Copy and paste is fine. 
 - Add asterisks around a phrase for emphasis, e.g.,  `*load cell*` 
 - Your file should look like: 
+
 
 <pre class="r"><code>---
 title: Load-cell calibration --- examine wide data
