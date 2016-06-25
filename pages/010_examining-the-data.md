@@ -25,7 +25,7 @@ Code results (which should also show up in your Viewer pane) are shown boxed wit
 
 ### examine the data 
 
-Use the *readr* package *read_csv()* function to bring the calibration data (the data you downloaded earlier) into the R workspace. In a code chunk,  add 
+Use the *readr* package *read_csv()* function to bring the calibration data (the data you downloaded earlier) into the R workspace. In a code chunk, add 
 
 
 ```r
@@ -37,7 +37,7 @@ wide_data <- read_csv('data/009_wide-data.csv')
 - *library()* loads a package so we can use its functions 
 - *read_csv()* reads a CSV file 
 
-Examine the data: 
+> Examine the data: 
 
 - *str()* is an R function that describes the structure of its argument
 
@@ -157,7 +157,7 @@ print(wide_data)
 ```
 
 > We see from this initial exploration that the data consist of 8 measurements per cycle with 3 cycles. Some data are missing from some cycles (indicated by NA)  which is consistent with the ANSI/ISA standard by which the data were obtained.
-
+> 
 > The data are in *wide format* making them easy to read but difficult for analysis. Reshaping the data from wide format to long format is the next topic.
 
 A reminder, in your scripts, you should: 

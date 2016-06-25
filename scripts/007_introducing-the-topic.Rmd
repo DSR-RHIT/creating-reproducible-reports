@@ -22,10 +22,14 @@ opts_knit$set(root.dir = '../')
 
 ### introducing the subject  
 
-In this report, we analyze calibration data from our testing lab for an Omega LCL-005 *load cell* (a force sensor). The goal of the analysis is to produce a calibration equation relating output voltage (mV) to input force (lb) and an estimate of sensor accuracy as a percentage of full span. 
-
-
 - Markdown uses hash tags to format heading levels. Add `## Introduction`. 
+
+Prose that should be copied verbatim to your Rmd script is offest as shown in this next paragraph. 
+
+> In this report, we analyze calibration data from our testing lab for an Omega LCL-005 *load cell* (a force sensor). The goal of the analysis is to produce a calibration equation relating output voltage (mV) to input force (lb) and an estimate of sensor accuracy as a percentage of full span. 
+
+
+
 - Add the paragraph above ("in this report, we analyze ...") to your file. Copy and paste is fine. 
 - Add asterisks around a phrase for emphasis, e.g.,  `*load cell*` 
 - Your file should look like: 
@@ -51,7 +55,7 @@ In this report, we analyze calibration data from our testing lab for an Omega LC
 
 ### inserting an image 
 
-The load-cell setup is shown in Figure 1. A known weight is suspended from the eye-hook, causing the thin-beam load cell to deform. A Wheatstone bridge on the beam detects the deformation and produces a voltage output signal that is  recorded.
+> The load-cell setup is shown in Figure 1. A known weight is suspended from the eye-hook, causing the thin-beam load cell to deform. A Wheatstone bridge on the beam detects the deformation and produces a voltage output signal that is  recorded.
 
 - Add the above paragraph to your report. 
 - R Markdown syntax to add an image is `![caption](path to image)`. This is Rmd syntax (not R code) so type it directly into the Rmd file )not a code chunk). For example, 
@@ -62,6 +66,6 @@ The load-cell setup is shown in Figure 1. A known weight is suspended from the e
 
 ![Figure 1. Applying a force to the load cell using a precision weight](../resources/images/load-cell-setup-315x396px.png)
 
-
+<br><br>
 
 
