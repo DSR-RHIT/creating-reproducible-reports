@@ -5,16 +5,25 @@ output:
     keep_md: TRUE
 ---
 
-### read the data file 
+
+[//]: this is a comment in Rmd
+
+```{r include = FALSE}
+# settings for my document
+library(knitr)
+opts_knit$set(root.dir = '../')
+
+# set to 'hide' for the gh-pages. set to 'hold' while working the details
+opts_chunk$set(echo = TRUE, results = 'hide')
+```
 
 If you haven't already, install the *readr* package from RStudio using *Packages -> Install -> readr*. 
 
-Insert a code chunk and add this R code: 
 
-```{r include=FALSE}
-library(knitr) 
-opts_chunk$set(echo = TRUE, results = 'hold')
-```
+
+### reading the data 
+
+Insert a code chunk and add this R code: 
 
 ```{r}
 # match the knitr root directory to the project working directory
@@ -28,7 +37,7 @@ Add this explanatory prose
 Input the data file that was provided. 
 ``` 
  
-followed by the next code chunk with this R script: 
+followed by a code chunk ![insert-code-chunk-icon](../resources/images/insert-code-chunk-icon.png) with this R code: 
 
 ```{r}
 # assign the data to a variable name
@@ -36,7 +45,7 @@ library(readr)
 wide_data <- read_csv('data/009_wide-data.csv')
 ```
 
-Notes on the script: 
+Save and Knit. Notes on the script: 
 
 - `# comment` a hash tag in R denotes a comment 
 - `library()` loads a package so we can use its functions 
@@ -44,7 +53,7 @@ Notes on the script:
 - `read_csv()` the path to the CSV file is relative to the project working directory  
 
 
-### structure 
+### examining its structure 
 
 Add prose
 
@@ -52,11 +61,16 @@ Add prose
 Examine the data object's structure.
 ```
 
-followed by a code chunk with this R code: 
+followed by a code chunk ![insert-code-chunk-icon](../resources/images/insert-code-chunk-icon.png) with this R code:
 
 ```{r}
 str(wide_data)
 ```
+
+
+Save and Knit. Notes on the script: 
+
+- `str()` returns the structure of the R object. When we read a csv file using `read_csv()` the object typically belongs to three R *classes*: tbl_df, tbl, and data.frame. The data frame class is the one we will use regularly. 
 
 Add prose:
 
@@ -66,8 +80,5 @@ The data frame has `r nrow(wide_data)` observations (rows) of `r ncol(wide_data)
 The column headings tell us that the applied force is in pounds (lb). From a conversation with the test lab, we know the readings are in mV. 
 ```
 
-Notes on the script: 
-
-- `str()` returns the structure of the R object. Whe we read a csv file using `read_csv()` the object typically belongs to three R *classes*: tbl_df, tbl, and data.frame. The data frame class is the one we will use regularly. 
-
+--- 
 
