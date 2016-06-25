@@ -1,166 +1,100 @@
 ---
 layout: page
 title: examining the data 
-tagline: load cell calibration 
 ---
 
+### read the data file 
+
+If you haven't already, install the *readr* package from RStudio using *Packages -> Install -> readr*. 
+
+Add this text to your Rmd file. Save and Knit. 
 
 
-### instructions
-
-In the pre-workshop homework you installed the *readr* library. If not, the instructions are repeated here: 
-
-- In RStudio, lower right pane, select Packages -> Install 
-- In the dialog box, type `readr` 
-- Check the box to install dependencies 
-- Select Install 
-
-In your Rmd file 
-
-- Add a new section heading `## Examine the data` 
-- add code (shown boxed) in code chunks 
-
-Code results (which should also show up in your Viewer pane) are shown boxed with a double hash tag 
 
 
-### examine the data 
 
-Use the *readr* package *read_csv()* function to bring the calibration data (the data you downloaded earlier) into the R workspace. In a code chunk, add 
+<pre class="r"><code>```{r include = FALSE}
+# match the knitr root directory to the project working directory
+library(knitr) 
+opts_knit$set(root.dir = '../')
+<code>```</code>
 
+Input the data file that was provided. 
 
-```r
+<code>```</code>{r}
+# assign the data to a variable name
 library(readr)
 wide_data <- read_csv('data/009_wide-data.csv')
-```
+<code>```</code>
+</code></pre>
+
+What the script does: 
+
+R:
+
+- `# comment` a hash tag in R denotes a comment 
+- `library()` loads a package so we can use its functions 
+- `read_csv()` reads a CSV file. The path to the data file (`'data/009_wide-data.csv'`) file is relative to the project working directory  
+- `<-` is the R assignment operator 
+
+knitr: 
+
+- We match the working directory of the *knitr* package to the working directory of the project folder to allow us to render the Rmd script (which also executes all the R code) or to run the R code alone (without rendering the script) using *Run All* . 
 
 
-- *library()* loads a package so we can use its functions 
-- *read_csv()* reads a CSV file 
 
-> Examine the data: 
+### data structure
 
-- *str()* is an R function that describes the structure of its argument
+Add the following. Save and Knit.  
 
 
-```r
+
+<pre class="r"><code>Examine the data.
+
+<code>```</code>{r}
 str(wide_data)
-```
+<code>```</code>
+</code></pre>
 
-```
-## Classes 'tbl_df', 'tbl' and 'data.frame':	8 obs. of  5 variables:
-##  $ test_point: chr  "2 up" "3 up" "4 up" "5 up" ...
-##  $ input_lb  : num  1.5 2.5 3.5 4.5 3.5 2.5 1.5 0.5
-##  $ cycle_1   : num  NA 51.1 70.4 88.8 69.4 49.5 30.7 8.7
-##  $ cycle_2   : num  29.9 49.4 70 91.6 69 50.1 30.8 10.9
-##  $ cycle_3   : num  30.2 49.7 NA NA NA NA NA NA
-```
+What the script does: 
 
-- *dim()* is an R function that returns the row by column dimensions of the data frame
+- `str()` returns the structure of the R object. The output printed to your Viewer screen shows the object `wide_data` is a data frame having 8 observations (rows) of 5 variables (columns) 
+
+### data frame characteristics
+
+Add the following. Save and Knit. 
 
 
-```r
+
+<pre class="r"><code>Look at the characteristics of the data frame. 
+
+<code>```</code>{r}
+# data frame dimension
 dim(wide_data)
-```
 
-```
-## [1] 8 5
-```
-
-- *names()* is an R function that returns the columns headings in a data frame
-
-
-```r
+# column names
 names(wide_data)
-```
 
-```
-## [1] "test_point" "input_lb"   "cycle_1"    "cycle_2"    "cycle_3"
-```
-
-- *head()* and *tail()* are R functions for examining the first *n* rows and the last *n* rows of a data frame. `3L` is R-syntax declaring that 3 is an integer, not a floating-point number.
-
-
-```r
+# first few rows
 head(wide_data, n = 3L)
-```
 
-```
-## Source: local data frame [3 x 5]
-## 
-##   test_point input_lb cycle_1 cycle_2 cycle_3
-##        (chr)    (dbl)   (dbl)   (dbl)   (dbl)
-## 1       2 up      1.5      NA    29.9    30.2
-## 2       3 up      2.5    51.1    49.4    49.7
-## 3       4 up      3.5    70.4    70.0      NA
-```
-
-```r
+# last few rows
 tail(wide_data, n = 3L)
-```
 
-```
-## Source: local data frame [3 x 5]
-## 
-##   test_point input_lb cycle_1 cycle_2 cycle_3
-##        (chr)    (dbl)   (dbl)   (dbl)   (dbl)
-## 1       3 dn      2.5    49.5    50.1      NA
-## 2       2 dn      1.5    30.7    30.8      NA
-## 3       1 dn      0.5     8.7    10.9      NA
-```
-
-- *summary()* provides the descriptive statistics of each column 
-
-
-```r
+# descriptive statistics of each column
 summary(wide_data)
-```
+<code>```</code>
 
-```
-##   test_point           input_lb      cycle_1         cycle_2     
-##  Length:8           Min.   :0.5   Min.   : 8.70   Min.   :10.90  
-##  Class :character   1st Qu.:1.5   1st Qu.:40.10   1st Qu.:30.57  
-##  Mode  :character   Median :2.5   Median :51.10   Median :49.75  
-##                     Mean   :2.5   Mean   :52.66   Mean   :50.21  
-##                     3rd Qu.:3.5   3rd Qu.:69.90   3rd Qu.:69.25  
-##                     Max.   :4.5   Max.   :88.80   Max.   :91.60  
-##                                   NA's   :1                      
-##     cycle_3     
-##  Min.   :30.20  
-##  1st Qu.:35.08  
-##  Median :39.95  
-##  Mean   :39.95  
-##  3rd Qu.:44.83  
-##  Max.   :49.70  
-##  NA's   :6
-```
+We see from this initial exploration that the data consist of 8 measurements per cycle with 3 cycles. Some data are missing from some cycles (indicated by NA)  which is consistent with the ANSI/ISA standard by which the data were obtained. 
+</code></pre>
 
-- the data set is small enough in this case that we can print the full set to the output document using *print()*  
+What the script does:
+
+- `dim()` returns the dimensions of the object 
+- `names()` returns the columns names 
+- `head()` and `tail()` return the first few and last few rows of the data frame. The number of rows is given by the `n =` argument. 
+- `3L` declares the number 3 as an integer (instead of a floating point number) 
+- `summary()` returns descriptive statistics for every column 
 
 
-```r
-print(wide_data)
-```
 
-```
-## Source: local data frame [8 x 5]
-## 
-##   test_point input_lb cycle_1 cycle_2 cycle_3
-##        (chr)    (dbl)   (dbl)   (dbl)   (dbl)
-## 1       2 up      1.5      NA    29.9    30.2
-## 2       3 up      2.5    51.1    49.4    49.7
-## 3       4 up      3.5    70.4    70.0      NA
-## 4       5 up      4.5    88.8    91.6      NA
-## 5       4 dn      3.5    69.4    69.0      NA
-## 6       3 dn      2.5    49.5    50.1      NA
-## 7       2 dn      1.5    30.7    30.8      NA
-## 8       1 dn      0.5     8.7    10.9      NA
-```
-
-> We see from this initial exploration that the data consist of 8 measurements per cycle with 3 cycles. Some data are missing from some cycles (indicated by NA)  which is consistent with the ANSI/ISA standard by which the data were obtained. 
-
-> The data are in *wide format* making them easy to read but difficult for analysis. Reshaping the data from wide format to long format is the next topic. 
-
-A reminder, in your scripts, you should: 
-
-- Type (or copy and paste) the R code chunks in full
-- Type (or copy and paste) enough of the prose to explain the analysis.

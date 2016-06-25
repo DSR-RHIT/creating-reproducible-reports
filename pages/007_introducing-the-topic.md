@@ -1,7 +1,6 @@
 ---
 layout: page
-title: introducing the topic 
-tagline: load cell calibration 
+title: establishing context 
 ---
 
 [//]: this is a comment in Rmd
@@ -20,7 +19,9 @@ The calibration test setup is shown in Figure 1. A known weight is suspended fro
 ![Figure 1. Applying a force to the load cell using a precision weight](../resources/images/load-cell-setup-315x396px.png)
 ```
 
-R Markdown syntax: 
+### discussion 
+
+R Markdown: 
 
 - Heading-level using hash tags, e.g., `## Introduction` is a level-2 heading.
 - Emphasis (italics) using asterisks, e.g., `*load cell*`.
