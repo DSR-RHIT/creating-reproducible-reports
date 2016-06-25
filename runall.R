@@ -3,6 +3,9 @@
 # move and copy files 
 # delete byproduct files
 
+library(plyr)
+library(dplyr)
+
 
 
 # ----------------------------------------------------
