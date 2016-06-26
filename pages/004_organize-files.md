@@ -10,14 +10,7 @@ tagline: tutorial
 - If you haven't created an RStudio project and the *.Renviron* file for the workshop, [please do](002_pre-hw.html). 
 
 
-In your main project directory (I'll call it *rr-workshop* for convenience), create three folders (sub-directories)
-
-- Create a *data* directory
-- Create a *reports* directory
-- Create a *resources* directory
-- Create a *scripts* directory
-
-Your main directory for the workshop should look like this, but your folder name appears where I've used *rr-workshop*. 
+In your main project directory (I'll call it *rr-workshop* for convenience), create additional folders (sub-directories) named data, reports, resources, and scripts so that your project directory tree looks like this: 
 
 ```
 rr-workshop\
@@ -39,7 +32,7 @@ Navigate to my [workshop downloads](https://github.com/DSR-RHIT/creating-reprodu
 - Click the file name 
 - Right-click Raw --> Save link as... 
 - Save the CSV files to the *data* directory 
-- Save the PNG file to the *reports* directory 
+- Save the PNG file to the *resources* directory 
 
 The data and reports directories should look like this. 
 

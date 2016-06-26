@@ -1,10 +1,20 @@
 ---
 title: initializing a script
-tagline: tutorial
 output:
   html_document:
     keep_md: yes
 ---
+
+[//]: this is a comment in Rmd
+
+```{r include = FALSE}
+# settings for my document
+library(knitr)
+opts_knit$set(root.dir = '../')
+
+# set to 'hide' for the gh-pages. set to 'hold' while working the details
+opts_chunk$set(echo = TRUE, results = 'hide')
+```
 
 
 ### create an R markdown script 
@@ -16,7 +26,7 @@ In your workshop main directory,
 - Output Format -> HTML 
 - Save As --> to the `scripts/` directory, using the filename  `007_introducing-the-topic.Rmd` 
 
-The Rmd file is pre-populated with prose and some markdown syntax. Edit the meta-data header as shown:
+The Rmd file is pre-populated with prose and some markdown syntax. Edit the meta-data header:
 
 ```
 ---
@@ -48,30 +58,21 @@ The report should appear in the RStudio *Viewer* pane. Compare the output docume
 
 ### including R code 
 
-When we write R code inside an Rmd file, we place it inside special delimiters: 
+To include R code in an Rmd document, you place the code in a *code chunk*. A code chunk begins with  ````{r}` and ends with `````.  In RStudio, you can insert these delimiters using the *Insert a new code chunk* button ![insert-code-chunk-icon](../resources/images/insert-code-chunk-icon.png). 
+
+When I write this: 
+
+![](../resources/images/insert-code-chunk-icon.png) 
+```{r}
+summary(cars)
+```
+
+you type this: 
 
 <pre class="r"><code>```{r}
-write some R code
-<code>```</code>
-</code></pre>
-
-For example, in the pre-populated script you can see two lines of R code in their own chunks, 
-
-<pre class="r"><code>```{r cars}
 summary(cars)
 <code>```</code>
 </code></pre>
-
-and 
-
-<pre class="r"><code>```{r pressure, echo=FALSE}
-plot(pressure)
-<code>```</code>
-</code></pre>
-
-Expressions like `echo=FALSE` are *knitr* options that help control the way the code is evaluated and presented in the output document. 
-
-
 
 
 ### output to alternative formats 
