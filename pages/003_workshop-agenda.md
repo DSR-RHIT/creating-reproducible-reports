@@ -4,6 +4,8 @@ title: workshop agenda
 tagline: 
 ---
 
+### Session 1
+
 To get the most out of the first session, do the pre-workshop homework before arriving.
 
 |  time|     | activity                        |     | format           |

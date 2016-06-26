@@ -6,8 +6,6 @@ output:
     variant: markdown_github
 ---
 
-[\\]: this is an Rmd comment
-
 ```{r setup, include = FALSE}
 library(knitr)
 opts_knit$set(root.dir = '../')
@@ -38,6 +36,8 @@ df2 <- df[(idx2 + 1):n, ]
 df1[is.na(df1)] <- " " # replaces NAs with blank
 df2[is.na(df2)] <- " " # replaces NAs with blank
 ```
+
+### placeholder (removed by my render routine)
 
 ### Session 1
 
