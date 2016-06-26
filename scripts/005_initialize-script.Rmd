@@ -110,50 +110,7 @@ scripts\
 ```
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
-*Save and Knit* anytime you want to see how your changes appear in the output. Remember, this is not a WYSIWYG environment---until you knit it, you won't see it. We could call it WYKIWYS (What You *Knit* Is What You *See*). 
-
-
-
-
-
-
-
-
-
-We can dispense with the default prose. In the Rmd file, 
-
-- Delete everything below the YAML header 
-- Save and Knit 
-
--->
-
-
-
-
 --- 
-back [organize files](004_organize-files.html)<br> 
-next [tbd](tbd.html)
 
 
 

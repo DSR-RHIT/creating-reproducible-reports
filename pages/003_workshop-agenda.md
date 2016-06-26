@@ -40,5 +40,3 @@ To get the most out of the second session, complete the sample report tutorial b
 |    10|     | Assessing the workshop         |     | reflection      |
 
 ------------------------------------------------------------------------
-
-back [pre-workshop homework](002_pre-workshop-hw.html)<br> next [main page](../index.html)

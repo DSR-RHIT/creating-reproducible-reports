@@ -4,6 +4,8 @@ title: workshop
 tagline: reproducible research for the R novice
 ---
 
+[\\]: this is an Rmd comment
+
 Welcome! The goal of the workshop is to introduce the R novice to reproducible research in the context of creating a reproducible report using R, RStudio, and knitr.  
 
 
@@ -12,34 +14,21 @@ Welcome! The goal of the workshop is to introduce the R novice to reproducible r
 - [learning objectives](pages/001_learning-objectives.html)
 - [pre-workshop homework](pages/002_pre-workshop-hw.html) 
 - [workshop agenda](pages/003_workshop-agenda.html) 
-
-
-### introducing reproducible research 
-
 - surveying the reproducible research ecosystem 
 - considering a sample report 
-
-
-### initializing a workflow 
-
-- [organizing your files](pages/004_organize-files.html)
-- [initializing a script](pages/005_initialize-script.html)
-- [plan of work](pages/006_plan-of-work.html)
 
 
 
 ### tutorials 
 
-- [establishing context](pages/007_introducing-the-topic.html) 
-- [examining the data](pages/010_examining-the-data.html) 
-- [tidying the data set](pages/011_tidying-the-data-set.html)
-- simple table 
-- reporting results in-line 
+- organizing your files
+- initializing a script
+- establishing context
+- examining the data
+- tidying the data set
 - performing a linear regression 
 - graphing results 
-- writing an equation 
-- adding a citation 
-- updating the report when the data change 
+- updating the work when the data change 
 
 
 

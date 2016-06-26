@@ -4,6 +4,8 @@ title:  organizing files
 tagline: tutorial
 ---
 
+[\\]: this is an Rmd comment
+
 ### set up a directory tree
 
 - If you haven't installed R and RStudio, [please do](002_pre-hw.html). 
@@ -50,5 +52,4 @@ resources\
 
 
 --- 
-back [main page](../index.html)<br> 
-back [initialize a script](005_initialize-script.html)
+

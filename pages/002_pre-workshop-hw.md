@@ -4,18 +4,20 @@ title:  pre-workshop homework
 tagline: 
 ---
 
+[\\]: this is an Rmd comment
+
 Prior to the workshop, complete the work on this page to 
 
 - Install [R](https://www.r-project.org/), a free software environment for statistical computing and graphics 
 - Install [RStudio](https://www.rstudio.com/), a user interface for R 
 - Test the installation by using R as a calculator 
-- Create an RStudio "project" 
+- Create an RStudio project 
 - Set up a library for R packages 
-- Download one package to test the installation 
+- Download an R package to test the installation 
 
 ### windows
 
-Windows users should login to Windows as an administrator to download and install R and RStudio.  
+Windows users should login as an administrator to download and install R and RStudio.  
 
 - [Download R for Windows](https://cran.r-project.org/) from the Comprehensive R Archive Network (CRAN) -> Install R for the very first time 
 - [Download RStudio](http://www.rstudio.com/products/rstudio/download/) after first installing R 
@@ -71,13 +73,14 @@ R_LIBS_USER="C:/R/library"
 
 - Save this file using the name `.Renviron` in the *rr-workshop* project directory (folder) 
 - When creating new projects in the future, copy the `.Renviron` file to the main directory of the new project 
+- Restart RStudio
 
-Restart RStudio 
+To install a package: 
 
 - In the lower right pane, select Packages -> Install 
 - In the dialog box, type *readr* 
 - Check the box to install dependencies
-- Select Install 
+- Install 
 
 If all goes well with the package installation, the software will report that the readr package is installed successfully in the R folder you created earlier. Your should see something like this:
 
@@ -97,7 +100,6 @@ In RStudio Tools -> Global options,
 
 
 --- 
-back [learning objectives](001_learning-objectives.html)<br>
-next [workshop agenda](003_workshop-agenda.html) 
+
 
 

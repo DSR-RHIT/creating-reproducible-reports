@@ -6,6 +6,8 @@ output:
     variant: markdown_github
 ---
 
+[\\]: this is an Rmd comment
+
 ```{r setup, include = FALSE}
 library(knitr)
 opts_knit$set(root.dir = '../')
@@ -43,12 +45,6 @@ To get the most out of the first session, do the pre-workshop homework before ar
 
 ```{r agenda-1, include = TRUE, results = 'asis'}
 kable(df1)
-# library(xtable)
-# session1 <- xtable(df1, display = c('d', 'd', 's', 's', 's', 's')
-# 									 , align = c('r', 'c', 'c', 'l', 'c', 'l')
-# 									 , digits = 0)
-# print.xtable(session1, type = 'html', include.rownames = FALSE, html.table.attributes = getOption("xtable.html.table.attributes",
-#                                     "border=0"))
 ```
 
 ### Session 2
@@ -57,15 +53,8 @@ To get the most out of the second session, complete the sample report tutorial b
 
 ```{r agenda-2, include = TRUE, results = 'asis'}
 kable(df2)
-# session2 <- xtable(df2, display = c('d', 'd', 's', 's', 's', 's')
-# 									 , align = c('r', 'c', 'c', 'l', 'c', 'l')
-# 									 , digits = 0)
-# print.xtable(session2, type = 'html', include.rownames = FALSE, html.table.attributes = getOption("xtable.html.table.attributes",
-#                                     "border=0"))
 ```
 
-
 --- 
-back [pre-workshop homework](002_pre-workshop-hw.html)<br>
-next [main page](../index.html)
+
 
