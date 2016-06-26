@@ -24,7 +24,7 @@ To get the most out of the first session, do the pre-workshop homework before ar
 
 ### Session 2
 
-To get the most out of the second session, complete the sample report tutorial before the second session.
+To get the most out of the second session, complete as much of the self-paced tutorial as you can.
 
 |  time|     | activity                       |     | format          |
 |-----:|-----|:-------------------------------|-----|:----------------|
