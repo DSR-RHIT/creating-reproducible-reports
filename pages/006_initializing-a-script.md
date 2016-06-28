@@ -87,17 +87,17 @@ scripts\
 
 ### initializing knitr
 
-A *code chunk* begins with
+A *code chunk* is R code embedded in the Rmd script. The lines of R code are preceded by
 
 <pre><code>```{r}</code></pre>
 
-then you write some R code, and end with
+then you write the R code, and end with
 
 <pre><code>```</code></pre>
 
 We have three methods for inserting code chunks: 
 
-- You can type them
+- You can type the delimiters directly (the three tick marks are "back ticks", not single-quotes)
 - From the RStudio menu bar, Code --> Insert Chunk 
 - Click the button ![](../resources/images/insert-code-chunk-icon.png)
 
