@@ -1,0 +1,87 @@
+---
+title: "Load-cell calibration --- linear regression"
+author: "Richard Layton"
+date: "2016-08-24"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+# opts_knit$set(root.dir = '../')
+opts_chunk$set(echo = TRUE)
+```
+
+
+# Perform the linear regression 
+
+```{r}
+# read the tidy data
+library(readr)
+calibr_data <- read_csv("../data/01_calibr_data-tidying.csv")
+```
+
+Input force is the independent variable (*x*) and sensor readout is the dependent variable (*y*). The *lm()* function creates the regression results we need, e.g., 
+
+- slope and intercept of the linear regression
+- the fitted y-values 
+- the residuals 
+- the adjusted $R^2$ value
+
+
+```{r}
+# perform the regression
+regr_results <- lm(output_mV ~ input_lb, data = calibr_data)
+```
+
+Use the *attributes()* function to see what named values have been provided by the *lm()* function.
+
+```{r}
+attributes(regr_results)
+```
+
+```{r}
+intercept <- regr_results$coefficients[1]
+slope     <- regr_results$coefficients[2]
+# y-fitted values are used to graph the linear regression curve
+y_fit     <- regr_results$fitted.values
+residuals <- regr_results$residuals
+```
+
+
+```{r}
+
+# selected regression results for printing to the document
+regr_summ <- summary.lm(regr_results)
+adj_r_sq  <- regr_summ$adj.r.squared
+
+# results computed from these values
+
+# span is needed to determine accuracy in percentage form
+output_span  <- max(y_fit) - min(y_fit)
+
+# compute accuracy in mV and as a percentage for reporting
+acc_plus  <- max(residuals)
+acc_minus <- min(residuals)
+
+acc_plus_pct  <- acc_plus / output_span * 100
+acc_minus_pct <- acc_minus / output_span * 100
+
+accuracy <- max(abs(c(acc_plus_pct, acc_minus_pct)))
+
+# # create a data frame for printing a table of results
+# Result <- c('slope', 'intercept', 'adjusted $R^2$', 'max residual', 'min residual', 'output span')
+# Value  <- c(slope, intercept, adj_r_sq, acc_plus, acc_minus, output_span)
+# Units  <- c('mV/lb', 'mV', 'mV', 'mV', 'mV', 'mV')
+# tabulated_results <- data.frame(Result, Value, Units)
+# tabulated_results
+
+
+
+calibr_results <- data.frame(slope, intercept, adj_r_sq, acc_plus, acc_minus, output_span, row.names = NULL)
+options(digits = 4)
+calibr_results
+```
+
+
+
+<br><br><br>

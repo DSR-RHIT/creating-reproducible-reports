@@ -46,16 +46,20 @@ file.rename(from = 'pages/index.md', to = './index.md')
 # copy particpant files to the downloads folder
 download_dir <- "resources/downloads/"
 
-file.copy(from = "resources/images/load-cell-setup-315x396px.png"
+file.copy(from = "resources/images/load-cell-setup-786x989px.png"
 					, to = download_dir
 )
 
-file.copy(from = "resources/images/load-cell-setup-315x396px.png"
+file.copy(from = "resources/images/load-cell-setup-786x989px.png"
 					, to = "resources/"
 )
 
-file.copy(from = "data/009_wide-data.csv"
+file.copy(from = "data/007_wide-data.csv"
 					, to = download_dir
+)
+
+file.copy(from = "data/007_wide-data.csv"
+					, to = "resources/"
 )
 
 # file.copy(from = "data/load-cell-calibr-L6.csv"

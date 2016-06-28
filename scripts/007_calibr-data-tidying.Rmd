@@ -1,0 +1,235 @@
+---
+title: tidying data
+output:
+  html_document:
+    keep_md: yes
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+# opts_knit$set(root.dir = '../')
+opts_chunk$set(echo = TRUE)
+```
+
+
+Our first paragraph establishes the context for the analysis.
+
+- Boxed text and code chunks like those below are meant to be typed---or copied and pasted---into your Rmd script. 
+- I'm using a text icon `r knitr::include_graphics("../resources/images/insert-text-icon.png")` to indicate text to add to your script
+- Save and Knit after each addition to see the result and to ensure your script is error-free. 
+
+
+`r knitr::include_graphics("../resources/images/insert-text-icon.png")` The hash tag in `# Introduction` denotes a level-1 heading in the output document.
+```
+# Introduction
+
+Calibration test data for an Omega LCL-005 (0--5 lb) load cell (a force sensor) has been provided by the test lab. The goal of this analysis is to determine the calibration equation and estimate the sensor accuracy. 
+```
+
+`r knitr::include_graphics("../resources/images/insert-text-icon.png")` Explain the test setup and import an image.
+<pre><code>The lab sent an image of the test setup. A known weight (lb) is attached to the eye hook and the load cell bridge produces an output signal (mV). 
+
+<code>```</code>{r fig.cap = 'Figure 1. Load cell calibration test setup', out.width = '60%'}
+knitr::include_graphics("../resources/load-cell-setup-786x989px.png")
+<code>```</code>
+</code></pre>
+
+- The code chunk options `fig.cap` for adding a caption and `out.width` to  scale the size of the image. 
+- The R syntax `knitr::include_graphics()` tells R to run the *include_graphics()* function from the *knitr* package
+- *include_graphics()* imports the image you downloaded earlier to your `resources` directory. The file path and name are in quotes.
+
+```{r echo = FALSE, fig.cap = 'Figure 1. Load cell calibration test setup', out.width = '60%'}
+knitr::include_graphics("../resources/load-cell-setup-786x989px.png")
+```
+
+
+# Examine the data 
+
+`r knitr::include_graphics("../resources/images/insert-text-icon.png")` Start a new section.
+```
+# Examine the data 
+```
+
+
+ 
+ I'll use this "Insert a new code chunk" icon `r knitr::include_graphics("../resources/images/insert-code-chunk-icon.png")`  to tell you to insert a code chunk then write into it the R code that follows.
+ 
+ `r knitr::include_graphics("../resources/images/insert-code-chunk-icon.png")` Read the data you downloaded and saved in the `data` directory
+```{r}
+# read the data set as received
+library(readr)
+data_received <- read_csv('../data/007_wide-data.csv')
+```
+
+`r knitr::include_graphics("../resources/images/insert-text-icon.png")`
+```
+First look at the data structure.
+```
+
+`r knitr::include_graphics("../resources/images/insert-code-chunk-icon.png")` Display the structure of the R "object" we've named `data_received`. 
+```{r}
+str(data_received)
+```
+
+`r knitr::include_graphics("../resources/images/insert-text-icon.png")` Comment on the data. Asterisks around a word or phrase are the Rmd syntax for italics.
+```
+As expected, *read_csv()* produced a data frame. All columns are numerical except the *test_point* column that shows test condition number and a direction. Take a look at the first few rows.
+```
+
+`r knitr::include_graphics("../resources/images/insert-text-icon.png")` New paragraph. 
+```
+Look at the first few rows of the data set. 
+```
+
+`r knitr::include_graphics("../resources/images/insert-code-chunk-icon.png")` The *head()* function displays the first few rows of the data set. 
+```{r}
+head(data_received)
+```
+
+
+`r knitr::include_graphics("../resources/images/insert-text-icon.png")` Assess the printout. 
+```
+The data set has mV readings in several columns, designated *cycle_1*, *cycle_2*, etc. Thus, the data are in wide form and will have to be reshaped to long form for analysis. 
+
+I see some NA values, which is consistent with the calibration test protocol. A summary of the numerical columns might be useful.
+```
+
+`r knitr::include_graphics("../resources/images/insert-code-chunk-icon.png")` Summary statistics except for the first column. 
+```{r}
+# summary-stats except column 1
+summary(data_received[ , -1])
+```
+
+- *summary()* produces a statistical summary of each column in the data frame. 
+- In R, square brackets `[]` subset the data frame. Here the subset `[ , -1]` tells R to keep all rows and omit the first column. 
+ 
+ `r knitr::include_graphics("../resources/images/insert-text-icon.png")` Assess the printout.
+ 
+```
+For all cycles, the mean, min, and max  readings (mV) are similar. We have NA in the first and last cycles only, as expected.  
+```
+
+# Reshape the data to long form
+
+ `r knitr::include_graphics("../resources/images/insert-text-icon.png")` New section. Underscores `_` are privileged characters in Rmd (another way to indicate italics). So to print an underscore in the text we have to "escape" the character by writing `\_`.
+ 
+```
+# Reshape the data to long form
+
+For analysis, the data set should be in long form, with every column a  variable and every row a  observation. I've decided on the following  variable names (and what they are): 
+
+- observ (observation number)
+- cycle (cycle number)
+- test\_pt (test point number and direction)
+- input\_lb (applied reference force)
+- output\_mV (sensor readings)
+```
+
+
+`r knitr::include_graphics("../resources/images/insert-text-icon.png")`
+```
+The reshaping is all about gathering the data in the *cycle* columns.  I identify which of the column names include *cycle*.
+```
+
+```{r}
+# indices of cycle columns (listing the mV data)
+is_a_cycle_col <- grep('cycle', names(data_received), ignore.case = TRUE)
+
+# the column indices
+is_a_cycle_col
+
+# the column names at those locations
+colnames(data_received)[is_a_cycle_col]
+```
+
+I have the correct output.
+
+To reshape these columns, I create a new column called *cycle* for gathering the existing cycle column-names and a new column called *output_mV* for gathering the associated readings. 
+
+```{r}
+library(tidyr)
+long_data <- data_received %>%
+	gather(cycle, output_mV, is_a_cycle_col) 
+print(long_data)
+```
+
+Examine the result. 
+
+```{r}
+str(long_data)
+summary(long_data)
+```
+
+The NA entries are superfluous---they are strictly an artifact of the format of the raw data table, having nothing to do with the calibration results. I'll omit all rows with an NA in the *output_mV* column.
+
+```{r warning = FALSE, message = FALSE}
+library(dplyr)
+long_data <- long_data %>%
+	filter(!output_mV %in% NA)
+str(long_data)
+```
+
+It's a small enough data set, with `r nrow(long_data)`  observations in `r ncol(long_data)` columns, that I can print the full set. 
+
+```{r}
+print(long_data)
+```
+
+# Add observation numbers
+
+The test point entries are in the order in which the data were acquired (consistent with the ANSI/ISA standard). So the observation number is the same as the row number.
+
+```{r}
+# add a new column
+long_data$observ <- 1:nrow(long_data)
+head(long_data)
+```
+
+# Simplify the cycle number
+
+The *cycle* data are strings, *cycle_1*, *cycle_2*, etc. It might be useful to replace these entries with an integer for the cycle number. 
+
+First, I separate the *cycle* column into two parts using the underscore in the data as the separation pattern. 
+
+```{r}
+library(stringr)
+split_columns <- str_split_fixed(long_data$cycle, pattern = '_', 2)
+```
+
+I keep only the 2nd column (the cycle number), convert it to an integer (it's a character), and assign it as a new column *cycle_no* in the data frame. 
+
+```{r}
+long_data$cycle_no <- as.integer(split_columns[ , 2])
+head(long_data)
+tail(long_data)
+```
+
+Spot checking with *head()* and *tail()*, I confirm that the new cycle_no column agrees with the original cycle column data. 
+
+
+# Final touches
+
+The last steps in tidying this data set are to delete the original  *cycle* column and reuse the name for the new cycle column, to shorten the *test_point* column name, and to rearrange columns in a logical order. 
+
+```{r}
+tidy_data <- long_data %>%
+	select(-cycle) %>%
+	rename('cycle' = cycle_no) %>%
+	rename('test_pt' = test_point) %>%
+	select(observ, cycle, test_pt, input_lb, output_mV)
+print(tidy_data)
+```
+
+Write the tidy data to file in the data directory.
+
+```{r}
+write_csv(tidy_data, "../data/01_calibr_data-tidying.csv")
+```
+
+
+
+
+
+
+
+<br><br><br>

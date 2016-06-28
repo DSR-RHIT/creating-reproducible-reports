@@ -1,9 +1,7 @@
 ---
+layout: page
 title:  organizing files
 tagline: tutorial
-output: 
-  html_document:
-    keep_md: TRUE
 ---
 
 [\\]: this is an Rmd comment
@@ -48,10 +46,4 @@ resources\
   `-- load-cell-setup-315x396px.png
 ```
 
-
-
-
-
-
---- 
 

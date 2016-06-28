@@ -1,0 +1,56 @@
+---
+title: plan the student scripts
+output: 
+  html_document:
+    keep_md: FALSE
+---
+
+[\\]: this script does not have to be a gh-page, that's why keep_md is FALSE
+
+
+```{r include = FALSE}
+# settings for my document
+library(knitr)
+# opts_knit$set(root.dir = '../')
+
+# results = 'hide' for the gh-pages; 'hold' while working the details
+opts_chunk$set(echo = TRUE)
+```
+
+
+
+### plan
+
+write each of the 4 students reports, then write the tutorials
+
+```
+01_calibr_data-tidying.Rmd
+02_calibr_linear-regression.Rmd
+03_calibr_graph.Rmd
+04_calibr_client-report.Rmd
+```
+
+
+
+
+### outline from the workshop index
+
+```{r comment = '', echo = FALSE}
+library(readr)
+index_lines  <- read_lines('index.Rmd')
+hash_tags_at <- grep('###', index_lines)
+tutorials    <- grep('tutor', index_lines[hash_tags_at])
+
+starting <- hash_tags_at[tutorials] + 1
+ending   <- hash_tags_at[tutorials + 1] - 1
+subset_lines <- index_lines[starting:ending]
+subset_lines <- subset_lines[subset_lines != ""]
+
+library(stringr)
+cat(subset_lines, sep = '\n')
+```
+
+
+
+
+
