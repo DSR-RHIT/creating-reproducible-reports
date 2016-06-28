@@ -43,7 +43,7 @@ data\
   `-- 007_wide-data.csv
   
 resources\
-  `-- load-cell-setup-315x396px.png
+  `-- load-cell-setup-786x989px.png
 ```
 
 

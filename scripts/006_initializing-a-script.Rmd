@@ -96,7 +96,7 @@ scripts\
 
 ### initializing knitr
 
-In an Rmd script, a *code chunk* begins with  ````{r}` and ends with  `````, with R code in-between. We have three methods for inserting these delimiters in our Rmd file: 
+In an Rmd script, a *code chunk* begins with  ````{r}` and ends with  `````, with R code in-between. We have three methods for inserting these delimiters in our Rmd file: 
 
 - You can type them
 - From the RStudio menu bar, Code --> Insert Chunk 
