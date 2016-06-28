@@ -27,6 +27,3 @@ By the end of the workshop participants should be able to:
 - Organize directories and files for reproducibility 
 - Create a reproducible report using R and RStudio
 
-
---- 
-

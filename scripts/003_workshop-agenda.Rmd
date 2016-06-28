@@ -8,7 +8,7 @@ output:
 
 ```{r setup, include = FALSE}
 library(knitr)
-opts_knit$set(root.dir = '../')
+# opts_knit$set(root.dir = '../')
 opts_chunk$set(include = FALSE, echo = FALSE, message = FALSE, warning = FALSE)
 ```
 
@@ -18,7 +18,7 @@ library(dplyr)
 ```
 
 ```{r create-agenda}
-df <- read_excel('data/2016-06-raw/agenda.xlsx') %>% 
+df <- read_excel('../data/2016-06-raw/agenda.xlsx') %>% 
 	mutate(space1 = NA, space2 = NA) %>%
   select(time, space1, activity, space2, format) %>%
 	rename(' ' = space1, ' ' = space2)
@@ -54,7 +54,4 @@ To get the most out of the second session, complete as much of the self-paced tu
 ```{r agenda-2, include = TRUE, results = 'asis'}
 kable(df2)
 ```
-
---- 
-
 

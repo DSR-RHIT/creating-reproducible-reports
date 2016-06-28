@@ -28,7 +28,7 @@ sapply(Rmd_scripts, function(x) render(x))
 
 
 # ----------------------------------------------------
-# create gh-pages from selected Rmds
+# Rmds -> mds with edited YAML header for gh-pages
 source('scripts/helper-01_create-gh-pages.R')
 
 # plyr::failwith() allows completion even if an error occurs
@@ -48,6 +48,10 @@ download_dir <- "resources/downloads/"
 
 file.copy(from = "resources/images/load-cell-setup-315x396px.png"
 					, to = download_dir
+)
+
+file.copy(from = "resources/images/load-cell-setup-315x396px.png"
+					, to = "resources/"
 )
 
 file.copy(from = "data/009_wide-data.csv"

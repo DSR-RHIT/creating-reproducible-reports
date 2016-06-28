@@ -99,7 +99,7 @@ In RStudio Tools -> Global options,
 - Sweave: Weave Rnw file using, set to *knitr*
 
 
---- 
+
 
 
 

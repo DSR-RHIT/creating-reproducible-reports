@@ -27,19 +27,17 @@ Welcome! The goal of the workshop is to introduce the R novice to reproducible r
 ### tutorials 
 
 - organize files
-- initialize a script
-- establish context
-- examine the data
+- initialize an Rmd script
 - tidy the data
 - linear regression 
 - calibration graph 
-- data change update 
 - client report 
 
 
 
 ### next steps 
 
+- what to do when the data change 
 - planning for reproducibility 
 - starting your own project 
 - looking ahead 
