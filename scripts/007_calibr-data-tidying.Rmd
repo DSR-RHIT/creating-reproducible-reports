@@ -83,11 +83,13 @@ knitr::include_graphics("../resources/load-cell-setup-786x989px.png")
 # examine the data 
 
 `r text_icon` --- Start a new section.
+
 ```
 # Examine the data 
 ```
 
  `r code_icon` --- Reminder, this R code goes inside a code chunk.
+ 
 ```{r}
 # read the data set as received
 library(readr)
@@ -102,6 +104,7 @@ This is a good moment to remind you that you are learning two syntaxes: R Markdo
 - In Rmd, the single hash tag denotes a level-1 heading. 
 
 `r text_icon`  
+
 ```
 First look at the data structure.
 ```
@@ -115,17 +118,20 @@ str(data_received)
 - *str()* displays the structure of an R object 
 
 `r text_icon` 
+
 ```
 As expected, *read_csv()* produced a data frame. All columns are numerical except the *test_point* column that shows test condition number and a direction.
 ```
 - Asterisks around a word or phrase are the Rmd syntax for italics.
 
 `r text_icon`  
+
 ```
 Look at the first few rows of the data set. 
 ```
 
 `r code_icon` 
+
 ```{r results = 'hide'}
 head(data_received)
 ```
@@ -134,6 +140,7 @@ head(data_received)
 
 
 `r text_icon` 
+
 ```
 The data set has mV readings in several columns, designated *cycle_1*, *cycle_2*, etc. Thus, the data are in wide form and will have to be reshaped to long form for analysis. 
 
@@ -141,6 +148,7 @@ I see some NA values, which is consistent with the calibration test protocol. A 
 ```
 
 `r code_icon`  
+
 ```{r results = 'hide'}
 # summary-stats except column 1
 summary(data_received[ , -1])
@@ -161,6 +169,7 @@ For all cycles, the mean, min, and max  readings (mV) are similar. We have NA in
 # reshape the data to long form
 
 `r text_icon` 
+
 ```
 # Reshape the data to long form
 
@@ -177,11 +186,13 @@ For analysis, the data set should be in long form, with every column a variable 
  
 
 `r text_icon` 
+
 ```
 In this case, data reshaping is all about gathering the data in the *cycle* columns, so first we determine which of the column names include *cycle*.
 ```
 
 `r code_icon` 
+
 ```{r}
 # indices of cycle columns (listing the mV data)
 is_a_cycle_col <- grep('cycle', colnames(data_received), ignore.case = TRUE)
@@ -196,6 +207,7 @@ is_a_cycle_col
 
 
 `r code_icon`
+
 ```{r}
 # look at the the column names at those locations
 colnames(data_received)[is_a_cycle_col]
@@ -211,6 +223,7 @@ To reshape these columns, I use the *tidyr* package *gather()* function to creat
 - a new column called *output_mV* for gathering the mV readings in those columns 
 
 `r code_icon`
+
 ```{r results = 'hide'}
 library(tidyr)
 long_data <- data_received %>%
@@ -220,11 +233,13 @@ long_data <- data_received %>%
 - The pipe operator `%>%` can be thought of as the adverb "then". Thus, this code chunk could be read as "Assign the `data_received` data frame to a new object named `long_data`, *then* gather the columns designated by `is_a_cycle_col` into two new columns named `cycle` (for the old column names) and `output_mV` (for the old column data)."
 
 `r text_icon`
+
 ```
 Examine the result. 
 ```
 
 `r code_icon`
+
 ```{r results = 'hide'}
 long_data # print it
 str(long_data) # structure
@@ -238,11 +253,13 @@ summary(long_data)
 
 
 `r text_icon`
+
 ```
 This summary shows that all the NA values are in the mV readings column. These are not actually missing values. They represent superfluous rows, strictly artifacts of how the test lab organized their data table in the first place. We can safely delete these rows. 
 ```
 
 `r code_icon`
+
 ```{r warning = FALSE, message = FALSE, results = 'hide'}
 library(dplyr)
 long_data <- long_data %>%
@@ -255,11 +272,13 @@ str(long_data)
 - If we had written `output_mV %in% NA`, R would return TRUE for all NA entries. But we want the reverse, to keep the NOT NA rows. Thus we use the logical NOT `!` in front of the argument `! output_mV %in% NA`, converting logical FALSE to TRUE (and TRUE to FALSE), thereby keeping the meaningful rows and omitting the NA rows. 
 
 `r text_icon`
+
 ```
 It's a small enough data set, with `r nrow(long_data)` observations in `r ncol(long_data)` columns, that I can print the full set. 
 ```
 
 `r code_icon`
+
 ```{r}
 print(long_data)
 ```
@@ -274,6 +293,7 @@ print(long_data)
 
 
 `r text_icon`
+
 ```
 # add observation numbers
 
@@ -281,6 +301,7 @@ The test points are in the order in which the data were acquired (consistent wit
 ```
 
 `r code_icon`
+
 ```{r results = 'hide'}
 # add a new column
 long_data[ , 'observ'] <- 1:nrow(long_data)
@@ -298,6 +319,7 @@ head(long_data)
 # simplify the cycle number
 
 `r text_icon`
+
 ```
 # simplify the cycle number
 
@@ -309,6 +331,7 @@ First, I separate the *cycle* column into two parts using the underscore in the 
 ####################################################
 
 `r code_icon`
+
 ```{r}
 library(stringr)
 cycle_column  <- long_data %>%
@@ -320,12 +343,14 @@ split_columns <- str_split_fixed(cycle_column, n = 2, pattern = '_')
 - *string_split_fixed()* is a function that splits our `'cycle'` string column into *n* pieces, using the underscore as the pattern to split on
 
 `r text_icon`
+
 ```
 Investigate the split_columns object.
 ```
 
 
 `r code_icon`
+
 ```{r results = 'hide'}
 class(split_columns)
 ```
@@ -337,11 +362,13 @@ class(split_columns)
 
 
 `r text_icon`
+
 ```
 I keep only the 2nd column (the cycle number), convert it to an integer (it's a character), and assign it as a new column *cycle_no* in the data frame. 
 ```
 
 `r code_icon`
+
 ```{r}
 long_data$cycle_no <- as.integer(split_columns[ , 2])
 head(long_data)
@@ -349,6 +376,7 @@ tail(long_data)
 ```
 
 `r text_icon`
+
 ```
 Spot checking with *head()* and *tail()*, I confirm that the new cycle_no column agrees with the original cycle column data. 
 ```
@@ -359,11 +387,13 @@ Spot checking with *head()* and *tail()*, I confirm that the new cycle_no column
 # final touches
 
 `r text_icon`
+
 ```
 The last steps in tidying this data set are to delete the original  *cycle* column and reuse the name for the new cycle column, to shorten the *test_point* column name, and to rearrange columns in a logical order. 
 ```
 
 `r code_icon`
+
 ```{r}
 tidy_data <- long_data %>%
 	select(-cycle) %>%
@@ -375,11 +405,13 @@ print(tidy_data)
 
 
 `r text_icon`
+
 ```
 Write the tidy data to file in the data directory.
 ```
 
 `r code_icon`
+
 ```{r}
 write_csv(tidy_data, "../data/01_calibr_data-tidying.csv")
 ```
