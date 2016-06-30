@@ -7,13 +7,13 @@ output:
 
 ```{r setup, include=FALSE}
 library(knitr)
-# opts_knit$set(root.dir = "../")
+opts_knit$set(root.dir = "../")
 opts_chunk$set(include = TRUE)
 ```
 
 ```{r echo = FALSE}
 # for text_icon and code_icon
-source("../scripts/helper-02_instruction-icons.R")
+source("scripts/helper-02_instruction-icons.R")
 ```
 
 
@@ -36,7 +36,7 @@ Sometimes when I show you a bit of R code I also show you the output the code pr
 ```{r include = FALSE}
 # read the data set as received
 library(readr)
-data_received <- read_csv('../data/007_wide-data.csv')
+data_received <- read_csv('data/007_wide-data.csv')
 ```
 
 ```{r echo = FALSE}
@@ -93,7 +93,7 @@ knitr::include_graphics("../resources/load-cell-setup-786x989px.png")
 ```{r}
 # read the data set as received
 library(readr)
-data_received <- read_csv('../data/007_wide-data.csv')
+data_received <- read_csv('data/007_wide-data.csv')
 ```
 
 - This code chunk reads the data you downloaded and saved in the `data` directory. 
@@ -413,7 +413,7 @@ Write the tidy data to file in the data directory.
 `r code_icon`
 
 ```{r}
-write_csv(tidy_data, "../data/01_calibr_data-tidying.csv")
+write_csv(tidy_data, "data/01_calibr_data-tidying.csv")
 ```
 
 

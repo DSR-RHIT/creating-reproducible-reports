@@ -11,8 +11,8 @@ title: tidying data
 
 How to use the tutorial 
 
-- <img src="../resources/images/insert-text-icon.png" width="20" /> : transcribe the block of text into your script verbatim. Copy and paste is OK. 
-- <img src="../resources/images/insert-code-chunk-icon.png" width="20" /> : insert a new code chunk then transcribe the R code from the box into the chunk.  Copy and paste is OK.  
+- ![](../resources/images/insert-text-icon.png)<!-- --> : transcribe the block of text into your script verbatim. Copy and paste is OK. 
+- ![](../resources/images/insert-code-chunk-icon.png)<!-- --> : insert a new code chunk then transcribe the R code from the box into the chunk.  Copy and paste is OK.  
 - Save and Knit after each addition. 
 
 Packages we use in the tutorial have to be installed (just once) before we can access their functions. For example, if you installed the *readr* package earlier, you don't have to install it again. Install these packages for this tutorial: 
@@ -46,7 +46,7 @@ Sometimes when I show you a bit of R code I also show you the output the code pr
 
 Our first paragraph establishes the context for the analysis.
 
-<img src="../resources/images/insert-text-icon.png" width="20" /> --- Reminder: this text is copied verbatim.
+![](../resources/images/insert-text-icon.png)<!-- --> --- Reminder: this text is copied verbatim.
 
 ```
 # Introduction
@@ -56,7 +56,7 @@ Calibration test data for an Omega LCL-005 (0--5 lb) load cell (a force sensor) 
 
 - In Rmd, the single hash tag `#` denotes a level-1 heading. 
 
-<img src="../resources/images/insert-text-icon.png" width="20" />
+![](../resources/images/insert-text-icon.png)<!-- -->
 <pre><code>The lab sent an image of the test setup. A known weight (lb) is attached to the eye hook and the load cell bridge produces an output signal (mV). 
 
 <code>```</code>{r fig.cap = 'Figure 1. Load cell calibration test setup', dpi = 300}
@@ -77,19 +77,19 @@ knitr::include_graphics("../resources/load-cell-setup-786x989px.png")
 
 # examine the data 
 
-<img src="../resources/images/insert-text-icon.png" width="20" /> --- Start a new section.
+![](../resources/images/insert-text-icon.png)<!-- --> --- Start a new section.
 
 ```
 # Examine the data 
 ```
 
- <img src="../resources/images/insert-code-chunk-icon.png" width="20" /> --- Reminder, this R code goes inside a code chunk.
+ ![](../resources/images/insert-code-chunk-icon.png)<!-- --> --- Reminder, this R code goes inside a code chunk.
  
 
 ```r
 # read the data set as received
 library(readr)
-data_received <- read_csv('../data/007_wide-data.csv')
+data_received <- read_csv('data/007_wide-data.csv')
 ```
 
 - This code chunk reads the data you downloaded and saved in the `data` directory. 
@@ -99,13 +99,13 @@ This is a good moment to remind you that you are learning two syntaxes: R Markdo
 - In R, the single hash tag denotes a comment.
 - In Rmd, the single hash tag denotes a level-1 heading. 
 
-<img src="../resources/images/insert-text-icon.png" width="20" />  
+![](../resources/images/insert-text-icon.png)<!-- -->  
 
 ```
 First look at the data structure.
 ```
 
-<img src="../resources/images/insert-code-chunk-icon.png" width="20" /> 
+![](../resources/images/insert-code-chunk-icon.png)<!-- --> 
 
 
 ```r
@@ -123,20 +123,20 @@ str(data_received)
 
 - *str()* displays the structure of an R object 
 
-<img src="../resources/images/insert-text-icon.png" width="20" /> 
+![](../resources/images/insert-text-icon.png)<!-- --> 
 
 ```
 As expected, *read_csv()* produced a data frame. All columns are numerical except the *test_point* column that shows test condition number and a direction.
 ```
 - Asterisks around a word or phrase are the Rmd syntax for italics.
 
-<img src="../resources/images/insert-text-icon.png" width="20" />  
+![](../resources/images/insert-text-icon.png)<!-- -->  
 
 ```
 Look at the first few rows of the data set. 
 ```
 
-<img src="../resources/images/insert-code-chunk-icon.png" width="20" /> 
+![](../resources/images/insert-code-chunk-icon.png)<!-- --> 
 
 
 ```r
@@ -146,7 +146,7 @@ head(data_received)
 - *head()* displays the first few rows of the data set. 
 
 
-<img src="../resources/images/insert-text-icon.png" width="20" /> 
+![](../resources/images/insert-text-icon.png)<!-- --> 
 
 ```
 The data set has mV readings in several columns, designated *cycle_1*, *cycle_2*, etc. Thus, the data are in wide form and will have to be reshaped to long form for analysis. 
@@ -154,7 +154,7 @@ The data set has mV readings in several columns, designated *cycle_1*, *cycle_2*
 I see some NA values, which is consistent with the calibration test protocol. A summary of the numerical columns might be useful.
 ```
 
-<img src="../resources/images/insert-code-chunk-icon.png" width="20" />  
+![](../resources/images/insert-code-chunk-icon.png)<!-- -->  
 
 
 ```r
@@ -165,7 +165,7 @@ summary(data_received[ , -1])
 - *summary()* produces a statistical summary of each column in the data frame. 
 - In R, square brackets `[]` subset the data frame. Here the subset `[ , -1]` tells R to keep all rows and omit the first column when evaluating the *summary()* function. 
  
-<img src="../resources/images/insert-text-icon.png" width="20" />
+![](../resources/images/insert-text-icon.png)<!-- -->
  
 ```
 For all cycles, the mean, min, and max  readings (mV) are similar. We have NA in the first and last cycles only, as expected.  
@@ -176,7 +176,7 @@ For all cycles, the mean, min, and max  readings (mV) are similar. We have NA in
 
 # reshape the data to long form
 
-<img src="../resources/images/insert-text-icon.png" width="20" /> 
+![](../resources/images/insert-text-icon.png)<!-- --> 
 
 ```
 # Reshape the data to long form
@@ -193,13 +193,13 @@ For analysis, the data set should be in long form, with every column a variable 
 - To print an underscore in the prose we have to "escape" the character by writing `\_`. 
  
 
-<img src="../resources/images/insert-text-icon.png" width="20" /> 
+![](../resources/images/insert-text-icon.png)<!-- --> 
 
 ```
 In this case, data reshaping is all about gathering the data in the *cycle* columns, so first we determine which of the column names include *cycle*.
 ```
 
-<img src="../resources/images/insert-code-chunk-icon.png" width="20" /> 
+![](../resources/images/insert-code-chunk-icon.png)<!-- --> 
 
 
 ```r
@@ -219,7 +219,7 @@ is_a_cycle_col
 - Writing an object name on a line of its own, e.g., `is_a_cycle_col`,  prints the output. For example, this output tells me that columns 3, 4, 5 have "cycle" in their columns names. 
 
 
-<img src="../resources/images/insert-code-chunk-icon.png" width="20" />
+![](../resources/images/insert-code-chunk-icon.png)<!-- -->
 
 
 ```r
@@ -240,7 +240,7 @@ To reshape these columns, I use the *tidyr* package *gather()* function to creat
 -  a new column called *cycle* for gathering the existing cycle-column-names  
 - a new column called *output_mV* for gathering the mV readings in those columns 
 
-<img src="../resources/images/insert-code-chunk-icon.png" width="20" />
+![](../resources/images/insert-code-chunk-icon.png)<!-- -->
 
 
 ```r
@@ -251,13 +251,13 @@ long_data <- data_received %>%
 
 - The pipe operator `%>%` can be thought of as the adverb "then". Thus, this code chunk could be read as "Assign the `data_received` data frame to a new object named `long_data`, *then* gather the columns designated by `is_a_cycle_col` into two new columns named `cycle` (for the old column names) and `output_mV` (for the old column data)."
 
-<img src="../resources/images/insert-text-icon.png" width="20" />
+![](../resources/images/insert-text-icon.png)<!-- -->
 
 ```
 Examine the result. 
 ```
 
-<img src="../resources/images/insert-code-chunk-icon.png" width="20" />
+![](../resources/images/insert-code-chunk-icon.png)<!-- -->
 
 
 ```r
@@ -280,13 +280,13 @@ summary(long_data) # summary of column stats
 ```
 
 
-<img src="../resources/images/insert-text-icon.png" width="20" />
+![](../resources/images/insert-text-icon.png)<!-- -->
 
 ```
 This summary shows that all the NA values are in the mV readings column. These are not actually missing values. They represent superfluous rows, strictly artifacts of how the test lab organized their data table in the first place. We can safely delete these rows. 
 ```
 
-<img src="../resources/images/insert-code-chunk-icon.png" width="20" />
+![](../resources/images/insert-code-chunk-icon.png)<!-- -->
 
 
 ```r
@@ -300,13 +300,13 @@ str(long_data)
 - `%in%` returns a logical vector indicating a match or not between the arguments on either side 
 - If we had written `output_mV %in% NA`, R would return TRUE for all NA entries. But we want the reverse, to keep the NOT NA rows. Thus we use the logical NOT `!` in front of the argument `! output_mV %in% NA`, converting logical FALSE to TRUE (and TRUE to FALSE), thereby keeping the meaningful rows and omitting the NA rows. 
 
-<img src="../resources/images/insert-text-icon.png" width="20" />
+![](../resources/images/insert-text-icon.png)<!-- -->
 
 ```
 It's a small enough data set, with 17 observations in 4 columns, that I can print the full set. 
 ```
 
-<img src="../resources/images/insert-code-chunk-icon.png" width="20" />
+![](../resources/images/insert-code-chunk-icon.png)<!-- -->
 
 
 ```r
@@ -346,7 +346,7 @@ print(long_data)
 # add observation numbers
 
 
-<img src="../resources/images/insert-text-icon.png" width="20" />
+![](../resources/images/insert-text-icon.png)<!-- -->
 
 ```
 # add observation numbers
@@ -354,7 +354,7 @@ print(long_data)
 The test points are in the order in which the data were acquired (consistent with the ANSI/ISA standard). So the observation number is the same as the row number. 
 ```
 
-<img src="../resources/images/insert-code-chunk-icon.png" width="20" />
+![](../resources/images/insert-code-chunk-icon.png)<!-- -->
 
 
 ```r
@@ -373,7 +373,7 @@ head(long_data)
 
 # simplify the cycle number
 
-<img src="../resources/images/insert-text-icon.png" width="20" />
+![](../resources/images/insert-text-icon.png)<!-- -->
 
 ```
 # simplify the cycle number
@@ -385,7 +385,7 @@ First, I separate the *cycle* column into two parts using the underscore in the 
 
 ####################################################
 
-<img src="../resources/images/insert-code-chunk-icon.png" width="20" />
+![](../resources/images/insert-code-chunk-icon.png)<!-- -->
 
 
 ```r
@@ -398,14 +398,14 @@ split_columns <- str_split_fixed(cycle_column, n = 2, pattern = '_')
 - *stringr* is a package for manipulating character strings
 - *string_split_fixed()* is a function that splits our `'cycle'` string column into *n* pieces, using the underscore as the pattern to split on
 
-<img src="../resources/images/insert-text-icon.png" width="20" />
+![](../resources/images/insert-text-icon.png)<!-- -->
 
 ```
 Investigate the split_columns object.
 ```
 
 
-<img src="../resources/images/insert-code-chunk-icon.png" width="20" />
+![](../resources/images/insert-code-chunk-icon.png)<!-- -->
 
 
 ```r
@@ -418,13 +418,13 @@ class(split_columns)
 
 
 
-<img src="../resources/images/insert-text-icon.png" width="20" />
+![](../resources/images/insert-text-icon.png)<!-- -->
 
 ```
 I keep only the 2nd column (the cycle number), convert it to an integer (it's a character), and assign it as a new column *cycle_no* in the data frame. 
 ```
 
-<img src="../resources/images/insert-code-chunk-icon.png" width="20" />
+![](../resources/images/insert-code-chunk-icon.png)<!-- -->
 
 
 ```r
@@ -469,7 +469,7 @@ tail(long_data)
 ## 6       3 up      2.5 cycle_3      49.7     17       NA
 ```
 
-<img src="../resources/images/insert-text-icon.png" width="20" />
+![](../resources/images/insert-text-icon.png)<!-- -->
 
 ```
 Spot checking with *head()* and *tail()*, I confirm that the new cycle_no column agrees with the original cycle column data. 
@@ -480,13 +480,13 @@ Spot checking with *head()* and *tail()*, I confirm that the new cycle_no column
 
 # final touches
 
-<img src="../resources/images/insert-text-icon.png" width="20" />
+![](../resources/images/insert-text-icon.png)<!-- -->
 
 ```
 The last steps in tidying this data set are to delete the original  *cycle* column and reuse the name for the new cycle column, to shorten the *test_point* column name, and to rearrange columns in a logical order. 
 ```
 
-<img src="../resources/images/insert-code-chunk-icon.png" width="20" />
+![](../resources/images/insert-code-chunk-icon.png)<!-- -->
 
 
 ```r
@@ -523,17 +523,17 @@ print(tidy_data)
 ```
 
 
-<img src="../resources/images/insert-text-icon.png" width="20" />
+![](../resources/images/insert-text-icon.png)<!-- -->
 
 ```
 Write the tidy data to file in the data directory.
 ```
 
-<img src="../resources/images/insert-code-chunk-icon.png" width="20" />
+![](../resources/images/insert-code-chunk-icon.png)<!-- -->
 
 
 ```r
-write_csv(tidy_data, "../data/01_calibr_data-tidying.csv")
+write_csv(tidy_data, "data/01_calibr_data-tidying.csv")
 ```
 
 
