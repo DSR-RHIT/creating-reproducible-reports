@@ -6,50 +6,82 @@ title: tidying data
 
 
 
+
+
+
+How to use the tutorial 
+
+- <img src="../resources/images/insert-text-icon.png" width="20" /> : transcribe the block of text into your script verbatim. Copy and paste is OK. 
+- <img src="../resources/images/insert-code-chunk-icon.png" width="20" /> : insert a new code chunk then transcribe the R code from the box into the chunk.  Copy and paste is OK.  
+- Save and Knit after each addition. 
+
+Packages we use in the tutorial have to be installed (just once) before we can access their functions. For example, if you installed the *readr* package earlier, you don't have to install it again. Install these packages for this tutorial: 
+
+- readr 
+- tidyr 
+- dplyr 
+- stringr 
+
+Sometimes when I show you a bit of R code I also show you the output the code produces.  Do not copy the output to your script. Code output is boxed and has two hash tags on every line, for example: 
+
+
+
+
+```
+## Source: local data frame [3 x 5]
+## 
+##   test_point input_lb cycle_1 cycle_2 cycle_3
+##        <chr>    <dbl>   <dbl>   <dbl>   <dbl>
+## 1       2 up      1.5      NA    29.9    30.2
+## 2       3 up      2.5    51.1    49.4    49.7
+## 3       4 up      3.5    70.4    70.0      NA
+```
+
+
+
+
+
+
+# introduction  
+
 Our first paragraph establishes the context for the analysis.
 
-- Boxed text and code chunks like those below are meant to be typed---or copied and pasted---into your Rmd script. 
-- I'm using a text icon <img src="../resources/images/insert-text-icon.png" width="14" /> to indicate text to add to your script
-- Save and Knit after each addition to see the result and to ensure your script is error-free. 
-
-
-<img src="../resources/images/insert-text-icon.png" width="14" /> The hash tag in `# Introduction` denotes a level-1 heading in the output document.
+<img src="../resources/images/insert-text-icon.png" width="20" /> --- Reminder: this text is copied verbatim.
 ```
 # Introduction
 
 Calibration test data for an Omega LCL-005 (0--5 lb) load cell (a force sensor) has been provided by the test lab. The goal of this analysis is to determine the calibration equation and estimate the sensor accuracy. 
 ```
 
-<img src="../resources/images/insert-text-icon.png" width="14" /> Explain the test setup and import an image.
+- In Rmd, the single hash tag `#` denotes a level-1 heading. 
+
+<img src="../resources/images/insert-text-icon.png" width="20" />
 <pre><code>The lab sent an image of the test setup. A known weight (lb) is attached to the eye hook and the load cell bridge produces an output signal (mV). 
 
-<code>```</code>{r fig.cap = 'Figure 1. Load cell calibration test setup', out.width = '60%'}
+<code>```</code>{r fig.cap = 'Figure 1. Load cell calibration test setup', dpi = 300}
 knitr::include_graphics("../resources/load-cell-setup-786x989px.png")
 <code>```</code>
 </code></pre>
 
-- The code chunk options `fig.cap` for adding a caption and `out.width` to  scale the size of the image. 
+- The code chunk option `fig.cap` adds a caption;  `dpi` scales the size of the image. (Image width = width_pixels / dpi.)
 - The R syntax `knitr::include_graphics()` tells R to run the *include_graphics()* function from the *knitr* package
-- *include_graphics()* imports the image you downloaded earlier to your `resources` directory. The file path and name are in quotes.
+- *include_graphics()* imports the image you downloaded earlier to your `resources` directory. 
+- The file path is in quotes. `../` tells *knitr* to start one directory level up (the project-level directory), down to `resources/`, and then to the file name. (Even though we've assigned the *knitr* root-directory one level up, a quirk of knitr requires us to use this relative path up.)
 
 <div class="figure">
-<img src="../resources/load-cell-setup-786x989px.png" alt="Figure 1. Load cell calibration test setup" width="60%" />
+<img src="../resources/load-cell-setup-786x989px.png" alt="Figure 1. Load cell calibration test setup" width="302" />
 <p class="caption">Figure 1. Load cell calibration test setup</p>
 </div>
 
 
-# Examine the data 
+# examine the data 
 
-<img src="../resources/images/insert-text-icon.png" width="14" /> Start a new section.
+<img src="../resources/images/insert-text-icon.png" width="20" /> --- Start a new section.
 ```
 # Examine the data 
 ```
 
-
- 
- I'll use this "Insert a new code chunk" icon <img src="../resources/images/insert-code-chunk-icon.png" width="18" />  to tell you to insert a code chunk then write into it the R code that follows.
- 
- <img src="../resources/images/insert-code-chunk-icon.png" width="18" /> Read the data you downloaded and saved in the `data` directory
+ <img src="../resources/images/insert-code-chunk-icon.png" width="20" /> --- Reminder, this R code goes inside a code chunk.
 
 ```r
 # read the data set as received
@@ -57,12 +89,20 @@ library(readr)
 data_received <- read_csv('../data/007_wide-data.csv')
 ```
 
-<img src="../resources/images/insert-text-icon.png" width="14" />
+- This code chunk reads the data you downloaded and saved in the `data` directory. 
+
+This is a good moment to remind you that you are learning two syntaxes: R Markdown (Rmd) for reporting and R for computing. The single hash tag # is interpreted differently in the two syntaxes: 
+
+- In R, the single hash tag denotes a comment.
+- In Rmd, the single hash tag denotes a level-1 heading. 
+
+<img src="../resources/images/insert-text-icon.png" width="20" />  
 ```
 First look at the data structure.
 ```
 
-<img src="../resources/images/insert-code-chunk-icon.png" width="18" /> Display the structure of the R "object" we've named `data_received`. 
+<img src="../resources/images/insert-code-chunk-icon.png" width="20" /> 
+
 
 ```r
 str(data_received)
@@ -77,78 +117,61 @@ str(data_received)
 ##  $ cycle_3   : num  30.2 49.7 NA NA NA NA NA NA
 ```
 
-<img src="../resources/images/insert-text-icon.png" width="14" /> Comment on the data. Asterisks around a word or phrase are the Rmd syntax for italics.
-```
-As expected, *read_csv()* produced a data frame. All columns are numerical except the *test_point* column that shows test condition number and a direction. Take a look at the first few rows.
-```
+- *str()* displays the structure of an R object 
 
-<img src="../resources/images/insert-text-icon.png" width="14" /> New paragraph. 
+<img src="../resources/images/insert-text-icon.png" width="20" /> 
+```
+As expected, *read_csv()* produced a data frame. All columns are numerical except the *test_point* column that shows test condition number and a direction.
+```
+- Asterisks around a word or phrase are the Rmd syntax for italics.
+
+<img src="../resources/images/insert-text-icon.png" width="20" />  
 ```
 Look at the first few rows of the data set. 
 ```
 
-<img src="../resources/images/insert-code-chunk-icon.png" width="18" /> The *head()* function displays the first few rows of the data set. 
+<img src="../resources/images/insert-code-chunk-icon.png" width="20" /> 
 
 ```r
 head(data_received)
 ```
 
-```
-## Source: local data frame [6 x 5]
-## 
-##   test_point input_lb cycle_1 cycle_2 cycle_3
-##        (chr)    (dbl)   (dbl)   (dbl)   (dbl)
-## 1       2 up      1.5      NA    29.9    30.2
-## 2       3 up      2.5    51.1    49.4    49.7
-## 3       4 up      3.5    70.4    70.0      NA
-## 4       5 up      4.5    88.8    91.6      NA
-## 5       4 dn      3.5    69.4    69.0      NA
-## 6       3 dn      2.5    49.5    50.1      NA
-```
+- *head()* displays the first few rows of the data set. 
 
 
-<img src="../resources/images/insert-text-icon.png" width="14" /> Assess the printout. 
+<img src="../resources/images/insert-text-icon.png" width="20" /> 
 ```
 The data set has mV readings in several columns, designated *cycle_1*, *cycle_2*, etc. Thus, the data are in wide form and will have to be reshaped to long form for analysis. 
 
 I see some NA values, which is consistent with the calibration test protocol. A summary of the numerical columns might be useful.
 ```
 
-<img src="../resources/images/insert-code-chunk-icon.png" width="18" /> Summary statistics except for the first column. 
+<img src="../resources/images/insert-code-chunk-icon.png" width="20" />  
 
 ```r
 # summary-stats except column 1
 summary(data_received[ , -1])
 ```
 
-```
-##     input_lb      cycle_1         cycle_2         cycle_3     
-##  Min.   :0.5   Min.   : 8.70   Min.   :10.90   Min.   :30.20  
-##  1st Qu.:1.5   1st Qu.:40.10   1st Qu.:30.57   1st Qu.:35.08  
-##  Median :2.5   Median :51.10   Median :49.75   Median :39.95  
-##  Mean   :2.5   Mean   :52.66   Mean   :50.21   Mean   :39.95  
-##  3rd Qu.:3.5   3rd Qu.:69.90   3rd Qu.:69.25   3rd Qu.:44.83  
-##  Max.   :4.5   Max.   :88.80   Max.   :91.60   Max.   :49.70  
-##                NA's   :1                       NA's   :6
-```
-
 - *summary()* produces a statistical summary of each column in the data frame. 
-- In R, square brackets `[]` subset the data frame. Here the subset `[ , -1]` tells R to keep all rows and omit the first column. 
+- In R, square brackets `[]` subset the data frame. Here the subset `[ , -1]` tells R to keep all rows and omit the first column when evaluating the *summary()* function. 
  
- <img src="../resources/images/insert-text-icon.png" width="14" /> Assess the printout.
+<img src="../resources/images/insert-text-icon.png" width="20" />
  
 ```
 For all cycles, the mean, min, and max  readings (mV) are similar. We have NA in the first and last cycles only, as expected.  
 ```
 
-# Reshape the data to long form
 
- <img src="../resources/images/insert-text-icon.png" width="14" /> New section. Underscores `_` are privileged characters in Rmd (another way to indicate italics). So to print an underscore in the text we have to "escape" the character by writing `\_`.
- 
+
+
+# reshape the data to long form
+
+<img src="../resources/images/insert-text-icon.png" width="20" /> 
 ```
 # Reshape the data to long form
 
-For analysis, the data set should be in long form, with every column a  variable and every row a  observation. I've decided on the following  variable names (and what they are): 
+For analysis, the data set should be in long form, with every column a variable and every row an observation. I've selected these variable names: 
 
 - observ (observation number)
 - cycle (cycle number)
@@ -157,16 +180,19 @@ For analysis, the data set should be in long form, with every column a  variable
 - output\_mV (sensor readings)
 ```
 
+- To print an underscore in the prose we have to "escape" the character by writing `\_`. 
+ 
 
-<img src="../resources/images/insert-text-icon.png" width="14" />
+<img src="../resources/images/insert-text-icon.png" width="20" /> 
 ```
-The reshaping is all about gathering the data in the *cycle* columns.  I identify which of the column names include *cycle*.
+In this case, data reshaping is all about gathering the data in the *cycle* columns, so first we determine which of the column names include *cycle*.
 ```
 
+<img src="../resources/images/insert-code-chunk-icon.png" width="20" /> 
 
 ```r
 # indices of cycle columns (listing the mV data)
-is_a_cycle_col <- grep('cycle', names(data_received), ignore.case = TRUE)
+is_a_cycle_col <- grep('cycle', colnames(data_received), ignore.case = TRUE)
 
 # the column indices
 is_a_cycle_col
@@ -176,8 +202,15 @@ is_a_cycle_col
 ## [1] 3 4 5
 ```
 
+- *colnames()* returns the data frame column names.
+- *grep()* is a string pattern-matching function. Here, I use it to compare the string 'cycle' to the column names, ignoring case---a preventative measure in case the testing lab happens to send me data in the future with 'Cycle' capitalized. 
+- Writing an object name on a line of its own, e.g., `is_a_cycle_col`,  prints the output. For example, this output tells me that columns 3, 4, 5 have "cycle" in their columns names. 
+
+
+<img src="../resources/images/insert-code-chunk-icon.png" width="20" />
+
 ```r
-# the column names at those locations
+# look at the the column names at those locations
 colnames(data_received)[is_a_cycle_col]
 ```
 
@@ -185,54 +218,39 @@ colnames(data_received)[is_a_cycle_col]
 ## [1] "cycle_1" "cycle_2" "cycle_3"
 ```
 
-I have the correct output.
+- I subset the column names using `[]` 
+- The output confirms that I have the columns I want. 
 
-To reshape these columns, I create a new column called *cycle* for gathering the existing cycle column-names and a new column called *output_mV* for gathering the associated readings. 
 
+To reshape these columns, I use the *tidyr* package *gather()* function to create two new data columns: 
+
+-  a new column called *cycle* for gathering the existing cycle-column-names  
+- a new column called *output_mV* for gathering the mV readings in those columns 
+
+<img src="../resources/images/insert-code-chunk-icon.png" width="20" />
 
 ```r
 library(tidyr)
 long_data <- data_received %>%
 	gather(cycle, output_mV, is_a_cycle_col) 
-print(long_data)
 ```
 
-```
-## Source: local data frame [24 x 4]
-## 
-##    test_point input_lb   cycle output_mV
-##         <chr>    <dbl>   <chr>     <dbl>
-## 1        2 up      1.5 cycle_1        NA
-## 2        3 up      2.5 cycle_1      51.1
-## 3        4 up      3.5 cycle_1      70.4
-## 4        5 up      4.5 cycle_1      88.8
-## 5        4 dn      3.5 cycle_1      69.4
-## 6        3 dn      2.5 cycle_1      49.5
-## 7        2 dn      1.5 cycle_1      30.7
-## 8        1 dn      0.5 cycle_1       8.7
-## 9        2 up      1.5 cycle_2      29.9
-## 10       3 up      2.5 cycle_2      49.4
-## ..        ...      ...     ...       ...
-```
+- The pipe operator `%>%` can be thought of as the adverb "then". Thus, this code chunk could be read as "Assign the `data_received` data frame to a new object named `long_data`, *then* gather the columns designated by `is_a_cycle_col` into two new columns named `cycle` (for the old column names) and `output_mV` (for the old column data)."
 
+<img src="../resources/images/insert-text-icon.png" width="20" />
+```
 Examine the result. 
-
-
-```r
-str(long_data)
 ```
 
-```
-## Classes 'tbl_df', 'tbl' and 'data.frame':	24 obs. of  4 variables:
-##  $ test_point: chr  "2 up" "3 up" "4 up" "5 up" ...
-##  $ input_lb  : num  1.5 2.5 3.5 4.5 3.5 2.5 1.5 0.5 1.5 2.5 ...
-##  $ cycle     : chr  "cycle_1" "cycle_1" "cycle_1" "cycle_1" ...
-##  $ output_mV : num  NA 51.1 70.4 88.8 69.4 49.5 30.7 8.7 29.9 49.4 ...
-```
+<img src="../resources/images/insert-code-chunk-icon.png" width="20" />
 
 ```r
-summary(long_data)
+long_data # print it
+str(long_data) # structure
+summary(long_data) # summary of column stats
 ```
+
+
 
 ```
 ##   test_point           input_lb      cycle             output_mV    
@@ -245,26 +263,31 @@ summary(long_data)
 ##                                                      NA's   :7
 ```
 
-The NA entries are superfluous---they are strictly an artifact of the format of the raw data table, having nothing to do with the calibration results. I'll omit all rows with an NA in the *output_mV* column.
 
+<img src="../resources/images/insert-text-icon.png" width="20" />
+```
+This summary shows that all the NA values are in the mV readings column. These are not actually missing values. They represent superfluous rows, strictly artifacts of how the test lab organized their data table in the first place. We can safely delete these rows. 
+```
+
+<img src="../resources/images/insert-code-chunk-icon.png" width="20" />
 
 ```r
 library(dplyr)
 long_data <- long_data %>%
-	filter(!output_mV %in% NA)
+	filter(! output_mV %in% NA)
 str(long_data)
 ```
 
+- The *dplyr* package *filter()* function is a row operation that keeps all rows for which its argument is TRUE 
+- `%in%` returns a logical vector indicating a match or not between the arguments on either side 
+- If we had written `output_mV %in% NA`, R would return TRUE for all NA entries. But we want the reverse, to keep the NOT NA rows. Thus we use the logical NOT `!` in front of the argument `! output_mV %in% NA`, converting logical FALSE to TRUE (and TRUE to FALSE), thereby keeping the meaningful rows and omitting the NA rows. 
+
+<img src="../resources/images/insert-text-icon.png" width="20" />
 ```
-## Classes 'tbl_df', 'tbl' and 'data.frame':	17 obs. of  4 variables:
-##  $ test_point: chr  "3 up" "4 up" "5 up" "4 dn" ...
-##  $ input_lb  : num  2.5 3.5 4.5 3.5 2.5 1.5 0.5 1.5 2.5 3.5 ...
-##  $ cycle     : chr  "cycle_1" "cycle_1" "cycle_1" "cycle_1" ...
-##  $ output_mV : num  51.1 70.4 88.8 69.4 49.5 30.7 8.7 29.9 49.4 70 ...
+It's a small enough data set, with 17 observations in 4 columns, that I can print the full set. 
 ```
 
-It's a small enough data set, with 17  observations in 4 columns, that I can print the full set. 
-
+<img src="../resources/images/insert-code-chunk-icon.png" width="20" />
 
 ```r
 print(long_data)
@@ -294,47 +317,97 @@ print(long_data)
 ## 17       3 up      2.5 cycle_3      49.7
 ```
 
-# Add observation numbers
+- Your output should look like the outut printed above. 
 
-The test point entries are in the order in which the data were acquired (consistent with the ANSI/ISA standard). So the observation number is the same as the row number.
 
+
+
+
+# add observation numbers
+
+
+<img src="../resources/images/insert-text-icon.png" width="20" />
+```
+# add observation numbers
+
+The test points are in the order in which the data were acquired (consistent with the ANSI/ISA standard). So the observation number is the same as the row number. 
+```
+
+<img src="../resources/images/insert-code-chunk-icon.png" width="20" />
 
 ```r
 # add a new column
-long_data$observ <- 1:nrow(long_data)
+long_data[ , 'observ'] <- 1:nrow(long_data)
 head(long_data)
 ```
 
-```
-## Source: local data frame [6 x 5]
-## 
-##   test_point input_lb   cycle output_mV observ
-##        <chr>    <dbl>   <chr>     <dbl>  <int>
-## 1       3 up      2.5 cycle_1      51.1      1
-## 2       4 up      3.5 cycle_1      70.4      2
-## 3       5 up      4.5 cycle_1      88.8      3
-## 4       4 dn      3.5 cycle_1      69.4      4
-## 5       3 dn      2.5 cycle_1      49.5      5
-## 6       2 dn      1.5 cycle_1      30.7      6
-```
+- Here, the subset brackets `[ , 'observ']` add a new column 
+- *nrow()* returns the number of rows in the data frame
+- The `:` operator creates a sequence 
 
-# Simplify the cycle number
+
+
+
+
+# simplify the cycle number
+
+<img src="../resources/images/insert-text-icon.png" width="20" />
+```
+# simplify the cycle number
 
 The *cycle* data are strings, *cycle_1*, *cycle_2*, etc. It might be useful to replace these entries with an integer for the cycle number. 
 
 First, I separate the *cycle* column into two parts using the underscore in the data as the separation pattern. 
+```
 
+####################################################
+
+<img src="../resources/images/insert-code-chunk-icon.png" width="20" />
 
 ```r
 library(stringr)
-split_columns <- str_split_fixed(long_data$cycle, pattern = '_', 2)
+cycle_column  <- long_data %>%
+	select(cycle)
+split_columns <- str_split_fixed(cycle_column, n = 2, pattern = '_')
 ```
 
-I keep only the 2nd column (the cycle number), convert it to an integer (it's a character), and assign it as a new column *cycle_no* in the data frame. 
+- *stringr* is a package for manipulating character strings
+- *string_split_fixed()* is a function that splits our `'cycle'` string column into *n* pieces, using the underscore as the pattern to split on
 
+<img src="../resources/images/insert-text-icon.png" width="20" />
+```
+Investigate the split_columns object.
+```
+
+
+<img src="../resources/images/insert-code-chunk-icon.png" width="20" />
+
+```r
+class(split_columns)
+```
+
+- *class()* returns that the `split_columns` object is an R matrix, so we can subset it using `[]` notation
+- we will want to keep the second column with the number
+
+
+
+
+<img src="../resources/images/insert-text-icon.png" width="20" />
+```
+I keep only the 2nd column (the cycle number), convert it to an integer (it's a character), and assign it as a new column *cycle_no* in the data frame. 
+```
+
+<img src="../resources/images/insert-code-chunk-icon.png" width="20" />
 
 ```r
 long_data$cycle_no <- as.integer(split_columns[ , 2])
+```
+
+```
+## Warning: NAs introduced by coercion
+```
+
+```r
 head(long_data)
 ```
 
@@ -343,12 +416,12 @@ head(long_data)
 ## 
 ##   test_point input_lb   cycle output_mV observ cycle_no
 ##        <chr>    <dbl>   <chr>     <dbl>  <int>    <int>
-## 1       3 up      2.5 cycle_1      51.1      1        1
-## 2       4 up      3.5 cycle_1      70.4      2        1
-## 3       5 up      4.5 cycle_1      88.8      3        1
-## 4       4 dn      3.5 cycle_1      69.4      4        1
-## 5       3 dn      2.5 cycle_1      49.5      5        1
-## 6       2 dn      1.5 cycle_1      30.7      6        1
+## 1       3 up      2.5 cycle_1      51.1      1       NA
+## 2       4 up      3.5 cycle_1      70.4      2       NA
+## 3       5 up      4.5 cycle_1      88.8      3       NA
+## 4       4 dn      3.5 cycle_1      69.4      4       NA
+## 5       3 dn      2.5 cycle_1      49.5      5       NA
+## 6       2 dn      1.5 cycle_1      30.7      6       NA
 ```
 
 ```r
@@ -360,21 +433,30 @@ tail(long_data)
 ## 
 ##   test_point input_lb   cycle output_mV observ cycle_no
 ##        <chr>    <dbl>   <chr>     <dbl>  <int>    <int>
-## 1       4 dn      3.5 cycle_2      69.0     12        2
-## 2       3 dn      2.5 cycle_2      50.1     13        2
-## 3       2 dn      1.5 cycle_2      30.8     14        2
-## 4       1 dn      0.5 cycle_2      10.9     15        2
-## 5       2 up      1.5 cycle_3      30.2     16        3
-## 6       3 up      2.5 cycle_3      49.7     17        3
+## 1       4 dn      3.5 cycle_2      69.0     12       NA
+## 2       3 dn      2.5 cycle_2      50.1     13       NA
+## 3       2 dn      1.5 cycle_2      30.8     14       NA
+## 4       1 dn      0.5 cycle_2      10.9     15       NA
+## 5       2 up      1.5 cycle_3      30.2     16       NA
+## 6       3 up      2.5 cycle_3      49.7     17       NA
 ```
 
+<img src="../resources/images/insert-text-icon.png" width="20" />
+```
 Spot checking with *head()* and *tail()*, I confirm that the new cycle_no column agrees with the original cycle column data. 
+```
 
 
-# Final touches
 
+
+# final touches
+
+<img src="../resources/images/insert-text-icon.png" width="20" />
+```
 The last steps in tidying this data set are to delete the original  *cycle* column and reuse the name for the new cycle column, to shorten the *test_point* column name, and to rearrange columns in a logical order. 
+```
 
+<img src="../resources/images/insert-code-chunk-icon.png" width="20" />
 
 ```r
 tidy_data <- long_data %>%
@@ -390,27 +472,32 @@ print(tidy_data)
 ## 
 ##    observ cycle test_pt input_lb output_mV
 ##     <int> <int>   <chr>    <dbl>     <dbl>
-## 1       1     1    3 up      2.5      51.1
-## 2       2     1    4 up      3.5      70.4
-## 3       3     1    5 up      4.5      88.8
-## 4       4     1    4 dn      3.5      69.4
-## 5       5     1    3 dn      2.5      49.5
-## 6       6     1    2 dn      1.5      30.7
-## 7       7     1    1 dn      0.5       8.7
-## 8       8     2    2 up      1.5      29.9
-## 9       9     2    3 up      2.5      49.4
-## 10     10     2    4 up      3.5      70.0
-## 11     11     2    5 up      4.5      91.6
-## 12     12     2    4 dn      3.5      69.0
-## 13     13     2    3 dn      2.5      50.1
-## 14     14     2    2 dn      1.5      30.8
-## 15     15     2    1 dn      0.5      10.9
-## 16     16     3    2 up      1.5      30.2
-## 17     17     3    3 up      2.5      49.7
+## 1       1    NA    3 up      2.5      51.1
+## 2       2    NA    4 up      3.5      70.4
+## 3       3    NA    5 up      4.5      88.8
+## 4       4    NA    4 dn      3.5      69.4
+## 5       5    NA    3 dn      2.5      49.5
+## 6       6    NA    2 dn      1.5      30.7
+## 7       7    NA    1 dn      0.5       8.7
+## 8       8    NA    2 up      1.5      29.9
+## 9       9    NA    3 up      2.5      49.4
+## 10     10    NA    4 up      3.5      70.0
+## 11     11    NA    5 up      4.5      91.6
+## 12     12    NA    4 dn      3.5      69.0
+## 13     13    NA    3 dn      2.5      50.1
+## 14     14    NA    2 dn      1.5      30.8
+## 15     15    NA    1 dn      0.5      10.9
+## 16     16    NA    2 up      1.5      30.2
+## 17     17    NA    3 up      2.5      49.7
 ```
 
-Write the tidy data to file in the data directory.
 
+<img src="../resources/images/insert-text-icon.png" width="20" />
+```
+Write the tidy data to file in the data directory.
+```
+
+<img src="../resources/images/insert-code-chunk-icon.png" width="20" />
 
 ```r
 write_csv(tidy_data, "../data/01_calibr_data-tidying.csv")

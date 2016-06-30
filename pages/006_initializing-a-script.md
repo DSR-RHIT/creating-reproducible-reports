@@ -103,16 +103,20 @@ We have three methods for inserting code chunks:
 
 The first code chunk we'll write comes at the top of the file, just after the YAML header. This code sets some options for *knitr* (the package that knits together our prose and R code results). 
 
+Copy this code chunk verbatiom into your Rmd script. 
+
 <pre class="r"><code>```{r setup, include = FALSE}
 library(knitr)
+opts_knit$set(root.dir = '../')
 opts_chunk$set(echo = TRUE)
 <code>```</code>
 </code></pre>
 
-- The argument `setup` in  the code chunk header is a chunk label. Labels are optional, but if used, every label must be unique.
-- The argument `include = FALSE` in the code chunk header suppresses printing for this chunk. The code is still run, but nothing is printed to the output document.
+- `setup` in  the code chunk header is a label. Labels are optional, but if used, every label must be unique.
+- `include = FALSE` in the code chunk header suppresses printing for this chunk. The code is still run, but nothing is printed to the output document.
 - The *library()* function loads the *knitr* package
-- Setting `echo = TRUE` applies to all subsequent code chunks in the script,  printing your R code verbatim to the output document---useful during exploratory computing.
+- `root-dir` sets the working directory for *knitr* to match the working directory for the RStudio project.  
+- `echo = TRUE` applies to all subsequent code chunks in the script,  printing your R code verbatim to the output document---useful during exploratory computing.
 - Save and Knit. 
 
 

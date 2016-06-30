@@ -28,7 +28,7 @@ Welcome! The goal of the workshop is to introduce the R novice to reproducible r
 
 - [organizing files](pages/005_organizing-files.html)
 - [initializing an Rmd script](pages/006_initializing-a-script.html)
-- [tidying the data](pages/006_calibr-data-tidying.html)
+- [tidying the data](pages/007_calibr-data-tidying.html)
 - linear regression 
 - calibration graph 
 - client report 
