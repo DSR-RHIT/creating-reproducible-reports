@@ -47,6 +47,7 @@ Sometimes when I show you a bit of R code I also show you the output the code pr
 Our first paragraph establishes the context for the analysis.
 
 <img src="../resources/images/insert-text-icon.png" width="20" /> --- Reminder: this text is copied verbatim.
+
 ```
 # Introduction
 

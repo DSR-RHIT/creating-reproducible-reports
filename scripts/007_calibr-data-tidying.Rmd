@@ -53,6 +53,7 @@ head(data_received, n = 3L)
 Our first paragraph establishes the context for the analysis.
 
 `r text_icon` --- Reminder: this text is copied verbatim.
+
 ```
 # Introduction
 
