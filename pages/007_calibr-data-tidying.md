@@ -97,7 +97,7 @@ head(data_received)
 ## Source: local data frame [6 x 5]
 ## 
 ##   test_point input_lb cycle_1 cycle_2 cycle_3
-##        <chr>    <dbl>   <dbl>   <dbl>   <dbl>
+##        (chr)    (dbl)   (dbl)   (dbl)   (dbl)
 ## 1       2 up      1.5      NA    29.9    30.2
 ## 2       3 up      2.5    51.1    49.4    49.7
 ## 3       4 up      3.5    70.4    70.0      NA
@@ -122,14 +122,14 @@ summary(data_received[ , -1])
 ```
 
 ```
-##     input_lb      cycle_1        cycle_2        cycle_3    
-##  Min.   :0.5   Min.   : 8.7   Min.   :10.9   Min.   :30.2  
-##  1st Qu.:1.5   1st Qu.:40.1   1st Qu.:30.6   1st Qu.:35.1  
-##  Median :2.5   Median :51.1   Median :49.8   Median :40.0  
-##  Mean   :2.5   Mean   :52.7   Mean   :50.2   Mean   :40.0  
-##  3rd Qu.:3.5   3rd Qu.:69.9   3rd Qu.:69.2   3rd Qu.:44.8  
-##  Max.   :4.5   Max.   :88.8   Max.   :91.6   Max.   :49.7  
-##                NA's   :1                     NA's   :6
+##     input_lb      cycle_1         cycle_2         cycle_3     
+##  Min.   :0.5   Min.   : 8.70   Min.   :10.90   Min.   :30.20  
+##  1st Qu.:1.5   1st Qu.:40.10   1st Qu.:30.57   1st Qu.:35.08  
+##  Median :2.5   Median :51.10   Median :49.75   Median :39.95  
+##  Mean   :2.5   Mean   :52.66   Mean   :50.21   Mean   :39.95  
+##  3rd Qu.:3.5   3rd Qu.:69.90   3rd Qu.:69.25   3rd Qu.:44.83  
+##  Max.   :4.5   Max.   :88.80   Max.   :91.60   Max.   :49.70  
+##                NA's   :1                       NA's   :6
 ```
 
 - *summary()* produces a statistical summary of each column in the data frame. 
@@ -235,13 +235,13 @@ summary(long_data)
 ```
 
 ```
-##   test_point           input_lb      cycle             output_mV   
-##  Length:24          Min.   :0.5   Length:24          Min.   : 8.7  
-##  Class :character   1st Qu.:1.5   Class :character   1st Qu.:30.7  
-##  Mode  :character   Median :2.5   Mode  :character   Median :49.7  
-##                     Mean   :2.5                      Mean   :50.0  
-##                     3rd Qu.:3.5                      3rd Qu.:69.4  
-##                     Max.   :4.5                      Max.   :91.6  
+##   test_point           input_lb      cycle             output_mV    
+##  Length:24          Min.   :0.5   Length:24          Min.   : 8.70  
+##  Class :character   1st Qu.:1.5   Class :character   1st Qu.:30.70  
+##  Mode  :character   Median :2.5   Mode  :character   Median :49.70  
+##                     Mean   :2.5                      Mean   :50.01  
+##                     3rd Qu.:3.5                      3rd Qu.:69.40  
+##                     Max.   :4.5                      Max.   :91.60  
 ##                                                      NA's   :7
 ```
 
