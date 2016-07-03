@@ -17,11 +17,11 @@ Rmd_scripts <- list.files(path = "scripts"
 													)
 
 # files to omit
-# omit_files <- list.files(path = "scripts"
-# 											, pattern = "calibration-analysis.Rmd"
-# 											, full.names = TRUE
-# )
-# Rmd_scripts <- Rmd_scripts[Rmd_scripts != omit_files]
+omit_files <- list.files(path = "scripts"
+											, pattern = "_calibr_"
+											, full.names = TRUE
+)
+Rmd_scripts <- Rmd_scripts[! Rmd_scripts %in% omit_files]
 
 sapply(Rmd_scripts, function(x) render(x))
 

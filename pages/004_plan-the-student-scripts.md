@@ -10,26 +10,12 @@ title: "plan the student scripts"
 
 
 
-### plan
-
-write each of the 4 students reports, then write the tutorials
-
-```
-01_calibr_data-tidying.Rmd
-02_calibr_linear-regression.Rmd
-03_calibr_graph.Rmd
-04_calibr_client-report.Rmd
-```
-
-
-
-
 ### outline from the workshop index
 
 
 ```
 - [getting organized](pages/005_getting-organized.html)
-- [initializing an Rmd script](pages/006_initializing-a-script.html)
+- [initializing an Rmd script](pages/006_initializing-an-Rmd-script.html)
 - [first look at the data](pages/007_first-look-at-data.html)
 - [data reshaping](pages/008_data-reshaping.html)
 - [data tidying](pages/009_data-tidying.html)
@@ -38,6 +24,29 @@ write each of the 4 students reports, then write the tutorials
 - client report 
 ```
 
+
+
+
+
+### plan
+
+write each of the 4 students reports, then write the tutorials
+
+
+01\_calibr\_data.Rmd
+
+- initializing
+- first look
+- reshaping
+- tidying
+
+02\_calibr\_regression.Rmd
+
+
+03\_calib\r_graph.Rmd
+
+
+04\_calibr\_report.Rmd
 
 
 

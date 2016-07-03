@@ -130,13 +130,13 @@ To check your work, I've included the output of *summary()*
 
 
 ```
-##   test_point           input_lb      cycle             output_mV   
-##  Length:24          Min.   :0.5   Length:24          Min.   : 8.7  
-##  Class :character   1st Qu.:1.5   Class :character   1st Qu.:30.7  
-##  Mode  :character   Median :2.5   Mode  :character   Median :49.7  
-##                     Mean   :2.5                      Mean   :50.0  
-##                     3rd Qu.:3.5                      3rd Qu.:69.4  
-##                     Max.   :4.5                      Max.   :91.6  
+##   test_point           input_lb      cycle             output_mV    
+##  Length:24          Min.   :0.5   Length:24          Min.   : 8.70  
+##  Class :character   1st Qu.:1.5   Class :character   1st Qu.:30.70  
+##  Mode  :character   Median :2.5   Mode  :character   Median :49.70  
+##                     Mean   :2.5                      Mean   :50.01  
+##                     3rd Qu.:3.5                      3rd Qu.:69.40  
+##                     Max.   :4.5                      Max.   :91.60  
 ##                                                      NA's   :7
 ```
 

@@ -1,0 +1,102 @@
+---
+title: "Load-cell calibration --- data tidying"
+author: "Richard Layton"
+date: '2016-08-24'
+output: html_document
+---
+
+```{r, setup, include = FALSE}
+library(knitr)
+opts_knit$set(root.dir = '../')
+opts_chunk$set(echo = TRUE)
+```
+
+# Introduction
+
+Calibration test data for an Omega LCL-005 (0--5 lb) load cell (a force sensor) has been provided by the test lab. The goal of this analysis is to determine the calibration equation and estimate the sensor accuracy.
+
+The lab sent an image of the test setup. A known weight (lb) is attached to the eye hook and the load cell bridge produces an output signal (mV).
+
+```{r, fig.cap = 'Figure 1. Load cell calibration test setup'}
+knitr::include_graphics("../resources/load-cell-setup-786x989px.png", dpi = 250)
+```
+
+# Examine the data 
+
+```{r}
+# read the data set as received
+library(readr)
+data_received <- read_csv('data/007_wide-data.csv')
+```
+
+First look at the data structure.
+
+```{r}
+str(data_received)
+```
+
+As expected, *read_csv()* produced a data frame. All columns are numerical except the *test_point* column that shows test condition number and a direction.
+
+Look at the first few rows of the data set. 
+
+```{r}
+head(data_received)
+```
+
+The data set has mV readings in several columns, designated *cycle_1*, *cycle_2*, etc. Thus, the data are in wide form and will have to be reshaped to long form for analysis. 
+
+The NA values in the first and last cycles are due to the ANSI/ISA test protocol. The testing begins and ends at mid-span. Thus when we tidy the data, we an omit the NA observations. 
+
+A statistical summary of the numerical columns is useful for looking for data anomalies. 
+
+```{r, message = FALSE}
+library(dplyr)
+# summary-stats except column 1
+partial_data_set <- data_received %>%
+    select(-test_point)
+summary(partial_data_set)
+```
+
+For all cycles, the mean, min, and max  readings (mV) are similar. We have NA in the first and last cycles only, as expected.  
+
+Now that we know something about this data set, we're ready to begin preparing the data for analysis. 
+
+---
+
+# Preparing to reshape the data
+
+For analysis, the data set should be in long form, with every column a variable and every row an observation. 
+
+In a calibration, an observation is the set of conditions producing a single sensor reading in mV. For this data set, I propose the following variable names (column names) to characterize an observation:
+
+- observ (observation number)
+- cycle (cycle number)
+- test\_pt (test point number and direction)
+- input\_lb (applied reference force)
+- output\_mV (sensor readings)
+
+Each mV reading in a row is a separate observation. To reshape the data, we want to rewrite every mV reading to its own row, and characterize that observation by its particular cycle number (currently recorded in the column heading) and test condition (force and direction). 
+
+We begin this process by writing code to identify which of the columns include the character string, *cycle*, in their name. 
+
+```{r}
+# extract the indices of the column names that include "cycle"
+all_col_names  <- colnames(data_received)
+is_a_cycle_col <- grep('cycle', all_col_names, ignore.case = TRUE)
+```
+
+```{r}
+# the column indices
+is_a_cycle_col
+```
+
+
+
+
+
+
+
+
+
+
+

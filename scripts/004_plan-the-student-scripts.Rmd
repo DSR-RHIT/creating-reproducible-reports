@@ -19,20 +19,6 @@ opts_chunk$set(echo = TRUE)
 
 
 
-### plan
-
-write each of the 4 students reports, then write the tutorials
-
-```
-01_calibr_data-tidying.Rmd
-02_calibr_linear-regression.Rmd
-03_calibr_graph.Rmd
-04_calibr_client-report.Rmd
-```
-
-
-
-
 ### outline from the workshop index
 
 ```{r comment = '', echo = FALSE}
@@ -50,6 +36,29 @@ library(stringr)
 cat(subset_lines, sep = '\n')
 ```
 
+
+
+
+
+### plan
+
+write each of the 4 students reports, then write the tutorials
+
+
+01\_calibr\_data.Rmd
+
+- initializing
+- first look
+- reshaping
+- tidying
+
+02\_calibr\_regression.Rmd
+
+
+03\_calib\r_graph.Rmd
+
+
+04\_calibr\_report.Rmd
 
 
 

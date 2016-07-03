@@ -7,7 +7,7 @@ output: html_document
 
 ```{r setup, include=FALSE}
 library(knitr)
-# opts_knit$set(root.dir = '../')
+opts_knit$set(root.dir = '../')
 opts_chunk$set(echo = TRUE)
 ```
 
@@ -17,7 +17,7 @@ opts_chunk$set(echo = TRUE)
 ```{r}
 # read the tidy data
 library(readr)
-calibr_data <- read_csv("../data/01_calibr_data-tidying.csv")
+calibr_data <- read_csv("data/01_calibr_data-tidying.csv")
 ```
 
 Input force is the independent variable (*x*) and sensor readout is the dependent variable (*y*). The *lm()* function creates the regression results we need, e.g., 
