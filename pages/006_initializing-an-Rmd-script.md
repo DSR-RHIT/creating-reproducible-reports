@@ -21,10 +21,10 @@ How to use this tutorial
 
 In your workshop main directory, 
 
-- Launch your *rr-workshop.Rproj* 
-- File --> New File --> R Markdown 
-- Output Format -> HTML 
-- Save As --> using filename `01_calibr_data.Rmd` to the `scripts/` directory
+- Launch your project `rr-workshop.Rproj` 
+- File > New File > R Markdown 
+- Output Format > HTML 
+- Save As > to the `scripts/` directory with filename `01_calibr_data.Rmd`  
 
 The Rmd file is pre-populated with prose and some markdown syntax. Edit the meta-data header:
 
@@ -44,10 +44,11 @@ The Rmd file is pre-populated with prose and some markdown syntax. Edit the meta
 
 To *knit* the Rmd file and create the output document, 
 
-- Save the file 
-- ![](../resources/images/knit-html.png)<!-- -->, or use the the menu `File` then `Knit Document`, or the keyboard shortcut  <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>K</kbd>
+- ![](../resources/images/knit-html.png)<!-- -->
+- `File` > `Knit Document` 
+- <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>K</kbd> keyboard shortcut
 
-The output should appear in the RStudio *Viewer* pane. If you compare the pre-populated Rmd file with the rendered output document, you'll see example of commonly-needed syntax to:  
+The output should appear in the RStudio Viewer pane. If you compare the pre-populated Rmd file with the rendered output document, you'll see example of commonly-needed syntax to:  
 
 - write headings and paragraphs 
 - include executable chunks of R code 
@@ -101,14 +102,13 @@ To include R code in our Rmd file, we place them in a *code chunk*. A code chunk
 <code>```</code>
 </code></pre>
 
-and we write the R code in between.  The delimiters can be inserted by:
+and we write the R code in between.  Insert the delimiters using 
 
-
-- ![](../resources/images/insert-code.png) button
+- ![](../resources/images/insert-code.png) icon
 - <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>I</kbd> keyboard shortcut
-- Typing the delimiters directly ("back ticks", not single-quotes)
+- Type the delimiters directly ("back ticks", not single-quotes)
 
-The first code chunk we'll write comes at the top of the file, just after the YAML header. This code sets some options for *knitr* (the package that knits together our prose and R code results). 
+The first code chunk we'll write comes at the top of the file, just after the YAML header. This code sets some options for the *knitr* package 
 
 ![](../resources/images/code-icon.png)<!-- --> 
 
