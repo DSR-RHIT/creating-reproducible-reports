@@ -51,7 +51,7 @@ Learning R.
 
 - `download.file()` finds the file at the URL listed and saves it to your local machine 
 - the destination is a relative path with respect to your RStudio Project working directory. 
-- `mode = "wb"` permits us to download a PNG file oa any other non-textual or "binary" file 
+- `mode = "wb"` permits us to download a PNG file or any other non-textual or "binary" file 
 
 You should find the image saved to your `resources` directory. If not, navigate to [https://github.com/DSR-RHIT/creating-reproducible-reports/tree/gh-pages/resources/downloads](https://github.com/DSR-RHIT/creating-reproducible-reports/tree/gh-pages/resources/downloads) and follow the instructions to download the image file to your resources directory. 
 
@@ -161,6 +161,8 @@ str(data_received)
 Learning R: 
 
 - *str()* displays the structure of an R object 
+
+The data are stored in a *data frame*: a 2-dimensional rectangle of information in rows and columns. The different columns can be different types (numeric, character, logical, etc.), but they're all the same length. 
 
 ![](../resources/images/text-icon.png)<!-- --> 
 
