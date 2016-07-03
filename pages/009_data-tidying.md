@@ -20,7 +20,7 @@ How to use this tutorial
 - ![](../resources/images/knit-icon.png)<!-- --> *Knit* after each addition. 
 
 
-# add a column of observation numbers
+### add a column of observation numbers
 
 ![](../resources/images/code-icon.png)<!-- -->
 
@@ -57,7 +57,7 @@ Learning R:
 - *mutate()* creates a new column called `observ`  
 - The `:` operator creates a sequence 
 
-# simplify the cycle number
+### simplify the cycle number
 
 ![](../resources/images/text-icon.png)<!-- -->
 
@@ -122,7 +122,7 @@ tail(tidy_data)
 
     Spot checking with *head()* and *tail()*, I confirm that the new cycle column is as expected. 
 
-# final touches
+### final touches
 
 ![](../resources/images/text-icon.png)<!-- --> 
 

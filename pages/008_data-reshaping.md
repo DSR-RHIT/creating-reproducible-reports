@@ -19,7 +19,7 @@ How to use this tutorial
 - ![](../resources/images/code-icon.png)<!-- --> *add code*: insert a code chunk then transcribe the R code 
 - ![](../resources/images/knit-icon.png)<!-- --> *Knit* after each addition. 
 
-# preparing to reshape the data
+### preparing to reshape the data
 
 ![](../resources/images/code-icon.png)<!-- -->
 
@@ -111,7 +111,7 @@ Learning R:
 
 I did this confirmation step because I like to be certain that my subsetting criterion, `is_a_cycle_col`,  yields the result I expect. 
 
-# reshaping data from wide to long
+### reshaping data from wide to long
 
 We're ready to reshape  `data_received` from wide form to long form. Long form is necessary for effective analysis. 
 
@@ -227,7 +227,7 @@ Your output should look like this:
 ## 17       3 up      2.5 cycle_3      49.7
 ```
 
-# write to file 
+### write to file 
 
 ![](../resources/images/text-icon.png)<!-- -->
 

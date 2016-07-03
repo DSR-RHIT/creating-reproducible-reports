@@ -17,7 +17,7 @@ How to use this tutorial
 - ![](../resources/images/code-icon.png)<!-- --> *add code*: insert a code chunk then transcribe the R code 
 - ![](../resources/images/knit-icon.png)<!-- --> *Knit* after each addition. 
 
-# open a new R markdown script 
+### open a new R markdown script 
 
 In your workshop main directory, 
 
@@ -40,7 +40,7 @@ The Rmd file is pre-populated with prose and some markdown syntax. Edit the meta
 
 
 
-# render the script 
+### render the script 
 
 To *knit* the Rmd file and create the output document, 
 
@@ -58,7 +58,7 @@ The output should appear in the RStudio *Viewer* pane. If you compare the pre-po
 We'll see most of these Rmd structures again as we work through the tutorials. 
 
 
-# output to alternative formats 
+### output to alternative formats 
 
 If you have MS Word installed on your machine (or Libre/Open Office on Unix-alikes), you can render the Rmd to Word using the Knit pull-down menu. We'll use Word later for a client report. 
 
@@ -73,7 +73,7 @@ We'll use HTML output for most of our exploratory work---it renders quickly and 
 - ![](../resources/images/knit-icon.png)<!-- --> *HTML* 
 
 
-# cleanup  
+### cleanup  
 
 In the Rmd file, 
 
@@ -92,7 +92,7 @@ scripts\
 ```
 
 
-# initializing knitr
+### initializing knitr
 
 A *code chunk* is R code embedded in the Rmd script. 
 

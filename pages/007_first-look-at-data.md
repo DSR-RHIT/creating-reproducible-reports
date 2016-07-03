@@ -19,7 +19,7 @@ How to use this tutorial
 - ![](../resources/images/knit-icon.png)<!-- --> *Knit* after each addition. 
 
 
-# introduction  
+### introduction  
 
 Our first paragraph establishes the context for the analysis.
 
@@ -74,7 +74,7 @@ The output to the screen is shown below. You can edit the `dpi` setting to see t
 </div>
 
 
-# examine the data 
+### examine the data 
 
 ![](../resources/images/text-icon.png)<!-- --> 
 

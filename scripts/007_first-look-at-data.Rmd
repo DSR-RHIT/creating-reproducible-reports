@@ -28,7 +28,7 @@ How to use this tutorial
 - `r knit_icon` *Knit* after each addition. 
 
 
-# introduction  
+### introduction  
 
 Our first paragraph establishes the context for the analysis.
 
@@ -81,7 +81,7 @@ knitr::include_graphics("../resources/load-cell-setup-786x989px.png", dpi = 200)
 ```
 
 
-# examine the data 
+### examine the data 
 
 `r text_icon` 
 

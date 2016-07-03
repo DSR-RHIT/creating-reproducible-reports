@@ -10,7 +10,7 @@ tagline: tutorial
 
 
 
-# set up a directory tree
+### set up a directory tree
 
 - If you haven't installed R and RStudio, [please do](002_pre-hw.html). 
 - If you haven't created an RStudio project and the *.Renviron* file for the workshop, [please do](002_pre-hw.html). 
@@ -31,7 +31,7 @@ rr-workshop\
 
 
 
-# download prepared files 
+### download prepared files 
  
 Navigate to the [workshop downloads](https://github.com/DSR-RHIT/creating-reproducible-reports/tree/gh-pages/resources) folder. To download a file, 
 
@@ -50,7 +50,7 @@ resources\
   `-- load-cell-setup-786x989px.png
 ```
 
-# tutorial design
+### tutorial design
 
 You will be writing prose and code in the same document. The prose introduces the logic and rationale for a computation, the code performs the computation, and additional prose comments on the result. 
 

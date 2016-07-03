@@ -29,7 +29,7 @@ How to use this tutorial
 - `r knit_icon` *Knit* after each addition. 
 
 
-# add a column of observation numbers
+### add a column of observation numbers
 
 `r code_icon`
 
@@ -64,7 +64,7 @@ Learning R:
 - *mutate()* creates a new column called `observ`  
 - The `:` operator creates a sequence 
 
-# simplify the cycle number
+### simplify the cycle number
 
 `r text_icon`
 
@@ -125,7 +125,7 @@ tail(tidy_data)
 
     Spot checking with *head()* and *tail()*, I confirm that the new cycle column is as expected. 
 
-# final touches
+### final touches
 
 `r text_icon` 
 
