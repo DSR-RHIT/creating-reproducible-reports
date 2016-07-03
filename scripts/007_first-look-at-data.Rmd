@@ -61,7 +61,7 @@ Learning R.
 - the destination is a relative path with respect to your RStudio Project working directory. 
 - `mode = "wb"` permits us to download a PNG file oa any other non-textual or "binary" file 
 
-You should find the image saved to your `resources` directory. If not, navigate to https://github.com/DSR-RHIT/creating-reproducible-reports/tree/gh-pages/resources/downloads and follow the instructions to download the image file to your resources directory. 
+You should find the image saved to your `resources` directory. If not, navigate to [https://github.com/DSR-RHIT/creating-reproducible-reports/tree/gh-pages/resources/downloads](https://github.com/DSR-RHIT/creating-reproducible-reports/tree/gh-pages/resources/downloads) and follow the instructions to download the image file to your resources directory. 
 
 When finished, your resources directory should look like this. 
 
@@ -119,7 +119,7 @@ destination <- "data/007_wide-data.csv"
 download.file(url, destination)
 ```
 
-You should find the data saved to your `data` directory. If not, navigate to https://github.com/DSR-RHIT/creating-reproducible-reports/tree/gh-pages/resources/downloads and follow the instructions to download the data file to your data directory. 
+You should find the data saved to your `data` directory. If not, navigate to [https://github.com/DSR-RHIT/creating-reproducible-reports/tree/gh-pages/resources/downloads](https://github.com/DSR-RHIT/creating-reproducible-reports/tree/gh-pages/resources/downloads) and follow the instructions to download the data file to your data directory. 
 
 When finished, your  data directory should look like this. 
 
