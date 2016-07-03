@@ -13,16 +13,6 @@ title: "plan the student scripts"
 ### outline from the workshop index
 
 
-```
-- [getting organized](pages/005_getting-organized.html)
-- [initializing an Rmd script](pages/006_initializing-an-Rmd-script.html)
-- [first look at the data](pages/007_first-look-at-data.html)
-- [data reshaping](pages/008_data-reshaping.html)
-- [data tidying](pages/009_data-tidying.html)
-- linear regression 
-- calibration graph 
-- client report 
-```
 
 
 

@@ -15,13 +15,35 @@ opts_chunk$set(echo = TRUE)
 
 Calibration test data for an Omega LCL-005 (0--5 lb) load cell (a force sensor) has been provided by the test lab. The goal of this analysis is to determine the calibration equation and estimate the sensor accuracy.
 
-The lab sent an image of the test setup. A known weight (lb) is attached to the eye hook and the load cell bridge produces an output signal (mV).
+The lab has made available an image of the test setup on the Internet. 
+
+```{r}
+url <- "https://raw.githubusercontent.com/DSR-RHIT/creating-reproducible-reports/gh-pages/resources/load-cell-setup-786x989px.png"
+
+destination <- "resources/load-cell-setup-786x989px.png"
+
+download.file(url, destination, mode = "wb")
+```
+
+The image of the test setup shows that a known weight (lb) is attached to the eye hook and the load cell bridge produces an output signal (mV).
 
 ```{r, fig.cap = 'Figure 1. Load cell calibration test setup'}
-knitr::include_graphics("../resources/load-cell-setup-786x989px.png", dpi = 250)
+knitr::include_graphics("../resources/test.png", dpi = 250)
 ```
 
 # Examine the data 
+
+Download the data from the Internet repository. 
+
+```{r}
+url <- "https://raw.githubusercontent.com/DSR-RHIT/creating-reproducible-reports/gh-pages/data/007_wide-data.csv"
+
+destination <- "data/007_wide-data.csv"
+
+download.file(url, destination)
+```
+
+Read the data from our local copy into the R workspace. 
 
 ```{r}
 # read the data set as received

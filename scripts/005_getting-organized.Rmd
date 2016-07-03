@@ -39,28 +39,6 @@ rr-workshop\
   `-- .Renviron
 ```
 
-
-
-
-### download prepared files 
- 
-Navigate to the [workshop downloads](https://github.com/DSR-RHIT/creating-reproducible-reports/tree/gh-pages/resources) folder. To download a file, 
-
-- Click the file name 
-- Right-click Raw --> Save link as... 
-- Save the CSV files to the *data* directory 
-- Save the PNG file to the *resources* directory 
-
-The data and resources directories should look like this. 
-
-```
-data\
-  `-- 007_wide-data.csv
-  
-resources\
-  `-- load-cell-setup-786x989px.png
-```
-
 ### tutorial design
 
 You will be writing prose and code in the same document. The prose introduces the logic and rationale for a computation, the code performs the computation, and additional prose comments on the result. 

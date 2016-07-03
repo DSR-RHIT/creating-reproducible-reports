@@ -36,14 +36,43 @@ Our first paragraph establishes the context for the analysis.
     # Introduction
 
     Calibration test data for an Omega LCL-005 (0--5 lb) load cell (a force sensor) has been provided by the test lab. The goal of this analysis is to determine the calibration equation and estimate the sensor accuracy. 
+    
+    The lab has made available an image of the test setup on the Internet. 
 
 Learning R Markdown:
 
 - In Rmd, the single hash tag `#` denotes a level-1 heading. 
 
-`r text_icon` 
+The following code chunk downloads the image from the Internet to your local project resources directory. 
 
-    The lab sent an image of the test setup. A known weight (lb) is attached to the eye hook and the load cell bridge produces an output signal (mV).
+`r code_icon` 
+
+```{r}
+url <- "https://raw.githubusercontent.com/DSR-RHIT/creating-reproducible-reports/gh-pages/resources/load-cell-setup-786x989px.png"
+
+destination <- "resources/load-cell-setup-786x989px.png"
+
+download.file(url, destination, mode = "wb")
+```
+
+Learning R.
+
+- `download.file()` finds the file at the URL listed and saves it to your local machine 
+- the destination is a relative path with respect to your RStudio Project working directory. 
+- `mode = "wb"` permits us to download a PNG file oa any other non-textual or "binary" file 
+
+You should find the image saved to your `resources` directory. If not, navigate to https://github.com/DSR-RHIT/creating-reproducible-reports/tree/gh-pages/resources/downloads and follow the instructions to download the image file to your resources directory. 
+
+When finished, your resources directory should look like this. 
+
+```
+resources\
+  `-- load-cell-setup-786x989px.png
+```
+
+`r text_icon`
+
+    The image of the test setup shows that a known weight (lb) is attached to the eye hook and the load cell bridge produces an output signal (mV).
 
 `r code_icon`
 
@@ -54,16 +83,16 @@ knitr::include_graphics("../resources/load-cell-setup-786x989px.png", dpi = 250)
 Learning R:
 
 - `::` tells R to run the *knitr* package  *include_graphics()* function  
-- *include_graphics()* imports the image 
+- *include_graphics()* imports the image from our local directory to the Rmd document 
 - The file path in quotes starts with `../` to move one directory level up (the project-level directory), down to `resources/`, and then to the file name.
 - `dpi` scales the size of the image, where image\_width = width\_pixels / dpi. 
 - Inside an R function, the equals sign `=`  is used to assign values to arguments. 
 
-To add a figure caption, use the `fig.cap` option inside the brackets that start the code chunk, for example, 
+To add a figure caption, use the `fig.cap` option inside the brackets that start the code chunk:
 
     {r, fig.cap = 'Figure 1. Load cell calibration test setup'}
 
-- R is agnostic when it comes to quotation marks. Single quotes and double quotes are treated the same. 
+- Single quotes and double quotes are treated the same. 
 - Again, you see that an equals sign `=`  is used to assign values to arguments. 
 
 The output to the screen is shown below. You can edit the `dpi` setting to see the effect of changing the scaling. 
@@ -77,6 +106,31 @@ knitr::include_graphics("../resources/load-cell-setup-786x989px.png", dpi = 200)
 `r text_icon` 
 
     # Examine the data 
+    
+    Download the data from the Internet repository. 
+
+`r code_icon` 
+
+```{r}
+url <- "https://raw.githubusercontent.com/DSR-RHIT/creating-reproducible-reports/gh-pages/data/007_wide-data.csv"
+
+destination <- "data/007_wide-data.csv"
+
+download.file(url, destination)
+```
+
+You should find the data saved to your `data` directory. If not, navigate to https://github.com/DSR-RHIT/creating-reproducible-reports/tree/gh-pages/resources/downloads and follow the instructions to download the data file to your data directory. 
+
+When finished, your  data directory should look like this. 
+
+```
+data\
+  `-- 007_wide-data.csv
+```
+
+`r text_icon` 
+
+    Read the data from our local copy into the R workspace. 
 
 `r code_icon` 
  
