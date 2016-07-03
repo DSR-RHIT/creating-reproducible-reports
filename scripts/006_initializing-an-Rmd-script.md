@@ -1,20 +1,8 @@
----
-title: "initializing an Rmd script"
-output:
-  html_document:
-    keep_md: yes
----
+# initializing an Rmd script
 
-```{r, setup, include = FALSE}
-library(knitr)
-opts_knit$set(root.dir = "../")
-opts_chunk$set(echo = TRUE, results = 'hide', message = FALSE, warning = FALSE)
-```
 
-```{r, echo = FALSE}
-# my tutorial functions for text_icon and code_icon
-source("scripts/helper_02_icons.R")
-```
+
+
 
 Packages used in this tutorial 
 
@@ -22,9 +10,9 @@ Packages used in this tutorial
 
 How to use this tutorial 
 
-- `r text_icon` *add text*: type the prose verbatim into the Rmd file 
-- `r code_icon` *add code*: insert a code chunk then transcribe the R code 
-- `r knit_icon` *Knit* after each addition. 
+- ![](../resources/images/text-icon.png)<!-- --> *add text*: type the prose verbatim into the Rmd file 
+- ![](../resources/images/code-icon.png)<!-- --> *add code*: insert a code chunk then transcribe the R code 
+- ![](../resources/images/knit-icon.png)<!-- --> *Knit* after each addition. 
 
 ### open a new R markdown script 
 
@@ -37,7 +25,7 @@ In your workshop main directory,
 
 The Rmd file is pre-populated with prose and some markdown syntax. Edit the meta-data header:
 
-`r text_icon` (Editing the pre-populated YAML header.)
+![](../resources/images/text-icon.png)<!-- --> (Editing the pre-populated YAML header.)
 
     ---
     title: "Load-cell calibration --- data tidying"
@@ -54,7 +42,7 @@ The Rmd file is pre-populated with prose and some markdown syntax. Edit the meta
 To *knit* the Rmd file and create the output document, 
 
 - Save the file 
-- `r knit_html`, or use the the menu `File` then `Knit Document`, or the keyboard shortcut  <kbd>`Ctrl`</kbd>+<kbd>`Shift`</kbd>+<kbd>`K`</kbd>
+- ![](../resources/images/knit-html.png)<!-- -->, or use the the menu `File` then `Knit Document`, or the keyboard shortcut  <kbd>`Ctrl`</kbd>+<kbd>`Shift`</kbd>+<kbd>`K`</kbd>
 
 The output should appear in the RStudio *Viewer* pane. If you compare the pre-populated Rmd file with the rendered output document, you'll see example of commonly-needed syntax to:  
 
@@ -71,15 +59,15 @@ We'll see most of these Rmd structures again as we work through the tutorials.
 
 If you have MS Word installed on your machine (or Libre/Open Office on Unix-alikes), you can render the Rmd to Word using the Knit pull-down menu. We'll use Word later for a client report. 
 
-- `r knit_word`
+- ![](../resources/images/knit-word.png)<!-- -->
 
 If you have TeX installed on your machine (MiKTeX on Windows, MacTeX 2013+ on OS X, TeX Live 2013+ on Unix-alikes), you can render the Rmd to PDF. (LaTeX users: you can use the Rnw file format to embed R code in LaTeX files.)
 
-- `r knit_pdf`
+- ![](../resources/images/knit-pdf.png)<!-- -->
 
 We'll use HTML output for most of our exploratory work---it renders quickly and we can ignore pagination. So for now: 
 
-- `r knit_html`
+- ![](../resources/images/knit-html.png)<!-- -->
 
 
 ### cleanup  
@@ -118,7 +106,7 @@ We have three methods for inserting code chunks:
 
 The first code chunk we'll write comes at the top of the file, just after the YAML header. This code sets some options for *knitr* (the package that knits together our prose and R code results). 
 
-`r code_icon` 
+![](../resources/images/code-icon.png)<!-- --> 
 
     library(knitr)
     opts_knit$set(root.dir = '../')
