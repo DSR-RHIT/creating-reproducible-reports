@@ -69,8 +69,8 @@ head(data_received, n = 3L)
 ```
 
 ---
-Back [main page](pages/index.html)<br>
-Next [initializing an Rmd script](pages/006_initializing-an-Rmd-script.html)
+Back [main page](../index.html)<br>
+Next [initializing an Rmd script](006_initializing-an-Rmd-script.html)
 
 
 

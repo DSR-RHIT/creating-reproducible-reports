@@ -138,8 +138,8 @@ Save and Knit.
 
 
 ---
-Back [getting organized](pages/005_getting-organized.html)<br>
-Next [first look at the data](pages/007_first-look-at-data.html)
+Back [getting organized](005_getting-organized.html)<br>
+Next [first look at the data](007_first-look-at-data.html)
 
 
 

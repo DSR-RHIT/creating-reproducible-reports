@@ -60,8 +60,8 @@ I occasionally display a bit of code output to compare to your code output. Outp
 ```
 
 ---
-Back [main page](pages/index.html)<br>
-Next [initializing an Rmd script](pages/006_initializing-an-Rmd-script.html)
+Back [main page](../index.html)<br>
+Next [initializing an Rmd script](006_initializing-an-Rmd-script.html)
 
 
 

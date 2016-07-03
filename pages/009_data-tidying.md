@@ -163,6 +163,6 @@ Learning R:
 In the next step, we perform the calibration analysis.  
 
 ---
-Back [data reshaping](pages/008_data-reshaping.html)<br>
-Next [linear regression](pagses/010_linear-regression.html)
+Back [data reshaping](008_data-reshaping.html)<br>
+Next [linear regression](010_linear-regression.html)
 
