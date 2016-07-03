@@ -46,7 +46,7 @@ To *knit* the Rmd file and create the output document,
 
 - ![](../resources/images/knit-html.png)<!-- -->
 - `File` > `Knit Document` 
-- <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>K</kbd> keyboard shortcut
+- `Ctrl+Shift+K` keyboard shortcut
 
 The output should appear in the RStudio Viewer pane. If you compare the pre-populated Rmd file with the rendered output document, you'll see example of commonly-needed syntax to:  
 
