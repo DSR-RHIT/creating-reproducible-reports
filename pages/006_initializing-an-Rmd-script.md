@@ -1,26 +1,23 @@
 ---
+layout: page
 title: initializing an Rmd script
-output:
-  html_document:
-    keep_md: yes
 ---
 
-[//]: create an R Markdown script
-[//]: render the pre-populated file
-[//]: cleanup the directory 
-[//]: add the first code chunk to initialize knitr
-
-```{r include = FALSE}
-# settings for my document
-library(knitr)
-opts_knit$set(root.dir = '../')
-
-# set to 'hide' for the gh-pages. set to 'hold' while working the details
-opts_chunk$set(echo = TRUE, results = 'hide')
-```
 
 
-### open a new R markdown script 
+
+
+Packages used in this tutorial 
+
+- knitr
+
+How to use this tutorial 
+
+- ![](../resources/images/text-icon.png)<!-- --> *add text*: type the prose verbatim into the Rmd file 
+- ![](../resources/images/code-icon.png)<!-- --> *add code*: insert a code chunk then transcribe the R code 
+- ![](../resources/images/knit-icon.png)<!-- --> *Knit* after each addition. 
+
+# open a new R markdown script 
 
 In your workshop main directory, 
 
@@ -31,23 +28,24 @@ In your workshop main directory,
 
 The Rmd file is pre-populated with prose and some markdown syntax. Edit the meta-data header:
 
-```
----
-title: "Load-cell calibration --- data tidying"
-author: "your name"
-date: "2016-08-24"
-output: html_document
----
-```
+![](../resources/images/text-icon.png)<!-- --> (Editing the pre-populated YAML header.)
+
+    ---
+    title: "Load-cell calibration --- data tidying"
+    author: "your name"
+    date: "2016-08-24"
+    output: html_document
+    ---
 
 
 
-### render the script 
+
+# render the script 
 
 To *knit* the Rmd file and create the output document, 
 
 - Save the file 
-- ![knit html icon](../resources/images/knit-html-icon.png)  or File --> Knit Document
+- ![](../resources/images/knit-icon.png)<!-- --> *Knit*, or use File --> Knit Document
 
 The output should appear in the RStudio *Viewer* pane. If you compare the pre-populated Rmd file with the rendered output document, you'll see example of commonly-needed syntax to:  
 
@@ -60,22 +58,22 @@ The output should appear in the RStudio *Viewer* pane. If you compare the pre-po
 We'll see most of these Rmd structures again as we work through the tutorials. 
 
 
-### output to alternative formats 
+# output to alternative formats 
 
 If you have MS Word installed on your machine (or Libre/Open Office on Unix-alikes), you can render the Rmd to Word using the Knit pull-down menu. We'll use Word later for a client report. 
 
-- ![knit html icon](../resources/images/knit-word-icon.png) 
+- ![](../resources/images/knit-icon.png)<!-- --> *Word* 
 
-If you have TeX installed on your machine (MiKTeX on Windows, MacTeX 2013+ on OS X, TeX Live 2013+ on Unix-alikes), you can render the Rmd to PDF. (LaTeX users: using the Rnw file format you can embed R code in LaTeX files in much the same way we embed R code in Rmd files.)
+If you have TeX installed on your machine (MiKTeX on Windows, MacTeX 2013+ on OS X, TeX Live 2013+ on Unix-alikes), you can render the Rmd to PDF. (LaTeX users: you can use the Rnw file format to embed R code in LaTeX files.)
 
-- ![knit html icon](../resources/images/knit-pdf-icon.png) 
+- ![](../resources/images/knit-icon.png)<!-- --> *PDF* 
 
 We'll use HTML output for most of our exploratory work---it renders quickly and we can ignore pagination. So for now: 
 
-- ![knit html icon](../resources/images/knit-html-icon.png) 
+- ![](../resources/images/knit-icon.png)<!-- --> *HTML* 
 
 
-### cleanup  
+# cleanup  
 
 In the Rmd file, 
 
@@ -94,14 +92,16 @@ scripts\
 ```
 
 
-### initializing knitr
+# initializing knitr
 
-A *code chunk* is R code embedded in the Rmd script. The lines of R code are preceded by
+A *code chunk* is R code embedded in the Rmd script. 
 
+The code chunk begins with:
 <pre><code>```{r}</code></pre>
 
-then you write the R code, and end with
+then you write some R code
 
+and the chunk ends with: 
 <pre><code>```</code></pre>
 
 We have three methods for inserting code chunks: 
@@ -112,21 +112,32 @@ We have three methods for inserting code chunks:
 
 The first code chunk we'll write comes at the top of the file, just after the YAML header. This code sets some options for *knitr* (the package that knits together our prose and R code results). 
 
-Copy this code chunk verbatiom into your Rmd script. 
+![](../resources/images/code-icon.png)<!-- --> 
 
-<pre class="r"><code>```{r setup, include = FALSE}
-library(knitr)
-opts_knit$set(root.dir = '../')
-opts_chunk$set(echo = TRUE)
-<code>```</code>
-</code></pre>
+    library(knitr)
+    opts_knit$set(root.dir = '../')
+    opts_chunk$set(echo = TRUE)
 
-- `setup` in  the code chunk header is a label. Labels are optional, but if used, every label must be unique.
-- `include = FALSE` in the code chunk header suppresses printing for this chunk. The code is still run, but nothing is printed to the output document.
+Learning R and knitr:
+
 - The *library()* function loads the *knitr* package
 - `root-dir` sets the working directory for *knitr* to match the working directory for the RStudio project.  
-- `echo = TRUE` applies to all subsequent code chunks in the script,  printing your R code verbatim to the output document---useful during exploratory computing.
-- Save and Knit. 
+- `echo = TRUE` applies to all subsequent code chunks in the script,  printing your R code verbatim to the output document---useful during exploratory computing. 
+
+Edit the code chunk header as follows:
+
+    {r setup, include = FALSE}
+
+- `setup` is a label. Labels are optional, but if used, every label must be unique.
+- `include = FALSE` suppresses printing for this chunk. The code runs, but no print out.
+
+
+Save and Knit. 
+
+
+
+
+
 
 
 --- 

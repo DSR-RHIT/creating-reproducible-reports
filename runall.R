@@ -12,7 +12,7 @@ library(dplyr)
 # render scripts.Rmd to execute their R code
 library(rmarkdown)
 Rmd_scripts <- list.files(path = "scripts"
-													, pattern = "*.Rmd"
+													, pattern = "\\.Rmd$"
 													, full.names = TRUE
 													)
 
@@ -32,7 +32,6 @@ sapply(Rmd_scripts, function(x) render(x))
 source('scripts/helper-01_create-gh-pages.R')
 
 # plyr::failwith() allows completion even if an error occurs
-library(plyr)
 sapply(Rmd_scripts, failwith(NULL, Rmd_to_gh_pages))
 
 
@@ -70,10 +69,11 @@ file.copy(from = "data/007_wide-data.csv"
 
 # ----------------------------------------------------
 # delete byproduct files
-unlink("./*.html")
+# unlink("./*.html")
 unlink("pages/*.html")
 unlink("scripts/*.html")
 unlink("scripts/*.md")
+unlink(".Rhistory")
 
 
 

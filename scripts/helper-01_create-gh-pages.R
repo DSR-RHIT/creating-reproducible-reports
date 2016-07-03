@@ -4,9 +4,9 @@
 
 Rmd_to_gh_pages <- function(Rmd_file) {
 	
-	# create md file name
+	# replace Rmd only when it is at the end of the file name
 	library(stringr)
-	md_file <- str_replace(Rmd_file, '.Rmd', '.md')
+	md_file <- str_replace(Rmd_file, 'Rmd$', 'md')
 	
 	# read both files
 	library(readr)

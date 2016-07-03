@@ -29,6 +29,8 @@ Windows users should login as an administrator to download and install R and RSt
 
 ### mac OS
 
+According to my Mac OS friends, the most important instruction is to download the software that matches your specific OS. 
+
 - [Download R for (Mac) OS X](https://cran.r-project.org/) from the Comprehensive R Archive Network (CRAN). 
 - [Download RStudio](http://www.rstudio.com/products/rstudio/download/) after first installing R 
 - [Video instructions](https://www.youtube.com/watch?v=Ywj6yNfc5nM) for installing R and RStudio  

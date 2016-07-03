@@ -11,7 +11,7 @@ output:
 ```{r include = FALSE}
 # settings for my document
 library(knitr)
-# opts_knit$set(root.dir = '../')
+opts_knit$set(root.dir = '../')
 
 # results = 'hide' for the gh-pages; 'hold' while working the details
 opts_chunk$set(echo = TRUE)
@@ -37,7 +37,7 @@ write each of the 4 students reports, then write the tutorials
 
 ```{r comment = '', echo = FALSE}
 library(readr)
-index_lines  <- read_lines('index.Rmd')
+index_lines  <- read_lines('scripts/index.Rmd')
 hash_tags_at <- grep('###', index_lines)
 tutorials    <- grep('tutor', index_lines[hash_tags_at])
 
