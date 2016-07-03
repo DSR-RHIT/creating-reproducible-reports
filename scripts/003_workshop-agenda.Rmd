@@ -20,10 +20,7 @@ library(dplyr)
 getwd()
 df <- read_excel('data/2016-06-raw/agenda.xlsx') %>% 
 	mutate(space1 = NA, space2 = NA) %>%
-  select(time, space1, activity, space2, format) 
-
-# %>%
-# 	rename(' ' = space1, ' ' = space2)
+  select(time, ' ' = space1, activity, ' ' = space2, format) 
 
 sel1 <- df$activity == 'day 1'
 sel2 <- df$activity == 'day 2'
