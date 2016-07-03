@@ -1,9 +1,8 @@
 ---
-title:  pre-workshop homework 
-tagline: 
-output: 
+title: "pre-workshop homework"
+output:
   html_document:
-    keep_md: TRUE
+    keep_md: yes
 ---
 
 [\\]: this is an Rmd comment

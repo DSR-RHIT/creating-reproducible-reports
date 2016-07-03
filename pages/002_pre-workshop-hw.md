@@ -1,7 +1,6 @@
 ---
 layout: page
-title:  pre-workshop homework 
-tagline: 
+title: "pre-workshop homework"
 ---
 
 [\\]: this is an Rmd comment

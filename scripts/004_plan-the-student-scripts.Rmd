@@ -1,8 +1,8 @@
 ---
-title: plan the student scripts
-output: 
+title: "plan the student scripts"
+output:
   html_document:
-    keep_md: FALSE
+    keep_md: yes
 ---
 
 [\\]: this script does not have to be a gh-page, that's why keep_md is FALSE

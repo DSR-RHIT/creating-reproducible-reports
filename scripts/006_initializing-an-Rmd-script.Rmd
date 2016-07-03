@@ -1,5 +1,5 @@
 ---
-title: initializing an Rmd script
+title: "initializing an Rmd script"
 output:
   html_document:
     keep_md: yes

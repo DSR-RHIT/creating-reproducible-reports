@@ -1,7 +1,6 @@
 ---
 layout: page
-title:  getting organized
-tagline: tutorial
+title: "getting organized"
 ---
 
 [\\]: this is an Rmd comment
@@ -62,7 +61,7 @@ Because we are blending prose with computing, you are learning syntax for two la
 To distinguish prose (written in R Markdown) from code (written in R), I use the following icons. 
 
 - ![](../resources/images/text-icon.png)<!-- --> When you see this icon, you will be adding new text to the Rmd script. Type the prose verbatim into the Rmd file.
-- ![](../resources/images/code-icon.png)<!-- --> When you see this icon, you will first insert a *code chunk* (defined below) into the Rmd document, then transcribe the R code into the chunk. 
+- ![](../resources/images/code-icon.png)<!-- --> When you see this icon, you will first insert a *code chunk*  into the Rmd document, then transcribe the R code into the chunk. 
 - ![](../resources/images/knit-icon.png)<!-- --> *Knit* the document after every change to check that your script is behaving as you expect.   
 
 At the beginning of a tutorial, I list the packages used. If you have already installed a package (like you did for the *readr* package earlier, using RStudio --> Packages --> Install) then you do not have to install it again. 

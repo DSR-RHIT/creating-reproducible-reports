@@ -1,7 +1,6 @@
 ---
 layout: page
-title: learning objectives 
-tagline: 
+title: "learning objectives"
 ---
 
 [\\]: this is an Rmd comment

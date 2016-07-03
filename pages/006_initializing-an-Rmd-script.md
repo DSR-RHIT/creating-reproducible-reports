@@ -1,6 +1,6 @@
 ---
 layout: page
-title: initializing an Rmd script
+title: "initializing an Rmd script"
 ---
 
 

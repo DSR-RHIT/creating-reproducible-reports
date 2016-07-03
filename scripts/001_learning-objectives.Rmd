@@ -1,9 +1,8 @@
 ---
-title: learning objectives 
-tagline: 
-output: 
+title: "learning objectives"
+output:
   html_document:
-    keep_md: TRUE
+    keep_md: yes
 ---
 
 [\\]: this is an Rmd comment

@@ -1,7 +1,6 @@
 ---
 layout: page
 title: workshop agenda
-tagline: 
 ---
 
 ### Session 1
