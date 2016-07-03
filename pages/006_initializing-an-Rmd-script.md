@@ -11,7 +11,6 @@ Packages used in this tutorial
 
 - knitr
 
-
 How to use this tutorial 
 
 - ![](../resources/images/text-icon.png)<!-- --> *add text*: type the prose verbatim into the Rmd file 
@@ -46,7 +45,7 @@ The Rmd file is pre-populated with prose and some markdown syntax. Edit the meta
 To *knit* the Rmd file and create the output document, 
 
 - Save the file 
-- ![](../resources/images/knit-html.png)<!-- -->, or use the the menu `File` then `Knit Document`, or the keyboard shortcut  <kbd>`Ctrl`</kbd>+<kbd>`Shift`</kbd>+<kbd>`K`</kbd>
+- ![](../resources/images/knit-html.png)<!-- -->, or use the the menu `File` then `Knit Document`, or the keyboard shortcut  <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>K</kbd>
 
 The output should appear in the RStudio *Viewer* pane. If you compare the pre-populated Rmd file with the rendered output document, you'll see example of commonly-needed syntax to:  
 
@@ -95,18 +94,19 @@ scripts\
 
 ### initializing knitr
 
-A *code chunk* is R code embedded in the Rmd script. A code chunk opens with the head ````{r}` and closes with
-```` `.  
+To include R code in our Rmd file, we place them in a *code chunk*. A code chunk opens and closes with 
+
+<pre><code>```{r}
+
+<code>```</code>
+</code></pre>
+
+and we write the R code in between.  The delimiters can be inserted by:
 
 
-
-
-
-We have three methods for inserting code chunks: 
-
-- You can type the delimiters directly (the three tick marks are "back ticks", not single-quotes)
-- From the RStudio menu bar, Code --> Insert Chunk 
-- Click the button ![](../resources/images/insert-code-chunk-icon.png)
+- ![](../resources/images/insert-code.png) button
+- <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>I</kbd> keyboard shortcut
+- Typing the delimiters directly ("back ticks", not single-quotes)
 
 The first code chunk we'll write comes at the top of the file, just after the YAML header. This code sets some options for *knitr* (the package that knits together our prose and R code results). 
 
