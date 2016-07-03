@@ -21,14 +21,7 @@ How to use this tutorial
 
 ### preparing to reshape the data
 
-![](../resources/images/code-icon.png)<!-- -->
 
-
-```r
-# read the data set as received
-library(readr)
-data_received <- read_csv('data/007_wide-data.csv')
-```
 
 ![](../resources/images/text-icon.png)<!-- --> 
 
@@ -89,27 +82,7 @@ Learning R:
 
 - Writing a variable on a line of its own, e.g., `is_a_cycle_col`, prints its value(s)
 - This output tells me that columns 3, 4, 5 have "cycle" in their columns names. 
-- `is_a_cycle_col` is a vector of integers. The number in brackets in the output `## [1]` is the index of the first element, 3, printed in the row of output. 
-
-![](../resources/images/code-icon.png)<!-- -->
-
-
-```r
-library(dplyr)
-# confirm these indices point to the columns I want
-cycles_subset <- data_received %>%
-	select(is_a_cycle_col)
-
-# examine
-colnames(cycles_subset)
-```
-
-Learning R:
- 
-- *select()* keeps column numbers 3, 4, 5
-- *colnames()* yields the column names for inspection
-
-I did this confirmation step because I like to be certain that my subsetting criterion, `is_a_cycle_col`,  yields the result I expect. 
+- `is_a_cycle_col` is a vector of integers. The number in brackets in the output `## [1]` is the index of the first element. 
 
 ### reshaping data from wide to long
 
@@ -123,7 +96,7 @@ In this work, the cycle numbers (the original column headings) are  gathered in 
 
 The new data frame has as many rows as there are observations in the original table. 
 
-The columns "not gathered" remain, e.g., test_point, input_lb, with their entries copied into the new rows, maintaining the relationships described in the original data set.  
+The columns "not gathered" remain, e.g., test_point, input_lb, with their entries copied into the new rows, maintaining the relationships described in the original data set.
 
 ![](../resources/images/code-icon.png)<!-- -->
 
@@ -177,6 +150,7 @@ To check your work, I've included the output of *summary()*
 
 
 ```r
+library(dplyr)
 long_data <- long_data %>%
 	filter(! output_mV %in% NA)
 str(long_data)

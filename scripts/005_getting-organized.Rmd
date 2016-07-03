@@ -18,7 +18,7 @@ opts_chunk$set(echo = TRUE, results = 'hide')
 
 ```{r, echo = FALSE}
 # my tutorial functions for text_icon and code_icon
-source("scripts/helper-02_instruction-icons.R")
+source("scripts/helper_02_icons.R")
 ```
 
 ### set up a directory tree

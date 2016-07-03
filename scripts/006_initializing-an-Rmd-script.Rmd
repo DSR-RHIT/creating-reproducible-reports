@@ -20,6 +20,7 @@ Packages used in this tutorial
 
 - knitr
 
+
 How to use this tutorial 
 
 - `r text_icon` *add text*: type the prose verbatim into the Rmd file 

@@ -13,7 +13,7 @@ opts_chunk$set(echo = TRUE, results = 'hide', message = FALSE, warning = FALSE)
 
 ```{r, echo = FALSE}
 # my tutorial functions for text_icon and code_icon
-source("scripts/helper-02_instruction-icons.R")
+source("scripts/helper_02_icons.R")
 ```
 
 Packages used in this tutorial 
@@ -30,9 +30,7 @@ How to use this tutorial
 
 ### preparing to reshape the data
 
-`r code_icon`
-
-```{r}
+```{r, echo = FALSE}
 # read the data set as received
 library(readr)
 data_received <- read_csv('data/007_wide-data.csv')
@@ -91,26 +89,7 @@ Learning R:
 
 - Writing a variable on a line of its own, e.g., `is_a_cycle_col`, prints its value(s)
 - This output tells me that columns `r is_a_cycle_col` have "cycle" in their columns names. 
-- `is_a_cycle_col` is a vector of integers. The number in brackets in the output `## [1]` is the index of the first element, `r is_a_cycle_col[1]`, printed in the row of output. 
-
-`r code_icon`
-
-```{r}
-library(dplyr)
-# confirm these indices point to the columns I want
-cycles_subset <- data_received %>%
-	select(is_a_cycle_col)
-
-# examine
-colnames(cycles_subset)
-```
-
-Learning R:
- 
-- *select()* keeps column numbers `r is_a_cycle_col`
-- *colnames()* yields the column names for inspection
-
-I did this confirmation step because I like to be certain that my subsetting criterion, `is_a_cycle_col`,  yields the result I expect. 
+- `is_a_cycle_col` is a vector of integers. The number in brackets in the output `## [1]` is the index of the first element. 
 
 ### reshaping data from wide to long
 
@@ -124,7 +103,7 @@ In this work, the cycle numbers (the original column headings) are  gathered in 
 
 The new data frame has as many rows as there are observations in the original table. 
 
-The columns "not gathered" remain, e.g., `r all_col_names[-is_a_cycle_col]`, with their entries copied into the new rows, maintaining the relationships described in the original data set.  
+The columns "not gathered" remain, e.g., `r all_col_names[-is_a_cycle_col]`, with their entries copied into the new rows, maintaining the relationships described in the original data set.
 
 `r code_icon`
 
@@ -167,6 +146,7 @@ summary(long_data)
 `r code_icon`
 
 ```{r, warning = FALSE, message = FALSE, results = 'hide'}
+library(dplyr)
 long_data <- long_data %>%
 	filter(! output_mV %in% NA)
 str(long_data)
