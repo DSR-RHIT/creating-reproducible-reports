@@ -53,9 +53,9 @@ The Rmd file is pre-populated with prose and some markdown syntax. Edit the meta
 
 To *knit* the Rmd file and create the output document, 
 
-- `r knit_html`
-- `File` > `Knit Document` 
-- `Ctrl+Shift+K` keyboard shortcut
+- `r knit_html` icon
+- `File` > `Knit Document` menu
+- `Ctrl + Shift + K` keyboard shortcut
 
 The output should appear in the RStudio Viewer pane. If you compare the pre-populated Rmd file with the rendered output document, you'll see example of commonly-needed syntax to:  
 
@@ -114,7 +114,7 @@ To include R code in our Rmd file, we place them in a *code chunk*. A code chunk
 and we write the R code in between.  Insert the delimiters using 
 
 - ![](../resources/images/insert-code.png) icon
-- <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>I</kbd> keyboard shortcut
+- `Ctrl + Alt + I` keyboard shortcut
 - Type the delimiters directly ("back ticks", not single-quotes)
 
 The first code chunk we'll write comes at the top of the file, just after the YAML header. This code sets some options for the *knitr* package 
