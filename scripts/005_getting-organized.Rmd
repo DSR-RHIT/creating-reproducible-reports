@@ -68,6 +68,10 @@ data_received <- read_csv('data/007_wide-data.csv')
 head(data_received, n = 3L)
 ```
 
+---
+Back [main page](pages/index.html)<br>
+Next [initializing an Rmd script](pages/006_initializing-an-Rmd-script.html)
+
 
 
 

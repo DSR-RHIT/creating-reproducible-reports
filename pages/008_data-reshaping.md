@@ -7,6 +7,8 @@ title: "reshaping data"
 
 
 
+Continue adding text and code to `01_calibr_data.Rmd` file. 
+
 Packages used in this tutorial 
 
 - readr
@@ -219,4 +221,6 @@ In the next step, we add some final touches to make the data tidy, ready for ana
 
 
 ---
+Back [first look at the data](pages/007_first-look-at-data.html)<br>
+Next [data tidying](pages/009_data-tidying.html)
 

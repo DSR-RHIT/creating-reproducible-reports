@@ -137,10 +137,10 @@ Save and Knit.
 
 
 
+---
+Back [getting organized](pages/005_getting-organized.html)<br>
+Next [first look at the data](pages/007_first-look-at-data.html)
 
---- 
-Back<br>
-Next
 
 
 

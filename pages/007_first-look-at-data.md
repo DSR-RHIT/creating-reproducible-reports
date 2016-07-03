@@ -7,6 +7,8 @@ title: "first look at the data"
 
 
 
+Continue adding text and code to `01_calibr_data.Rmd` file. 
+
 Packages used in this tutorial 
 
 - readr 
@@ -219,3 +221,6 @@ Loading the `dplyr` package produces several message in our output. To suppress 
     Now that we know something about this data set, we're ready to begin preparing the data for analysis. 
 
 
+---
+Back [initializing an Rmd script](pages/006_initializing-an-Rmd-script.html)<br>
+Next [data reshaping](pages/008_data-reshaping.html)

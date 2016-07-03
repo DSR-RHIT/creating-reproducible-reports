@@ -7,6 +7,8 @@ title: "data tidying"
 
 
 
+Continue adding text and code to `01_calibr_data.Rmd` file. 
+
 Packages used in this tutorial  
 
 - dplyr 
@@ -161,4 +163,6 @@ Learning R:
 In the next step, we perform the calibration analysis.  
 
 ---
+Back [data reshaping](pages/008_data-reshaping.html)<br>
+Next [linear regression](pagses/010_linear-regression.html)
 

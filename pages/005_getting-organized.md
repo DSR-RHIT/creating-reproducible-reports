@@ -59,6 +59,10 @@ I occasionally display a bit of code output to compare to your code output. Outp
 ## 3       4 up      3.5    70.4    70.0      NA
 ```
 
+---
+Back [main page](pages/index.html)<br>
+Next [initializing an Rmd script](pages/006_initializing-an-Rmd-script.html)
+
 
 
 
