@@ -155,12 +155,9 @@ Some note on coding practice for readability
 
 
 ```r
+# display the structure of the R object
 str(data_received)
 ```
-
-Learning R: 
-
-- *str()* displays the structure of an R object 
 
 The data are stored in a *data frame*: a 2-dimensional rectangle of information in rows and columns. The different columns can be different types (numeric, character, logical, etc.), but they're all the same length. 
 
