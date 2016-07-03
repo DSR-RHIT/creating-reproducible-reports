@@ -7,6 +7,8 @@ code_icon <- include_graphics(c("../resources/images/code-icon.png"))
 
 knit_icon <- include_graphics(c("../resources/images/knit-icon.png"))
 
-text_knit_icon <- include_graphics(c("../resources/images/text-icon.png", "../resources/images/knit-icon.png"))
+knit_html <- include_graphics(c("../resources/images/knit-html.png"))
 
-code_knit_icon <- include_graphics(c("../resources/images/code-icon.png", "../resources/images/knit-icon.png"))
+knit_pdf <- include_graphics(c("../resources/images/knit-pdf.png"))
+
+knit_word <- include_graphics(c("../resources/images/knit-word.png"))
