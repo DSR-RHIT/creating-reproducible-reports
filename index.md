@@ -11,13 +11,16 @@ Welcome! The goal of the workshop is to introduce the R novice to reproducible r
 
 ### getting started
 
-- [learning objectives](pages/101_learning-objectives.html)
+The pre-workshop homework should take about 30 minutes. 
+
 - [pre-workshop homework](pages/102_pre-workshop-hw.html) 
+- [learning objectives](pages/101_learning-objectives.html)
+
+The day of the workshop:  
+
 - [workshop agenda](pages/103_workshop-agenda.html) 
 - surveying the reproducible research ecosystem 
 - considering a sample report 
-
-
 
 ### tutorials 
 
