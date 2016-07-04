@@ -22,7 +22,7 @@ omit_files <- list.files(path = "scripts"
 											, full.names = TRUE
 )
 omit_files <- c(omit_files, list.files(path = "scripts"
-												 , pattern = "004_plan"
+												 , pattern = "999"
 												 , full.names = TRUE
 												 )
 								)
@@ -34,7 +34,7 @@ sapply(Rmd_scripts, function(x) render(x))
 
 # ----------------------------------------------------
 # Rmds -> mds with edited YAML header for gh-pages
-source('scripts/helper-01_create-gh-pages.R')
+source('scripts/helper_01_create-gh-pages.R')
 
 # clear old md files from pages dir
 unlink("pages/*.md")

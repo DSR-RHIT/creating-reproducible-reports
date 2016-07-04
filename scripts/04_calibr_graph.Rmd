@@ -1,0 +1,14 @@
+---
+title: "Load-cell calibration --- graph"
+author: "Richard Layton"
+date: '2016-08-24'
+output: html_document
+---
+
+```{r, setup, include = FALSE}
+library(knitr)
+opts_knit$set(root.dir = '../')
+opts_chunk$set(echo = TRUE)
+```
+
+

@@ -48,7 +48,7 @@ write each of the 5 students reports, then write the tutorials
 
 03\_calibr\_regression.Rmd
 
-04\_calib\r_graph.Rmd
+04\_calibr\_graph.Rmd
 
 05\_calibr\_report.Rmd
 

@@ -1,0 +1,42 @@
+---
+title: "Load-cell calibration --- client report"
+author: "Richard Layton"
+date: '2016-08-24'
+output: html_document
+---
+
+```{r, setup, include = FALSE}
+library(knitr)
+opts_knit$set(root.dir = '../')
+opts_chunk$set(echo = TRUE)
+```
+
+
+### reporting
+
+```{r, message = FALSE}
+library(readr)
+library(dplyr)
+calibr_results <- read_csv("results/03_calibr_regression_results-table.csv")
+
+slope       <- filter(calibr_results, item == 'slope')
+intercept   <- filter(calibr_results, item == 'intercept')
+accuracy    <- filter(calibr_results, item == 'accuracy')
+input_range <- filter(calibr_results, item == 'input_range')
+output_span <- filter(calibr_results, item == 'output_span')
+```
+
+slope `r options(digits = 4)` is `r slope$value` (`r slope$units`)
+
+intercept `r options(digits = 4)` is `r intercept$value` (`r intercept$units`)
+
+accuracy `r options(digits = 2)` is `r accuracy$value` (`r accuracy$units`)
+
+calibration equation is 
+
+$$
+y = `r slope$value` x + `r intercept$value`
+$$
+
+where $y$ is in `r output_span$units` and $x$ is in `r input_range$units`. 
+
