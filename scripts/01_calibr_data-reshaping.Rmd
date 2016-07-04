@@ -1,5 +1,5 @@
 ---
-title: "Load-cell calibration --- data tidying"
+title: "Load-cell calibration --- reshaping the data to long form"
 author: "Richard Layton"
 date: '2016-08-24'
 output: html_document
@@ -28,7 +28,7 @@ download.file(url, destination, mode = "wb")
 The image of the test setup shows that a known weight (lb) is attached to the eye hook and the load cell bridge produces an output signal (mV).
 
 ```{r, fig.cap = 'Figure 1. Load cell calibration test setup'}
-knitr::include_graphics("../resources/test.png", dpi = 250)
+knitr::include_graphics("../resources/load-cell-setup-786x989px.png", dpi = 250)
 ```
 
 # Examine the data 
@@ -113,12 +113,41 @@ is_a_cycle_col
 ```
 
 
+# Reshaping data from wide to long
 
+```{r}
+library(tidyr)
+long_data <- data_received %>%
+	gather(cycle, output_mV, is_a_cycle_col) 
+```
 
+Examine the result. 
 
+```{r}
+long_data # print it
+str(long_data) # examine its structure
+summary(long_data) # examine the summary statistics of each column
+```
 
+This summary shows, first, that I have the columns I expected. 
 
+Second, all the NA values are in the mV readings column. These are not actually missing values. They represent superfluous rows, strictly artifacts of how the test lab organized their data table in the first place. We can safely delete these rows. 
 
+```{r}
+library(dplyr)
+long_data <- long_data %>%
+	filter(! output_mV %in% NA)
+str(long_data)
+```
 
+It's a small enough data set, with 17 observations in 4 columns, that I can print the full set. 
 
+```{r}
+print(long_data)
+```
 
+Write the long-form data to file in the data directory.
+
+```{r}
+write_csv(long_data, "data/01_calibr_long-data.csv")
+```

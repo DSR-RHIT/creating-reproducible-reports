@@ -42,23 +42,17 @@ cat(subset_lines, sep = '\n')
 
 ### plan
 
-write each of the 4 students reports, then write the tutorials
+write each of the 5 students reports, then write the tutorials
 
+01\_calibr\_data-reshaping.Rmd
 
-01\_calibr\_data.Rmd
+02\_calibr\_data-tidying.Rmd
 
-- initializing
-- first look
-- reshaping
-- tidying
+03\_calibr\_regression.Rmd
 
-02\_calibr\_regression.Rmd
+04\_calib\r_graph.Rmd
 
-
-03\_calib\r_graph.Rmd
-
-
-04\_calibr\_report.Rmd
+05\_calibr\_report.Rmd
 
 
 

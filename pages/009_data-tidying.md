@@ -1,13 +1,11 @@
 ---
 layout: page
-title: "data tidying"
+title: "tidying the data"
 ---
 
 
 
 
-
-Continue adding text and code to `01_calibr_data.Rmd` file. 
 
 Packages used in this tutorial  
 
@@ -21,8 +19,18 @@ How to use this tutorial
 - ![](../resources/images/code-icon.png)<!-- --> *add code*: insert a code chunk then transcribe the R code 
 - ![](../resources/images/knit-icon.png)<!-- --> *Knit* after each addition. 
 
+### open a new Rmd script
+
+We concluded the previous script by saving a long form of the data set to file. That makes a convenient point to conclude that script and begin another to continue the analysis. 
+
+- Open a new Rmd file, and name it `02_calibr_data-tidying.Rmd`
+- Start the new script with the same YAML header as the previous script
+- Change the title to `"Load-cell calibration --- tidying the data"`
+- Inset the same code chunk for the knitr setup 
 
 ### add a column of observation numbers
+
+The new script starts where the old one left off. Read in the data set we saved earlier. 
 
 ![](../resources/images/code-icon.png)<!-- -->
 
@@ -30,7 +38,7 @@ How to use this tutorial
 ```r
 # read the long-form data file we saved in the previous step 
 library(readr)
-tidy_data <- read_csv('data/01_calibr_long-form-data.csv')
+tidy_data <- read_csv('data/01_calibr_data-reshaping.csv')
 ```
 
 ![](../resources/images/text-icon.png)<!-- -->
@@ -58,6 +66,12 @@ Learning R:
 - *nrow()* returns the number of rows in the data frame
 - *mutate()* creates a new column called `observ`  
 - The `:` operator creates a sequence 
+
+### check yourself
+
+Confer with a neighbor.
+
+1. What is the difference between the `observ` variable and the `output_mV` variable? 
 
 ### simplify the cycle number
 
@@ -96,6 +110,12 @@ Learning R:
 head(tidy_data)
 ```
 
+### check yourself
+
+Confer with a neighbor
+
+1. Are the values in the `prefix` variable of any further use? 
+
 ![](../resources/images/text-icon.png)<!-- -->
 
     I can delete the new prefix column and I'll convert the cycle column from a character to an integer. 
@@ -127,7 +147,8 @@ tail(tidy_data)
 ### final touches
 
 ![](../resources/images/text-icon.png)<!-- --> 
-
+    # Final touches 
+    
     The last steps in tidying this data set are to shorten the *test_point* column name and to rearrange columns in a logical order. 
 
 ![](../resources/images/code-icon.png)<!-- -->
@@ -152,7 +173,7 @@ Learning R:
 
 
 ```r
-write_csv(tidy_data, "data/01_calibr_data-tidying.csv")
+write_csv(tidy_data, "data/02_calibr_data-tidying.csv")
 ```
 
 Learning R:

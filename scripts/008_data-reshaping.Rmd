@@ -1,5 +1,5 @@
 ---
-title: "reshaping data"
+title: "reshaping the data to long form"
 output:
   html_document:
     keep_md: yes
@@ -16,7 +16,7 @@ opts_chunk$set(echo = TRUE, results = 'hide', message = FALSE, warning = FALSE)
 source("scripts/helper_02_icons.R")
 ```
 
-Continue adding text and code to `01_calibr_data.Rmd` file. 
+Continue adding text and code to `01_calibr_data-reshaping.Rmd` file. 
 
 Packages used in this tutorial 
 
@@ -82,7 +82,7 @@ Learning R:
 
 `r code_icon` 
 
-```{r, results = 'markup'}
+```{r}
 # the column indices
 is_a_cycle_col
 ```
@@ -90,8 +90,13 @@ is_a_cycle_col
 Learning R:
 
 - Writing a variable on a line of its own, e.g., `is_a_cycle_col`, prints its value(s)
-- This output tells me that columns `r is_a_cycle_col` have "cycle" in their columns names. 
-- `is_a_cycle_col` is a vector of integers. The number in brackets in the output `## [1]` is the index of the first element. 
+- `is_a_cycle_col` is a vector of integers. The number in brackets `[1]` is the index of the first element. 
+
+### check yourself
+
+Confer with a neighbor
+
+1. What are the indices to the cycle columns? 
 
 ### reshaping data from wide to long
 
@@ -133,11 +138,12 @@ str(long_data) # examine its structure
 summary(long_data) # examine the summary statistics of each column
 ```
 
-To check your work, I've included the output of *summary()*
+### check yourself
 
-```{r echo = FALSE, results = 'markup'}
-summary(long_data)
-```
+Confer with a neighbor.
+
+1. The total number of observations is?
+2. The total number of measured variables is? 
 
 `r text_icon`
 
@@ -186,11 +192,11 @@ print(long_data)
 `r code_icon`
 
 ```{r}
-write_csv(long_data, "data/01_calibr_long-form-data.csv")
+write_csv(long_data, "data/01_calibr_data-reshaping.csv")
 ```
 
-In the next step, we add some final touches to make the data tidy, ready for analysis. 
 
+Save and Knit this file. 
 
 
 ---

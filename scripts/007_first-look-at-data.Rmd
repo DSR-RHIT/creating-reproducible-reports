@@ -16,7 +16,7 @@ opts_chunk$set(echo = TRUE, results = 'hide', message = FALSE, warning = FALSE)
 source("scripts/helper_02_icons.R")
 ```
 
-Continue adding text and code to `01_calibr_data.Rmd` file. 
+Continue adding text and code to `01_calibr_data-reshaping` file. 
 
 Packages used in this tutorial 
 
@@ -166,11 +166,12 @@ str(data_received)
 
 The data are stored in a *data frame*: a 2-dimensional rectangle of information in rows and columns. The different columns can be different types (numeric, character, logical, etc.), but they're all the same length. 
 
-`r text_icon` 
+### check yourself
 
-    As expected, *read_csv()* produced a data frame. All columns are numerical except the *test_point* column that shows test condition number and a direction.
+Confer with a neighbor. 
 
-- Asterisks around a word or phrase are the Rmd syntax for italics.
+1. The `str()` function tells us there are how many variables? 
+2. How many of the variables are numeric? character? 
 
 `r text_icon`  
 
@@ -210,6 +211,15 @@ Learning R:
 - The pipe operator `%>%` can be thought of as the adverb "then". Thus, this code chunk could be read as "Assign the `data_received` data frame to a new object named `partial_data_set`; *then* select all but the `test_point` column.  
 - *select()* operates on the columns of a data frame 
 - *summary()* produces a statistical summary of each column
+
+
+### check yourself
+
+Confer with a neighbor. 
+
+1. The summary shows how many NAs total?  
+2. The overall minimum mV reading is? overall maximum?   
+
 
 Loading the `dplyr` package produces several message in our output. To suppress those messages, add a `message = FALSE` option to the code chunk header:
 

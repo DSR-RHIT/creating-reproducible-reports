@@ -1,13 +1,13 @@
 ---
 layout: page
-title: "reshaping data"
+title: "reshaping the data to long form"
 ---
 
 
 
 
 
-Continue adding text and code to `01_calibr_data.Rmd` file. 
+Continue adding text and code to `01_calibr_data-reshaping.Rmd` file. 
 
 Packages used in this tutorial 
 
@@ -76,15 +76,16 @@ Learning R:
 is_a_cycle_col
 ```
 
-```
-## [1] 3 4 5
-```
-
 Learning R:
 
 - Writing a variable on a line of its own, e.g., `is_a_cycle_col`, prints its value(s)
-- This output tells me that columns 3, 4, 5 have "cycle" in their columns names. 
-- `is_a_cycle_col` is a vector of integers. The number in brackets in the output `## [1]` is the index of the first element. 
+- `is_a_cycle_col` is a vector of integers. The number in brackets `[1]` is the index of the first element. 
+
+### check yourself
+
+Confer with a neighbor
+
+1. What are the indices to the cycle columns? 
 
 ### reshaping data from wide to long
 
@@ -128,19 +129,12 @@ str(long_data) # examine its structure
 summary(long_data) # examine the summary statistics of each column
 ```
 
-To check your work, I've included the output of *summary()*
+### check yourself
 
+Confer with a neighbor.
 
-```
-##   test_point           input_lb      cycle             output_mV    
-##  Length:24          Min.   :0.5   Length:24          Min.   : 8.70  
-##  Class :character   1st Qu.:1.5   Class :character   1st Qu.:30.70  
-##  Mode  :character   Median :2.5   Mode  :character   Median :49.70  
-##                     Mean   :2.5                      Mean   :50.01  
-##                     3rd Qu.:3.5                      3rd Qu.:69.40  
-##                     Max.   :4.5                      Max.   :91.60  
-##                                                      NA's   :7
-```
+1. The total number of observations is?
+2. The total number of measured variables is? 
 
 ![](../resources/images/text-icon.png)<!-- -->
 
@@ -213,11 +207,11 @@ Your output should look like this:
 
 
 ```r
-write_csv(long_data, "data/01_calibr_long-form-data.csv")
+write_csv(long_data, "data/01_calibr_data-reshaping.csv")
 ```
 
-In the next step, we add some final touches to make the data tidy, ready for analysis. 
 
+Save and Knit this file. 
 
 
 ---

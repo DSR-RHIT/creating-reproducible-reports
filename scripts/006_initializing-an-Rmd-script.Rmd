@@ -33,7 +33,7 @@ In your workshop main directory,
 - Launch your project `rr-workshop.Rproj` 
 - File > New File > R Markdown 
 - Output Format > HTML 
-- Save As > to the `scripts/` directory with filename `01_calibr_data.Rmd`  
+- Save As > to the `scripts/` directory with filename `01_calibr_data-reshaping.Rmd`  
 
 The Rmd file is pre-populated with prose and some markdown syntax. Edit the meta-data header:
 
@@ -97,8 +97,8 @@ In the directory,
 
 ```
 scripts\
-  |-- 01_calibr_data.html 
-  `-- 01_calibr_data.Rmd 
+  |-- 01_calibr_data-reshaping.html 
+  `-- 01_calibr_data-reshaping.Rmd 
 ```
 
 
