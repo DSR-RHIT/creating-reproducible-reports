@@ -54,9 +54,9 @@ I occasionally display a bit of code output to compare to your code output. Outp
 ## 
 ##   test_point input_lb cycle_1 cycle_2 cycle_3
 ##        <chr>    <dbl>   <dbl>   <dbl>   <dbl>
-## 1       2 up      1.5      NA    29.9    30.2
-## 2       3 up      2.5    51.1    49.4    49.7
-## 3       4 up      3.5    70.4    70.0      NA
+## 1       2 up      1.5      NA      30      30
+## 2       3 up      2.5      51      49      50
+## 3       4 up      3.5      70      70      NA
 ```
 
 ---

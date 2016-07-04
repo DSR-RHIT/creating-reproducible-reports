@@ -178,10 +178,16 @@ Learning R:
 write_csv(tidy_data, "data/02_calibr_data-tidying.csv")
 ```
 
+### check yourself
 
+Navigate to your data directory. it should look like this:
 
-In the next step, we perform the calibration analysis.  
-
+    data\
+      |-- 007_wide-data.csv
+      |-- 01_calibr_data-reshaping.csv
+      `-- 02_calibr_data-tidying.csv
+      
+      
 ---
 Back [data reshaping](109_data-reshaping.html)<br>
 Next [linear regression](111_linear-regression.html)

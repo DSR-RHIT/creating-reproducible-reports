@@ -11,11 +11,16 @@ opts_knit$set(root.dir = '../')
 opts_chunk$set(echo = TRUE)
 ```
 
+```{r, message = FALSE}
+# load packages
+library(readr)
+library(dplyr)
+```
+
 # Perform the linear regression 
 
 ```{r}
 # read the tidy data
-library(readr)
 calibr_data <- read_csv("data/02_calibr_tidy-data.csv")
 head(calibr_data)
 ```
@@ -33,9 +38,7 @@ The *lm()* function creates the regression results we need:
 
 ```{r}
 # perform the regression
-x <- calibr_data$input_lb
-y <- calibr_data$output_mV
-regr_results <- lm(y ~ x)
+regr_results <- lm(output_mV ~ input_lb, data = calibr_data)
 ```
 
 # Extract relevant results 
@@ -46,7 +49,15 @@ Look at the attributes of the `lm()` results.
 attributes(regr_results)
 ```
 
-Extract the variables we need: `coefficients`, `fitted.values`, and `residuals`.  
+The named variables we need from this list are `[1] coefficients`, `[2] residuals`, and `[5] fitted.values`. Examining the structure of these three variables yields
+
+```{r}
+str(regr_results[c(1, 2, 5)])
+```
+
+Coefficients has 2 elements; the first is the intercept, the second is the slope. Residuals and fitted values are vectors the same length as the data set, as expected. 
+
+Extract the variables we need: `intercept`, `slope`, `fitted.values`, and `residuals`.  
 
 ```{r}
 intercept <- regr_results$coefficients[1]
@@ -57,10 +68,10 @@ residuals <- regr_results$residuals
 
 # Determine sensor accuracy
 
-The ANSI/ISA calibration standard  defines accuracy as the maximum positive and maximum negative residual. 
+The ANSI/ISA calibration standard defines accuracy as the maximum positive and maximum negative residual. 
 
 ```{r}
-# compute accuracy in mV and as a percentage for reporting
+# determine accuracy in mV
 max_resid <- max(residuals)
 min_resid <- min(residuals)
 ```
@@ -88,9 +99,10 @@ accuracy <- max(abs(c(acc_plus, acc_minus)))
 
 # Collect results 
 
-I'd also like to record of the input range.
+I'd also like to record the input range.
 
 ```{r}
+x <- calibr_data[ , 'input_lb']
 input_range <- max(x) - min(x)
 ```
 
@@ -121,7 +133,7 @@ units  <- c('lb',
           'mV', 
           '%')
 
-calibr_results <- dplyr::data_frame(item, value, units)
+calibr_results <- data_frame(item, value, units)
 calibr_results
 ```
 
@@ -136,7 +148,6 @@ write_csv(calibr_results, "results/03_calibr_regression_results-table.csv")
 Add `y-fit` to the tidy data set and save it with `input_lb` and  `output_mV` for graphing later. 
 
 ```{r, message = FALSE}
-library(dplyr)
 graph_data <- calibr_data %>%
 	mutate(fit_mV = round(y_fit, 2)) %>%
 	select(input_lb, output_mV, fit_mV)

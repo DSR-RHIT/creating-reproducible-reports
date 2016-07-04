@@ -202,6 +202,15 @@ Learning R:
 
 Save and Knit this file. 
 
+### check yourself
+
+Navigate to your data directory. it should look like this:
+
+    data\
+      |-- 007_wide-data.csv
+      `-- 01_calibr_data-reshaping.csv
+
+
 
 ---
 Back [first look at the data](108_examine-wide-data.html)<br>
