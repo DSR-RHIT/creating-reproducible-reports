@@ -1,11 +1,9 @@
 ---
 title: "plan the student scripts"
-output:
-  html_document:
-    keep_md: yes
+output: html_document
 ---
 
-[\\]: this script does not have to be a gh-page, that's why keep_md is FALSE
+[\\]: not a gh-page, so no keep_md
 
 
 ```{r include = FALSE}

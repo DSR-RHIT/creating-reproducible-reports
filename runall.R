@@ -21,6 +21,11 @@ omit_files <- list.files(path = "scripts"
 											, pattern = "_calibr_"
 											, full.names = TRUE
 )
+omit_files <- c(omit_files, list.files(path = "scripts"
+												 , pattern = "004_plan"
+												 , full.names = TRUE
+												 )
+								)
 Rmd_scripts <- Rmd_scripts[! Rmd_scripts %in% omit_files]
 
 sapply(Rmd_scripts, function(x) render(x))
