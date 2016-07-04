@@ -23,7 +23,7 @@ Welcome! The goal of the workshop is to introduce the R novice to reproducible r
 
 - [getting organized](pages/104_getting-organized.html)
 - [initializing an Rmd script](pages/195_initializing-an-Rmd-script.html)
-- [first look at the data](pages/108_examine-wide-data.html)
+- [examine the wide-form data](pages/108_examine-wide-data.html)
 - [data reshaping](pages/109_data-reshaping.html)
 - [data tidying](pages/110_data-tidying.html)
 - [linear regression](pages/111_linear-regression.html) 
