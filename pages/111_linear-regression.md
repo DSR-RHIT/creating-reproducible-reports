@@ -325,5 +325,5 @@ Navigate to your results directory. it should look like this:
       `-- 03_calibr_regression_results-table.csv
 
 ---
-Back [data reshaping](110_data-tidying.html)<br>
+Back [tidying the data](110_data-tidying.html)<br>
 Next [calibration graph](112_calibration-graph.html)
