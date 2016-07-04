@@ -31,7 +31,7 @@ Welcome! The goal of the workshop is to introduce the R novice to reproducible r
 - [first look at the data](pages/108_examine-wide-data.html)
 - [data reshaping](pages/109_data-reshaping.html)
 - [data tidying](pages/110_data-tidying.html)
-- linear regression 
+- [linear regression](pages/111_linear-regression.html) 
 - calibration graph 
 - client report 
 
