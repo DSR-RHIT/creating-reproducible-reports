@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "first look at the data"
+title: "examine the wide-form data"
 ---
 
 
@@ -232,5 +232,5 @@ Loading the `dplyr` package produces several message in our output. To suppress 
 
 
 ---
-Back [initializing an Rmd script](006_initializing-an-Rmd-script.html)<br>
-Next [data reshaping](008_data-reshaping.html)
+Back [initializing an Rmd script](105_initializing-an-Rmd-script.html)<br>
+Next [data reshaping](109_data-reshaping.html)

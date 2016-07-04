@@ -77,7 +77,6 @@ file.copy(from = "data/007_wide-data.csv"
 
 # ----------------------------------------------------
 # delete byproduct files
-# unlink("./*.html")
 unlink("pages/*.html")
 unlink("scripts/*.html")
 unlink("scripts/*.md")

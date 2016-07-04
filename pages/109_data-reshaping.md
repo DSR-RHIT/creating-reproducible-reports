@@ -219,6 +219,6 @@ Save and Knit this file.
 
 
 ---
-Back [first look at the data](007_first-look-at-data.html)<br>
-Next [data tidying](009_data-tidying.html)
+Back [first look at the data](108_examine-wide-data.html)<br>
+Next [data tidying](110_data-tidying.html)
 

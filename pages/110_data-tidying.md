@@ -182,6 +182,6 @@ write_csv(tidy_data, "data/02_calibr_data-tidying.csv")
 In the next step, we perform the calibration analysis.  
 
 ---
-Back [data reshaping](008_data-reshaping.html)<br>
-Next [linear regression](010_linear-regression.html)
+Back [data reshaping](109_data-reshaping.html)<br>
+Next [linear regression](111_linear-regression.html)
 
