@@ -139,7 +139,7 @@ Save and Knit.
 
 ---
 Back [getting organized](104_getting-organized.html)<br>
-Next [first look at the data](108_examine-wide-data.html)
+Next [examine the wide-form data](108_examine-wide-data.html)
 
 
 
