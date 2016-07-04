@@ -210,6 +210,10 @@ Your output should look like this:
 write_csv(long_data, "data/01_calibr_data-reshaping.csv")
 ```
 
+Learning R:
+
+ - the first argument in *write_csv()* is the data frame
+ - the path shown will save to the `data` directory with the CSV filename shown 
 
 Save and Knit this file. 
 

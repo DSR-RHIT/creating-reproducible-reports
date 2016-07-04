@@ -147,6 +147,7 @@ tail(tidy_data)
 ### final touches
 
 ![](../resources/images/text-icon.png)<!-- --> 
+
     # Final touches 
     
     The last steps in tidying this data set are to shorten the *test_point* column name and to rearrange columns in a logical order. 
@@ -176,10 +177,7 @@ Learning R:
 write_csv(tidy_data, "data/02_calibr_data-tidying.csv")
 ```
 
-Learning R:
 
- - the first argument in *write_csv()* is the data frame
- - the path shown will save to the `data` directory with the CSV filename shown 
 
 In the next step, we perform the calibration analysis.  
 

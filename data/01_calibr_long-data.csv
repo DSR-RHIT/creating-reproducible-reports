@@ -1,0 +1,18 @@
+test_point,input_lb,cycle,output_mV
+3 up,2.5,cycle_1,51.1
+4 up,3.5,cycle_1,70.4
+5 up,4.5,cycle_1,88.8
+4 dn,3.5,cycle_1,69.4
+3 dn,2.5,cycle_1,49.5
+2 dn,1.5,cycle_1,30.7
+1 dn,0.5,cycle_1,8.7
+2 up,1.5,cycle_2,29.9
+3 up,2.5,cycle_2,49.4
+4 up,3.5,cycle_2,70
+5 up,4.5,cycle_2,91.6
+4 dn,3.5,cycle_2,69
+3 dn,2.5,cycle_2,50.1
+2 dn,1.5,cycle_2,30.8
+1 dn,0.5,cycle_2,10.9
+2 up,1.5,cycle_3,30.2
+3 up,2.5,cycle_3,49.7
