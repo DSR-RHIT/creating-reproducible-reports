@@ -24,6 +24,8 @@ The day of the workshop:
 
 ### tutorials 
 
+We'll start the tutorials together but I'll let you work at your own pace as soon as possible. 
+
 - [getting organized](pages/104_getting-organized.html)
 - [initializing an Rmd script](pages/195_initializing-an-Rmd-script.html)
 - [examine the wide-form data](pages/108_examine-wide-data.html)
