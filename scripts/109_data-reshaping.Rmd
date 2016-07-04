@@ -213,6 +213,6 @@ Navigate to your data directory. it should look like this:
 
 
 ---
-Back [first look at the data](108_examine-wide-data.html)<br>
+Back [examine the wide form data](108_examine-wide-data.html)<br>
 Next [data tidying](110_data-tidying.html)
 
