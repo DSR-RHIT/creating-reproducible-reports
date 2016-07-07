@@ -1,14 +1,14 @@
 ---
-title: "Load-cell calibration --- advanced graphics"
-author: "Richard Layton"
-date: '2016-08-24'
-output: html_document
+title: "advanced graph"
+output:
+  html_document:
+    keep_md: yes
 ---
 
 ```{r, setup, include = FALSE}
 library(knitr)
 opts_knit$set(root.dir = '../')
-opts_chunk$set(echo = TRUE)
+opts_chunk$set(echo = TRUE, fig.keep='none')
 ```
 
 ```{r}
@@ -261,7 +261,7 @@ calibr_graph <- ggplot(data = graph_data) +
 # print to output	
 print(calibr_graph)
 
-ggsave("results/05_advanced_graph.png", plot = calibr_graph, 
+ggsave("results/113_advanced_graph.png", plot = calibr_graph, 
 			 width = 6, height = 4, units = "in", dpi = 300)
 ```
 

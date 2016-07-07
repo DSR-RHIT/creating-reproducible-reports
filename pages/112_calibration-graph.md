@@ -326,7 +326,7 @@ Learning ggplot2
 
 There's much more we can do to bring the graph up to publication standards. 
 
-I've prepared an advanced (and completely optional) tutorial for those of you who want to know MORE and you want it NOW.  Topics include: 
+I've prepared an [advanced](113_advanced_graph.html) (and completely optional) tutorial for those of you who want to know MORE and you want it NOW.  Topics include: 
 
 - Jitter the data markers to reduce printing overlap and set a random seed so jittering is repeatable 
 - Use the results table to dynamically assign units to the axis labels and set  tick mark locations
