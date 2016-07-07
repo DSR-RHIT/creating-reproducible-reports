@@ -225,17 +225,12 @@ calibr_eqn <- paste0("y = ", sprintf("%.3f", slope_value),
 										 " x + ", sprintf("%.3f", intercept_value)) 
 calibr_graph <- ggplot(data = graph_data) +
 	geom_line(aes(x = input_lb, y = fit_mV), size = 0.4, color = 'gray70') + 
-	geom_point(aes(x = input_lb, y = output_mV), size = 1.5, 
-						 stroke = 0.7, shape = 21, color = 'black', fill= 'gray70', 
-						 position = position_jitter(width = 0.08, height = 0)) + 
+	geom_point(aes(x = input_lb, y = output_mV), size = 1.5, stroke = 0.7, shape = 21, color = 'black', fill= 'gray70', position = position_jitter(width = 0.08, height = 0)) + 
 	xlab(my_xlab) + 
 	ylab(my_ylab) +
 	scale_x_continuous(breaks = x_test_seq) +
 	scale_y_continuous(breaks = y_nominal_seq) +
-	annotate("text", x = min(graph_data$input_lb), 
-					 y = max(graph_data$output_mV), label = calibr_eqn, 
-					 family = "serif", fontface = "italic", 
-					 hjust = "left", vjust = "top",
+	annotate("text", x = min(graph_data$input_lb), y = max(graph_data$output_mV), label = calibr_eqn, family = "serif", fontface = "italic", hjust = "left", vjust = "top",
 					 
 # -------------------- add size spec in mm (convert using 2.85 pt/mm)
   size = 11/2.85) + 
