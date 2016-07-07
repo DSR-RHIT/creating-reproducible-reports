@@ -32,7 +32,7 @@ We'll start the tutorials together but I'll let you work at your own pace as soo
 - [data reshaping](pages/109_data-reshaping.html)
 - [data tidying](pages/110_data-tidying.html)
 - [linear regression](pages/111_linear-regression.html) 
-- calibration graph 
+- [calibration graph](pages/112_calibration-graph.html)
 - client report 
 
 

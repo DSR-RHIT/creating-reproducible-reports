@@ -174,8 +174,7 @@ Your output should look like this:
 
 
 ```
-## Source: local data frame [17 x 4]
-## 
+## # A tibble: 17 x 4
 ##    test_point input_lb   cycle output_mV
 ##         <chr>    <dbl>   <chr>     <dbl>
 ## 1        3 up      2.5 cycle_1      51.1

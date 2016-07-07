@@ -21,7 +21,7 @@ library(dplyr)
 
 ```{r}
 # read the tidy data
-calibr_data <- read_csv("data/02_calibr_tidy-data.csv")
+calibr_data <- read_csv("data/02_calibr_data-tidying.csv")
 head(calibr_data)
 ```
 
@@ -49,10 +49,12 @@ Look at the attributes of the `lm()` results.
 attributes(regr_results)
 ```
 
-The named variables we need from this list are `[1] coefficients`, `[2] residuals`, and `[5] fitted.values`. Examining the structure of these three variables yields
+The named variables we need from this list are `coefficients`, `residuals`, and `fitted.values`. Examining the structure of these three variables yields
 
 ```{r}
-str(regr_results[c(1, 2, 5)])
+# Examine the three objects we want
+regr_results_subset <- regr_results[c("coefficients", "residuals", "fitted.values")]
+str(regr_results_subset)
 ```
 
 Coefficients has 2 elements; the first is the intercept, the second is the slope. Residuals and fitted values are vectors the same length as the data set, as expected. 
@@ -110,31 +112,19 @@ And I can collect these results in a data frame.
 
 ```{r}
 # create a data frame for printing a table of results
-options(digits = 2)
-item <- c('input_range', 
-          'output_span', 
-          'slope', 
-          'intercept', 
-          'max_resid', 
-          'min_resid', 
-          'accuracy')
-value  <- c(input_range, 
-           output_span, 
-           slope, 
-           intercept, 
-           max_resid, 
-           min_resid, 
-           accuracy)
-units  <- c('lb', 
-          'mV', 
-          'mV/lb', 
-          'mV', 
-          'mV', 
-          'mV', 
-          '%')
-
-calibr_results <- data_frame(item, value, units)
-calibr_results
+options(digits = 3)
+library(tibble)
+calibr_results <- frame_data(
+	~item,         ~value,      ~units,
+	'input_range', input_range, 'lb',
+	'output_span', output_span, 'mV',
+	'slope',       slope,       'mV/lb',
+	'intercept',   intercept,   'mV',
+	'max_resid',   max_resid,   'mV',
+	'min_resid',   min_resid,   'mV',
+	'accuracy',    accuracy,    '%'
+)
+calibr_results 
 ```
 
 # Write results to file

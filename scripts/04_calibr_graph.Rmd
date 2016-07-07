@@ -11,4 +11,111 @@ opts_knit$set(root.dir = '../')
 opts_chunk$set(echo = TRUE)
 ```
 
+```{r}
+library(readr)
+library(ggplot2)
+```
+
+# Data
+
+Read the data set saved during the regression analysis.
+
+```{r}
+graph_data <- read_csv("results/03_calibr_regression_graph-data.csv")
+str(graph_data)
+```
+
+# Building the graph in layers
+
+Just show the data. 
+
+```{r}
+calibr_graph <- ggplot(data = graph_data) +
+	geom_point(aes(x = input_lb, y = output_mV))
+
+print(calibr_graph)
+```
+
+Draw the regression line. 
+
+```{r}
+calibr_graph <- ggplot(data = graph_data) +
+	geom_line(aes(x = input_lb, y = fit_mV)) + 
+	geom_point(aes(x = input_lb, y = output_mV))
+
+print(calibr_graph)
+```
+
+### changing the attributes of the graphical elements
+
+Start with the line and the data markers. 
+
+```{r}
+calibr_graph <- ggplot(data = graph_data) +
+	geom_line(aes(x = input_lb, y = fit_mV), size = 0.4, color = 'gray70') + 
+	geom_point(aes(x = input_lb, y = output_mV), size = 1.5, 
+						 stroke = 0.7, shape = 21, color = 'black', fill= 'gray70')
+
+print(calibr_graph)
+```
+
+Edit the axis labels. 
+
+```{r}
+calibr_graph <- calibr_graph + 
+	xlab("Applied force (lb)") + 
+	ylab("Sensor reading (mV)")
+```
+
+Edit the locations of the axis markings to match the test points. 
+
+```{r}
+calibr_graph <- calibr_graph + 
+	scale_x_continuous(breaks = seq(from = 0.5, to = 4.5, by = 1)) +
+	scale_y_continuous(breaks = seq(from = 10, to = 90, by = 20))
+print(calibr_graph)
+```
+
+Assign a different theme. 
+
+```{r}
+calibr_graph <- calibr_graph + 
+	theme_light()
+print(calibr_graph)
+```
+
+Edit the theme.  
+
+```{r}
+calibr_graph <- calibr_graph +
+        theme(panel.grid.minor = element_blank(),  
+        			axis.ticks.length = unit(2, "mm"))
+
+print(calibr_graph)
+```
+
+# Putting it all together
+
+We've written out the layers in separate code chunks for clarity, but they can be assembled into one code chunk in the same order as before.   
+
+```{r}
+calibr_graph <- ggplot(graph_data) +
+	geom_line(aes(input_lb, fit_mV), size = 0.4, color = 'gray70') + 
+	geom_point(aes(input_lb, output_mV), size = 1.5, 
+						 stroke = 0.7, shape = 21, color = 'black', fill = 'gray70') + 
+	xlab("Applied force (lb)") + 
+	ylab("Sensor reading (mV)") +
+	scale_x_continuous(breaks = seq(0.5, 4.5, 1)) +
+	scale_y_continuous(breaks = seq(10, 90, 20)) +
+	theme_light() +
+	theme(panel.grid.minor = element_blank())
+
+# print to output	
+print(calibr_graph)
+
+# print to file
+ggsave("results/04_calibr_graph.png", plot = calibr_graph, 
+			 width = 6, height = 4, units = "in", dpi = 300)
+```
+
 

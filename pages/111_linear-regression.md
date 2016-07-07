@@ -11,6 +11,7 @@ Packages used in this tutorial
 
 - readr
 - dplyr
+- tibble
 
 How to use this tutorial 
 
@@ -83,8 +84,8 @@ regr_results <- lm(output_mV ~ input_lb, data = calibr_data)
 
 Learning R:
 
-- The linear model function has the form `lm(y ~ x, data = data_frame)`, that is, "$y$ as a function of $x$," where $y$ and $x$ are variables (column names) in the data frame denoted by `data = data_frame`
-- The argument `y ~ x` is a *formula*, an R object class 
+- The linear model function has the form `lm(y ~ x, data = data_frame)`, that is, "$y$ as a function of $x$," where $y$ and $x$ are variables (column names) in `data_frame`
+- The argument `y ~ x` is called a *formula* in R  
 - Learn more by typing `?lm` in your Console
 
 ### extract relevant results 
@@ -100,11 +101,14 @@ Learning R:
 
 ```r
 attributes(regr_results)
+glimpse(regr_results)
 ```
 
 Learn R:
 
-- `attributes(regr_results)` retrieves meta-data stored with the object `regr_results` 
+- `attributes(regr_results)` retrieves meta-data stored with the object `regr_results`
+- `regr_results` contains 12 named objects (collected in an R data structure called a *list*.)
+- Add `attributes()` to your list of functions used for exploring data, including `str()`, `head()`, and `tail()`. 
 
 ![](../resources/images/text-icon.png)<!-- -->
 
@@ -114,8 +118,14 @@ Learn R:
 
 
 ```r
-str(regr_results[c(1, 2, 5)])
+# Examine the three objects we want
+regr_results_subset <- regr_results[c("coefficients", "residuals", "fitted.values")]
+str(regr_results_subset)
 ```
+
+- We subset `regr_results` using `[]` notation and the three named objects of interest.
+- We use `str()` to examine the stucture of each of the three objects. 
+- Recall `c()` is how we *combine* elements into a vector
 
 ### check yourself
 
@@ -123,15 +133,16 @@ Confer with a neighbor.
 
 1. How many elements in the `coefficients` vector?
 2. What is the numeric value of the regression intercept? of the slope? 
-3. How many elements in the `residuals` vector? 
+3. How many elements in the `residuals` vector? Does it make sense? 
 
-For reasons unknown, the default R output of `coefficients` labels the slope of the regression using the name of the x-variable. 
+In our linear model, `lm()`, the coefficient of the $x^0$ term is labeled *Intercept*; the coefficient of the $x^1$ term is labeled the 
+*input_lb* coefficient, i.e., the  coefficient of $x^1$. This is our slope.   (Higher-order polynomial fits will have additional coefficients, of course, for $x^2, x^3$, etc.)
 
 ![](../resources/images/text-icon.png)<!-- -->
 
     Coefficients has 2 elements; the first is the intercept, the second is the slope. Residuals and fitted values are vectors the same length as the data set, as expected. 
     
-    Extract the variables we need: `intercept`, `slope`, `fitted.values`, and `residuals`.  
+    Extract the variables we need: `intercept`, `slope`, `fitted.values`, and `residuals`.
 
 ![](../resources/images/code-icon.png)<!-- -->
 
@@ -145,8 +156,9 @@ residuals <- regr_results$residuals
 
 Learn R.
 
-- We can subset a named value from a list using `$` syntax, e.g.,  `regr_results$fitted.values` starts with the `regr_results` list and extracts the the `fitted.values` vector. 
-- In the case of the coefficients, we further subset the vector using `[]` notation, selecting `[1]` for the intecept and `[2]` for the slope. 
+- `regr_results` is a list of 12 named objects. 
+- A named object can be retrieved from a list using `$` subsetting notation having the form `list_name$object_name`, e.g., `regr_results$residuals`
+- `regr_results$coefficients` returns a vector of 2 numbers, subsetted further using `[]` notation 
 
 ### determine sensor accuracy
 
@@ -242,37 +254,27 @@ Learn R.
 
 ```r
 # create a data frame for printing a table of results
-options(digits = 2)
-item <- c('input_range', 
-          'output_span', 
-          'slope', 
-          'intercept', 
-          'max_resid', 
-          'min_resid', 
-          'accuracy')
-value  <- c(input_range, 
-           output_span, 
-           slope, 
-           intercept, 
-           max_resid, 
-           min_resid, 
-           accuracy)
-units  <- c('lb', 
-          'mV', 
-          'mV/lb', 
-          'mV', 
-          'mV', 
-          'mV', 
-          '%')
-
-calibr_results <- data_frame(item, value, units)
+options(digits = 3)
+library(tibble)
+calibr_results <- frame_data(
+	~item,         ~value,      ~units,
+	'input_range', input_range, 'lb',
+	'output_span', output_span, 'mV',
+	'slope',       slope,       'mV/lb',
+	'intercept',   intercept,   'mV',
+	'max_resid',   max_resid,   'mV',
+	'min_resid',   min_resid,   'mV',
+	'accuracy',    accuracy,    '%'
+)
 calibr_results
 ```
 
-Coding practice
+Learn R.
 
-- In this code chunk, I've deliberately placed each element of a vector on its own line to help me keep them on order as I went. It is important to keep the item labels, numerical reults, and units in the proper order. 
-- `data_frame()` is a `dplyr` function for creating a data frame from a set of vectors of the same length. The vector names become the column names in the data frame, as you can see by printing `calibr_results`. 
+- `options()` allows me to set the number of decimal places for printing, so if I print to the Console, the values are easy to read. Type `?options` in the Console to read about other options. 
+- In this code chunk, I've deliberately placed each row on its own line to make it easy to compose and check. 
+- `frame_data` from the new `tibble` package allows us to assemble a new data frame row by row. 
+- In the first row, the tilde `~` identifies column names.
 
 ### write results to file
 
