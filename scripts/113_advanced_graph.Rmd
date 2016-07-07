@@ -68,8 +68,7 @@ output_units
 graph_data <- read_csv("results/03_calibr_regression_graph-data.csv")
 calibr_graph <- ggplot(data = graph_data) +
 	geom_line(aes(x = input_lb, y = fit_mV), size = 0.4, color = 'gray70') + 
-	geom_point(aes(x = input_lb, y = output_mV), size = 2, 
-						 stroke = 0.7, shape = 21, color = 'black', fill= 'gray70') + 
+	geom_point(aes(x = input_lb, y = output_mV), size = 2, stroke = 0.7, shape = 21, color = 'black', fill= 'gray70') + 
 	xlab("Applied force (lb)") + 
 	ylab("Sensor reading (mV)") +
 	scale_x_continuous(breaks = seq(from = 0.5, to = 4.5, by = 1)) +
@@ -81,8 +80,6 @@ calibr_graph <- ggplot(data = graph_data) +
 print(calibr_graph)
 ```
 
-
-
 ### jitter
 
 Add the `position` argument to `geom_point()`, Play with `width` and `height` until jitter is useful but not overdone. 
@@ -90,16 +87,15 @@ Add the `position` argument to `geom_point()`, Play with `width` and `height` un
 Next add `set.seed()` before the graph is created. An easy way to set a seed is to use a number based on today's date, e.g., `set.seed(20160824)`. After setting the seed, you may have to tweak the jitter `width` and `height` again. 
 
 ```{r}
-# one new line to set the seed
+# -------------------- one new line to set the seed
 set.seed(20160824)
 
 calibr_graph <- ggplot(data = graph_data) +
 	geom_line(aes(x = input_lb, y = fit_mV), size = 0.4, color = 'gray70') + 
-	geom_point(aes(x = input_lb, y = output_mV), size = 2, 
-						 stroke = 0.7, shape = 21, color = 'black', fill= 'gray70', 
+	geom_point(aes(x = input_lb, y = output_mV), size = 2, stroke = 0.7, shape = 21, color = 'black', fill= 'gray70', 
 						 
-						 # one new line to use the jitter function
-						 position = position_jitter(width = 0.08, height = 0)) + 
+# -------------------- one new line to use the jitter function
+position = position_jitter(width = 0.08, height = 0)) + 
 	
 	xlab("Applied force (lb)") + 
 	ylab("Sensor reading (mV)") +
@@ -121,19 +117,17 @@ Before the graph, create a x-label string and y-label string using `paste0`. Tho
 ```{r}
 set.seed(20160824)
 
-# two new lines
+# -------------------- two new lines
 my_xlab <- paste0("Applied force (", input_units, ")")
 my_ylab <- paste0("Sensor reading (", output_units, ")")
 
 calibr_graph <- ggplot(data = graph_data) +
 	geom_line(aes(x = input_lb, y = fit_mV), size = 0.4, color = 'gray70') + 
-	geom_point(aes(x = input_lb, y = output_mV), size = 2, 
-						 stroke = 0.7, shape = 21, color = 'black', fill= 'gray70', 
-						 position = position_jitter(width = 0.08, height = 0)) + 
+	geom_point(aes(x = input_lb, y = output_mV), size = 2, stroke = 0.7, shape = 21, color = 'black', fill= 'gray70', position = position_jitter(width = 0.08, height = 0)) + 
 
-	# two edited lines	
-	xlab(my_xlab) + 
-	ylab(my_ylab) +
+# -------------------- two edited lines	
+  xlab(my_xlab) + 
+  ylab(my_ylab) +
 	
 	scale_x_continuous(breaks = seq(from = 0.5, to = 4.5, by = 1)) +
 	scale_y_continuous(breaks = seq(from = 10, to = 90, by = 20)) +
@@ -168,15 +162,13 @@ my_xlab <- paste0("Applied force (", input_units, ")")
 my_ylab <- paste0("Sensor reading (", output_units, ")")
 calibr_graph <- ggplot(data = graph_data) +
 	geom_line(aes(x = input_lb, y = fit_mV), size = 0.4, color = 'gray70') + 
-	geom_point(aes(x = input_lb, y = output_mV), size = 2, 
-						 stroke = 0.7, shape = 21, color = 'black', fill= 'gray70', 
-						 position = position_jitter(width = 0.08, height = 0)) + 
+	geom_point(aes(x = input_lb, y = output_mV), size = 2, stroke = 0.7, shape = 21, color = 'black', fill= 'gray70', position = position_jitter(width = 0.08, height = 0)) + 
 	xlab(my_xlab) + 
 	ylab(my_ylab) +
 
-	# edit two lines
-	scale_x_continuous(breaks = x_test_seq) +
-	scale_y_continuous(breaks = y_nominal_seq) +
+# -------------------- edit two lines
+  scale_x_continuous(breaks = x_test_seq) +
+  scale_y_continuous(breaks = y_nominal_seq) +
 	
 	theme_light() +
 	theme(panel.grid.minor = element_blank())
@@ -195,25 +187,19 @@ set.seed(20160824)
 my_xlab <- paste0("Applied force (", input_units, ")")
 my_ylab <- paste0("Sensor reading (", output_units, ")")
 
-# one new line to define the calibration equation
-calibr_eqn <- paste0("y = ", sprintf("%.3f", slope_value), 
-										 " x + ", sprintf("%.3f", intercept_value)) 
+# -------------------- one new line to define the calibration equation
+calibr_eqn <- paste0("y = ", sprintf("%.3f", slope_value), " x + ", sprintf("%.3f", intercept_value)) 
 
 calibr_graph <- ggplot(data = graph_data) +
 	geom_line(aes(x = input_lb, y = fit_mV), size = 0.4, color = 'gray70') + 
-	geom_point(aes(x = input_lb, y = output_mV), size = 2, 
-						 stroke = 0.7, shape = 21, color = 'black', fill= 'gray70', 
-						 position = position_jitter(width = 0.08, height = 0)) + 
+	geom_point(aes(x = input_lb, y = output_mV), size = 2, stroke = 0.7, shape = 21, color = 'black', fill= 'gray70', position = position_jitter(width = 0.08, height = 0)) + 
 	xlab(my_xlab) + 
 	ylab(my_ylab) +
 	scale_x_continuous(breaks = x_test_seq) +
 	scale_y_continuous(breaks = y_nominal_seq) +
 
-	# one new function to add the calibration equation
-	annotate("text", x = min(graph_data$input_lb), 
-					 y = max(graph_data$output_mV), label = calibr_eqn, 
-					 family = "serif", fontface = "italic", 
-					 hjust = "left", vjust = "top") + 
+# -------------------- one new function to add the calibration equation
+  annotate("text", x = min(graph_data$input_lb), y = max(graph_data$output_mV), label = calibr_eqn, family = "serif", fontface = "italic", hjust = "left", vjust = "top") + 
 
 	theme_light() +
 	theme(panel.grid.minor = element_blank())
@@ -246,16 +232,15 @@ calibr_graph <- ggplot(data = graph_data) +
 					 family = "serif", fontface = "italic", 
 					 hjust = "left", vjust = "top",
 					 
-					 # add size spec in mm (convert using 2.85 pt/mm)
-					 size = 11/2.85) + 
+# -------------------- add size spec in mm (convert using 2.85 pt/mm)
+  size = 11/2.85) + 
 	
 	theme_light() +
 	theme(panel.grid.minor = element_blank(), 
 				
-				# add size spec in points for all other text
-				axis.text  = element_text(size = 10), 
-				axis.title = element_text(size = 10)
-				)
+# -------------------- add size spec in points for all other text
+  axis.text  = element_text(size = 10), 
+  axis.title = element_text(size = 10))
 
 # print to output	
 print(calibr_graph)
