@@ -43,6 +43,7 @@ We'll start the tutorials together but I'll let you work at your own pace as soo
 - planning for reproducibility 
 - starting your own project 
 - looking ahead 
+- [advanced graph topics](pages/113_advanced_graph.html)
 
 
 

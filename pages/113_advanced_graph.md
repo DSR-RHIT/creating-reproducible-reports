@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "advanced graph"
+title: "advanced graph topics"
 ---
 
 
@@ -13,7 +13,7 @@ suppressPackageStartupMessages(library(dplyr))
 library(ggplot2)
 ```
 
-# Advanced topics
+Topics: 
 
 - Jitter the data markers to reduce printing overlap and set a random seed so jittering is repeatable 
 - Use the results table to dynamically assign units to the axis labels and set  tick mark locations
@@ -21,7 +21,7 @@ library(ggplot2)
 - Format the calibration equation for significant figures
 - Change font sizes
 
-# Retrieve data we saved earlier
+### retrieve data we saved earlier
 
 This was saved to the results directory earlier
 
@@ -59,7 +59,7 @@ output_units
 ```
 
 
-# Recreate the basic graph. 
+### recreate the basic graph. 
 
 
 ```r
@@ -81,8 +81,7 @@ print(calibr_graph)
 
 
 
-
-# Jitter
+### jitter
 
 Add the `position` argument to `geom_point()`, Play with `width` and `height` until jitter is useful but not overdone. 
 
@@ -112,7 +111,7 @@ calibr_graph <- ggplot(data = graph_data) +
 print(calibr_graph)
 ```
 
-# Axis units from the data table
+### axis units from the data table
 
 If he units change in the analysis and are correctly saved to file, then that change can propagate here without manually editing the file. 
 
@@ -145,7 +144,7 @@ calibr_graph <- ggplot(data = graph_data) +
 print(calibr_graph)
 ```
 
-# Axis tick marks from the data
+### axis tick marks from the data
 
 Find the unique values in the input forces and sort them. 
 
@@ -188,7 +187,7 @@ print(calibr_graph)
 ```
 
 
-# Adding the calibration equation
+### adding the calibration equation
 
 Create the text string and use `sprintf()` syntax to control significant figures.
 
@@ -227,7 +226,7 @@ calibr_graph <- ggplot(data = graph_data) +
 print(calibr_graph)
 ```
 
-# Font sizing
+### font sizing
 
 Lastly, we edit the font sizes used by editing the theme. We add two lines, one inside the annotate function (size units are mm) and one inside the theme function (units are points). 
 
