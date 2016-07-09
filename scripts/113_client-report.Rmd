@@ -180,7 +180,7 @@ kable(readable_data, caption = "Table 1. Calibration data")
 
 Learn knitr
 
-- `kable()` is a `knitr` function that produces simply tables in the output document
+- `kable()` is a `knitr` function that produces simple tables in the output document
 - `caption = "..."` argument produces a caption for the table. Tables made with `kable()` are not automatically numbered, though one can write a function to do that. 
 
 ### write inline math
@@ -223,10 +223,10 @@ with *x* in <code>`</code>r input_units<code>`</code> and *y* in <code>`</code>r
 Learn R
 
 - Double dollar signs mark a LaTeX math expression displayed on its own line 
-- `sprintf("format", variable)` prints the value of the variable name using the format shown, in this case, a floating point number with 3 decimal places
-- placing this R code inside an inline code chunk prints the value to the output
+- `sprintf("format", variable)` prints the value of the variable name using the format shown, in this case, a floating point number with 3 decimal places. To learn more, type `?sprintf` in the R console.
+- Placing this R code inside an inline code chunk prints the value to the output
     
-To learn more, type `?sprintf` in the R console.
+
 
 `r text_icon`
 
@@ -238,7 +238,7 @@ The accuracy of the precision weights, 0.1%, is less than one tenth the load cel
 </code></pre>
 
 - Again, several instances of inline R code with numbers formatted using `sprintf()`
-- LaTeX comments are denoted by the percent sign (%) so to print the percent symbol inside a LaTeX math expression, we have to "escape" using `\%`. 
+- To print the percent symbol (%) in a LaTeX math expression, we have to "escape it" by typing `\%`, otherwise, LaTeX treats the symbol as the comment character. 
  
 ### check yourself
 
