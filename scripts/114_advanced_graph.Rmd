@@ -28,53 +28,41 @@ Topics:
 
 ### retrieve data we saved earlier
 
-This was saved to the results directory earlier
-
-```{r}
-results_table <- read_csv("results/03_calibr_regression_results-table.csv")
-results_table
-```
-
 Extract the numbers and units we want. 
 
 ```{r, collapse = TRUE}
-# the slope value appears in the regression equation
-slope_df    <- filter(results_table, item == 'slope')
-slope_value <- slope_df$value
+# itemized results that are cited in the report 
+results      <- read_csv('results/04_calibr_regression-results.csv')
+slope        <- filter(results, item %in% "slope")       %>% select(value)
+intercept    <- filter(results, item %in% "intercept")   %>% select(value)
+accuracy     <- filter(results, item %in% "accuracy")    %>% select(value)
+resid_bound  <- filter(results, item %in% "resid_bound") %>% select(value)
+input_min    <- filter(results, item %in% "input_min")   %>% select(value)
+input_max    <- filter(results, item %in% "input_max")   %>% select(value)
+output_min   <- filter(results, item %in% "output_min")  %>% select(value)
+output_max   <- filter(results, item %in% "output_max")  %>% select(value)
+input_units  <- filter(results, item %in% "input_max")   %>% select(units)
+output_units <- filter(results, item %in% "output_max")  %>% select(units)
 
-# the intercept value appears in the regression equation
-intercept_df    <- filter(results_table, item == 'intercept')
-intercept_value <- intercept_df$value
-
-# input units appear in the x-axis label
-input_range_df <- filter(results_table, item == 'input_range')
-input_units    <- input_range_df$units
-
-# output units appear in the y-axis label
-output_span_df <- filter(results_table, item == 'output_span')
-output_units   <- output_span_df$units
-
-# check the results
-slope_value
-intercept_value
-input_units
-output_units
+# computed values
+output_span <- output_max - output_min
+input_range_fraction <- round(input_max / 5 * 100, 1)
 ```
 
 
 ### recreate the basic graph. 
 
 ```{r}
-graph_data <- read_csv("results/03_calibr_regression_graph-data.csv")
-calibr_graph <- ggplot(data = graph_data) +
-	geom_line(aes(x = input_lb, y = fit_mV), size = 0.4, color = 'gray70') + 
-	geom_point(aes(x = input_lb, y = output_mV), size = 2, stroke = 0.7, shape = 21, color = 'black', fill= 'gray70') + 
-	xlab("Applied force (lb)") + 
-	ylab("Sensor reading (mV)") +
-	scale_x_continuous(breaks = seq(from = 0.5, to = 4.5, by = 1)) +
-	scale_y_continuous(breaks = seq(from = 10, to = 90, by = 20)) +
-	theme_light() +
-	theme(panel.grid.minor = element_blank())
+graph_data <- read_csv("results/02_calibr_data-tidying.csv")
+calibr_graph <- ggplot(graph_data, aes(input_lb, output_mV)) +
+    geom_smooth(method = 'lm', se = FALSE, color = 'gray70',  size = 0.5) + 
+    geom_point(size = 1.5, stroke = 0.7, shape = 21, color = 'black', fill= 'gray70') +
+    xlab("Applied force (lb)") + 
+    ylab("Sensor reading (mV)") +
+    scale_x_continuous(breaks = seq(0.5, 4.5, 1)) +
+    scale_y_continuous(breaks = seq(10, 90, 20)) +
+    theme_light() +
+    theme(panel.grid.minor = element_blank(), axis.ticks.length = unit(2, "mm"))
 
 # print to output	
 print(calibr_graph)
@@ -90,19 +78,19 @@ Next add `set.seed()` before the graph is created. An easy way to set a seed is 
 # -------------------- one new line to set the seed
 set.seed(20160824)
 
-calibr_graph <- ggplot(data = graph_data) +
-	geom_line(aes(x = input_lb, y = fit_mV), size = 0.4, color = 'gray70') + 
-	geom_point(aes(x = input_lb, y = output_mV), size = 2, stroke = 0.7, shape = 21, color = 'black', fill= 'gray70', 
+calibr_graph <- ggplot(graph_data, aes(input_lb, output_mV)) +
+    geom_smooth(method = 'lm', se = FALSE, color = 'gray70',  size = 0.5) + 
+    geom_point(size = 1.5, stroke = 0.7, shape = 21, color = 'black', fill= 'gray70', 
 						 
 # -------------------- one new line to use the jitter function
 position = position_jitter(width = 0.08, height = 0)) + 
 	
-	xlab("Applied force (lb)") + 
-	ylab("Sensor reading (mV)") +
-	scale_x_continuous(breaks = seq(from = 0.5, to = 4.5, by = 1)) +
-	scale_y_continuous(breaks = seq(from = 10, to = 90, by = 20)) +
-	theme_light() +
-	theme(panel.grid.minor = element_blank())
+    xlab("Applied force (lb)") + 
+    ylab("Sensor reading (mV)") +
+    scale_x_continuous(breaks = seq(0.5, 4.5, 1)) +
+    scale_y_continuous(breaks = seq(10, 90, 20)) +
+    theme_light() +
+    theme(panel.grid.minor = element_blank(), axis.ticks.length = unit(2, "mm"))
 
 # print to output	
 print(calibr_graph)
@@ -121,9 +109,9 @@ set.seed(20160824)
 my_xlab <- paste0("Applied force (", input_units, ")")
 my_ylab <- paste0("Sensor reading (", output_units, ")")
 
-calibr_graph <- ggplot(data = graph_data) +
-	geom_line(aes(x = input_lb, y = fit_mV), size = 0.4, color = 'gray70') + 
-	geom_point(aes(x = input_lb, y = output_mV), size = 2, stroke = 0.7, shape = 21, color = 'black', fill= 'gray70', position = position_jitter(width = 0.08, height = 0)) + 
+calibr_graph <- ggplot(graph_data, aes(input_lb, output_mV)) +
+    geom_smooth(method = 'lm', se = FALSE, color = 'gray70',  size = 0.5) + 
+    geom_point(size = 1.5, stroke = 0.7, shape = 21, color = 'black', fill= 'gray70', position = position_jitter(width = 0.08, height = 0)) + 
 
 # -------------------- two edited lines	
   xlab(my_xlab) + 
@@ -151,8 +139,7 @@ Find the equivalent (nominal) values in the output mV readings. Sort and round t
 
 ```{r}
 # round to the nearest 10
-y_nominal_seq <- sort(unique(graph_data$fit_mV))
-y_nominal_seq <- plyr::round_any(y_nominal_seq, 10)
+y_nominal_seq <- sort(unique(plyr::round_any(graph_data$output_mV, 10)))
 y_nominal_seq
 ```
 
@@ -160,9 +147,9 @@ y_nominal_seq
 set.seed(20160824)
 my_xlab <- paste0("Applied force (", input_units, ")")
 my_ylab <- paste0("Sensor reading (", output_units, ")")
-calibr_graph <- ggplot(data = graph_data) +
-	geom_line(aes(x = input_lb, y = fit_mV), size = 0.4, color = 'gray70') + 
-	geom_point(aes(x = input_lb, y = output_mV), size = 2, stroke = 0.7, shape = 21, color = 'black', fill= 'gray70', position = position_jitter(width = 0.08, height = 0)) + 
+calibr_graph <- ggplot(graph_data, aes(input_lb, output_mV)) +
+    geom_smooth(method = 'lm', se = FALSE, color = 'gray70',  size = 0.5) + 
+    geom_point(size = 1.5, stroke = 0.7, shape = 21, color = 'black', fill= 'gray70', position = position_jitter(width = 0.08, height = 0)) + 
 	xlab(my_xlab) + 
 	ylab(my_ylab) +
 
@@ -188,11 +175,11 @@ my_xlab <- paste0("Applied force (", input_units, ")")
 my_ylab <- paste0("Sensor reading (", output_units, ")")
 
 # -------------------- one new line to define the calibration equation
-calibr_eqn <- paste0("y = ", sprintf("%.3f", slope_value), " x + ", sprintf("%.3f", intercept_value)) 
+calibr_eqn <- paste0("y = ", sprintf("%.3f", slope), " x + ", sprintf("%.3f", intercept)) 
 
-calibr_graph <- ggplot(data = graph_data) +
-	geom_line(aes(x = input_lb, y = fit_mV), size = 0.4, color = 'gray70') + 
-	geom_point(aes(x = input_lb, y = output_mV), size = 2, stroke = 0.7, shape = 21, color = 'black', fill= 'gray70', position = position_jitter(width = 0.08, height = 0)) + 
+calibr_graph <- ggplot(graph_data, aes(input_lb, output_mV)) +
+    geom_smooth(method = 'lm', se = FALSE, color = 'gray70',  size = 0.5) + 
+    geom_point(size = 1.5, stroke = 0.7, shape = 21, color = 'black', fill= 'gray70', position = position_jitter(width = 0.08, height = 0)) + 
 	xlab(my_xlab) + 
 	ylab(my_ylab) +
 	scale_x_continuous(breaks = x_test_seq) +
@@ -216,16 +203,16 @@ Lastly, we edit the font sizes used by editing the theme. We add two lines, one 
 set.seed(20160824)
 my_xlab <- paste0("Applied force (", input_units, ")")
 my_ylab <- paste0("Sensor reading (", output_units, ")")
-calibr_eqn <- paste0("y = ", sprintf("%.3f", slope_value), 
-										 " x + ", sprintf("%.3f", intercept_value)) 
-calibr_graph <- ggplot(data = graph_data) +
-	geom_line(aes(x = input_lb, y = fit_mV), size = 0.4, color = 'gray70') + 
-	geom_point(aes(x = input_lb, y = output_mV), size = 1.5, stroke = 0.7, shape = 21, color = 'black', fill= 'gray70', position = position_jitter(width = 0.08, height = 0)) + 
+calibr_eqn <- paste0("y = ", sprintf("%.3f", slope), 
+										 " x + ", sprintf("%.3f", intercept)) 
+calibr_graph <- ggplot(graph_data, aes(input_lb, output_mV)) +
+    geom_smooth(method = 'lm', se = FALSE, color = 'gray70',  size = 0.5) + 
+    geom_point(size = 1.5, stroke = 0.7, shape = 21, color = 'black', fill= 'gray70', position = position_jitter(width = 0.08, height = 0)) + 
 	xlab(my_xlab) + 
 	ylab(my_ylab) +
 	scale_x_continuous(breaks = x_test_seq) +
 	scale_y_continuous(breaks = y_nominal_seq) +
-	annotate("text", x = min(graph_data$input_lb), y = max(graph_data$output_mV), label = calibr_eqn, family = "serif", fontface = "italic", hjust = "left", vjust = "top",
+	annotate("text", x = input_min, y = output_max, label = calibr_eqn, family = "serif", fontface = "italic", hjust = "left", vjust = "top",
 					 
 # -------------------- add size spec in mm (convert using 2.85 pt/mm)
   size = 11/2.85) + 

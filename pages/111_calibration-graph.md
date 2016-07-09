@@ -1,20 +1,11 @@
 ---
+layout: page
 title: "calibration graph"
-output:
-  html_document:
-    keep_md: yes
 ---
 
-```{r setup, include = FALSE}
-library(knitr)
-opts_knit$set(root.dir = "../")
-opts_chunk$set(echo = TRUE, include = TRUE, eval = TRUE, results = 'hide', message = FALSE, warning = FALSE, fig.keep='none')
-```
 
-```{r, echo = FALSE}
-# my tutorial functions for text_icon and code_icon
-source("scripts/helper_02_icons.R")
-```
+
+
 
 Packages used in this tutorial  
 
@@ -23,24 +14,25 @@ Packages used in this tutorial
 
 How to use this tutorial 
 
-- `r text_icon` *add text*: type the prose verbatim into the Rmd file 
-- `r code_icon` *add code*: insert a code chunk then transcribe the R code 
-- `r knit_icon` *Knit* after each addition. 
+- ![](../resources/images/text-icon.png)<!-- --> *add text*: type the prose verbatim into the Rmd file 
+- ![](../resources/images/code-icon.png)<!-- --> *add code*: insert a code chunk then transcribe the R code 
+- ![](../resources/images/knit-icon.png)<!-- --> *Knit* after each addition. 
 
 ### open a new Rmd script
 
 We start a new Rmd script to graph the calibration data with regression line and save the graph to file.  
 
-- Open a new Rmd file, and name it `04_calibr_graph.Rmd`
+- Open a new Rmd file, and name it `03_calibr_graph.Rmd`
 - Start the new script with the same YAML header as the previous script
 - Change the title to `"Load-cell calibration --- graph"`
 - Insert the same code chunk for the knitr setup 
 
 Knowing the packages we'll be using, we can load them right away, near the top of the file.
 
-`r code_icon`
+![](../resources/images/code-icon.png)<!-- -->
 
-```{r}
+
+```r
 # load packages
 library(readr)
 library(ggplot2)
@@ -56,20 +48,21 @@ You should learn to recognize syntax from the other systems too. With so many co
 
 Robert Kabacoff, the author of the online reference [Quick-R](http://www.statmethods.net/) and the book [R in Action  2/e](https://www.manning.com/books/r-in-action-second-edition) (if you buy one book to help you learn R, I recommend this one), summarizes R graphics systems [here](http://www.slideshare.net/kabacoff/r-for-data-visualization-and-graphics-31577136?next_slideshow=1). Also, an anonymous blogger compares lattice to ggplot2 in a series of posts [here](https://learnr.wordpress.com/2009/08/26/ggplot2-version-of-figures-in-lattice-multivariate-data-visualization-with-r-final-part/). 
 
-Having used `lattice` for years now, I am a novice `ggplot2` user like you, but I'm convinced it's the package to learn --- all the cool kids are using it. 
+Having used `lattice` for years now, I am a novice `ggplot2` user too, but I'm convinced it's the package to learn --- all the cool kids are using it. 
 
 ### data
 
-`r text_icon`
+![](../resources/images/text-icon.png)<!-- -->
 
     # Data
     
-    Read the data set saved during the regression analysis.
+    Read the tidy data set.
 
-`r code_icon`
+![](../resources/images/code-icon.png)<!-- -->
 
-```{r}
-graph_data <- read_csv("results/03_calibr_regression_graph-data.csv")
+
+```r
+graph_data <- read_csv("results/02_calibr_data-tidying.csv")
 str(graph_data)
 ```
 
@@ -78,59 +71,63 @@ str(graph_data)
 Confer with a neighbor.
 
 1. How many variables in this data frame?
-2. How will they be used in creating the graph? 
+2. Which variables do we use in the calibration graph? 
 
 ### building the graph in layers 
     
-`r text_icon`
+![](../resources/images/text-icon.png)<!-- -->
 
     # Building the graph in layers 
     
     Just show the data. 
 
-`r code_icon`
+![](../resources/images/code-icon.png)<!-- -->
 
-```{r}
-calibr_graph <- ggplot(data = graph_data) +
-	geom_point(aes(x = input_lb, y = output_mV))
-``` 
+
+```r
+calibr_graph <- ggplot(data = graph_data, aes(x = input_lb, y = output_mV)) +
+    geom_point()
+```
 
 Learning ggplot2
 
-- `ggplot(data = graph_data)` brings in the data frame
+- `data = ...` brings in the data frame
+- `aes()` is the **aes**thetic mapping, indicating which of the variables in the data frame are used for `x` and `y` coordinates of the scatter plot 
 - `+` is the syntax for "add the next layer"
 - `geom_point()` is a **geom**etric object. We use points because we're drawing a scatterplot
-- `aes()` is an **aes**thetic mapping from the data to the `geom_point`. Here, *x* and *y* are the input and output columns from the data frame
 
-`r code_icon`
+![](../resources/images/code-icon.png)<!-- -->
 
-```{r eval=FALSE}
+
+```r
 print(calibr_graph)
 ```
 
 That's all it takes to obtain a basic scatterplot. If you don't care for the default graphic settings, don't worry, I'll show you how to edit basic settings. 
 
-
-`r text_icon`
+![](../resources/images/text-icon.png)<!-- -->
 
     Draw the regression line.  
 
-`r code_icon`
+![](../resources/images/code-icon.png)<!-- -->
 
-```{r}
-calibr_graph <- ggplot(data = graph_data) +
-	geom_line(aes(x = input_lb, y = fit_mV)) + 
-	geom_point(aes(x = input_lb, y = output_mV))
+
+```r
+calibr_graph <- ggplot(data = graph_data, aes(x = input_lb, y = output_mV)) +
+    geom_smooth(method = 'lm') + 
+    geom_point()
 ```
 
 Learning ggplot2
 
-- `geom_line()` is a geom for drawing lines
-- Layers are drawn consecutively, so by drawing `geom_point()` after `geom_line()`, the points (data markers) overprint the line. 
+- `geom_smooth()` computes and draws a fitted curve and confidence interval
+- `method` assigns the type of curve fit, `lm` is a linear model
+- Layers are drawn consecutively, so by drawing `geom_smooth()` before `geom_point()`, the points overprint the line. 
 
-`r code_icon`
+![](../resources/images/code-icon.png)<!-- -->
 
-```{r eval=FALSE}
+
+```r
 print(calibr_graph)
 ```
 
@@ -142,40 +139,43 @@ Confer with a neighbor
 
 ### changing the attributes of graphical elements
 
-`r text_icon`
+![](../resources/images/text-icon.png)<!-- -->
 
     # Changing the attributes of graphical elements 
     
     Start with the line and the data markers.
 
-`r code_icon`
+![](../resources/images/code-icon.png)<!-- -->
 
-```{r}
-calibr_graph <- ggplot(data = graph_data) +
-	geom_line(aes(x = input_lb, y = fit_mV), size = 0.5, color = 'gray70') + 
-	geom_point(aes(x = input_lb, y = output_mV), size = 1.5, shape = 21, 
-						 stroke = 0.7,  color = 'black', fill= 'gray70')
+
+```r
+calibr_graph <- ggplot(data = graph_data, aes(x = input_lb, y = output_mV)) +
+    geom_smooth(method = 'lm', se = FALSE, color = 'gray70',  size = 0.5) + 
+    geom_point(size = 1.5, stroke = 0.7, shape = 21, color = 'black', fill= 'gray70')
 ```
 
 Learning ggplot2
 
+- `se = FALSE` turns off the confidence interval band
 - The line is edited in size (line width in mm) and color. 
 - The point is edited in size (diameter in mm),  [shape](http://docs.ggplot2.org/current/vignettes/ggplot2-specs.html), stroke and color (outer circle), and fill color. 
-- R has `r length(colors())` built-in named colors such as `gray70` and `black` I've used here. You can see the full list of color names by typing `colors()` in the Console. View the colors [here](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf). 
+- R has 657 built-in named colors such as `gray70` and `black` I've used here. You can see the full list of color names by typing `colors()` in the Console. View the colors by name  [here](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf). 
 
-`r code_icon`
+![](../resources/images/code-icon.png)<!-- -->
 
-```{r eval=FALSE}
+
+```r
 print(calibr_graph)
 ```
 
-`r text_icon`
+![](../resources/images/text-icon.png)<!-- -->
 
     Edit the axis labels. 
 
-`r code_icon`
+![](../resources/images/code-icon.png)<!-- -->
 
-```{r}
+
+```r
 calibr_graph <- calibr_graph + 
 	xlab("Applied force (lb)") + 
 	ylab("Sensor reading (mV)")
@@ -185,19 +185,21 @@ Learning ggplot2
 
 - This chunk could be read "Assign `calibr_graph` to itself, add a layer for the x-axis label, and add a layer for the y-axis label."
 
-`r code_icon`
+![](../resources/images/code-icon.png)<!-- -->
 
-```{r eval=FALSE}
+
+```r
 print(calibr_graph)
 ```
 
-`r text_icon`
+![](../resources/images/text-icon.png)<!-- -->
 
     Edit the locations of the axis markings to match the test points. 
 
-`r code_icon`
+![](../resources/images/code-icon.png)<!-- -->
 
-```{r}
+
+```r
 calibr_graph <- calibr_graph + 
 	scale_x_continuous(breaks = seq(from = 0.5, to = 4.5, by = 1)) +
 	scale_y_continuous(breaks = seq(from = 10, to = 90, by = 20))
@@ -206,21 +208,23 @@ calibr_graph <- calibr_graph +
 Learning R
 
 - `breaks` is ggplot2 syntax for tick mark locations
-- Sequences have the form `seq (from = ..., to = ..., by = ...)` as shown here. You can shorten the code by omitting the *key words* as long as the numbers are in the order shown. For example, I could have written `seq(10, 90, 20)` and obtained the same result, the vector `(10, 30, 50, 70, 90)`. 
+- Sequences have the form `seq (from = ..., to = ..., by = ...)` as shown here. You can shorten the code by omitting the *key* words as long as the *values* are in the order shown. For example, I could have written `seq(10, 90, 20)` and obtained the same result, the vector `(10, 30, 50, 70, 90)`. 
 
-`r code_icon`
+![](../resources/images/code-icon.png)<!-- -->
 
-```{r eval=FALSE}
+
+```r
 print(calibr_graph)
 ```
 
-`r text_icon`
+![](../resources/images/text-icon.png)<!-- -->
 
     Assign a different theme. 
 
-`r code_icon`
+![](../resources/images/code-icon.png)<!-- -->
 
-```{r}
+
+```r
 calibr_graph <- calibr_graph + 
 	theme_light()
 ```
@@ -230,19 +234,21 @@ Learning ggplot2
 - A theme, in ggplot2, is a collection of settings that controls the appearance of the graph. Example images of the built-in themes are [here](http://docs.ggplot2.org/current/ggtheme.html). 
 - Additional themes are available in the [ggthemes package](https://github.com/jrnold/ggthemes), including themes inspired by Stephen Few, Edward Tufte, The Economist magazine, and even the classic 2003 ugly gray charts in Excel ("for ironic purposes only").  
 
-`r code_icon`
+![](../resources/images/code-icon.png)<!-- -->
 
-```{r eval=FALSE}
+
+```r
 print(calibr_graph)
 ```
 
-`r text_icon`
+![](../resources/images/text-icon.png)<!-- -->
 
     Edit the theme.  
 
-`r code_icon`
+![](../resources/images/code-icon.png)<!-- -->
 
-```{r}
+
+```r
 calibr_graph <- calibr_graph +
 		theme(panel.grid.minor = element_blank(),  
 					axis.ticks.length = unit(2, "mm"))
@@ -255,33 +261,34 @@ Learning ggplot2
 
 The ability to edit or create a theme is the essential tool for customizing graphs in `ggplot2`. I've show two small customizations; the full list is given [here](http://rstudio-pubs-static.s3.amazonaws.com/3364_d1a578f521174152b46b19d0c83cbe7e.html).  
 
-`r code_icon`
+![](../resources/images/code-icon.png)<!-- -->
 
-```{r eval=FALSE}
+
+```r
 print(calibr_graph)
 ```
 
 ### putting it all together 
 
-`r text_icon`
+![](../resources/images/text-icon.png)<!-- -->
 
     # Putting it all together
     
-    We've written out the layers in separate code chunks for clarity, but they can be assembled into one code chunk in the same order as before. 
+    We've written out the layers in separate code chunks for clarity, but they can be assembled into one code chunk in the same order as before. A design feature of  `ggplot2` syntax is that a graph is constructed one layer at a time---and the structure of the layers is revealed by the structure of the code.  
     
-`r code_icon`
+![](../resources/images/code-icon.png)<!-- -->
 
-```{r}
-calibr_graph <- ggplot(graph_data) +
-	geom_line(aes(input_lb, fit_mV), size = 0.4, color = 'gray70') + 
-	geom_point(aes(input_lb, output_mV), size = 1.5, stroke = 0.7, shape = 21, 
-						 color = 'black', fill = 'gray70') + 
-	xlab("Applied force (lb)") + 
-	ylab("Sensor reading (mV)") +
-	scale_x_continuous(breaks = seq(0.5, 4.5, 1)) +
-	scale_y_continuous(breaks = seq(10, 90, 20)) +
-	theme_light() +
-	theme(panel.grid.minor = element_blank())
+
+```r
+calibr_graph <- ggplot(graph_data, aes(input_lb, output_mV)) +
+    geom_smooth(method = 'lm', se = FALSE, color = 'gray70',  size = 0.5) + 
+    geom_point(size = 1.5, stroke = 0.7, shape = 21, color = 'black', fill= 'gray70') +
+    xlab("Applied force (lb)") + 
+    ylab("Sensor reading (mV)") +
+    scale_x_continuous(breaks = seq(0.5, 4.5, 1)) +
+    scale_y_continuous(breaks = seq(10, 90, 20)) +
+    theme_light() +
+    theme(panel.grid.minor = element_blank(), axis.ticks.length = unit(2, "mm"))
 ```
 
 Learn ggplot2. Earlier, we shortened the `seq()` function by writing the arguments in a particular order. We can do the same with other functions: 
@@ -289,20 +296,22 @@ Learn ggplot2. Earlier, we shortened the `seq()` function by writing the argumen
 - From `ggplot()`, you can omit `data = `, leaving the data frame name
 - From `aes()`, you can omit `x = ` and `y = `, leaving the x-variable and y-variable names in that order
 
-`r code_icon`
+![](../resources/images/code-icon.png)<!-- -->
 
-```{r eval=FALSE}
+
+```r
 # print to screen
 print(calibr_graph)
 ```
 
 And, print to file. 
 
-`r code_icon`
+![](../resources/images/code-icon.png)<!-- -->
 
-```{r}
+
+```r
 # print to file
-ggsave("results/04_calibr_graph.png", plot = calibr_graph, 
+ggsave("results/03_calibr_graph.png", plot = calibr_graph, 
 			 width = 6, height = 4, units = "in", dpi = 300)
 ```
 
@@ -312,11 +321,23 @@ Learning ggplot2
 - `dpi = 300` for using in a print document
 - `dpi` $\times$ `width` and `height` in inches yields screen dimension in pixels (72 ppi for web resolution is a  [myth](http://www.photoshopessentials.com/essentials/the-72-ppi-web-resolution-myth/)).
 
+
+### check yourself
+
+Navigate to your results directory. it should look like this:
+
+    results\
+      |-- 02_calibr_data-tidying.csv
+      `-- 03_calibr_graph.png
+      
+      
+      
+
 ### advanced graphics
 
 There's much more we can do to bring the graph up to publication standards. 
 
-I've prepared an [advanced](113_advanced_graph.html) (and completely optional) tutorial for those of you who want to know MORE and you want it NOW.  Topics include: 
+I've prepared an [advanced](114_advanced_graph.html) (and completely optional) tutorial for those of you who want to know MORE and you want it NOW.  Topics include: 
 
 - Jitter the data markers to reduce printing overlap and set a random seed so jittering is repeatable 
 - Use the results table to dynamically assign units to the axis labels and set  tick mark locations
@@ -326,23 +347,8 @@ I've prepared an [advanced](113_advanced_graph.html) (and completely optional) t
 
 
 
-```{r eval=FALSE, echo = FALSE, comment=NA, results='asis'}
-# a hacky approach to DRY
-# replicating a bullet list from another Rmd file
-# turned off for now
-# 
-# library(readr)
-# library(stringr)
-# 
-# adv_lines         <- read_lines("scripts/099_advanced_graph.Rmd", skip = 6)
-# idx_first_heading <- grep("#", adv_lines) [1]
-# idx_bullets       <- grep("-", adv_lines)
-# idx_list          <- idx_bullets[idx_bullets > idx_first_heading]
-# running_delta     <- rle(diff(idx_list, 1))
-# keep_n            <- running_delta$lengths[1]
-# adv_lines         <- adv_lines[idx_list[1]:(idx_list[1] + keep_n)]
-# 
-# stuff <- lapply(seq_along(adv_lines), function(i) cat(adv_lines[i], "\n"))
-```
-
+      
+---
+Back [data tidying](110_data-tidying.html)<br>
+Next [linear regression](112_linear-regression.html)
 

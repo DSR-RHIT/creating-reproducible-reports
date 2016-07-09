@@ -50,7 +50,7 @@ library(dplyr)
 
 ```r
 # read the tidy data
-calibr_data <- read_csv("data/02_calibr_data-tidying.csv")
+calibr_data <- read_csv("results/02_calibr_data-tidying.csv")
 head(calibr_data)
 ```
 
@@ -288,7 +288,7 @@ Learn R.
 
 
 ```r
-write_csv(calibr_results, "results/03_calibr_regression_results-table.csv")
+write_csv(calibr_results, "results/04_calibr_regression-results.csv")
 ```
 
 Because this information is likely to appear in a client report, we save it to the `results` directory.  
@@ -311,21 +311,15 @@ Learn R.
 - This code chunk can be read. "Assign `calibr_data` to `graph_data` *then* add a new column `fit_mV` that is the `y_fit` results rounded to two decimal places, *then* keep only the three columns listed."
 - `round()` is a base-R function for rounding. For most cases, I usually use the `plyr::round_any()` function. For more information, type `?plyr::round_any` in the Console. 
 
-
-```r
-write_csv(graph_data, "results/03_calibr_regression_graph-data.csv")
-```
-
-Because these values are the basis for the calibration graph (to be drawn in the next script), we save this data frame to the `results` directory. 
-
 ### check yourself
 
 Navigate to your results directory. it should look like this:
 
     results\
-      |-- 03_calibr_regression_graph-data.csv
-      `-- 03_calibr_regression_results-table.csv
+      |-- 02_calibr_data-tidying.csv
+      |-- 03_calibr_graph.png
+      `-- 04_calibr_regression-results.csv
 
 ---
-Back [tidying the data](110_data-tidying.html)<br>
-Next [calibration graph](112_calibration-graph.html)
+Back [calibration graph](111_calibration graph.html)<br>
+Next [client report](113_client-report.html)

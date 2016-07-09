@@ -174,20 +174,18 @@ Learning R:
 
 
 ```r
-write_csv(tidy_data, "data/02_calibr_data-tidying.csv")
+write_csv(tidy_data, "results/02_calibr_data-tidying.csv")
 ```
 
 ### check yourself
 
-Navigate to your data directory. it should look like this:
+Navigate to your results directory. it should look like this:
 
-    data\
-      |-- 007_wide-data.csv
-      |-- 01_calibr_data-reshaping.csv
+    results\
       `-- 02_calibr_data-tidying.csv
       
       
 ---
 Back [data reshaping](109_data-reshaping.html)<br>
-Next [linear regression](111_linear-regression.html)
+Next [calibration graph](111_calibration-graph.html)
 

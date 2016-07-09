@@ -5,19 +5,14 @@ date: '2016-08-24'
 output: html_document
 ---
 
-```{r, setup, include = FALSE}
+```{r 01-01, include = FALSE}
 library(knitr)
 opts_knit$set(root.dir = '../')
 opts_chunk$set(echo = TRUE)
 ```
 
-# Introduction
 
-Calibration test data for an Omega LCL-005 (0--5 lb) load cell (a force sensor) has been provided by the test lab. The goal of this analysis is to determine the calibration equation and estimate the sensor accuracy.
-
-The lab has made available an image of the test setup on the Internet. 
-
-```{r}
+```{r 01-02}
 url <- "https://raw.githubusercontent.com/DSR-RHIT/creating-reproducible-reports/gh-pages/resources/load-cell-setup-786x989px.png"
 
 destination <- "resources/load-cell-setup-786x989px.png"
@@ -27,7 +22,7 @@ download.file(url, destination, mode = "wb")
 
 The image of the test setup shows that a known weight (lb) is attached to the eye hook and the load cell bridge produces an output signal (mV).
 
-```{r, fig.cap = 'Figure 1. Load cell calibration test setup'}
+```{r 01-03, fig.cap = 'Figure 1. Load cell calibration test setup'}
 knitr::include_graphics("../resources/load-cell-setup-786x989px.png", dpi = 250)
 ```
 
@@ -35,7 +30,7 @@ knitr::include_graphics("../resources/load-cell-setup-786x989px.png", dpi = 250)
 
 Download the data from the Internet repository. 
 
-```{r}
+```{r 01-04}
 url <- "https://raw.githubusercontent.com/DSR-RHIT/creating-reproducible-reports/gh-pages/data/007_wide-data.csv"
 
 destination <- "data/007_wide-data.csv"
@@ -45,7 +40,7 @@ download.file(url, destination)
 
 Read the data from our local copy into the R workspace. 
 
-```{r}
+```{r 01-05}
 # read the data set as received
 library(readr)
 data_received <- read_csv('data/007_wide-data.csv')
@@ -53,7 +48,7 @@ data_received <- read_csv('data/007_wide-data.csv')
 
 First look at the data structure.
 
-```{r}
+```{r 01-06}
 str(data_received)
 ```
 
@@ -61,7 +56,7 @@ As expected, *read_csv()* produced a data frame. All columns are numerical excep
 
 Look at the first few rows of the data set. 
 
-```{r}
+```{r 01-07}
 head(data_received)
 ```
 
@@ -71,7 +66,7 @@ The NA values in the first and last cycles are due to the ANSI/ISA test protocol
 
 A statistical summary of the numerical columns is useful for looking for data anomalies. 
 
-```{r, message = FALSE}
+```{r 01-08, message = FALSE}
 library(dplyr)
 # summary-stats except column 1
 partial_data_set <- data_received %>%
@@ -101,13 +96,13 @@ Each mV reading in a row is a separate observation. To reshape the data, we want
 
 We begin this process by writing code to identify which of the columns include the character string, *cycle*, in their name. 
 
-```{r}
+```{r 01-09}
 # extract the indices of the column names that include "cycle"
 all_col_names  <- colnames(data_received)
 is_a_cycle_col <- grep('cycle', all_col_names, ignore.case = TRUE)
 ```
 
-```{r}
+```{r 01-10}
 # the column indices
 is_a_cycle_col
 ```
@@ -115,7 +110,7 @@ is_a_cycle_col
 
 # Reshaping data from wide to long
 
-```{r}
+```{r 01-11}
 library(tidyr)
 long_data <- data_received %>%
 	gather(cycle, output_mV, is_a_cycle_col) 
@@ -123,7 +118,7 @@ long_data <- data_received %>%
 
 Examine the result. 
 
-```{r}
+```{r 01-12}
 long_data # print it
 str(long_data) # examine its structure
 summary(long_data) # examine the summary statistics of each column
@@ -133,7 +128,7 @@ This summary shows, first, that I have the columns I expected.
 
 Second, all the NA values are in the mV readings column. These are not actually missing values. They represent superfluous rows, strictly artifacts of how the test lab organized their data table in the first place. We can safely delete these rows. 
 
-```{r}
+```{r 01-13}
 library(dplyr)
 long_data <- long_data %>%
 	filter(! output_mV %in% NA)
@@ -142,12 +137,12 @@ str(long_data)
 
 It's a small enough data set, with 17 observations in 4 columns, that I can print the full set. 
 
-```{r}
+```{r 01-14}
 print(long_data)
 ```
 
 Write the long-form data to file in the data directory.
 
-```{r}
-write_csv(long_data, "data/01_calibr_long-data.csv")
+```{r 01-15}
+write_csv(long_data, "data/01_calibr_data-reshaping.csv")
 ```

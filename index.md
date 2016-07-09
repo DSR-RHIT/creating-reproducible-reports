@@ -31,8 +31,8 @@ We'll start the tutorials together but I'll let you work at your own pace as soo
 - [examine the wide-form data](pages/108_examine-wide-data.html)
 - [data reshaping](pages/109_data-reshaping.html)
 - [data tidying](pages/110_data-tidying.html)
-- [linear regression](pages/111_linear-regression.html) 
-- [calibration graph](pages/112_calibration-graph.html)
+- [calibration graph](pages/111_calibration-graph.html)
+- [linear regression](pages/112_linear-regression.html) 
 - client report 
 
 
@@ -43,7 +43,7 @@ We'll start the tutorials together but I'll let you work at your own pace as soo
 - planning for reproducibility 
 - starting your own project 
 - looking ahead 
-- [advanced graph topics](pages/113_advanced_graph.html)
+- [advanced graph topics](pages/114_advanced_graph.html)
 
 
 

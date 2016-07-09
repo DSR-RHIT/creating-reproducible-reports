@@ -5,23 +5,23 @@ date: '2016-08-24'
 output: html_document
 ---
 
-```{r, setup, include = FALSE}
+```{r 03-01, include = FALSE}
 library(knitr)
 opts_knit$set(root.dir = '../')
 opts_chunk$set(echo = TRUE)
 ```
 
-```{r}
+```{r 03-02}
 library(readr)
 library(ggplot2)
 ```
 
 # Data
 
-Read the data set saved during the regression analysis.
+Read the tidy data set.
 
-```{r}
-graph_data <- read_csv("results/03_calibr_regression_graph-data.csv")
+```{r 03-03}
+graph_data <- read_csv("results/02_calibr_data-tidying.csv")
 str(graph_data)
 ```
 
@@ -29,19 +29,19 @@ str(graph_data)
 
 Just show the data. 
 
-```{r}
-calibr_graph <- ggplot(data = graph_data) +
-	geom_point(aes(x = input_lb, y = output_mV))
+```{r 03-04}
+calibr_graph <- ggplot(data = graph_data, aes(x = input_lb, y = output_mV)) +
+	geom_point()
 
 print(calibr_graph)
 ```
 
 Draw the regression line. 
 
-```{r}
-calibr_graph <- ggplot(data = graph_data) +
-	geom_line(aes(x = input_lb, y = fit_mV)) + 
-	geom_point(aes(x = input_lb, y = output_mV))
+```{r 03-05}
+calibr_graph <- ggplot(data = graph_data, aes(x = input_lb, y = output_mV)) +
+	geom_smooth(method = 'lm') + 
+	geom_point()
 
 print(calibr_graph)
 ```
@@ -50,18 +50,17 @@ print(calibr_graph)
 
 Start with the line and the data markers. 
 
-```{r}
-calibr_graph <- ggplot(data = graph_data) +
-	geom_line(aes(x = input_lb, y = fit_mV), size = 0.4, color = 'gray70') + 
-	geom_point(aes(x = input_lb, y = output_mV), size = 1.5, 
-						 stroke = 0.7, shape = 21, color = 'black', fill= 'gray70')
+```{r 03-06}
+calibr_graph <- ggplot(data = graph_data, aes(x = input_lb, y = output_mV)) +
+	geom_smooth(method = 'lm', se = FALSE, color = 'gray70',  size = 0.5) + 
+	geom_point(size = 1.5, stroke = 0.7, shape = 21, color = 'black', fill= 'gray70')
 
 print(calibr_graph)
 ```
 
 Edit the axis labels. 
 
-```{r}
+```{r 03-07}
 calibr_graph <- calibr_graph + 
 	xlab("Applied force (lb)") + 
 	ylab("Sensor reading (mV)")
@@ -69,7 +68,7 @@ calibr_graph <- calibr_graph +
 
 Edit the locations of the axis markings to match the test points. 
 
-```{r}
+```{r 03-08}
 calibr_graph <- calibr_graph + 
 	scale_x_continuous(breaks = seq(from = 0.5, to = 4.5, by = 1)) +
 	scale_y_continuous(breaks = seq(from = 10, to = 90, by = 20))
@@ -78,7 +77,7 @@ print(calibr_graph)
 
 Assign a different theme. 
 
-```{r}
+```{r 03-09}
 calibr_graph <- calibr_graph + 
 	theme_light()
 print(calibr_graph)
@@ -86,10 +85,9 @@ print(calibr_graph)
 
 Edit the theme.  
 
-```{r}
+```{r 03-10}
 calibr_graph <- calibr_graph +
-        theme(panel.grid.minor = element_blank(),  
-        			axis.ticks.length = unit(2, "mm"))
+        theme(panel.grid.minor = element_blank(), axis.ticks.length = unit(2, "mm"))
 
 print(calibr_graph)
 ```
@@ -98,23 +96,22 @@ print(calibr_graph)
 
 We've written out the layers in separate code chunks for clarity, but they can be assembled into one code chunk in the same order as before.   
 
-```{r}
-calibr_graph <- ggplot(graph_data) +
-	geom_line(aes(input_lb, fit_mV), size = 0.4, color = 'gray70') + 
-	geom_point(aes(input_lb, output_mV), size = 1.5, 
-						 stroke = 0.7, shape = 21, color = 'black', fill = 'gray70') + 
+```{r 03-11}
+calibr_graph <- ggplot(graph_data, aes(input_lb, output_mV)) +
+	geom_smooth(method = 'lm', se = FALSE, color = 'gray70',  size = 0.5) + 
+	geom_point(size = 1.5, stroke = 0.7, shape = 21, color = 'black', fill= 'gray70') +
 	xlab("Applied force (lb)") + 
 	ylab("Sensor reading (mV)") +
 	scale_x_continuous(breaks = seq(0.5, 4.5, 1)) +
 	scale_y_continuous(breaks = seq(10, 90, 20)) +
 	theme_light() +
-	theme(panel.grid.minor = element_blank())
+	theme(panel.grid.minor = element_blank(), axis.ticks.length = unit(2, "mm"))
 
 # print to output	
 print(calibr_graph)
 
 # print to file
-ggsave("results/04_calibr_graph.png", plot = calibr_graph, 
+ggsave("results/03_calibr_graph.png", plot = calibr_graph, 
 			 width = 6, height = 4, units = "in", dpi = 300)
 ```
 

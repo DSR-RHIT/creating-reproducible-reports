@@ -5,7 +5,7 @@ date: '2016-08-24'
 output: html_document
 ---
 
-```{r, setup, include = FALSE}
+```{r 02-01, include = FALSE}
 library(knitr)
 opts_knit$set(root.dir = '../')
 opts_chunk$set(echo = TRUE)
@@ -13,16 +13,16 @@ opts_chunk$set(echo = TRUE)
 
 # Add a column of observation numbers
 
-```{r}
+```{r 02-02}
 # read the long-form data file we saved in the previous step 
 library(readr)
-tidy_data <- read_csv('data/01_calibr_long-data.csv')
+tidy_data <- read_csv('data/01_calibr_data-reshaping.csv')
 ```
 
 The test points are in the order in which the data were acquired (consistent with the ANSI/ISA standard). So the observation number is the same as the row number. 
 
-```{r}
-library(dplyr)
+```{r 02-03}
+suppressPackageStartupMessages(library(dplyr))
 # observation numbers are a sequence of integers, from 1 to the number of rows
 nrow_in_tidy_data <- nrow(tidy_data)
 tidy_data <- tidy_data %>%
@@ -36,7 +36,7 @@ The *cycle* data are strings, *cycle_1*, *cycle_2*, etc., from the column headin
 
 First, I separate the *cycle* column into two parts using the underscore in the data as the separation pattern. 
 
-```{r}
+```{r 02-04}
 library(tidyr)
 tidy_data  <- tidy_data %>%
 	separate(cycle, into = c('prefix', 'cycle'), sep = '_')
@@ -44,19 +44,19 @@ tidy_data  <- tidy_data %>%
 
 Examine the separated columns.
 
-```{r}
+```{r 02-05}
 head(tidy_data)
 ```
 
 I can delete the new prefix column and I'll convert the cycle column from a character to an integer. 
 
-```{r}
+```{r 02-06}
 tidy_data <- tidy_data %>%
 	select(-prefix) %>%
 	mutate(cycle = as.integer(cycle))
 ```
 
-```{r}
+```{r 02-07}
 # Examine the results
 head(tidy_data)
 tail(tidy_data)
@@ -68,7 +68,7 @@ Spot checking with *head()* and *tail()*, I confirm that the new cycle column is
 
 The last steps in tidying this data set are to shorten the *test_point* column name and to rearrange columns in a logical order. 
 
-```{r}
+```{r 02-08}
 tidy_data <- tidy_data %>%
 	select(observ, cycle, test_pt = test_point, input_lb, output_mV)
 print(tidy_data)
@@ -76,8 +76,8 @@ print(tidy_data)
 
 Write the tidy data to file in the data directory.
 
-```{r}
-write_csv(tidy_data, "data/02_calibr_tidy-data.csv")
+```{r 02-09}
+write_csv(tidy_data, "results/02_calibr_data-tidying.csv")
 ```
 
     
