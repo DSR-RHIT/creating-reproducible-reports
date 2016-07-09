@@ -23,7 +23,7 @@ How to use this tutorial
 
 We start a new Rmd script to perform the linear regression analysis and save the results to file.  
 
-- Open a new Rmd file, and name it `03_calibr_regression.Rmd`
+- Open a new Rmd file, and name it `04_calibr_regression.Rmd`
 - Start the new script with the same YAML header as the previous script
 - Change the title to `"Load-cell calibration --- linear regression"`
 - Inset the same code chunk for the knitr setup 
