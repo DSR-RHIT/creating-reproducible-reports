@@ -51,6 +51,7 @@ input_range_fraction <- round(input_max / 5 * 100, 1)
 
 ```r
 graph_data <- read_csv("results/02_calibr_data-tidying.csv")
+
 calibr_graph <- ggplot(graph_data, aes(input_lb, output_mV)) +
     geom_smooth(method = 'lm', se = FALSE, color = 'gray70',  size = 0.5) + 
     geom_point(size = 1.5, stroke = 0.7, shape = 21, color = 'black', fill= 'gray70') +
@@ -61,7 +62,6 @@ calibr_graph <- ggplot(graph_data, aes(input_lb, output_mV)) +
     theme_light() +
     theme(panel.grid.minor = element_blank(), axis.ticks.length = unit(2, "mm"))
 
-# print to output	
 print(calibr_graph)
 ```
 
@@ -73,16 +73,11 @@ Next add `set.seed()` before the graph is created. An easy way to set a seed is 
 
 
 ```r
-# -------------------- one new line to set the seed
-set.seed(20160824)
+set.seed(20160824) # ===== NEW LINE
 
 calibr_graph <- ggplot(graph_data, aes(input_lb, output_mV)) +
     geom_smooth(method = 'lm', se = FALSE, color = 'gray70',  size = 0.5) + 
-    geom_point(size = 1.5, stroke = 0.7, shape = 21, color = 'black', fill= 'gray70', 
-						 
-# -------------------- one new line to use the jitter function
-position = position_jitter(width = 0.08, height = 0)) + 
-	
+    geom_point(size = 1.5, stroke = 0.7, shape = 21, color = 'black', fill= 'gray70', position = position_jitter(width = 0.08, height = 0)) + # ===== ADD POSITION ARGUMENT
     xlab("Applied force (lb)") + 
     ylab("Sensor reading (mV)") +
     scale_x_continuous(breaks = seq(0.5, 4.5, 1)) +
@@ -90,7 +85,6 @@ position = position_jitter(width = 0.08, height = 0)) +
     theme_light() +
     theme(panel.grid.minor = element_blank(), axis.ticks.length = unit(2, "mm"))
 
-# print to output	
 print(calibr_graph)
 ```
 
@@ -104,24 +98,19 @@ Before the graph, create a x-label string and y-label string using `paste0`. Tho
 ```r
 set.seed(20160824)
 
-# -------------------- two new lines
-my_xlab <- paste0("Applied force (", input_units, ")")
-my_ylab <- paste0("Sensor reading (", output_units, ")")
+my_xlab <- paste0("Applied force (", input_units, ")") # ===== NEW LINE
+my_ylab <- paste0("Sensor reading (", output_units, ")") # ===== NEW LINE
 
 calibr_graph <- ggplot(graph_data, aes(input_lb, output_mV)) +
     geom_smooth(method = 'lm', se = FALSE, color = 'gray70',  size = 0.5) + 
     geom_point(size = 1.5, stroke = 0.7, shape = 21, color = 'black', fill= 'gray70', position = position_jitter(width = 0.08, height = 0)) + 
-
-# -------------------- two edited lines	
-  xlab(my_xlab) + 
-  ylab(my_ylab) +
-	
+  xlab(my_xlab) + # ===== EDITED LINE
+  ylab(my_ylab) + # ===== EDITED LINE
 	scale_x_continuous(breaks = seq(from = 0.5, to = 4.5, by = 1)) +
 	scale_y_continuous(breaks = seq(from = 10, to = 90, by = 20)) +
 	theme_light() +
 	theme(panel.grid.minor = element_blank())
 
-# print to output	
 print(calibr_graph)
 ```
 
@@ -155,20 +144,20 @@ y_nominal_seq
 
 ```r
 set.seed(20160824)
+
 my_xlab <- paste0("Applied force (", input_units, ")")
 my_ylab <- paste0("Sensor reading (", output_units, ")")
+
 calibr_graph <- ggplot(graph_data, aes(input_lb, output_mV)) +
     geom_smooth(method = 'lm', se = FALSE, color = 'gray70',  size = 0.5) + 
     geom_point(size = 1.5, stroke = 0.7, shape = 21, color = 'black', fill= 'gray70', position = position_jitter(width = 0.08, height = 0)) + 
 	xlab(my_xlab) + 
 	ylab(my_ylab) +
-
-# -------------------- edit two lines
-  scale_x_continuous(breaks = x_test_seq) +
-  scale_y_continuous(breaks = y_nominal_seq) +
-	
+  scale_x_continuous(breaks = x_test_seq) +  # ===== EDITED LINE
+  scale_y_continuous(breaks = y_nominal_seq) +  # ===== EDITED LINE
 	theme_light() +
 	theme(panel.grid.minor = element_blank())
+
 print(calibr_graph)
 ```
 
@@ -182,11 +171,11 @@ Use the `annotate()` function to add the text to the plot, positioning it using 
 
 ```r
 set.seed(20160824)
+
 my_xlab <- paste0("Applied force (", input_units, ")")
 my_ylab <- paste0("Sensor reading (", output_units, ")")
 
-# -------------------- one new line to define the calibration equation
-calibr_eqn <- paste0("y = ", sprintf("%.3f", slope), " x + ", sprintf("%.3f", intercept)) 
+calibr_eqn <- paste0("y = ", sprintf("%.3f", slope), " x + ", sprintf("%.3f", intercept)) # ===== NEW LINE
 
 calibr_graph <- ggplot(graph_data, aes(input_lb, output_mV)) +
     geom_smooth(method = 'lm', se = FALSE, color = 'gray70',  size = 0.5) + 
@@ -195,14 +184,10 @@ calibr_graph <- ggplot(graph_data, aes(input_lb, output_mV)) +
 	ylab(my_ylab) +
 	scale_x_continuous(breaks = x_test_seq) +
 	scale_y_continuous(breaks = y_nominal_seq) +
-
-# -------------------- one new function to add the calibration equation
-  annotate("text", x = min(graph_data$input_lb), y = max(graph_data$output_mV), label = calibr_eqn, family = "serif", fontface = "italic", hjust = "left", vjust = "top") + 
-
+  annotate("text", x = min(graph_data$input_lb), y = max(graph_data$output_mV), label = calibr_eqn, family = "serif", fontface = "italic", hjust = "left", vjust = "top") +  # ===== NEW LINE
 	theme_light() +
 	theme(panel.grid.minor = element_blank())
 		
-# print to output	
 print(calibr_graph)
 ```
 
@@ -213,10 +198,13 @@ Lastly, we edit the font sizes used by editing the theme. We add two lines, one 
 
 ```r
 set.seed(20160824)
+
 my_xlab <- paste0("Applied force (", input_units, ")")
 my_ylab <- paste0("Sensor reading (", output_units, ")")
+
 calibr_eqn <- paste0("y = ", sprintf("%.3f", slope), 
 										 " x + ", sprintf("%.3f", intercept)) 
+
 calibr_graph <- ggplot(graph_data, aes(input_lb, output_mV)) +
     geom_smooth(method = 'lm', se = FALSE, color = 'gray70',  size = 0.5) + 
     geom_point(size = 1.5, stroke = 0.7, shape = 21, color = 'black', fill= 'gray70', position = position_jitter(width = 0.08, height = 0)) + 
@@ -224,22 +212,13 @@ calibr_graph <- ggplot(graph_data, aes(input_lb, output_mV)) +
 	ylab(my_ylab) +
 	scale_x_continuous(breaks = x_test_seq) +
 	scale_y_continuous(breaks = y_nominal_seq) +
-	annotate("text", x = input_min, y = output_max, label = calibr_eqn, family = "serif", fontface = "italic", hjust = "left", vjust = "top",
-					 
-# -------------------- add size spec in mm (convert using 2.85 pt/mm)
-  size = 11/2.85) + 
-	
+	annotate("text", x = input_min, y = output_max, label = calibr_eqn, family = "serif", fontface = "italic", hjust = "left", vjust = "top", size = 11/2.85) + # ===== ADD SIZE ARGUMENTS in mm (convert using 2.85 pt/mm)
 	theme_light() +
-	theme(panel.grid.minor = element_blank(), 
-				
-# -------------------- add size spec in points for all other text
-  axis.text  = element_text(size = 10), 
-  axis.title = element_text(size = 10))
+	theme(panel.grid.minor = element_blank(), axis.text  = element_text(size = 10), axis.title = element_text(size = 10)) # ===== ADD SIZE ARGUMENTS in points
 
-# print to output	
 print(calibr_graph)
 
-ggsave("results/113_advanced_graph.png", plot = calibr_graph, 
+ggsave("results/114_advanced_graph.png", plot = calibr_graph, 
 			 width = 6, height = 4, units = "in", dpi = 300)
 ```
 
