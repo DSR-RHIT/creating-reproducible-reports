@@ -91,7 +91,7 @@ regr_results <- lm(output_mV ~ input_lb, data = calibr_data)
 
 Learning R:
 
-- The linear model function has the form `lm(y ~ x, data = data_frame)`, that is, "$y$ as a function of $x$," where $y$ and $x$ are variables (column names) in `data_frame`
+- The linear model function has the form `lm(y ~ x, data = data_frame)`, that is, `y` as a function of `x`, where `y` and `x`  are variables (column names) in `data_frame`
 - The argument `y ~ x` is called a *formula* in R  
 - Learn more by typing `?lm` in your Console
 
@@ -317,5 +317,5 @@ Navigate to your results directory. it should look like this:
       `-- 04_calibr_regression-results.csv
 
 ---
-Back [calibration graph](111_calibration graph.html)<br>
+Back [calibration graph](111_calibration-graph.html)<br>
 Next [client report](113_client-report.html)
