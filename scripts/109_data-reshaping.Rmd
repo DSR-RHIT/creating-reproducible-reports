@@ -1,5 +1,5 @@
 ---
-title: "reshaping the data to long form"
+title: "data reshaping"
 output:
   html_document:
     keep_md: yes

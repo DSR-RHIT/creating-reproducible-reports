@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "tidying the data"
+title: "data tidying"
 ---
 
 

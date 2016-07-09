@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "reshaping the data to long form"
+title: "data reshaping"
 ---
 
 
