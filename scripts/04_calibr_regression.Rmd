@@ -120,7 +120,7 @@ calibr_results <- frame_data(
 	'resid_bound', resid_bound, 'mV',
 	'accuracy',    accuracy,    '%'
 )
-calibr_results <- as.data.frame(calibr_results)
+
 calibr_results
 ```
 

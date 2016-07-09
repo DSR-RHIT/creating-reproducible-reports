@@ -33,7 +33,8 @@ We'll start the tutorials together but I'll let you work at your own pace as soo
 - [data tidying](pages/110_data-tidying.html)
 - [calibration graph](pages/111_calibration-graph.html)
 - [linear regression](pages/112_linear-regression.html) 
-- client report 
+- [client report](pages/113_client-report.html) 
+
 
 
 
@@ -43,7 +44,8 @@ We'll start the tutorials together but I'll let you work at your own pace as soo
 - planning for reproducibility 
 - starting your own project 
 - looking ahead 
-- [advanced graph topics](pages/114_advanced_graph.html)
+- references
+- [advanced graph topics](pages/115_advanced_graph.html)
 
 
 

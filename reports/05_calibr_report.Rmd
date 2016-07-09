@@ -20,13 +20,9 @@ library(readr)
 
 # Introduction
 
-The goal of this analysis is to determine the calibration equation and sensor 
-accuracy for an Omega LCL-005 (0--5 lb) load cell. 
+The goal of this analysis is to determine the calibration equation and sensor accuracy for an Omega LCL-005 (0--5 lb) load cell. 
 
-The test setup is illustrated in Figure 1. Precision weights (0.1% accuracy) are 
-used to apply the reference force (lb) to the load cell and the resulting voltage 
-readings (mV) from the sensor are recorded. The test procedure follows the 
-ANSI/ISA-1979 standard. 
+The test setup is illustrated in Figure 1. Precision weights (0.1% accuracy) are used to apply the reference force (lb) to the load cell and the resulting voltage readings (mV) from the sensor are recorded. The test procedure follows the ANSI/ISA-1979 standard. 
 
 ```{r 05-03, fig.cap = 'Figure 1. Load cell calibration test setup'}
 knitr::include_graphics("../resources/load-cell-setup-786x989px.png")
@@ -36,26 +32,26 @@ knitr::include_graphics("../resources/load-cell-setup-786x989px.png")
 
 ```{r 05-04}
 # itemized results that are cited in the report 
-results     <- read_csv('results/04_calibr_regression-results.csv')
-slope       <- filter(results, item %in% "slope")       %>% select(value)
-intercept   <- filter(results, item %in% "intercept")   %>% select(value)
-accuracy    <- filter(results, item %in% "accuracy")    %>% select(value)
-resid_bound <- filter(results, item %in% "resid_bound") %>% select(value)
-input_min   <- filter(results, item %in% "input_min")   %>% select(value)
-input_max   <- filter(results, item %in% "input_max")   %>% select(value)
-output_min  <- filter(results, item %in% "output_min")  %>% select(value)
-output_max  <- filter(results, item %in% "output_max")  %>% select(value)
-x_units     <- filter(results, item %in% "input_max")   %>% select(units)
-y_units     <- filter(results, item %in% "output_max")  %>% select(units)
+results      <- read_csv('results/04_calibr_regression-results.csv')
 
-# compute output span
+# extract numbers and units
+slope        <- results$value[results$item == "slope"]
+intercept    <- results$value[results$item == "intercept"]
+accuracy     <- results$value[results$item == "accuracy"]
+resid_bound  <- results$value[results$item == "resid_bound"]
+input_min    <- results$value[results$item == "input_min"]
+input_max    <- results$value[results$item == "input_max"]
+output_min   <- results$value[results$item == "output_min"]
+output_max   <- results$value[results$item == "output_max"]
+input_units  <- results$units[results$item == "input_max"]
+output_units <- results$units[results$item == "output_max"]
+
+# compute range and span
 output_span <- output_max - output_min
 input_range_fraction <- round(input_max / 5 * 100, 1)
 ```
 
-The calibration data are shown in Table 1. The maximum force (`r input_max` lb) is 
-`r input_range_fraction`% of the 5 lb sensor limit, meeting the requirements of the 
-ANSI/ISA standard.
+The calibration data are shown in Table 1. The maximum force (`r input_max` lb) is `r input_range_fraction`% of the 5 lb sensor limit, meeting the requirements of the ANSI/ISA standard.
 
 ```{r 05-05}
 # read the data set as received
@@ -69,9 +65,7 @@ kable(data_received, caption = "Table 1. Calibration data")
 
 # Results
 
-The calibration data and calibration curve are shown in Figure 2. The maximum $\pm$ 
-deviations of the data from the best-fit curve (residuals) are the values used to 
-estimate sensor accuracy. 
+The calibration data and calibration curve are shown in Figure 2. The maximum $\pm$ deviations of the data from the best-fit curve (residuals) are the values used to estimate sensor accuracy. 
 
 ```{r 05-06, fig.cap = 'Figure 2. Load cell calibration curve'}
 knitr::include_graphics("../results/03_calibr_graph.png")
@@ -81,17 +75,13 @@ The calibration equation is
 $$
 y = `r sprintf("%.3f", slope)`  x + `r sprintf("%.3f", intercept)`
 $$
-with $x$ in `r x_units` and $y$ in `r y_units`.
+with *x* in `r input_units` and *y* in `r output_units`.
 
-The largest residual is `r sprintf("%.1f", resid_bound)` mV and the output span is 
-`r sprintf("%.1f", output_span)` mV, yielding a sensor accuracy as a percent of 
-reading of 
+The largest residual is `r sprintf("%.1f", resid_bound)` mV and the output span is `r sprintf("%.1f", output_span)` mV, yielding a sensor accuracy as a percent of reading of 
 $$
 \pm `r sprintf("%.1f", accuracy)`\%. 
 $$
-
-The accuracy of the precision weights (0.1%) is less than one tenth the sensor 
-accuracy (`r sprintf("%.1f", accuracy/10)`%) as recommended by the standard. 
+The accuracy of the precision weights, 0.1%, is less than one tenth the load cell accuracy, as expected by the ANSI/ISA standard.  
 
 
 

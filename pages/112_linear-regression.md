@@ -26,7 +26,7 @@ We start a new Rmd script to perform the linear regression analysis and save the
 - Open a new Rmd file, and name it `04_calibr_regression.Rmd`
 - Start the new script with the same YAML header as the previous script
 - Change the title to `"Load-cell calibration --- linear regression"`
-- Inset the same code chunk for the knitr setup 
+- Insert the same code chunk for the knitr setup 
 
 Knowing the packages we'll be using, we can load them right away, near the top of the file.
 
@@ -36,7 +36,7 @@ Knowing the packages we'll be using, we can load them right away, near the top o
 ```r
 # load packages
 library(readr)
-library(dplyr)
+suppressPackageStartupMessages(library(dplyr))
 ```
 
 ### perform the linear regression 
@@ -101,7 +101,6 @@ Learning R:
 
 ```r
 attributes(regr_results)
-glimpse(regr_results)
 ```
 
 Learn R:
@@ -172,24 +171,24 @@ Learn R.
 
 
 ```r
-# determine accuracy in mV
-max_resid <- max(residuals)
-min_resid <- min(residuals)
+# determine largest absolute value residual
+resid_max   <- max(residuals)
+resid_min   <- abs(min(residuals))
+resid_bound <- max(resid_max, resid_min)
 ```
 
 - `max()` and `min()` are R functions that do the obvious
 
 ![](../resources/images/text-icon.png)<!-- -->
 
-    In percentage form, accuracy is a percent of output span. The standard defines output span as the difference between the max and min y-fitted values. 
+    In percentage form, accuracy is a percent of output span. The standard defines output span as the difference between the max and min y-fitted values.
 
 ![](../resources/images/code-icon.png)<!-- -->
 
 
 ```r
 output_span <- max(y_fit) - min(y_fit)
-acc_plus    <- max_resid / output_span * 100
-acc_minus   <- min_resid / output_span * 100
+accuracy    <- resid_bound / output_span * 100
 ```
 
 R coding practice:
@@ -204,19 +203,7 @@ R coding practice:
 
 
 ```r
-acc_plus
-acc_minus
-```
-
-![](../resources/images/text-icon.png)<!-- -->
-
-    Reported accuracy is the absolute value of the largest of these two values.   
-
-![](../resources/images/code-icon.png)<!-- -->
-
-
-```r
-accuracy <- max(abs(c(acc_plus, acc_minus)))
+accuracy
 ```
 
 ### check yourself
@@ -231,23 +218,25 @@ Confer with a neighbor.
 
     # Collect results 
     
-    I'd also like to record the input range.
+    I’d like to collect min/max inputs and outputs in case I need them in the report.
 
 ![](../resources/images/code-icon.png)<!-- -->
 
 
 ```r
-x <- calibr_data[ , 'input_lb']
-input_range <- max(x) - min(x)
+input_min  <- min(calibr_data[ , 'input_lb'])
+input_max  <- max(calibr_data[ , 'input_lb'])
+output_min <- min(calibr_data[ , 'output_mV'])
+output_max <- max(calibr_data[ , 'output_mV'])
 ```
 
 Learn R.
 
-- We use `[row, col]` notation to subset an object. Here we select all rows (the row position is left blank) and only one column (named `input_lb`). 
+- We use `[row, col]` notation to subset an object. Here we select all rows (the row position is left blank) and only one column (e.g. `input_lb`). 
 
 ![](../resources/images/text-icon.png)<!-- -->
 
-    And I can collect these results in a data frame.
+    Collect those results I’d like to keep handy.
 
 ![](../resources/images/code-icon.png)<!-- -->
 
@@ -257,15 +246,17 @@ Learn R.
 options(digits = 3)
 library(tibble)
 calibr_results <- frame_data(
-	~item,         ~value,      ~units,
-	'input_range', input_range, 'lb',
-	'output_span', output_span, 'mV',
-	'slope',       slope,       'mV/lb',
-	'intercept',   intercept,   'mV',
-	'max_resid',   max_resid,   'mV',
-	'min_resid',   min_resid,   'mV',
-	'accuracy',    accuracy,    '%'
+    ~item,         ~value,      ~units,
+    'input_min',   input_min,   'lb',
+    'input_max',   input_max,   'lb',
+    'output_min',  output_min,  'mV',
+    'output_max',  output_max,  'mV',
+    'slope',       slope,       'mV/lb',
+    'intercept',   intercept,   'mV',
+    'resid_bound', resid_bound, 'mV',
+    'accuracy',    accuracy,    '%'
 )
+
 calibr_results
 ```
 
@@ -292,24 +283,6 @@ write_csv(calibr_results, "results/04_calibr_regression-results.csv")
 ```
 
 Because this information is likely to appear in a client report, we save it to the `results` directory.  
-
-![](../resources/images/text-icon.png)<!-- -->
-
-    Add `y-fit` to the tidy data set and save it with `input_lb` and  `output_mV` for graphing later. 
-
-![](../resources/images/code-icon.png)<!-- -->
-
-
-```r
-graph_data <- calibr_data %>%
-	mutate(fit_mV = round(y_fit, 2)) %>%
-	select(input_lb, output_mV, fit_mV)
-```
-
-Learn R.
-
-- This code chunk can be read. "Assign `calibr_data` to `graph_data` *then* add a new column `fit_mV` that is the `y_fit` results rounded to two decimal places, *then* keep only the three columns listed."
-- `round()` is a base-R function for rounding. For most cases, I usually use the `plyr::round_any()` function. For more information, type `?plyr::round_any` in the Console. 
 
 ### check yourself
 

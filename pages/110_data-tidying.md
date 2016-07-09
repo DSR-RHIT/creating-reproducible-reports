@@ -26,7 +26,7 @@ We concluded the previous script by saving a long form of the data set to file. 
 - Open a new Rmd file, and name it `02_calibr_data-tidying.Rmd`
 - Start the new script with the same YAML header as the previous script
 - Change the title to `"Load-cell calibration --- tidying the data"`
-- Inset the same code chunk for the knitr setup 
+- Insert the same code chunk for the knitr setup 
 
 ### add a column of observation numbers
 
