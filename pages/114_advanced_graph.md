@@ -202,8 +202,7 @@ set.seed(20160824)
 my_xlab <- paste0("Applied force (", input_units, ")")
 my_ylab <- paste0("Sensor reading (", output_units, ")")
 
-calibr_eqn <- paste0("y = ", sprintf("%.3f", slope), 
-										 " x + ", sprintf("%.3f", intercept)) 
+calibr_eqn <- paste0("y = ", sprintf("%.3f", slope), " x + ", sprintf("%.3f", intercept)) 
 
 calibr_graph <- ggplot(graph_data, aes(input_lb, output_mV)) +
     geom_smooth(method = 'lm', se = FALSE, color = 'gray70',  size = 0.5) + 
