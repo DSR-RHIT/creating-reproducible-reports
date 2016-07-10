@@ -31,21 +31,28 @@ How to use this tutorial
 
 ### open a new Rmd script
 
-- Open a new Rmd file, and save it as `05_calibr_report.Rmd` in your `reports` directory
-- Insert the same code chunk for the knitr setup 
-- Start the new script with this YAML header
+Open a new Rmd file, and name it `05_calibr_report.Rmd`. Save it to the `reports` directory. 
 
-```
----
-title: "Load-cell calibration report"
-author: "your name"
-date: "2016-08-24"
-output: word_document
----
-```
+Edit the YAML header:  
+
+    ---
+    title: "Load-cell calibration report"
+    author: "your name"
+    date: "date"
+    output: html_document
+    ---
+
 - LaTeX users can use `output: pdf_document` if they choose 
 - Anyone can use `output: html_document` while editing then change to another output format for the final document sent to the client. 
 
+Insert knitr setup code
+
+`r code_icon` 
+
+    library(knitr)
+    opts_knit$set(root.dir = '../')
+    opts_chunk$set(echo = TRUE)
+    
 Knowing the packages we'll be using, we can load them right away, near the top of the file.
 
 `r code_icon`

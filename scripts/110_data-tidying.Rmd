@@ -34,10 +34,24 @@ How to use this tutorial
 
 We concluded the previous script by saving a long form of the data set to file. That makes a convenient point to conclude that script and begin another to continue the analysis. 
 
-- Open a new Rmd file, and name it `02_calibr_data-tidying.Rmd`
-- Start the new script with the same YAML header as the previous script
-- Change the title to `"Load-cell calibration --- tidying the data"`
-- Insert the same code chunk for the knitr setup 
+Open a new Rmd file, and name it `02_calibr_data-tidying.Rmd`. Save it to the `scripts` directory.
+
+Edit the YAML header:  
+
+    ---
+    title: "Load-cell calibration --- tidying the data"
+    author: "your name"
+    date: "date"
+    output: html_document
+    ---
+
+Insert knitr setup code
+
+`r code_icon` 
+
+    library(knitr)
+    opts_knit$set(root.dir = '../')
+    opts_chunk$set(echo = TRUE)
 
 Knowing the packages we'll be using, we can load them right away, near the top of the file.
 

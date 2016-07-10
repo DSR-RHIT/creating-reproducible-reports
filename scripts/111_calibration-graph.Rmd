@@ -29,12 +29,24 @@ How to use this tutorial
 
 ### open a new Rmd script
 
-We start a new Rmd script to graph the calibration data with regression line and save the graph to file.  
+Open a new Rmd file, and name it `03_calibr-graph.Rmd`. Save it to the `scripts` directory.
 
-- Open a new Rmd file, and name it `03_calibr_graph.Rmd`
-- Start the new script with the same YAML header as the previous script
-- Change the title to `"Load-cell calibration --- graph"`
-- Insert the same code chunk for the knitr setup 
+Edit the YAML header:  
+
+    ---
+    title: "Load-cell calibration --- graph"
+    author: "your name"
+    date: "date"
+    output: html_document
+    ---
+
+Insert knitr setup code
+
+`r code_icon` 
+
+    library(knitr)
+    opts_knit$set(root.dir = '../')
+    opts_chunk$set(echo = TRUE)
 
 Knowing the packages we'll be using, we can load them right away, near the top of the file.
 
