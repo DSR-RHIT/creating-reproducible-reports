@@ -40,7 +40,7 @@ The Rmd file is pre-populated with prose and some markdown syntax. Edit the meta
 `r text_icon` (Editing the pre-populated YAML header.)
 
     ---
-    title: "Load-cell calibration --- reshaping the data to long form"
+    title: "Load-cell calibration --- data reshaping"
     author: "your name"
     date: "2016-08-24"
     output: html_document

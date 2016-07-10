@@ -250,7 +250,7 @@ Navigate to your reports directory. it should look like this:
 
 ---
 Back [linear regression](112_linear-regression.html)<br>
-Next [references](114_references.html)
+Next [main page](../index.html)
 
 
 

@@ -126,6 +126,10 @@ x_test_seq <- sort(unique(graph_data$input_lb))
 x_test_seq
 ```
 
+```
+## [1] 0.5 1.5 2.5 3.5 4.5
+```
+
 Find the equivalent (nominal) values in the output mV readings. Sort and round to the nearest 10 mV (to be used as tick mark locations). 
 
 
@@ -133,6 +137,10 @@ Find the equivalent (nominal) values in the output mV readings. Sort and round t
 # round to the nearest 10
 y_nominal_seq <- sort(unique(plyr::round_any(graph_data$output_mV, 10)))
 y_nominal_seq
+```
+
+```
+## [1] 10 30 50 70 90
 ```
 
 

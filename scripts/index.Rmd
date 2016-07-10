@@ -29,7 +29,7 @@ The day of the workshop:
 
 ### tutorials 
 
-We'll start the tutorials together but I'll let you work at your own pace as soon as possible. 
+From launching a project to developing a basic report
 
 - [getting organized](pages/104_getting-organized.html)
 - [initializing an Rmd script](pages/105_initializing-an-Rmd-script.html)
@@ -40,8 +40,11 @@ We'll start the tutorials together but I'll let you work at your own pace as soo
 - [linear regression](pages/112_linear-regression.html) 
 - [client report](pages/113_client-report.html) 
 
+Fine-tuning the report
 
-
+- references
+- formatting docx
+- [advanced graph topics](pages/115_advanced_graph.html)
 
 ### next steps 
 
@@ -49,9 +52,6 @@ We'll start the tutorials together but I'll let you work at your own pace as soo
 - planning for reproducibility 
 - starting your own project 
 - looking ahead 
-- references
-- [advanced graph topics](pages/115_advanced_graph.html)
-
 
 
 ### acknowledgments 
