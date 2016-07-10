@@ -21,6 +21,19 @@ How to use this tutorial
 - ![](../resources/images/code-icon.png)<!-- --> *add code*: insert a code chunk then transcribe the R code 
 - ![](../resources/images/knit-icon.png)<!-- --> *Knit* after each addition. 
 
+Knowing the packages we'll be using, we can load them right away, near the top of the file. (You should have to add only `tidyr`; the others should have already been loaded in this script.)
+
+![](../resources/images/code-icon.png)<!-- -->
+
+
+```r
+# load packages
+library(readr)
+suppressPackageStartupMessages(library(dplyr))
+library(tidyr)
+```
+
+
 ### preparing to reshape the data
 
 
@@ -105,7 +118,6 @@ The columns "not gathered" remain, e.g., test_point, input_lb, with their entrie
 
 
 ```r
-library(tidyr)
 long_data <- data_received %>%
 	gather(cycle, output_mV, is_a_cycle_col) 
 ```
@@ -146,7 +158,7 @@ Confer with a neighbor.
 
 
 ```r
-library(dplyr)
+suppressPackageStartupMessages(library(dplyr))
 long_data <- long_data %>%
 	filter(! output_mV %in% NA)
 str(long_data)

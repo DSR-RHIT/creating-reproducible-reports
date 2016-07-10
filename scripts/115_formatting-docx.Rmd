@@ -1,0 +1,31 @@
+---
+title: "formatting docx"
+output:
+  html_document:
+    keep_md: yes
+---
+
+```{r 115-01, include = FALSE}
+library(knitr)
+opts_knit$set(root.dir = "../")
+opts_chunk$set(echo = TRUE, results = 'hide', message = FALSE, warning = FALSE)
+```
+
+```{r 115-02, echo = FALSE}
+# my tutorial functions for text_icon and code_icon
+source("scripts/helper_02_icons.R")
+options(echo = FALSE) # turns of echo in the console
+```
+
+Packages used in this tutorial  
+
+- 
+- 
+- 
+
+How to use this tutorial 
+
+- `r text_icon` *add text*: type the prose verbatim into the Rmd file 
+- `r code_icon` *add code*: insert a code chunk then transcribe the R code 
+- `r knit_icon` *Knit* after each addition. 
+

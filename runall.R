@@ -3,8 +3,9 @@
 # move and copy files 
 # delete byproduct files
 
+# load plyr before dplyr 
 library(plyr)
-library(dplyr)
+suppressPackageStartupMessages(library(dplyr))
 
 
 

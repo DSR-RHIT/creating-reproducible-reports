@@ -9,15 +9,17 @@ title: "data tidying"
 
 Packages used in this tutorial  
 
-- dplyr 
-- tidyr 
 - readr
+- tidyr 
+- dplyr 
 
 How to use this tutorial 
 
 - ![](../resources/images/text-icon.png)<!-- --> *add text*: type the prose verbatim into the Rmd file 
 - ![](../resources/images/code-icon.png)<!-- --> *add code*: insert a code chunk then transcribe the R code 
 - ![](../resources/images/knit-icon.png)<!-- --> *Knit* after each addition. 
+
+
 
 ### open a new Rmd script
 
@@ -28,6 +30,19 @@ We concluded the previous script by saving a long form of the data set to file. 
 - Change the title to `"Load-cell calibration --- tidying the data"`
 - Insert the same code chunk for the knitr setup 
 
+Knowing the packages we'll be using, we can load them right away, near the top of the file.
+
+![](../resources/images/code-icon.png)<!-- -->
+
+
+```r
+# load packages
+library(readr)
+library(tidyr)
+suppressPackageStartupMessages(library(dplyr))
+```
+
+
 ### add a column of observation numbers
 
 The new script starts where the old one left off. Read in the data set we saved earlier. 
@@ -37,7 +52,6 @@ The new script starts where the old one left off. Read in the data set we saved 
 
 ```r
 # read the long-form data file we saved in the previous step 
-library(readr)
 tidy_data <- read_csv('data/01_calibr_data-reshaping.csv')
 ```
 
@@ -53,7 +67,6 @@ I'm not going to use the default row names as observation numbers because they a
 
 
 ```r
-library(dplyr)
 # observation numbers are a sequence of integers, from 1 to the number of rows
 nrow_in_tidy_data <- nrow(tidy_data)
 tidy_data <- tidy_data %>%
@@ -87,7 +100,6 @@ Confer with a neighbor.
 
 
 ```r
-library(tidyr)
 tidy_data  <- tidy_data %>%
 	separate(cycle, into = c('prefix', 'cycle'), sep = '_')
 ```

@@ -9,6 +9,7 @@ tagline: reproducible research for the R novice
 Welcome! The goal of the workshop is to introduce the R novice to reproducible research in the context of creating a reproducible report using R, RStudio, and knitr.  
 
 
+
 ### getting started
 
 The pre-workshop homework should take about 30 minutes. 
@@ -21,6 +22,8 @@ The day of the workshop:
 - [workshop agenda](pages/103_workshop-agenda.html) 
 - surveying the reproducible research ecosystem 
 - considering a sample report 
+
+
 
 ### tutorials 
 
@@ -35,11 +38,7 @@ From launching a project to developing a basic report
 - [linear regression](pages/112_linear-regression.html) 
 - [client report](pages/113_client-report.html) 
 
-Fine-tuning the report
 
-- references
-- formatting docx
-- [advanced graph topics](pages/115_advanced_graph.html)
 
 ### next steps 
 
@@ -48,10 +47,15 @@ Fine-tuning the report
 - starting your own project 
 - looking ahead 
 
+Additional tutorials for fine-tuning the report
+
+- references
+- formatting docx
+- [advanced graph topics](pages/116_advanced_graph.html)
+
+
 
 ### acknowledgments 
-
-Many thanks to many folks in the R community for posting their work in their blogs and repos. I would especially like to thank: 
 
 - [Karl Broman](http://kbroman.org) for his  [tutorials](http://kbroman.org/pages/tutorials.html) that made the creation of these GitHub-hosted webpages *almost* painless 
 - [Jenny Bryan](https://github.com/jennybc) for her [Stats545 material](http://stat545.com/) and for the

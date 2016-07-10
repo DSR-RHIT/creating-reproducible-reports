@@ -20,6 +20,19 @@ How to use this tutorial
 - ![](../resources/images/code-icon.png)<!-- --> *add code*: insert a code chunk then transcribe the R code 
 - ![](../resources/images/knit-icon.png)<!-- --> *Knit* after each addition. 
 
+Knowing the packages we'll be using, we can load them right away, near the top of the file.
+
+![](../resources/images/code-icon.png)<!-- -->
+
+
+```r
+# load packages
+library(readr)
+suppressPackageStartupMessages(library(dplyr))
+```
+
+Loading the `dplyr` package produces several message in our output. To suppress those messages, we use the `suppressPackageStartupMessages()` function.
+
 ### introduction  
 
 Our first paragraph establishes the context for the analysis.
@@ -134,7 +147,6 @@ data\
 
 ```r
 # read the data set as received
-library(readr)
 data_received <- read_csv('data/007_wide-data.csv')
 ```
 
@@ -198,7 +210,6 @@ Learning R:
 
 
 ```r
-library(dplyr)
 # summary-stats except column 1
 partial_data_set <- data_received %>%
 	select(-test_point)
@@ -219,10 +230,6 @@ Confer with a neighbor.
 1. The summary shows how many NAs total?  
 2. The overall minimum mV reading is? overall maximum?   
 
-
-Loading the `dplyr` package produces several message in our output. To suppress those messages, add a `message = FALSE` option to the code chunk header:
-
-    {r, message = FALSE} 
 
 ![](../resources/images/text-icon.png)<!-- -->
 

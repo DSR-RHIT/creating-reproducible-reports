@@ -30,11 +30,22 @@ How to use this tutorial
 - `r code_icon` *add code*: insert a code chunk then transcribe the R code 
 - `r knit_icon` *Knit* after each addition. 
 
+Knowing the packages we'll be using, we can load them right away, near the top of the file. (You should have to add only `tidyr`; the others should have already been loaded in this script.)
+
+`r code_icon`
+
+```{r}
+# load packages
+library(readr)
+suppressPackageStartupMessages(library(dplyr))
+library(tidyr)
+```
+
+
 ### preparing to reshape the data
 
 ```{r, echo = FALSE}
 # read the data set as received
-library(readr)
 data_received <- read_csv('data/007_wide-data.csv')
 ```
 
@@ -115,7 +126,6 @@ The columns "not gathered" remain, e.g., `r all_col_names[-is_a_cycle_col]`, wit
 `r code_icon`
 
 ```{r, results = 'hide'}
-library(tidyr)
 long_data <- data_received %>%
 	gather(cycle, output_mV, is_a_cycle_col) 
 ```
@@ -154,7 +164,7 @@ Confer with a neighbor.
 `r code_icon`
 
 ```{r, warning = FALSE, message = FALSE, results = 'hide'}
-library(dplyr)
+suppressPackageStartupMessages(library(dplyr))
 long_data <- long_data %>%
 	filter(! output_mV %in% NA)
 str(long_data)
