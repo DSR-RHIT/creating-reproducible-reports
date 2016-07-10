@@ -336,8 +336,13 @@ Learning ggplot2
 
 ### check yourself
 
-Navigate to your results directory. it should look like this:
+Navigate to your scripts and results directories. They should look like this:
 
+    scripts\
+      |-- 01_calibr_data-reshaping.Rmd 
+      |-- 02_calibr_data-tidying.Rmd
+      `-- 03_calibr_graph.Rmd
+      
     results\
       |-- 02_calibr_data-tidying.csv
       `-- 03_calibr_graph.png

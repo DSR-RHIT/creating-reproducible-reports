@@ -230,13 +230,14 @@ Save and Knit this file.
 
 ### check yourself
 
-Navigate to your data directory. it should look like this:
+Navigate to your data and scripts directories. They should look like this:
 
     data\
       |-- 007_wide-data.csv
       `-- 01_calibr_data-reshaping.csv
 
-
+    scripts\
+      `-- 01_calibr_data-reshaping.Rmd 
 
 ---
 Back [examine the wide form data](108_examine-wide-data.html)<br>
