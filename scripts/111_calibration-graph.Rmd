@@ -81,7 +81,7 @@ Having used `lattice` for years now, I am a novice `ggplot2` user too, but I'm c
 `r code_icon`
 
 ```{r}
-graph_data <- read_csv("results/02_calibr_data-tidying.csv")
+graph_data <- read_csv("data/02_calibr_data-tidy.csv")
 str(graph_data)
 ```
 
@@ -344,7 +344,7 @@ Navigate to your scripts and results directories. They should look like this:
 
 There's much more we can do to bring the graph up to publication standards. 
 
-I've prepared an [advanced](116_advanced_graph.html) (and completely optional) tutorial for those of you who want to know MORE and you want it NOW.  Topics include: 
+I've prepared a (completely optional) tutorial that develops some [graph extras](116_graph-extras.html)  for those of you who want to know MORE and you want it NOW.  Topics include: 
 
 - Jitter the data markers to reduce printing overlap and set a random seed so jittering is repeatable 
 - Use the results table to dynamically assign units to the axis labels and set  tick mark locations

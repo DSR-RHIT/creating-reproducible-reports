@@ -1,0 +1,131 @@
+---
+title: "Load-cell calibration --- tidying the data"
+author: "Richard Layton"
+date: '2016-08-24'
+output: html_document
+---
+
+```{r 02-01, include = FALSE}
+library(knitr)
+opts_knit$set(root.dir = '../')
+opts_chunk$set(echo = TRUE, collapse = TRUE)
+```
+
+```{r 02-02}
+library(readr)
+library(tidyr)
+library(stringr)
+suppressPackageStartupMessages(library(dplyr))
+```
+
+# Plan the data reshaping
+
+For analysis, the data set should be in tidy (long) form, with every column a variable and every row an observation. The tidy form will have these variable names:
+
+- observ (observation number)
+- cycle (cycle number)
+- test\_pt (test point number and direction)
+- input\_lb (applied reference force)
+- output\_mV (sensor readings)
+
+In the reshaped data set, every mV reading will appear in its own row identified by cycle number (from the existing column name) and test point.  Thus the columns with *cycle* in their name  are the ones being gathered. 
+
+```{r 02-03}
+# original data set
+data_received <- read_csv("data/007_wide-data.csv")
+# extract the indices of the column names that include "cycle"
+all_col_names <- colnames(data_received)
+# TF detection
+detect_cycle_col <- str_detect(tolower(all_col_names), 'cycle')
+# extract indices of TRUE
+is_a_cycle_col <- which(detect_cycle_col)
+# examine
+is_a_cycle_col
+```
+
+# Reshape the data to long form
+
+```{r 02-04}
+# gather the columns of mV readings
+long_data <- data_received %>%
+	gather(cycle, output_mV, is_a_cycle_col) 
+
+# examine its structure
+glimpse(long_data) 
+
+# examine the summary statistics of each column
+summary(long_data) 
+```
+
+I have the columns I expected.
+
+All the NA values are in the mV readings column and can be safely deleted because they represent readings never taken (per the ANSI/ISA standard). 
+
+Result is the first tidy form, where every row is an observation and every column a variable.  
+
+```{r 02-05}
+# omit NAs
+tidy_data <- long_data %>%
+	filter(!output_mV %in% NA)
+
+# examine
+glimpse(tidy_data)
+```
+
+# Add observation numbers
+
+The test points are in the order in which the data were acquired (consistent with the ANSI/ISA standard). So the observation number is the same as the row number. 
+
+```{r 02-06}
+# observation number is a sequence of integers, from 1 to the number of rows
+nrow_in_tidy_data <- nrow(tidy_data)
+tidy_data <- tidy_data %>%
+	mutate(observ = 1:nrow_in_tidy_data)
+
+# examine
+head(tidy_data, n = 3L) 
+```
+
+# Simplify the cycle number
+
+The `cycle` data are strings, *cycle_1*, *cycle_2*, etc., from the original column headings. It might be useful to replace these strings with integers, e.g. `<int> 1` for `<chr> cycle_1`. 
+
+```{r 02-07}
+# separate cycle character, convert numerals to integers
+tidy_data  <- tidy_data %>%
+	separate(cycle, into = c('prefix', 'cycle'), sep = '_', convert = TRUE)
+
+# examine the separated columns
+head(tidy_data, n = 3)
+```
+
+The `prefix` column is superfluous. 
+
+```{r 02-08}
+tidy_data <- tidy_data %>%
+	select(-prefix)
+
+# examine
+glimpse(tidy_data)
+```
+
+# Final touches 
+
+The last steps in tidying this data set are to rearrange columns in a logical order and shorten the `test_point` variable name. It's a small enough data set that I can print it. 
+
+```{r 02-09}
+tidy_data <- tidy_data %>%
+	select(observ, cycle, test_pt = test_point, input_lb, output_mV)
+
+print(tidy_data)
+```
+
+This data set is now ready to use as source data for graphs and analysis; we write it to the `data ` directory. 
+
+```{r 02-10}
+write_csv(tidy_data, "data/02_calibr_data-tidy.csv")
+```
+
+    
+    
+

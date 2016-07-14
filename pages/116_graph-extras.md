@@ -1,17 +1,12 @@
 ---
+layout: page
 title: "advanced graph topics"
-output:
-  html_document:
-    keep_md: yes
 ---
 
-```{r, setup, include = FALSE}
-library(knitr)
-opts_knit$set(root.dir = '../')
-opts_chunk$set(echo = TRUE, fig.keep='none')
-```
 
-```{r}
+
+
+```r
 library(readr)
 library(plyr)
 suppressPackageStartupMessages(library(dplyr))
@@ -30,21 +25,22 @@ Topics:
 
 Extract the numbers and units we want. 
 
-```{r, collapse = TRUE}
+
+```r
 # itemized results that are cited in the report 
-results      <- read_csv('results/04_calibr_regression-results.csv')
+results      <- read_csv('results/04_calibr_outcomes.csv')
 
 # extract numbers and units
-slope        <- results$value[results$item == "slope"]
-intercept    <- results$value[results$item == "intercept"]
-accuracy     <- results$value[results$item == "accuracy"]
-resid_bound  <- results$value[results$item == "resid_bound"]
-input_min    <- results$value[results$item == "input_min"]
-input_max    <- results$value[results$item == "input_max"]
-output_min   <- results$value[results$item == "output_min"]
-output_max   <- results$value[results$item == "output_max"]
-input_units  <- results$units[results$item == "input_max"]
-output_units <- results$units[results$item == "output_max"]
+slope        <- results$num[results$item == "slope"]
+intercept    <- results$num[results$item == "intercept"]
+accuracy     <- results$num[results$item == "accuracy"]
+resid_bound  <- results$num[results$item == "resid_bound"]
+input_min    <- results$num[results$item == "input_min"]
+input_max    <- results$num[results$item == "input_max"]
+output_min   <- results$num[results$item == "output_min"]
+output_max   <- results$num[results$item == "output_max"]
+input_units  <- results$unit[results$item == "input_max"]
+output_units <- results$unit[results$item == "output_max"]
 
 # compute range and span
 output_span <- output_max - output_min
@@ -54,8 +50,9 @@ input_range_fraction <- round(input_max / 5 * 100, 1)
 
 ### recreate the basic graph. 
 
-```{r}
-graph_data <- read_csv("results/02_calibr_data-tidying.csv")
+
+```r
+graph_data <- read_csv("data/02_calibr_data-tidy.csv")
 
 calibr_graph <- ggplot(graph_data, aes(input_lb, output_mV)) +
     geom_smooth(method = 'lm', se = FALSE, color = 'gray70',  size = 0.5) + 
@@ -76,7 +73,8 @@ Add the `position` argument to `geom_point()`, Play with `width` and `height` un
 
 Next add `set.seed()` before the graph is created. An easy way to set a seed is to use a number based on today's date, e.g., `set.seed(20160824)`. After setting the seed, you may have to tweak the jitter `width` and `height` again. 
 
-```{r}
+
+```r
 set.seed(20160824) # ===== NEW LINE
 
 calibr_graph <- ggplot(graph_data, aes(input_lb, output_mV)) +
@@ -98,7 +96,8 @@ If he units change in the analysis and are correctly saved to file, then that ch
 
 Before the graph, create a x-label string and y-label string using `paste0`. Those strings then become the arguments of the `xlab()` and `ylab()` functions. 
 
-```{r}
+
+```r
 set.seed(20160824)
 
 my_xlab <- paste0("Applied force (", input_units, ")") # ===== NEW LINE
@@ -121,20 +120,31 @@ print(calibr_graph)
 
 Find the unique values in the input forces and sort them. 
 
-```{r}
+
+```r
 x_test_seq <- sort(unique(graph_data$input_lb))
 x_test_seq
 ```
 
+```
+## [1] 0.5 1.5 2.5 3.5 4.5
+```
+
 Find the equivalent (nominal) values in the output mV readings. Sort and round to the nearest 10 mV (to be used as tick mark locations). 
 
-```{r}
+
+```r
 # round to the nearest 10
 y_nominal_seq <- sort(unique(plyr::round_any(graph_data$output_mV, 10)))
 y_nominal_seq
 ```
 
-```{r}
+```
+## [1] 10 30 50 70 90
+```
+
+
+```r
 set.seed(20160824)
 
 my_xlab <- paste0("Applied force (", input_units, ")")
@@ -160,7 +170,8 @@ Create the text string and use `sprintf()` syntax to control significant figures
 
 Use the `annotate()` function to add the text to the plot, positioning it using the minimum x-value and the maximum y-value (upper-left quadrant of plot).  
 
-```{r}
+
+```r
 set.seed(20160824)
 
 my_xlab <- paste0("Applied force (", input_units, ")")
@@ -186,7 +197,8 @@ print(calibr_graph)
 
 Lastly, we edit the font sizes used by editing the theme. We add two lines, one inside the annotate function (size units are mm) and one inside the theme function (units are points). 
 
-```{r}
+
+```r
 set.seed(20160824)
 
 my_xlab <- paste0("Applied force (", input_units, ")")

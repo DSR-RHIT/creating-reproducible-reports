@@ -14,14 +14,15 @@ opts_chunk$set(echo = TRUE, results = 'hide', message = FALSE, warning = FALSE)
 ```{r, echo = FALSE}
 # my tutorial functions for text_icon and code_icon
 source("scripts/helper_02_icons.R")
-options(echo = FALSE) # turns of echo in the console
+# for my console
+options(echo = FALSE)
 ```
 
 Packages used in this tutorial  
 
 - readr
-- dplyr
 - tibble
+- dplyr
 
 How to use this tutorial 
 
@@ -48,7 +49,11 @@ Insert knitr setup code
 
     library(knitr)
     opts_knit$set(root.dir = '../')
-    opts_chunk$set(echo = TRUE)
+    opts_chunk$set(echo = TRUE,  collapse = TRUE)
+
+Learn knitr
+
+- ` collapse = TRUE` affects how source code printout appears in your document, combining the code and results in a single box. 
 
 Knowing the packages we'll be using, we can load them right away, near the top of the file.
 
@@ -57,8 +62,16 @@ Knowing the packages we'll be using, we can load them right away, near the top o
 ```{r, message = FALSE}
 # load packages
 library(readr)
+library(tibble)
 suppressPackageStartupMessages(library(dplyr))
+
+# for numbers printed to the screen
+options(digits = 3)
 ```
+
+Learn R
+
+- `options(digits = 3)` sets decimal places for printing to the screen, but does not round or truncate the numbers
 
 ### perform the linear regression 
 
@@ -70,42 +83,47 @@ suppressPackageStartupMessages(library(dplyr))
 
 ```{r}
 # read the tidy data
-calibr_data <- read_csv("results/02_calibr_data-tidying.csv")
+calibr_data <- read_csv("data/02_calibr_data-tidy.csv")
 head(calibr_data)
 ```
 
 `r text_icon`
 
-    A linear regression relating the mV readings to the input force  produces the results we need to report the calibration equation and the sensor accuracy. 
-
-    - `input_lb` is the independent variable (*x*) 
-    - `output_mV` is the dependent variable (*y*) 
+    - `input_lb` is the independent variable (*x*)
+    - `output_mV` is the dependent variable (*y*)
 
 Learning Rmd:
 
-- A pair of single back ticks typeset the word like computer code 
-- A pair of asterisks typeset the word in italics 
-
-`r text_icon`
-
-    The *lm()* function creates the regression results we need:  
-
-    - slope and intercept of the linear regression
-    - the fitted y-values 
-    - the residuals 
+- A pair of single back ticks produces `typewriter` style font
+- A pair of asterisks produces *italic* font
+- Learn more about Rmd font styles [here](http://rmarkdown.rstudio.com/authoring_basics.html)
 
 `r code_icon`
 
 ```{r}
-# perform the regression
-regr_results <- lm(output_mV ~ input_lb, data = calibr_data)
+# perform the regression using lm(y ~ x, data_frame)
+regr_results <- lm(output_mV ~ input_lb, calibr_data)
 ```
 
 Learning R:
 
-- The linear model function has the form `lm(y ~ x, data = data_frame)`, that is, `y` as a function of `x`, where `y` and `x`  are variables (column names) in `data_frame`
-- The argument `y ~ x` is called a *formula* in R  
+- `lm()` is the  *linear model* function 
+- `y ~ x` is an R *formula* stating that *y* is a function of *x*
+- `y` and `x` are variables (named columns) in `data_frame`
 - Learn more by typing `?lm` in your Console
+
+`r code_icon`
+
+```{r}
+# examine the result
+typeof(regr_results)
+attributes(regr_results)
+```
+
+Learning R:
+
+- `typeof()` tells us what the object is. 
+- `attributes()` yields metadata about the object
 
 ### extract relevant results 
 
@@ -113,111 +131,117 @@ Learning R:
 
     # Extract relevant results 
     
-    Look at the attributes of the `lm()` results. 
+    The output of `lm()` is a list of 12 named objects. 
 
-`r code_icon`
-
-```{r}
-attributes(regr_results)
-```
-
-Learn R:
-
-- `attributes(regr_results)` retrieves meta-data stored with the object `regr_results`
-- `regr_results` contains 12 named objects (collected in an R data structure called a *list*.)
-- Add `attributes()` to your list of functions used for exploring data, including `str()`, `head()`, and `tail()`. 
-
-`r text_icon`
-
-    The named variables we need from this list are `[1] coefficients`, `[2] residuals`, and `[5] fitted.values`. Examining the structure of these three variables yields
+    The three named objects we want are  `coefficients`, `residuals`, and `fitted.values`. 
 
 `r code_icon`
 
 ```{r}
 # Examine the three objects we want
-regr_results_subset <- regr_results[c("coefficients", "residuals", "fitted.values")]
-str(regr_results_subset)
+objects_to_subset <- c("coefficients", "residuals", "fitted.values")
+relevant_results  <- regr_results[objects_to_subset]
+str(relevant_results)
 ```
 
-- We subset `regr_results` using `[]` notation and the three named objects of interest.
-- We use `str()` to examine the stucture of each of the three objects. 
-- Recall `c()` is how we *combine* elements into a vector
+- `c()` creates a vector (concatenate)
+- Single brackets `[]` subsets a list and returns a list 
 
 ### check yourself
 
 Confer with a neighbor.
 
-1. How many elements in the `coefficients` vector?
+1. How many elements in the `coefficients` list?
 2. What is the numeric value of the regression intercept? of the slope? 
-3. How many elements in the `residuals` vector? Does it make sense? 
+3. How many elements in the `residuals` vector? Is that what you expect? 
 
 In our linear model, `lm()`, the coefficient of the $x^0$ term is labeled *Intercept*; the coefficient of the $x^1$ term is labeled the 
-*input_lb* coefficient, i.e., the  coefficient of $x^1$. This is our slope.   (Higher-order polynomial fits will have additional coefficients, of course, for $x^2, x^3$, etc.)
+*input_lb* coefficient, i.e., the  coefficient of $x^1$. This is our slope.   (Higher-order polynomial-fits would have additional coefficients, of course, for $x^2, x^3$, etc.)
 
 `r text_icon`
 
-    Coefficients has 2 elements; the first is the intercept, the second is the slope. Residuals and fitted values are vectors the same length as the data set, as expected. 
-    
-    Extract the variables we need: `intercept`, `slope`, `fitted.values`, and `residuals`.
+    Extract the named objects from inside the `relevant_results` list.
 
 `r code_icon`
 
 ```{r}
-intercept <- regr_results$coefficients[1]
-slope     <- regr_results$coefficients[2]
-y_fit     <- regr_results$fitted.values
-residuals <- regr_results$residuals
+# first pass returns named numbers
+coeff <- relevant_results[['coefficients']] 
+resid <- relevant_results[['residuals']]
+y_fit <- relevant_results[['fitted.values']]
+str(coeff)
+str(resid)
+str(y_fit)
 ```
 
-Learn R.
+Learn R
 
-- `regr_results` is a list of 12 named objects. 
-- A named object can be retrieved from a list using `$` subsetting notation having the form `list_name$object_name`, e.g., `regr_results$residuals`
-- `regr_results$coefficients` returns a vector of 2 numbers, subsetted further using `[]` notation 
+- Double brackets `[[]]` subsets a list and returns its components 
+- `coeff`, `resid`, and `y_fit` are all *named numbers*
+
+We use the names of the numbers in `coeff` to obtain the slope and intercept of the regression.
+
+`r code_icon`
+
+```{r}
+# extract the values
+intercept <- coeff[['(Intercept)']]
+slope     <- coeff[['input_lb']]
+resid     <- unname(resid)
+y_fit     <- unname(y_fit)
+str(intercept)
+str(slope)
+str(resid)
+str(y_fit)
+```
+
+Learn R
+
+- `[[]]` subsets a named number and returns the number 
+- `unname()` removes the names from named numbers
+- Compare the results of `str()` here with those in the previous code chunk
+
+The previous steps could have been combined, e.g., 
+
+- `intercept <- relevant_results[['coefficients']][['(Intercept)']]`
+- `y_fit     <- unname(relevant_results[['fitted.values']])`
+
+
 
 ### determine sensor accuracy
 
 `r text_icon`
 
     # Determine sensor accuracy
-    
-    The ANSI/ISA calibration standard defines accuracy as the maximum positive and maximum negative residual. 
+
+    The ANSI/ISA standard defines accuracy as the maximum positive and maximum negative residual. We conventionally report the largest absolute value of the two. 
 
 `r code_icon`
 
 ```{r}
-# determine largest absolute value residual
-resid_max   <- max(residuals)
-resid_min   <- abs(min(residuals))
+resid_max   <- max(resid)
+resid_min   <- abs(min(resid))
 resid_bound <- max(resid_max, resid_min)
 ```
 
 - `max()` and `min()` are R functions that do the obvious
+- `abs()` returns the absolute value
 
 `r text_icon`
 
-    In percentage form, accuracy is a percent of output span. The standard defines output span as the difference between the max and min y-fitted values.
+    The standard defines output span as the difference between the max and min y-fitted values. Accuracy is usually reported as a percentage of output span. 
 
 `r code_icon`
 
 ```{r}
 output_span <- max(y_fit) - min(y_fit)
 accuracy    <- resid_bound / output_span * 100
+accuracy
 ```
 
 R coding practice:
 
 - Place a space before and after math operators, e.g., `+`, `-`, `/`, `*`, etc. for readability
-
-`r text_icon`
-
-    Display the values. 
-
-`r code_icon`
-
-```{r, collapse = TRUE}
-accuracy
-```
 
 ### check yourself
 
@@ -230,53 +254,45 @@ Confer with a neighbor.
 `r text_icon`
 
     # Collect results 
-    
-    I’d like to collect min/max inputs and outputs in case I need them in the report.
+
+    Extract min/max inputs and outputs for the report. 
 
 `r code_icon`
 
 ```{r}
-input_min  <- min(calibr_data[ , 'input_lb'])
-input_max  <- max(calibr_data[ , 'input_lb'])
-output_min <- min(calibr_data[ , 'output_mV'])
-output_max <- max(calibr_data[ , 'output_mV'])
+input_min  <- min(calibr_data[['input_lb']])
+input_max  <- max(calibr_data[['input_lb']])
+output_min <- min(calibr_data[['output_mV']])
+output_max <- max(calibr_data[['output_mV']])
 ```
-
-Learn R.
-
-- We use `[row, col]` notation to subset an object. Here we select all rows (the row position is left blank) and only one column (e.g. `input_lb`). 
 
 `r text_icon`
 
-    Collect those results I’d like to keep handy.
+    Collect those results I'd like to keep handy. 
 
 `r code_icon`
 
 ```{r}
-# create a data frame for printing a table of results
-options(digits = 3)
-library(tibble)
-calibr_results <- frame_data(
-    ~item,         ~value,      ~units,
-    'input_min',   input_min,   'lb',
-    'input_max',   input_max,   'lb',
-    'output_min',  output_min,  'mV',
-    'output_max',  output_max,  'mV',
-    'slope',       slope,       'mV/lb',
-    'intercept',   intercept,   'mV',
-    'resid_bound', resid_bound, 'mV',
-    'accuracy',    accuracy,    '%'
+# create a data frame for saving specific results to file
+calibr_outcomes <- frame_data(
+	~item,         ~num,        ~unit,
+	'input_min',   input_min,   'lb',
+	'input_max',   input_max,   'lb',
+	'output_min',  output_min,  'mV',
+	'output_max',  output_max,  'mV',
+	'slope',       slope,       'mV/lb',
+	'intercept',   intercept,   'mV',
+	'resid_bound', resid_bound, 'mV',
+	'accuracy',    accuracy,    '%'
 )
-
-calibr_results
+calibr_outcomes
 ```
 
 Learn R.
 
-- `options()` allows me to set the number of decimal places for printing, so if I print to the Console, the values are easy to read. Type `?options` in the Console to read about other options. 
-- In this code chunk, I've deliberately placed each row on its own line to make it easy to compose and check. 
-- `frame_data` from the new `tibble` package allows us to assemble a new data frame row by row. 
-- In the first row, the tilde `~` identifies column names.
+- `frame_data` from the `tibble` package allows us to create a data frame row by row. 
+- `~` (in the first row) creates the column names of the data frame
+- `item` is the label column and `num` is the value column 
 
 ### write results to file
 
@@ -284,15 +300,17 @@ Learn R.
 
     # Write results to file
     
-    Save the results table to file. 
+    Save the `calibr_outcome` data frame to file. 
 
 `r code_icon`
 
 ```{r}
-write_csv(calibr_results, "results/04_calibr_regression-results.csv")
+write_csv(calibr_outcomes, "results/04_calibr_outcomes.csv")
 ```
 
-Because this information is likely to appear in a client report, we save it to the `results` directory.  
+- `results` directory is in the path because this information is used in the client report
+- `write_csv()` operates on data frames, so I assembled `calibr_outcomes` as a data frame 
+- I use CSV to abide by the reproducibility principle that everything should be a text file (tab-delimited works too, I just prefer CSV)
 
 ### check yourself
 

@@ -1,4 +1,4 @@
-item,value,units
+item,num,unit
 input_min,0.5,lb
 input_max,4.5,lb
 output_min,8.7,mV

@@ -36,9 +36,8 @@ From launching a project to developing a basic report
 
 - [getting organized](pages/104_getting-organized.html)
 - [initializing an Rmd script](pages/105_initializing-an-Rmd-script.html)
-- [examine the wide-form data](pages/108_examine-wide-data.html)
-- [data reshaping](pages/109_data-reshaping.html)
-- [data tidying](pages/110_data-tidying.html)
+- [examine the data in wide form](pages/109_examine-wide-data.html)
+- [data tidying](pages/110_data-tidy.html)
 - [calibration graph](pages/111_calibration-graph.html)
 - [linear regression](pages/112_linear-regression.html) 
 - [client report](pages/113_client-report.html) 
@@ -56,7 +55,7 @@ Additional tutorials for fine-tuning the report
 
 - references
 - formatting docx
-- [advanced graph topics](pages/116_advanced_graph.html)
+- [graph extras](pages/116_graph-extras.html)
 
 
 

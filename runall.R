@@ -51,28 +51,20 @@ sapply(Rmd_scripts, failwith(NULL, Rmd_to_gh_pages))
 # move index.md from pages to top level
 file.rename(from = 'pages/index.md', to = './index.md')
 
-# copy particpant files to the downloads folder
+# copy participant files to the downloads folder
 download_dir <- "resources/downloads/"
-
+file.copy(from = "data/007_wide-data.csv"
+					, to = download_dir
+)
 file.copy(from = "resources/images/load-cell-setup-786x989px.png"
 					, to = download_dir
 )
 
+# copy image up one level for use by my "student" Rmds
 file.copy(from = "resources/images/load-cell-setup-786x989px.png"
 					, to = "resources/"
 )
 
-file.copy(from = "data/007_wide-data.csv"
-					, to = download_dir
-)
-
-file.copy(from = "data/007_wide-data.csv"
-					, to = "resources/"
-)
-
-# file.copy(from = "data/load-cell-calibr-L6.csv"
-# 					, to = download_to
-# )
 
 
 

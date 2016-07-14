@@ -1,0 +1,137 @@
+---
+title: "Load-cell calibration --- data in wide form"
+author: "Richard Layton"
+date: '2016-08-24'
+output: html_document
+---
+
+```{r 01-01, include = FALSE}
+library(knitr)
+opts_knit$set(root.dir = '../')
+opts_chunk$set(echo = TRUE, collapse = TRUE)
+```
+
+```{r 01-02}
+suppressPackageStartupMessages(library(dplyr))
+library(tidyr)
+library(stringr)
+library(readr)
+```
+
+# Retrieve image of test setup
+
+```{r 01-03}
+url <- "https://raw.githubusercontent.com/DSR-RHIT/creating-reproducible-reports/gh-pages/resources/load-cell-setup-786x989px.png"
+destination <- "resources/load-cell-setup-786x989px.png"
+# don't download if the Internet is down, overwrites the file with empty
+# possibly move the download to the setup file, do it once
+# download.file(url, destination, mode = "wb")
+```
+
+The image shows that a force is applied vertically by hanging a weight on the eye hook. The thin-beam load cell deflects, causing the bridge to produce a voltage signal proportional to the applied force. Measurement units: input force (lb), output signal (mV). 
+
+```{r 01-04, fig.cap = 'Figure 1. Load cell calibration test setup'}
+knitr::include_graphics("../resources/load-cell-setup-786x989px.png", dpi = 250)
+```
+
+# Examine the data 
+
+Download the data from the Internet repository. 
+
+```{r 01-05}
+url <- "https://raw.githubusercontent.com/DSR-RHIT/creating-reproducible-reports/gh-pages/data/007_wide-data.csv"
+destination <- "data/007_wide-data.csv"
+# don't download if the Internet is down, overwrites the file with empty
+# possibly move the download to the setup file, do it once
+# download.file(url, destination)
+```
+
+Read the data as received and examine its structure.
+
+```{r 01-06}
+data_received <- read_csv('data/007_wide-data.csv')
+glimpse(data_received)
+```
+
+The data object is a data frame. 
+
+```{r 01-07}
+# look at the first few rows of the data set.
+head(data_received)
+```
+
+The data set has mV readings in several columns, designated *cycle_1*, *cycle_2*, etc. This is wide form and will have to be reshaped to long form for analysis. 
+
+The NA values in the first and last cycles represent are values that were not tested, per the ANSI/ISA standard. These NA observations can be deleted when we tidy the data. 
+
+A statistical summary of the numerical columns is useful for looking for data anomalies. 
+
+```{r 01-08, message = FALSE}
+# summary-stats except column 1
+input_output_data <- data_received %>%
+    select(-test_point)
+summary(input_output_data)
+```
+
+For all cycles, the mean, min, and max  readings (mV) are similar. We have NA in the first and last cycles only, as expected.  
+
+# Create a data table for the report
+
+A conventional calibration report includes a data table in wide form. All we have to do is format it nicely and save it to our `results` directory for later use. 
+
+Start with the data set without the test-point column (`input_output_data` created earlier) and edit the column names for printing to the client report.
+
+```{r 01-09}
+# begin editing the column names for the report printout
+table_head <- colnames(input_output_data)
+# ensure all strings are lower case for str_replace and str_detect
+table_head <- tolower(table_head)
+```
+
+```{r 01-10}
+# replace underscores with spaces
+table_head <- str_replace(table_head, "_", " ")
+# format the input units as (lb)
+table_head <- str_replace(table_head, "lb", "(lb)")
+```
+
+```{r 01-11}
+# add the output units to the cycle headings
+cycle_true <- str_detect(table_head, "cycle")
+cycle_head <- table_head[cycle_true]
+cycle_head <- str_c(cycle_head, " (mV)")
+```
+
+```{r 01-12}
+# reassign
+table_head[cycle_true] <- cycle_head
+```
+
+```{r 01-13}
+# substitute a capital letter for the first letter of each element
+table_head <- gsub("^([a-z])", "\\U\\1", table_head, perl = TRUE)
+```
+
+Reassign the edited table heading to the data frame. 
+
+```{r 01-14}
+# reassign 
+colnames(input_output_data) <- table_head
+```
+
+Print the table as it would appear in the report to check it. 
+
+```{r 01-15}
+# print to check
+kable(input_output_data, caption = "Table 1. Calibration data")
+```
+
+# Save to file
+
+```{r 01-16}
+# save to results directory
+write_csv(input_output_data, "results/01_calibr_data-wide.csv")
+```
+
+
+

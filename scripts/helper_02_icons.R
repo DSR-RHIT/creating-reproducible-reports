@@ -12,3 +12,5 @@ knit_html <- include_graphics(c("../resources/images/knit-html.png"))
 knit_pdf <- include_graphics(c("../resources/images/knit-pdf.png"))
 
 knit_word <- include_graphics(c("../resources/images/knit-word.png"))
+
+install_icon <- include_graphics(c("../resources/images/install-package.png"))

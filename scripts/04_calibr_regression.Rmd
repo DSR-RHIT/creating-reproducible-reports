@@ -8,13 +8,16 @@ output: html_document
 ```{r 04-01, include = FALSE}
 library(knitr)
 opts_knit$set(root.dir = '../')
-opts_chunk$set(echo = TRUE)
+opts_chunk$set(echo = TRUE, collapse = TRUE)
 ```
 
-```{r 04-02, message = FALSE}
-# load packages
+```{r 04-02}
 library(readr)
+library(tibble)
 suppressPackageStartupMessages(library(dplyr))
+
+# for numbers printed to the screen
+options(digits = 3)
 ```
 
 # Perform the linear regression 
@@ -25,92 +28,89 @@ calibr_data <- read_csv("results/02_calibr_data-tidying.csv")
 head(calibr_data)
 ```
 
-A linear regression relating the mV readings to the input force  produces the results we need to report the calibration equation and the sensor accuracy. 
-
 - `input_lb` is the independent variable (*x*)
 - `output_mV` is the dependent variable (*y*)
 
-The *lm()* function creates the regression results we need:  
-
-- slope and intercept of the linear regression
-- the fitted y-values 
-- the residuals 
-
 ```{r 04-04}
-# perform the regression
-regr_results <- lm(output_mV ~ input_lb, data = calibr_data)
+# perform the regression lm(y ~ x, data_frame)
+regr_results <- lm(output_mV ~ input_lb, calibr_data)
+
+# examine the result
+typeof(regr_results)
+attributes(regr_results)
 ```
 
 # Extract relevant results 
 
-Look at the attributes of the `lm()` results. 
+The output of `lm()` is a list of 12 named objects. 
+
+The three named objects we want are  `coefficients`, `residuals`, and `fitted.values`. 
 
 ```{r 04-05}
-attributes(regr_results)
+objects_to_subset <- c("coefficients", "residuals", "fitted.values")
+relevant_results  <- regr_results[objects_to_subset]
+
+str(relevant_results)
 ```
 
-The named variables we need from this list are `coefficients`, `residuals`, and `fitted.values`. Examining the structure of these three variables yields
+Extract the named objects from inside the  `relevant_results` list. 
 
 ```{r 04-06}
-# Examine the three objects we want
-regr_results_subset <- regr_results[c("coefficients", "residuals", "fitted.values")]
-str(regr_results_subset)
-```
+# first pass returns named numbers
+coeff <- relevant_results[['coefficients']] 
+resid <- relevant_results[['residuals']]
+y_fit <- relevant_results[['fitted.values']]
+str(coeff)
+str(resid)
+str(y_fit)
 
-Coefficients has 2 elements; the first is the intercept, the second is the slope. Residuals and fitted values are vectors the same length as the data set, as expected. 
-
-Extract the variables we need: `intercept`, `slope`, `fitted.values`, and `residuals`.  
-
-```{r 04-07}
-intercept <- regr_results$coefficients[1]
-slope     <- regr_results$coefficients[2]
-y_fit     <- regr_results$fitted.values
-residuals <- regr_results$residuals
+# extract the values
+intercept <- coeff[['(Intercept)']]
+slope     <- coeff[['input_lb']]
+resid     <- unname(resid)
+y_fit     <- unname(y_fit)
+str(intercept)
+str(slope)
+str(resid)
+str(y_fit)
 ```
 
 # Determine sensor accuracy
 
-The ANSI/ISA calibration standard defines accuracy as the maximum positive and maximum negative residual. 
+The ANSI/ISA standard defines accuracy as the maximum positive and maximum negative residual. We conventionally report the largest absolute value of the two. 
 
-```{r 04-08}
-# determine largest absolute value residual
-resid_max   <- max(residuals)
-resid_min   <- abs(min(residuals))
+```{r 04-07}
+resid_max   <- max(resid)
+resid_min   <- abs(min(resid))
 resid_bound <- max(resid_max, resid_min)
 ```
 
-In percentage form, accuracy is a percent of output span. The standard defines output span as the difference between the max and min y-fitted values. 
+The standard defines output span as the difference between the max and min y-fitted values. Accuracy is usually reported as a percentage of output span. 
 
-```{r 04-09}
+```{r 04-08}
 output_span <- max(y_fit) - min(y_fit)
-accuracy    <- resid_bound  / output_span * 100
-```
+accuracy    <- resid_bound / output_span * 100
 
-Display the values. 
-
-```{r 04-10, collapse = TRUE}
 accuracy
 ```
 
 # Collect results 
 
-I'd like to collect min/max inputs and outputs in case I need them in the report. 
+Extract min/max inputs and outputs for the report. 
 
-```{r 04-12}
-input_min  <- min(calibr_data[ , 'input_lb'])
-input_max  <- max(calibr_data[ , 'input_lb'])
-output_min <- min(calibr_data[ , 'output_mV'])
-output_max <- max(calibr_data[ , 'output_mV'])
+```{r 04-09}
+input_min  <- min(calibr_data[['input_lb']])
+input_max  <- max(calibr_data[['input_lb']])
+output_min <- min(calibr_data[['output_mV']])
+output_max <- max(calibr_data[['output_mV']])
 ```
 
 Collect those results I'd like to keep handy. 
 
-```{r 04-13}
-# create a data frame for printing a table of results
-options(digits = 3)
-library(tibble)
-calibr_results <- frame_data(
-	~item,         ~value,      ~units,
+```{r 04-10}
+# create a data frame for saving specific results to file
+calibr_outcomes <- frame_data(
+	~item,         ~num,        ~unit,
 	'input_min',   input_min,   'lb',
 	'input_max',   input_max,   'lb',
 	'output_min',  output_min,  'mV',
@@ -121,14 +121,13 @@ calibr_results <- frame_data(
 	'accuracy',    accuracy,    '%'
 )
 
-calibr_results
+calibr_outcomes
 ```
 
 # Write results to file
 
-Save the results table to file. 
+Save the `calibr_outcome` data frame to file. 
 
-```{r 04-14}
-write_csv(calibr_results, "results/04_calibr_regression-results.csv")
+```{r 04-11}
+write_csv(calibr_outcomes, "results/04_calibr_outcomes.csv")
 ```
-

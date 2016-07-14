@@ -39,7 +39,7 @@ Edit the YAML header:
     title: "Load-cell calibration report"
     author: "your name"
     date: "date"
-    output: html_document
+    output: word_document
     ---
 
 - LaTeX users can use `output: pdf_document` if they choose 
@@ -51,8 +51,12 @@ Insert knitr setup code
 
     library(knitr)
     opts_knit$set(root.dir = '../')
-    opts_chunk$set(echo = TRUE)
-    
+    opts_chunk$set(echo = FALSE)
+
+
+- `echo = TRUE` is useful when writing Rmd scripts to do the work
+- `echo = FALSE` is useful when writing Rmd scripts that produce a client report
+
 Knowing the packages we'll be using, we can load them right away, near the top of the file.
 
 `r code_icon`
@@ -96,11 +100,11 @@ Here we load the data we need for the report and isolate several variables used 
 
 ```{r 113-05}
 # itemized results that are cited in the report 
-results <- read_csv('results/04_calibr_regression-results.csv')
+results <- read_csv('results/04_calibr_outcomes.csv')
 
 # find and extract the slope of the regression curve
 slope_position <- results$item == "slope"
-slope          <- results$value[slope_position]
+slope          <- results$num[slope_position]
 ```
 
 Learn R
@@ -108,20 +112,20 @@ Learn R
 - `results$item` yields the `item` vector of strings
 - `==` is a logical operator, comparing each element of the `results$item` vector to the string `"slope"`
 - `slope_position` is a logical vector, with `TRUE` in the position of the `"slope"` element
-- `results$value` yields the `value` vector of numbers which is then subset further by `[slope_position]` to return a single numerical value 
+- `results$num` yields the `num` vector of numbers which is then subset further by `[slope_position]` to return a single numerical value 
 
-The code could be shortened by combining the two lines of code into one, e.g. `slope <- results$value[results$item == "slope"]`, eliminating the explicit `slope_position` variable. In the next code chunk, we use this shortcut and repeat the process for variables stored in the `results` data frame that we might need in the report. 
+The code could be shortened by combining the two lines of code into one, e.g. `slope <- results$num[results$item == "slope"]`, eliminating the explicit `slope_position` variable. In the next code chunk, we use this shortcut and repeat the process for variables stored in the `results` data frame that we might need in the report. 
 
 `r code_icon`
 
 ```{r 113-06}
-intercept   <- results$value[results$item == "intercept"]
-accuracy    <- results$value[results$item == "accuracy"]
-resid_bound <- results$value[results$item == "resid_bound"]
-input_min   <- results$value[results$item == "input_min"]
-input_max   <- results$value[results$item == "input_max"]
-output_min  <- results$value[results$item == "output_min"]
-output_max  <- results$value[results$item == "output_max"]
+intercept   <- results$num[results$item == "intercept"]
+accuracy    <- results$num[results$item == "accuracy"]
+resid_bound <- results$num[results$item == "resid_bound"]
+input_min   <- results$num[results$item == "input_min"]
+input_max   <- results$num[results$item == "input_max"]
+output_min  <- results$num[results$item == "output_min"]
+output_max  <- results$num[results$item == "output_max"]
 ```
 
 We can extract units from the data frame in the same way. 
@@ -129,8 +133,8 @@ We can extract units from the data frame in the same way.
 `r code_icon`
 
 ```{r}
-input_units  <- results$units[results$item == "input_max"]
-output_units <- results$units[results$item == "output_max"]
+input_units  <- results$unit[results$item == "input_max"]
+output_units <- results$unit[results$item == "output_max"]
 ```
 
 Next we can compute quantities we will need in the report that depend on the numbers we just isolated. 
