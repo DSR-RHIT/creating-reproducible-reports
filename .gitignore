@@ -14,6 +14,7 @@ _site
 pages/*.html
 index.html
 
+data/holding/*
 scripts/holding/*
 resources/docs/*
 
