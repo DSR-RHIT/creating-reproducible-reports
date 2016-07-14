@@ -72,7 +72,9 @@ file.copy(from = "resources/images/load-cell-setup-786x989px.png"
 # delete byproduct files
 unlink("./*.html")
 unlink("pages/*.html")
+unlink("reports/*.html")
 unlink("scripts/*.html")
+
 unlink("scripts/*.md")
 unlink(".Rhistory")
 
