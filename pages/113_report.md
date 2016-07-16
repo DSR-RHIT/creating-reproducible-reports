@@ -35,7 +35,7 @@ Edit the YAML header:
 - LaTeX users can use `output: pdf_document` if they choose 
 - Anyone can use `output: html_document` while editing then change to another output format for the final document sent to the client. 
 
-Insert knitr setup code
+Delete the rest of the pre-populated text. Insert knitr setup code
 
 ![](../resources/images/code-icon.png)<!-- --> 
 

@@ -21,7 +21,7 @@ How to use this tutorial
 - `r text_icon` *add text*: type the prose verbatim into the Rmd file 
 - `r code_icon` *add code*: insert a code chunk, then transcribe the R code 
 - `r knit_icon` *knit* after each addition. 
-- *Install* packages (like "apps") one time only
+- *Install* packages one time only
 - *Load* a package using `library()` every session
 
 Packages used in this tutorial 
@@ -44,7 +44,7 @@ Edit the YAML header:
     output: html_document
     ---
 
-Insert knitr setup code
+Delete the rest of the pre-populated text. Insert knitr setup code
 
 `r code_icon` 
 

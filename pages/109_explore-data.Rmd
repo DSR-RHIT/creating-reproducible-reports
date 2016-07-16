@@ -21,17 +21,17 @@ How to use this tutorial
 - `r text_icon` *add text*: type the prose verbatim into the Rmd file 
 - `r code_icon` *add code*: insert a code chunk, then transcribe the R code 
 - `r knit_icon` *knit* after each addition. 
-- *Install* packages (like "apps") one time only
+- *Install* packages one time only (packages are like apps for R)
 - *Load* a package using `library()` every session
 
-Packages used in this tutorial 
+The following packages are used in this tutorial. You will have already installed `readr` in the pre-homework but not the others. Install them now with `RStudio > Package > Install`. In subsequent tutorials, install only those packages that you have not yet installed. 
 
 - dplyr 
 - tidyr 
 - stringr
 - readr
 
-Learn R
+Optional: package-related R code. Type in the Console and `Enter`  to see the results.  
 
 - `.libPaths()` returns the location(s) of your package library, e.g., `C:/R/library` and `C:/Program Files/R/R-3.3.1/library`
 - `library()` returns the names of installed packages and in which library they reside
@@ -39,7 +39,7 @@ Learn R
 
 ### getting started
 
-You have already started: open `01_calibr_data-wide.Rmd`. It should contain a YAML header and a code chunk to initialize `knitr`, as shown below. 
+Start with `01_calibr_data-wide.Rmd`, the file we initialized in the previous tutorial. It should contain a YAML header and a code chunk to initialize `knitr`, as shown below. 
 
 <pre><code>---
 title: "Load-cell calibration --- data in wide form"
@@ -55,14 +55,9 @@ opts_chunk$set(echo = TRUE, collapse = TRUE)
 <code>```</code>
 </code></pre>
 
-For this tutorial
-
-- Add text and code to `01_calibr_data-wide.Rmd` in the order presented
-- Knit your document after each addition and confirm the output is what you expect
-
 Knowing the packages we'll be using, we can load them right away, near the top of the file.
 
-`r code_icon` (*add code*: insert a code chunk, then transcribe the R code) 
+`r code_icon` (*add code* reminder: insert a code chunk, then transcribe the R code) 
 
 ```{r}
 # load packages
@@ -76,7 +71,7 @@ By itself,  `library(dplyr)` produces several message in our output. To suppress
 
 ### import the image 
 
-`r text_icon` (*add text*: type the prose verbatim into the Rmd file) 
+`r text_icon` (*add text* reminder: type the prose verbatim into the Rmd file) 
 
     # Import the image
 
@@ -98,14 +93,11 @@ Learn R
 - `dpi` scales the size of the image, where image\_width = width\_pixels / dpi. You can edit the `dpi` setting to see the effect in the output.
 - Arguments of R functions use a `key = value` assignment structure, e.g. `dpi = 250`. 
 
-To add a figure caption, use the `fig.cap` option inside the braces that start the code chunk:
+To add a figure caption, use the `fig.cap` option inside the code chunk header:
 
     {r, fig.cap = 'Figure 1. Load cell calibration test setup'}
 
-- Single quotes and double quotes are treated the same. Your choice. 
-
-
-
+- In R, quotation marks identify the text in between as a character string. You may use single qutotes or double quotes; makes no difference. 
 
 ### read and examine the data
 
@@ -191,7 +183,7 @@ We can read this code as, start with `data_received`, then select all but the `t
 
 Writing readable code
 
-- Starting a new line after `%>%` enhances code readability, especially when using multiple pipes sequentially (do this, then that, then that, etc.)  
+- Starting a new line after `%>%` enhances code readability, especially when using multiple pipes in a sequence of commands  
 
 `r code_icon`
 

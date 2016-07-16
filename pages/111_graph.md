@@ -31,13 +31,13 @@ Edit the YAML header:
     output: html_document
     ---
 
-Insert knitr setup code
+Delete the rest of the pre-populated text. Insert knitr setup code
 
 ![](../resources/images/code-icon.png)<!-- --> 
 
     library(knitr)
     opts_knit$set(root.dir = '../')
-    opts_chunk$set(echo = TRUE)
+    opts_chunk$set(echo = TRUE,  collapse = TRUE)
 
 Knowing the packages we'll be using, we can load them right away, near the top of the file.
 
@@ -350,7 +350,7 @@ Navigate to your scripts and results directories. They should look like this:
       
       
 
-### advanced graphics
+### graph extras
 
 There's much more we can do to bring the graph up to publication standards. 
 

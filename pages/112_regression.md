@@ -32,7 +32,7 @@ Edit the YAML header:
     output: html_document
     ---
 
-Insert knitr setup code
+Delete the rest of the pre-populated text. Insert knitr setup code
 
 ![](../resources/images/code-icon.png)<!-- --> 
 
