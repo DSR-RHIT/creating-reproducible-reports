@@ -1,20 +1,49 @@
 ---
-title: "initializing an Rmd script"
-output:
-  html_document:
-    keep_md: yes
+layout: page
+title: "start your first script"
 ---
 
-```{r, setup, include = FALSE}
-library(knitr)
-opts_knit$set(root.dir = "../")
-opts_chunk$set(echo = TRUE, results = 'hide', message = FALSE, warning = FALSE)
+
+
+
+
+
+
+### tutorial design
+
+You will be writing prose and code in the same document. The prose introduces the logic and rationale for a computation, the code performs the computation, and additional prose comments on the result. 
+
+Because we are blending prose with computing, you are learning syntax for two languages: R Markdown (Rmd) for reporting; and R for computing. They sometimes use the same characters in different ways, for example, 
+
+- In R, the single hash tag # denotes a comment.
+- In Rmd, the single hash tag # denotes a level-1 heading. 
+
+To distinguish prose (written in R Markdown) from code (written in R), I use the following icons. 
+
+- ![](../resources/images/text-icon.png)<!-- --> When you see this icon, you will be adding new text to the Rmd script. Type the prose verbatim into the Rmd file.
+- ![](../resources/images/code-icon.png)<!-- --> When you see this icon, you will first insert a *code chunk*  into the Rmd document, then transcribe the R code into the chunk. 
+- ![](../resources/images/knit-icon.png)<!-- --> *Knit* the document after every change to check that your script is behaving as you expect.   
+
+At the beginning of a tutorial, I list the packages used. If you have already installed a package (like you did for the `readr` package earlier, using `RStudio > Packages > Install`) then you do not have to install it again. 
+
+I occasionally display some code output. Output is denoted by two hash tags, as shown below. You do not have to copy such blocks to your script.
+
+
+
+
+```
+## # A tibble: 3 x 5
+##   test_point input_lb cycle_1 cycle_2 cycle_3
+##        <chr>    <dbl>   <dbl>   <dbl>   <dbl>
+## 1       2 up      1.5      NA    29.9    30.2
+## 2       3 up      2.5    51.1    49.4    49.7
+## 3       4 up      3.5    70.4    70.0      NA
 ```
 
-```{r, echo = FALSE}
-# my tutorial functions for text_icon and code_icon
-source("scripts/helper_02_icons.R")
-```
+
+
+
+
 
 Packages used in this tutorial 
 
@@ -22,9 +51,9 @@ Packages used in this tutorial
 
 How to use this tutorial 
 
-- `r text_icon` *add text*: type the prose verbatim into the Rmd file 
-- `r code_icon` *add code*: insert a code chunk then transcribe the R code 
-- `r knit_icon` *Knit* after each addition. 
+- ![](../resources/images/text-icon.png)<!-- --> *add text*: type the prose verbatim into the Rmd file 
+- ![](../resources/images/code-icon.png)<!-- --> *add code*: insert a code chunk then transcribe the R code 
+- ![](../resources/images/knit-icon.png)<!-- --> *Knit* after each addition. 
 
 ### open a new R markdown script 
 
@@ -37,7 +66,7 @@ In your workshop main directory,
 
 The Rmd file is pre-populated with prose and some markdown syntax. Edit the meta-data header:
 
-`r text_icon` (Editing the pre-populated YAML header.)
+![](../resources/images/text-icon.png)<!-- --> (Editing the pre-populated YAML header.)
 
     ---
     title: "Load-cell calibration --- data in wide form"
@@ -50,7 +79,7 @@ The Rmd file is pre-populated with prose and some markdown syntax. Edit the meta
 
 *Knit* the Rmd file to create the output document using one of 3 options: 
 
-1. Click the button `r knit_html`
+1. Click the button ![](../resources/images/knit-html.png)<!-- -->
 1. Use the menu `File` > `Knit Document`
 1. Use a keyboard shortcut `Ctrl + Shift + K`
 
@@ -69,15 +98,15 @@ We'll see most of these Rmd structures again as we work through the tutorials.
 
 If you have MS Word installed on your machine (or Libre/Open Office on Unix-alikes), you can render the Rmd to Word using the Knit pull-down menu. We'll use Word later for a client report. 
 
-- `r knit_word`
+- ![](../resources/images/knit-word.png)<!-- -->
 
 If you have TeX installed on your machine (MiKTeX on Windows, MacTeX 2013+ on OS X, TeX Live 2013+ on Unix-alikes), you can render the Rmd to PDF.
 
-- `r knit_pdf`
+- ![](../resources/images/knit-pdf.png)<!-- -->
 
 We'll use HTML output for most of our exploratory work---it renders quickly and we can ignore pagination. So for now, please use: 
 
-- `r knit_html`
+- ![](../resources/images/knit-html.png)<!-- -->
 
 
 ### cleanup  
@@ -108,7 +137,7 @@ and we write the R code in between.  Insert the delimiters using
 
 The first code chunk we'll write comes at the top of the file, just after the YAML header. This code sets some options for the `knitr` package 
 
-`r code_icon` 
+![](../resources/images/code-icon.png)<!-- --> 
 
     library(knitr)
     opts_knit$set(root.dir = '../')
@@ -156,8 +185,8 @@ Your directories should contain these files:
 
 
 ---
-Back [getting organized](104_getting-organized.html)<br>
-Next [examine the data in wide form](109_examine-wide-data.html)
+Back [organize your files](104_organize-files.html)<br>
+Next [explore the data](109_explore-data.html)
 
 
 

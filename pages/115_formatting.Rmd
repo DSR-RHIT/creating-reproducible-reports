@@ -29,3 +29,9 @@ How to use this tutorial
 - `r code_icon` *add code*: insert a code chunk then transcribe the R code 
 - `r knit_icon` *Knit* after each addition. 
 
+
+
+---
+
+Back [adding references](114_references.html)<br>
+Next [graph extras](116_graph-extras.html)

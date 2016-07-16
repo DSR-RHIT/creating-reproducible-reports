@@ -1,8 +1,6 @@
 ---
+layout: page
 title: "learning objectives"
-output:
-  html_document:
-    keep_md: yes
 ---
 
 [\\]: this is an Rmd comment
@@ -27,4 +25,10 @@ By the end of the workshop participants should be able to:
 - List two basic principles of reproducible research 
 - Organize directories and files for reproducibility 
 - Create a reproducible report using R and RStudio
+
+
+---
+Back [main page](../index.html)<br>
+Next [pre-workshop homework](102_pre-hw.html)
+
 

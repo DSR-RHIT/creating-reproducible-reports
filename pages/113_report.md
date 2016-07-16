@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "client report"
+title: "write the client report"
 ---
 
 
@@ -260,8 +260,8 @@ Navigate to your reports directory. it should look like this:
       `-- 05_calibr_report.Rmd
 
 ---
-Back [linear regression](112_linear-regression.html)<br>
-Next [main page](../index.html)
+Back [perform a linear regression](112_regression.html)<br>
+Next [adding references](113_references.html)
 
 
 

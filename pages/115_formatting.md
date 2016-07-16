@@ -19,3 +19,9 @@ How to use this tutorial
 - ![](../resources/images/code-icon.png)<!-- --> *add code*: insert a code chunk then transcribe the R code 
 - ![](../resources/images/knit-icon.png)<!-- --> *Knit* after each addition. 
 
+
+
+---
+
+Back [adding references](114_references.html)<br>
+Next [graph extras](116_graph-extras.html)

@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "advanced graph topics"
+title: "graph extras"
 ---
 
 
@@ -223,3 +223,9 @@ ggsave("results/114_advanced_graph.png", plot = calibr_graph,
 			 width = 6, height = 4, units = "in", dpi = 300)
 ```
 
+
+
+---
+
+Back [formatting docx](115_formatting.html)<br>
+Next [main page](../index.html)

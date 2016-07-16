@@ -101,6 +101,8 @@ In RStudio Tools -> Global options,
 
 
 
-
+---
+Back [learning objectives](101_objectives.html)<br>
+Next [workshop agenda](103_agenda.html)
 
 

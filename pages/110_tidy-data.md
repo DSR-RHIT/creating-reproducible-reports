@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "data tidying"
+title: "tidy the data"
 ---
 
 
@@ -343,6 +343,6 @@ Your directories should contain these files:
       
 
 ---
-Back [examine the data in wide form](109_examine-wide-data.html)<br>
-Next [calibration graph](111_calibration-graph.html)   
+Back [explore the data](109_explore-data.html)<br>
+Next [create the calibration graph](111_graph.html)   
 

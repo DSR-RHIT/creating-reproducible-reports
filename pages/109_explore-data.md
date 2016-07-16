@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "examine the data in wide form"
+title: "explore the data"
 ---
 
 
@@ -369,6 +369,6 @@ It can be useful to periodically clear the workspace and run the script afresh o
 
 
 ---
-Back [initializing an Rmd script](105_initializing-an-Rmd-script.html)<br>
-Next [data tidying](110_data-tidy.html)
+Back [start your first script](105_first-.html)<br>
+Next [tidy the data](110_tidy-data.html)
 

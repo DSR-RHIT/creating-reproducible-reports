@@ -21,7 +21,7 @@ library(ggplot2)
 Read the tidy data set.
 
 ```{r 03-03}
-graph_data <- read_csv("results/02_calibr_data-tidying.csv")
+graph_data <- read_csv("data/02_calibr_data-tidy.csv")
 str(graph_data)
 ```
 

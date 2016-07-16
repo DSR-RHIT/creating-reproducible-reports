@@ -39,3 +39,7 @@ To get the most out of the second session, complete as much of the self-paced tu
 |    10|     | Summarizing your progress      |     | pair-share      |
 |    10|     | Looking ahead                  |     | discussion      |
 |    10|     | Assessing the workshop         |     | reflection      |
+
+------------------------------------------------------------------------
+
+Back [pre-workshop homework](102_pre-hw.html)<br> Next [main page](../index.html)

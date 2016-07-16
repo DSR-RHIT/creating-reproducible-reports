@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "linear regression"
+title: "perform a linear regression"
 ---
 
 
@@ -329,5 +329,5 @@ Navigate to your scripts and results directories. They should look like this:
       `-- 04_calibr_regression-results.csv
 
 ---
-Back [calibration graph](111_calibration-graph.html)<br>
-Next [client report](113_client-report.html)
+Back [create the calibration graph](111_graph.html)<br>
+Next [write the client report](113_report.html)

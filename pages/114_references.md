@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "references"
+title: "adding references"
 ---
 
 
@@ -58,5 +58,9 @@ Open the report Rmd file. Add the bibliography argument to the front matter,  in
 
 
 
+---
+
+Back [write the client report](113_report.html)<br>
+Next [formatting docx](115_formatting.html)
 
 

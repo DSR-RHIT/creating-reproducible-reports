@@ -14,7 +14,7 @@ Rmd_to_gh_pages <- function(Rmd_file) {
 	md_source_file  <- read_lines(md_file) # originally created by the Rmd file
 	
 	# change md_file path from scripts to pages
-	md_file <- str_replace(md_file, 'scripts', 'pages')
+	# md_file <- str_replace(md_file, 'scripts', 'pages')
 	
 	# from the Rmd file, extract just the lines I want for the gh-page.md header
 	# start by finding the line numbers of the first two sets of dashes
