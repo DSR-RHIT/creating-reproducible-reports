@@ -1,4 +1,8 @@
-# workshop
+---
+layout: page
+title: workshop
+tagline: reproducible research for the R novice
+---
 
 Welcome! The goal of the workshop is to introduce the R novice to reproducible research in the context of creating a reproducible report using R, RStudio, and knitr.  
 

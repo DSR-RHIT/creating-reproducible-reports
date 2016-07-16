@@ -23,6 +23,7 @@ sapply(Rmd_page_scripts, failwith(NULL, Rmd_to_gh_pages))
 
 # render INDEX and move to main directory
 render("scripts/index.Rmd")
+sapply("scripts/index.Rmd", failwith(NULL, Rmd_to_gh_pages))
 file.rename(from = 'scripts/index.md', to = './index.md')
 
 # copy participant files to the downloads folder

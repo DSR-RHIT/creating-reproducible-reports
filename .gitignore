@@ -3,10 +3,7 @@ _site
 .Renviron
 .Rhistory
 .Rproj.user
-
-
 *.Rproj
-
 
 *.docx
 */*.docx
