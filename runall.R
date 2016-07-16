@@ -10,7 +10,7 @@ suppressPackageStartupMessages(library(dplyr))
 # read the function for editing the md header 
 source('scripts/helper_01_create-gh-pages.R')
 
-# render Rmd scripts from pages only
+# render Rmd scripts for pages only
 library(rmarkdown)
 Rmd_page_scripts <- list.files(path = "pages"
 													, pattern = "\\.Rmd$"
@@ -21,7 +21,7 @@ sapply(Rmd_page_scripts, function(x) render(x))
 # edit the md header for gh-pages
 sapply(Rmd_page_scripts, failwith(NULL, Rmd_to_gh_pages))
 
-# render INDEX and move to main directory
+# render index and move to main directory
 render("scripts/index.Rmd")
 sapply("scripts/index.Rmd", failwith(NULL, Rmd_to_gh_pages))
 file.rename(from = 'scripts/index.md', to = './index.md')
