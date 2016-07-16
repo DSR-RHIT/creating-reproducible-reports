@@ -15,8 +15,6 @@ The day of the workshop:
 - surveying the reproducible research ecosystem 
 - considering a sample report 
 
-
-
 ### tutorials 
 
 From launching a project to developing a basic report
@@ -28,8 +26,6 @@ From launching a project to developing a basic report
 - [create the calibration graph](pages/111_graph.html)
 - [perform a linear regression](pages/112_regression.html) 
 - [write the client report](pages/113_report.html) 
-
-
 
 ### next steps 
 
@@ -43,8 +39,6 @@ Additional tutorials for fine-tuning the report
 - [adding references](pages/114_reference.html)
 - [formatting docx](pages/115_formatting.html)
 - [graph extras](pages/116_graph-extras.html)
-
-
 
 ### acknowledgments 
 

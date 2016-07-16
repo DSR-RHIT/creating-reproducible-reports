@@ -22,8 +22,8 @@ sapply(Rmd_page_scripts, function(x) render(x))
 sapply(Rmd_page_scripts, failwith(NULL, Rmd_to_gh_pages))
 
 # render INDEX and move to main directory
-render("scripts/INDEX.Rmd")
-file.rename(from = 'scripts/INDEX.md', to = './INDEX.md')
+render("scripts/index.Rmd")
+file.rename(from = 'scripts/index.md', to = './index.md')
 
 # copy participant files to the downloads folder
 file.copy(from = "data/007_wide-data.csv"
