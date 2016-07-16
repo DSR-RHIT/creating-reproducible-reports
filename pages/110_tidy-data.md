@@ -71,7 +71,7 @@ suppressPackageStartupMessages(library(dplyr))
 
 Learn R Markdown:
 
-- `- observ` creates an itemized list (bullet list). A line space above and below separating the list from other paragraphs is required. 
+- `- ` (hyphen, space) creates an itemized list (bullet list). A line space above and below separating the list from other paragraphs is required. 
 - To print an underscore in the Rmd prose we have to "escape" the character by writing `\_`. 
 
 ![](../resources/images/text-icon.png)<!-- -->
@@ -86,7 +86,7 @@ The next code chunk finds the columns with `cycle` in their name.
 ```r
 # original data set
 data_received <- read_csv("data/007_wide-data.csv")
-# extract the indices of the column names that include "cycle"
+# extract the column names
 all_col_names <- colnames(data_received)
 ```
 
@@ -98,7 +98,7 @@ Learn R
 
 
 ```r
-# TF detection
+# TF, does the column name include "cycle"
 detect_cycle_col <- str_detect(tolower(all_col_names), 'cycle')
 ```
 
@@ -127,7 +127,7 @@ Learn R
 
 - `which()` returns the indices of the position of TRUE
 - Writing a variable on a line of its own, e.g., `is_a_cycle_col`, prints its value(s)
-- `is_a_cycle_col` is a vector of integers. The number in brackets `[1]` is the index of the first element. 
+- `is_a_cycle_col` is a vector of integers. The number in brackets `[1]` is the index of the first element in the row of output. 
 
 ### check yourself
 
@@ -245,7 +245,7 @@ Confer with a neighbor.
 
     # Simplify the cycle number
 
-    The `cycle` data are strings, *cycle_1*, *cycle_2*, etc., from the original column headings. It might be useful to replace these strings with integers, e.g. `<int> 1` for `<chr> cycle_1`. 
+    The `cycle` data are strings, *cycle_1*, *cycle_2*, etc., from the original column headings. It might be useful to replace these strings with integers, e.g. replacing the string `cycle_1` with the integer `1`. 
 
 ![](../resources/images/code-icon.png)<!-- -->
 

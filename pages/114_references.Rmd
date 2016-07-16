@@ -17,17 +17,20 @@ source("scripts/helper_02_icons.R")
 options(echo = FALSE) # turns of echo in the console
 ```
 
-Packages used in this tutorial  
-
-- 
-- 
-- 
-
 How to use this tutorial 
 
 - `r text_icon` *add text*: type the prose verbatim into the Rmd file 
-- `r code_icon` *add code*: insert a code chunk then transcribe the R code 
-- `r knit_icon` *Knit* after each addition. 
+- `r code_icon` *add code*: insert a code chunk, then transcribe the R code 
+- `r knit_icon` *knit* after each addition. 
+- *Install* packages one time only
+- *Load* a package using `library()` every session
+
+Packages used in this tutorial 
+
+- 
+- 
+- 
+
 
 I use the `.bib` format to automate the formatting of citations and references. This format comes to us from the LaTeX/BiBTeX world, but like the formatting of mathematics, has been adapted to R Markdown.  
 

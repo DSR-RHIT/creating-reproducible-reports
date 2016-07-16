@@ -122,7 +122,7 @@ Edit the code chunk header as follows:
 
 Writing readable code (see [Wickham](http://adv-r.had.co.nz/Style.html) a comprehensive style guide)
 
-- One space on either side of `=`
+- One space on either side of  `=`
 - No space before a comma, one space after a comma (just like written English) 
 
 Save and ![](../resources/images/knit-icon.png)<!-- --> *knit* the document after every change to check that your script is behaving as you expect. 

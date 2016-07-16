@@ -7,17 +7,20 @@ title: "adding references"
 
 
 
-Packages used in this tutorial  
-
-- 
-- 
-- 
-
 How to use this tutorial 
 
 - ![](../resources/images/text-icon.png)<!-- --> *add text*: type the prose verbatim into the Rmd file 
-- ![](../resources/images/code-icon.png)<!-- --> *add code*: insert a code chunk then transcribe the R code 
-- ![](../resources/images/knit-icon.png)<!-- --> *Knit* after each addition. 
+- ![](../resources/images/code-icon.png)<!-- --> *add code*: insert a code chunk, then transcribe the R code 
+- ![](../resources/images/knit-icon.png)<!-- --> *knit* after each addition. 
+- *Install* packages one time only
+- *Load* a package using `library()` every session
+
+Packages used in this tutorial 
+
+- 
+- 
+- 
+
 
 I use the `.bib` format to automate the formatting of citations and references. This format comes to us from the LaTeX/BiBTeX world, but like the formatting of mathematics, has been adapted to R Markdown.  
 

@@ -7,17 +7,19 @@ title: "perform a linear regression"
 
 
 
-Packages used in this tutorial  
+How to use this tutorial 
+
+- ![](../resources/images/text-icon.png)<!-- --> *add text*: type the prose verbatim into the Rmd file 
+- ![](../resources/images/code-icon.png)<!-- --> *add code*: insert a code chunk, then transcribe the R code 
+- ![](../resources/images/knit-icon.png)<!-- --> *knit* after each addition. 
+- *Install* packages one time only
+- *Load* a package using `library()` every session
+
+Packages used in this tutorial 
 
 - readr
 - tibble
 - dplyr
-
-How to use this tutorial 
-
-- ![](../resources/images/text-icon.png)<!-- --> *add text*: type the prose verbatim into the Rmd file 
-- ![](../resources/images/code-icon.png)<!-- --> *add code*: insert a code chunk then transcribe the R code 
-- ![](../resources/images/knit-icon.png)<!-- --> *Knit* after each addition. 
 
 ### open a new Rmd script
 
