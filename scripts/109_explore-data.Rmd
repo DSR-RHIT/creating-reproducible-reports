@@ -364,6 +364,6 @@ It can be useful to periodically clear the workspace and run the script afresh o
 
 
 ---
-Back [start your first script](105_first-.html)<br>
+Back [start your first script](105_first-script.html)<br>
 Next [tidy the data](110_tidy-data.html)
 
