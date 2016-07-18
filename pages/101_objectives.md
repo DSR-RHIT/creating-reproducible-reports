@@ -1,11 +1,10 @@
----
-layout: page
-title: "learning objectives"
----
+# learning objectives
 
 ### description 
 
-In an interactive environment, we discuss reproducible research---what it is and why we care---followed by a hands-on guided tour of creating a reproducible analysis and report. The software tutorials are self-paced; participants moving ahead more quickly should have time apply the principles to work of their own. 
+In an interactive environment, we discuss reproducible research---what it is and why we care---followed by a hands-on guided tour of creating a reproducible analysis and report. 
+
+The software tutorials are self-paced; participants moving ahead more quickly should have time to apply the principles to work of their own. 
 
 We treat the following aspects of creating a technical document reproducibly: 
 
