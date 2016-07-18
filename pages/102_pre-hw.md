@@ -50,7 +50,9 @@ According to my Mac OS friends, the most important instruction is to download th
 - `Ctrl+L` clears the console. 
 - Session -> Restart R to clear all variables from the Environment
 
-### set up an rstudio project 
+### set up
+
+**RStudio project**
 
 In the RStudio window 
 
@@ -60,7 +62,7 @@ In the RStudio window
 
 This will be the main project directory for all workshop files 
 
-### set up a package library 
+**Package library**
 
 These steps will make it easier to manage R updates and package updates.  
 
@@ -92,7 +94,7 @@ If all goes well with the package installation, the software will report that th
     package "readr" successfully unpacked and MD5 sums checked
 
 
-### set rstudio defaults  
+**RStudio defaults**  
 
 In RStudio Tools -> Global options, 
 
