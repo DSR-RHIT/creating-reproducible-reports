@@ -14,7 +14,9 @@ Prior to the workshop, complete the work on this page to
 - Set up a library for R packages 
 - Download an R package to test the installation 
 
-### windows
+### install
+
+**Windows** 
 
 Windows users should login as an administrator to download and install R and RStudio.  
 
@@ -24,7 +26,7 @@ Windows users should login as an administrator to download and install R and RSt
 - [R installation manual](https://cran.r-project.org/doc/manuals/r-release/R-admin.html#Installing-R-under-Windows) if you need the minutiae 
 
 
-### mac OS
+**mac OS**
 
 According to my Mac OS friends, the most important instruction is to download the software that matches your specific OS. 
 
@@ -34,12 +36,12 @@ According to my Mac OS friends, the most important instruction is to download th
 - [R installation manual](https://cran.r-project.org/doc/manuals/r-release/R-admin.html#Installing-R-under-OS-X) if you need the minutiae 
 
 
-### unix-alikes
+**unix-alikes**
 
 - [Download R for Unix-alikes](https://cran.r-project.org/doc/manuals/r-release/R-admin.html#Installing-R-under-Unix_002dalikes) 
 - [Download RStudio](https://www.rstudio.com/products/rstudio/download/) after first installing R 
 
-### testing
+### test
 
 - If you like, create a desktop icon for RStudio 
 - You may delete the desktop icons (if any) for R  
@@ -92,7 +94,7 @@ If all goes well with the package installation, the software will report that th
     package "readr" successfully unpacked and MD5 sums checked
 
 
-### rstudio settings  
+### set rstudio defaults  
 
 In RStudio Tools -> Global options, 
 
