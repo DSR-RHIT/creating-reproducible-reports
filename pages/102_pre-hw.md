@@ -3,8 +3,6 @@ layout: page
 title: "pre-workshop homework"
 ---
 
-[\\]: this is an Rmd comment
-
 Prior to the workshop, complete the work on this page to 
 
 - Install [R](https://www.r-project.org/), a free software environment for statistical computing and graphics 

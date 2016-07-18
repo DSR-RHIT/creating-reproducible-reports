@@ -3,18 +3,17 @@ layout: page
 title: "learning objectives"
 ---
 
-[\\]: this is an Rmd comment
-
 ### description 
 
 In an interactive environment, we discuss reproducible research---what it is and why we care---followed by a hands-on guided tour of creating a reproducible analysis and report. The software tutorials are self-paced; participants moving ahead more quickly should have time apply the principles to work of their own. 
 
-We treat the following aspects of creating a technical document: 
+We treat the following aspects of creating a technical document reproducibly: 
 
 - Reading, manipulating, and analyzing data 
 - Creating tables and graphs 
 - Writing equations and in-line results 
 - Managing headings, references, and external media 
+- Updating all of it when the source data change
 
 ###  objectives 
 
