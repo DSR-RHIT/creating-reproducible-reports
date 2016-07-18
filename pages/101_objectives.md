@@ -1,4 +1,7 @@
-# learning objectives
+---
+layout: page
+title: "learning objectives"
+---
 
 ### description 
 
