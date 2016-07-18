@@ -24,7 +24,7 @@ Windows users should login as an administrator to download and install R and RSt
 - [R installation manual](https://cran.r-project.org/doc/manuals/r-release/R-admin.html#Installing-R-under-Windows) if you need the minutiae 
 
 
-**mac OS**
+**Mac OS**
 
 According to my Mac OS friends, the most important instruction is to download the software that matches your specific OS. 
 
@@ -34,12 +34,14 @@ According to my Mac OS friends, the most important instruction is to download th
 - [R installation manual](https://cran.r-project.org/doc/manuals/r-release/R-admin.html#Installing-R-under-OS-X) if you need the minutiae 
 
 
-**unix-alikes**
+**Unix-alikes**
 
 - [Download R for Unix-alikes](https://cran.r-project.org/doc/manuals/r-release/R-admin.html#Installing-R-under-Unix_002dalikes) 
 - [Download RStudio](https://www.rstudio.com/products/rstudio/download/) after first installing R 
 
 ### test
+
+All users:
 
 - If you like, create a desktop icon for RStudio 
 - You may delete the desktop icons (if any) for R  
@@ -51,6 +53,8 @@ According to my Mac OS friends, the most important instruction is to download th
 - Session -> Restart R to clear all variables from the Environment
 
 ### set up
+
+All users: 
 
 **RStudio project**
 

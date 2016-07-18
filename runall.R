@@ -5,7 +5,7 @@
 
 # load plyr before dplyr 
 library(plyr)
-suppressPackageStartupMessages(library(dplyr))
+suppressMessages(library(dplyr))
 
 # read the function for editing the md header 
 source('scripts/helper_01_create-gh-pages.R')
