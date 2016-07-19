@@ -39,10 +39,7 @@ To retrieve these files and place them in the appropriate directories:
 
 - Make sure you have a live Internet connection
 - Launch your RStudio project.
-
-To download the *image*, 
-
-- Copy these lines of R code, paste into the Console (lower left pane of the RStudio interface), and `Enter`. 
+- To download the *image*, copy these lines of R code, paste into the Console (lower left pane of the RStudio interface), and `Enter`. 
 
 
 ```r
@@ -51,9 +48,7 @@ destination <- "resources/load-cell-setup-786x989px.png"
 download.file(url, destination, mode = "wb")
 ```
 
-To download the *data*, 
-
-- Copy these lines of R code, paste into the Console, and `Enter`. 
+- To download the *data*, copy these lines of R code, paste into the Console, and `Enter`. 
 
 
 ```r

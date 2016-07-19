@@ -29,6 +29,19 @@ By the end of the workshop participants should be able to:
 - Organize directories and files for reproducibility 
 - Create a reproducible report using R and RStudio
 
+### software
+
+The software environments we're using are free. The workshop is designed assuming you have no previous experience with any of these environments. 
+
+- [![RStudio](../resources/images/RStudio-blue-125-small.png)](https://www.rstudio.com/)   RStudio provides an interface for R with tools for project management.
+
+- [![R Markdown](../resources/images/RMarkdownReference.png)](https://www.rstudio.com/) R Markdown is a format for writing dynamically reproducible reports with R.
+
+- [![R](../resources/images/Rlogo_small.png)](https://www.r-project.org/) R is a software environment for statistical computing and graphics.
+
+
+
+
 
 ---
 Back [main page](../index.html)<br>
