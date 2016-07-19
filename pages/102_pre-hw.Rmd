@@ -40,8 +40,6 @@ According to my Mac OS friends, the most important instruction is to download th
 
 ### test the installation
 
-All users:
-
 - If you like, create a desktop icon for RStudio 
 - You may delete the desktop icons (if any) for R  
 - Launch RStudio. You should get a window similar to this [screenshot](http://www.rstudio.com/products/rstudio/). 
@@ -52,8 +50,6 @@ All users:
 - Session -> Restart R to clear all variables from the Environment
 
 ### set up a project, library, and defaults
-
-All users: 
 
 **RStudio project**
 
