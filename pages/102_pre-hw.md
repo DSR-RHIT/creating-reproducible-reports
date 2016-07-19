@@ -5,14 +5,11 @@ title: "pre-workshop homework"
 
 Prior to the workshop, complete the work on this page to 
 
-- Install [R](https://www.r-project.org/), a free software environment for statistical computing and graphics 
-- Install [RStudio](https://www.rstudio.com/), a user interface for R 
-- Test the installation by using R as a calculator 
-- Create an RStudio project 
-- Set up a library for R packages 
-- Download an R package to test the installation 
+- Install R and RStudio
+- Test the installation
+- Set up a project, library, and defaults
 
-### install
+### install R and RStudio
 
 **Windows** 
 
@@ -39,7 +36,7 @@ According to my Mac OS friends, the most important instruction is to download th
 - [Download R for Unix-alikes](https://cran.r-project.org/doc/manuals/r-release/R-admin.html#Installing-R-under-Unix_002dalikes) 
 - [Download RStudio](https://www.rstudio.com/products/rstudio/download/) after first installing R 
 
-### test
+### test the installation
 
 All users:
 
@@ -52,7 +49,7 @@ All users:
 - `Ctrl+L` clears the console. 
 - Session -> Restart R to clear all variables from the Environment
 
-### set up
+### set up a project, library, and defaults
 
 All users: 
 
