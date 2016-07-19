@@ -33,7 +33,7 @@ The software environments we're using are free. The workshop is designed assumin
 
 - [![RStudio](../resources/images/RStudio-blue-125-small.png)](https://www.rstudio.com/)   RStudio provides an interface for R with tools for project management.
 
-- [![R Markdown](../resources/images/RMarkdownReference.png)](https://www.rstudio.com/) R Markdown is a format for writing dynamically reproducible reports with R.
+- [![R Markdown](../resources/images/RMarkdownReference.png)](http://rmarkdown.rstudio.com/index.html) R Markdown is a format for writing dynamically reproducible reports with R.
 
 - [![R](../resources/images/Rlogo_small.png)](https://www.r-project.org/) R is a software environment for statistical computing and graphics.
 
