@@ -48,7 +48,7 @@ kable(df1)
 
 ### Session 2
 
-If you plan to work on a report of your own during session 2, try to complete as much of the self-paced tutorials as you can.
+If you plan to work on a report of your own during session 2, try to complete as much of the self-paced tutorials as you can before session 2. 
 
 ```{r agenda-2, include = TRUE, results = 'asis'}
 kable(df2)
