@@ -14,7 +14,7 @@ opts_chunk$set(echo = TRUE, collapse = TRUE)
 ```{r 04-02}
 library(readr)
 library(tibble)
-suppressPackageStartupMessages(library(dplyr))
+suppressMessages(library(dplyr))
 
 # for numbers printed to the screen
 options(digits = 3)
@@ -42,11 +42,10 @@ attributes(regr_results)
 
 # Extract relevant results 
 
-The output of `lm()` is a list of 12 named objects. 
-
-The three named objects we want are  `coefficients`, `residuals`, and `fitted.values`. 
+The output of `lm()` is a list of 12 named objects. For our basic analysis we want only 3 of the 12 objects. 
 
 ```{r 04-05}
+# examine the three objects we want
 objects_to_subset <- c("coefficients", "residuals", "fitted.values")
 relevant_results  <- regr_results[objects_to_subset]
 
@@ -56,7 +55,6 @@ str(relevant_results)
 Extract the named objects from inside the  `relevant_results` list. 
 
 ```{r 04-06}
-# first pass returns named numbers
 coeff <- relevant_results[['coefficients']] 
 resid <- relevant_results[['residuals']]
 y_fit <- relevant_results[['fitted.values']]
@@ -82,15 +80,14 @@ The ANSI/ISA standard defines accuracy as the maximum positive and maximum negat
 ```{r 04-07}
 resid_max   <- max(resid)
 resid_min   <- abs(min(resid))
-resid_bound <- max(resid_max, resid_min)
+resid_bound <- max(resid_max, resid_min) # find the largest of the two values
 ```
 
 The standard defines output span as the difference between the max and min y-fitted values. Accuracy is usually reported as a percentage of output span. 
 
 ```{r 04-08}
 output_span <- max(y_fit) - min(y_fit)
-accuracy    <- resid_bound / output_span * 100
-
+accuracy    <- resid_bound / output_span * 100 # percent of span
 accuracy
 ```
 
@@ -110,7 +107,7 @@ Collect those results I'd like to keep handy.
 ```{r 04-10}
 # create a data frame for saving specific results to file
 calibr_outcomes <- frame_data(
-	~item,         ~num,        ~unit,
+	~'item',       ~'num',      ~'unit',
 	'input_min',   input_min,   'lb',
 	'input_max',   input_max,   'lb',
 	'output_min',  output_min,  'mV',

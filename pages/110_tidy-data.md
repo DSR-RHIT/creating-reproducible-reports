@@ -52,7 +52,7 @@ Knowing the packages we'll be using, we can load them right away, near the top o
 library(readr)
 library(tidyr)
 library(stringr)
-suppressPackageStartupMessages(library(dplyr))
+suppressMessages(library(dplyr))
 ```
 
 ### plan the data reshaping
