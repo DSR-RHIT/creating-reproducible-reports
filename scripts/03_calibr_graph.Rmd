@@ -92,24 +92,9 @@ calibr_graph <- calibr_graph +
 print(calibr_graph)
 ```
 
-# Putting it all together
-
-We've written out the layers in separate code chunks for clarity, but they can be assembled into one code chunk in the same order as before.   
+# print to file
 
 ```{r 03-11}
-calibr_graph <- ggplot(graph_data, aes(input_lb, output_mV)) +
-	geom_smooth(method = 'lm', se = FALSE, color = 'gray70',  size = 0.5) + 
-	geom_point(size = 1.5, stroke = 0.7, shape = 21, color = 'black', fill= 'gray70') +
-	xlab("Applied force (lb)") + 
-	ylab("Sensor reading (mV)") +
-	scale_x_continuous(breaks = seq(0.5, 4.5, 1)) +
-	scale_y_continuous(breaks = seq(10, 90, 20)) +
-	theme_light() +
-	theme(panel.grid.minor = element_blank(), axis.ticks.length = unit(2, "mm"))
-
-# print to output	
-print(calibr_graph)
-
 # print to file
 ggsave("results/03_calibr_graph.png", plot = calibr_graph, 
 			 width = 6, height = 4, units = "in", dpi = 300)

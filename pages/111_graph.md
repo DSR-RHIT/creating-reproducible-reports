@@ -22,7 +22,7 @@ Packages used in this tutorial
 
 ### open a new Rmd script
 
-Open a new Rmd file, and name it `03_calibr-graph.Rmd`. Save it to the `scripts` directory.
+Open a new Rmd file, and name it `03_calibr_graph.Rmd`. Save it to the `scripts` directory.
 
 Edit the YAML header:  
 
@@ -64,12 +64,12 @@ Robert Kabacoff, the author of the online reference [Quick-R](http://www.statmet
 
 Having used `lattice` for years now, I am a novice `ggplot2` user too, but I'm convinced it's the package to learn --- all the cool kids are using it. 
 
-### data
+### data 
 
 ![](../resources/images/text-icon.png)<!-- -->
 
     # Data
-    
+
     Read the tidy data set.
 
 ![](../resources/images/code-icon.png)<!-- -->
@@ -85,14 +85,14 @@ str(graph_data)
 Confer with a neighbor.
 
 1. How many variables in this data frame?
-2. Which variables do we use in the calibration graph? 
+2. Which variables do we use in the calibration graph?
 
-### building the graph in layers 
-    
+### building a graph in layers
+
 ![](../resources/images/text-icon.png)<!-- -->
 
-    # Building the graph in layers 
-    
+    # Building the graph in layers
+
     Just show the data. 
 
 ![](../resources/images/code-icon.png)<!-- -->
@@ -100,87 +100,72 @@ Confer with a neighbor.
 
 ```r
 calibr_graph <- ggplot(data = graph_data, aes(x = input_lb, y = output_mV)) +
-    geom_point()
+	geom_point()
+
+print(calibr_graph)
 ```
 
 Learning ggplot2
 
-- `data = ...` brings in the data frame
-- `aes()` is the **aes**thetic mapping, indicating which of the variables in the data frame are used for `x` and `y` coordinates of the scatter plot 
+- `data = ...` assigns the data frame on which `ggplot` operates
+- `aes()` is the **aes**thetic mapping, indicating which of the variables in the data frame are used for `x` and `y` coordinates of the scatter plot
 - `+` is the syntax for "add the next layer"
 - `geom_point()` is a **geom**etric object. We use points because we're drawing a scatterplot
 
-![](../resources/images/code-icon.png)<!-- -->
-
-
-```r
-print(calibr_graph)
-```
-
-That's all it takes to obtain a basic scatterplot. If you don't care for the default graphic settings, don't worry, I'll show you how to edit basic settings. 
+That's all it takes to obtain a basic scatterplot. If you don't care for the default graphic settings, don't worry, I'll show you how to edit basic settings.
 
 ![](../resources/images/text-icon.png)<!-- -->
 
-    Draw the regression line.  
+    Draw the regression line. 
 
 ![](../resources/images/code-icon.png)<!-- -->
 
 
 ```r
 calibr_graph <- ggplot(data = graph_data, aes(x = input_lb, y = output_mV)) +
-    geom_smooth(method = 'lm') + 
-    geom_point()
+	geom_smooth(method = 'lm') + 
+	geom_point()
+
+print(calibr_graph)
 ```
 
 Learning ggplot2
 
 - `geom_smooth()` computes and draws a fitted curve and confidence interval
 - `method` assigns the type of curve fit, `lm` is a linear model
-- Layers are drawn consecutively, so by drawing `geom_smooth()` before `geom_point()`, the points overprint the line. 
-
-![](../resources/images/code-icon.png)<!-- -->
-
-
-```r
-print(calibr_graph)
-```
 
 ### check yourself
 
 Confer with a neighbor
 
-1. Explain why `geom_line()` and  `geom_point()` have different `aes()` arguments.  
+1. Explain why I inserted `geom_line()` before  `geom_point()`
 
-### changing the attributes of graphical elements
+### changing the attributes of the graphical elements
 
 ![](../resources/images/text-icon.png)<!-- -->
 
-    # Changing the attributes of graphical elements 
-    
-    Start with the line and the data markers.
+    # Changing the attributes of the graphical elements
+
+    Start with the line and the data markers. 
 
 ![](../resources/images/code-icon.png)<!-- -->
 
 
 ```r
 calibr_graph <- ggplot(data = graph_data, aes(x = input_lb, y = output_mV)) +
-    geom_smooth(method = 'lm', se = FALSE, color = 'gray70',  size = 0.5) + 
-    geom_point(size = 1.5, stroke = 0.7, shape = 21, color = 'black', fill= 'gray70')
+	geom_smooth(method = 'lm', se = FALSE, color = 'gray70',  size = 0.5) + 
+	geom_point(size = 1.5, shape = 21, stroke = 0.7, color = 'black', fill = 'gray70')
+
+print(calibr_graph)
 ```
 
 Learning ggplot2
 
 - `se = FALSE` turns off the confidence interval band
-- The line is edited in size (line width in mm) and color. 
-- The point is edited in size (diameter in mm),  [shape](http://docs.ggplot2.org/current/vignettes/ggplot2-specs.html), stroke and color (outer circle), and fill color. 
-- R has 657 built-in named colors such as `gray70` and `black` I've used here. You can see the full list of color names by typing `colors()` in the Console. View the colors by name  [here](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf). 
+- `geom_smooth()` arguments edit the line color and size (line width in mm).
+- `geom_point()` arguments edit  the data marker size (diameter in mm),  [shape](http://docs.ggplot2.org/current/vignettes/ggplot2-specs.html), stroke and color (outer circle), and fill color.
 
-![](../resources/images/code-icon.png)<!-- -->
-
-
-```r
-print(calibr_graph)
-```
+R has 657 built-in named colors such as `gray70` and `black` I've used here. You can see the full list of color names by typing `colors()` in the Console. View the colors by name  [here](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf).
 
 ![](../resources/images/text-icon.png)<!-- -->
 
@@ -197,14 +182,7 @@ calibr_graph <- calibr_graph +
 
 Learning ggplot2
 
-- This chunk could be read "Assign `calibr_graph` to itself, add a layer for the x-axis label, and add a layer for the y-axis label."
-
-![](../resources/images/code-icon.png)<!-- -->
-
-
-```r
-print(calibr_graph)
-```
+- This chunk could be read "Assign `calibr_graph` to itself, add a layer for the x-axis label, `xlab()`, and add a layer for the y-axis label, `ylab()`."
 
 ![](../resources/images/text-icon.png)<!-- -->
 
@@ -217,19 +195,13 @@ print(calibr_graph)
 calibr_graph <- calibr_graph + 
 	scale_x_continuous(breaks = seq(from = 0.5, to = 4.5, by = 1)) +
 	scale_y_continuous(breaks = seq(from = 10, to = 90, by = 20))
+print(calibr_graph)
 ```
 
 Learning R
 
 - `breaks` is ggplot2 syntax for tick mark locations
-- Sequences have the form `seq (from = ..., to = ..., by = ...)` as shown here. You can shorten the code by omitting the *key* words as long as the *values* are in the order shown. For example, I could have written `seq(10, 90, 20)` and obtained the same result, the vector `(10, 30, 50, 70, 90)`. 
-
-![](../resources/images/code-icon.png)<!-- -->
-
-
-```r
-print(calibr_graph)
-```
+- Sequences have the form `seq (from = ..., to = ..., by = ...)` as shown here. You can shorten the code by omitting the *key* words as long as the *values* are in the order shown. For example, for the y-scale markings I could have written `seq(10, 90, 20)`. 
 
 ![](../resources/images/text-icon.png)<!-- -->
 
@@ -241,19 +213,13 @@ print(calibr_graph)
 ```r
 calibr_graph <- calibr_graph + 
 	theme_light()
+print(calibr_graph)
 ```
 
 Learning ggplot2
 
-- A theme, in ggplot2, is a collection of settings that controls the appearance of the graph. Example images of the built-in themes are [here](http://docs.ggplot2.org/current/ggtheme.html). 
-- Additional themes are available in the [ggthemes package](https://github.com/jrnold/ggthemes), including themes inspired by Stephen Few, Edward Tufte, The Economist magazine, and even the classic 2003 ugly gray charts in Excel ("for ironic purposes only").  
-
-![](../resources/images/code-icon.png)<!-- -->
-
-
-```r
-print(calibr_graph)
-```
+- A theme, in ggplot2, is a collection of settings that controls the appearance of the graph. Example images of the built-in themes are [here](http://docs.ggplot2.org/current/ggtheme.html).
+- Additional themes are available in the [ggthemes package](https://github.com/jrnold/ggthemes), including themes inspired by Stephen Few, Edward Tufte, The Economist magazine, and even the classic 2003 ugly gray charts in Excel ("for ironic purposes only").
 
 ![](../resources/images/text-icon.png)<!-- -->
 
@@ -264,8 +230,9 @@ print(calibr_graph)
 
 ```r
 calibr_graph <- calibr_graph +
-		theme(panel.grid.minor = element_blank(),  
-					axis.ticks.length = unit(2, "mm"))
+        theme(panel.grid.minor = element_blank(), axis.ticks.length = unit(2, "mm"))
+
+print(calibr_graph)
 ```
 
 Learning ggplot2
@@ -273,52 +240,39 @@ Learning ggplot2
 - `element_blank()` turns off the minor grid lines
 - `axis.ticks.length` edits the length of the axis tick marks
 
-The ability to edit or create a theme is the essential tool for customizing graphs in `ggplot2`. I've show two small customizations; the full list is given [here](http://rstudio-pubs-static.s3.amazonaws.com/3364_d1a578f521174152b46b19d0c83cbe7e.html).  
+The ability to edit or create a theme is the essential tool for customizing graphs in `ggplot2`. I've show two small customizations; the full list is given [here](http://rstudio-pubs-static.s3.amazonaws.com/3364_d1a578f521174152b46b19d0c83cbe7e.html).
 
-![](../resources/images/code-icon.png)<!-- -->
+### one code chunk would have sufficed 
 
+We've written out the layers in separate code chunks for clarity, but they could have been assembled into one code chunk, giving you an idea of how compact and readable (well, once you've learned the grammar) the `ggplot2` syntax can be. 
 
-```r
-print(calibr_graph)
-```
-
-### putting it all together 
-
-![](../resources/images/text-icon.png)<!-- -->
-
-    # Putting it all together
-    
-    We've written out the layers in separate code chunks for clarity, but they can be assembled into one code chunk in the same order as before. A design feature of  `ggplot2` syntax is that a graph is constructed one layer at a time---and the structure of the layers is revealed by the structure of the code.  
-    
-![](../resources/images/code-icon.png)<!-- -->
-
+![](../resources/images/code-icon.png)<!-- --> (optional)
+ 
 
 ```r
 calibr_graph <- ggplot(graph_data, aes(input_lb, output_mV)) +
-    geom_smooth(method = 'lm', se = FALSE, color = 'gray70',  size = 0.5) + 
-    geom_point(size = 1.5, stroke = 0.7, shape = 21, color = 'black', fill= 'gray70') +
-    xlab("Applied force (lb)") + 
-    ylab("Sensor reading (mV)") +
-    scale_x_continuous(breaks = seq(0.5, 4.5, 1)) +
-    scale_y_continuous(breaks = seq(10, 90, 20)) +
-    theme_light() +
-    theme(panel.grid.minor = element_blank(), axis.ticks.length = unit(2, "mm"))
+	geom_smooth(method = 'lm', se = FALSE, color = 'gray70',  size = 0.5) + 
+	geom_point(size = 1.5, stroke = 0.7, shape = 21, color = 'black', fill= 'gray70') +
+	xlab("Applied force (lb)") + 
+	ylab("Sensor reading (mV)") +
+	scale_x_continuous(breaks = seq(0.5, 4.5, 1)) +
+	scale_y_continuous(breaks = seq(10, 90, 20)) +
+	theme_light() +
+	theme(panel.grid.minor = element_blank(), axis.ticks.length = unit(2, "mm"))
+
+print(calibr_graph)
 ```
 
-Learn ggplot2. Earlier, we shortened the `seq()` function by writing the arguments in a particular order. We can do the same with other functions: 
+Learn ggplot2. Earlier, we shortened the `seq()` function by writing the arguments in a particular order. We can do the same with other functions:
 
 - From `ggplot()`, you can omit `data = `, leaving the data frame name
 - From `aes()`, you can omit `x = ` and `y = `, leaving the x-variable and y-variable names in that order
 
-![](../resources/images/code-icon.png)<!-- -->
+### print to file 
 
+![](../resources/images/text-icon.png)<!-- -->
 
-```r
-# print to screen
-print(calibr_graph)
-```
-
-And, print to file. 
+    # Print to file  
 
 ![](../resources/images/code-icon.png)<!-- -->
 
@@ -333,41 +287,51 @@ Learning ggplot2
 
 - Save to the `results` directory because the graph will be used in a report
 - `dpi = 300` for using in a print document
-- `dpi` $\times$ `width` and `height` in inches yields screen dimension in pixels (72 ppi for web resolution is a  [myth](http://www.photoshopessentials.com/essentials/the-72-ppi-web-resolution-myth/)).
+- `dpi` $\times$ `width` and `dpi` $\times$ `height` in inches yields screen dimension in pixels (72 ppi for web resolution is a  [myth](http://www.photoshopessentials.com/essentials/the-72-ppi-web-resolution-myth/)).
+
 
 
 ### check yourself
 
-Navigate to your scripts and results directories. They should look like this:
+Your directories should contain these files:
 
-    scripts\
-      |-- 01_calibr_data-reshaping.Rmd 
-      |-- 02_calibr_data-tidying.Rmd
-      `-- 03_calibr_graph.Rmd
+    data\
+      |-- 007_wide-data.csv
+      `-- 02_calibr_data-tidy.csv
+
+    reports\
+    
+    resources\
+      `-- load-cell-setup-786x989px.png 
       
     results\
-      |-- 02_calibr_data-tidying.csv
+      |-- 01_calibr_data-wide.csv 
       `-- 03_calibr_graph.png
       
-      
-      
+    scripts\
+      |-- 01_calibr_data-wide.html
+      |-- 01_calibr_data-wide.Rmd 
+      |-- 02_calibr_data-tidy.html
+      |-- 02_calibr_data-tidy.Rmd 
+      |-- 03_calibr_graph.html
+      `-- 03_calibr_graph.Rmd
+
 
 ### graph extras
 
-There's much more we can do to bring the graph up to publication standards. 
+There's much more we can do to bring the graph up to publication standards.
 
-I've prepared a (completely optional) tutorial that develops some [graph extras](116_graph-extras.html)  for those of you who want to know MORE and you want it NOW.  Topics include: 
+I've prepared a (completely optional) tutorial that develops some [graph extras](116_graph-extras.html)  for those of you who want to know MORE and you want it NOW.  Topics include:
 
-- Jitter the data markers to reduce printing overlap and set a random seed so jittering is repeatable 
+- Jitter the data markers to reduce printing overlap and set a random seed so jittering is repeatable
 - Use the results table to dynamically assign units to the axis labels and set  tick mark locations
 - Use the results table to dynamically edit the calibration equation and print it on the graph
 - Format the calibration equation for significant figures
 - Change font sizes
 
 
-
-      
 ---
 Back [tidy the data](110_tidy-data.html)<br>
 Next [perform a linear regression](112_regression.html)
+
 
