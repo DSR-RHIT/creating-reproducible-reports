@@ -84,7 +84,9 @@ force_unit   <- "lb"
 
 ### import regression outcomes
 
-I'm going to import these values here so I can compare them to the hard-coded sensor characteristics I assigned above. 
+I'm going to import these values here (before writing any prose)  because I use some of these values in the first paragraph and so I can do a test comparing the data to the sensor characteristics I assigned above. 
+
+This section is another example of code that was developed iteratively while  drafting the report. Initially, I just started the draft prose. As I worked, I  identified variables I would need in my workspace before the first paragraph, e.g., `sensor_model`, `force_limit`, and `force_unit`. 
 
 `r code_icon`
 
