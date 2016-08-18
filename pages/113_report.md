@@ -70,7 +70,7 @@ The make and model number of the sensor were provided by the test lab but do not
 ```r
 # sensor characteristics (hard-coded) 
 sensor_model <- "Omega LCL-005"
-force_limit    <- 5
+force_limit  <- 5
 force_unit   <- "lb"
 ```
 
@@ -110,7 +110,7 @@ To see the structure of these objects for yourself, in the Console, type
 - `glimpse(results_df)` to see the data frame
 - `glimpse(results_list)` to see the list of 8
 
-Note that `results_list` is a list of data frames. Each item in the list (accuracy, input_max, etc) is a  data frame containing one row from the original data frame with columns: `item` (a string), `num` (a number), and `unit` (another string).
+Note that each item in `results_list` (accuracy, input_max, etc) is a  data frame containing one row from the original data frame with columns: `item` (a string), `num` (a number), and `unit` (another string).
  
 ### extracting specific values
 
@@ -149,7 +149,7 @@ output_unit <- results_list$output_min$unit
 
 When drafting this report, I did not necessarily know which regression outcomes I would want. The values and units listed above were developed iteratively as I drafted and revised the client report. 
 
-Next,there are a couple of values I have to compute to use in the report. 
+Next, there are a couple of values I have to compute to use in the report. 
 
 ![](../resources/images/code-icon.png)<!-- -->
 
@@ -274,11 +274,13 @@ The calibration data and calibration curve are shown in Figure 2. The maximum $\
 Math in Rmd
 
 - Inline math expressions use LaTeX syntax enclosed in $ $. 
-- `\pm` is the LaTeX markup for the plus-minus symbol, $\pm$
+- `\pm` is the LaTeX markup for the plus-minus symbol
 - See [here](https://www.sharelatex.com/learn/List_of_Greek_letters_and_math_symbols) for basic LaTeX symbols
 
 
 ### import the graph 
+
+We import the PNG image of the calibration curve we saved earlier. 
 
 ![](../resources/images/code-icon.png)<!-- -->
 
@@ -288,6 +290,8 @@ knitr::include_graphics("../results/03_calibr_graph.png")
 ```
 
 ### display equation
+
+The calibration equation is a main result. 
 
 ![](../resources/images/text-icon.png)<!-- -->
 
