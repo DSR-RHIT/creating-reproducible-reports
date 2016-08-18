@@ -2,12 +2,8 @@
 title: "Load-cell calibration report"
 author: "Richard Layton"
 date: "2016-08-24"
-bibliography: "calibration.bib"
-csl: "ieee.csl"
-output: 
-    word_document:
-      reference_docx: "../resources/mystyles-01.docx"
-      pandoc_args: ["--smart"]
+output: word_document
+
 ---
 
 ```{r 05-01, include = FALSE}
@@ -61,7 +57,7 @@ stopifnot(input_range_fraction >= 90, input_range_fraction <= 100)
 
 The goal of this analysis is to determine the calibration equation and sensor accuracy for an `r sensor_model` (0--`r force_max` `r force_unit`) load cell. 
 
-The test setup is illustrated in Figure 1. Precision weights (0.1% accuracy) are used to apply the reference force (`r input_unit`) to the load cell and the resulting voltage readings (`r output_unit`) from the sensor are recorded. The test procedure follows the ANSI/ISA standard [@ansi-isa-1995].
+The test setup is illustrated in Figure 1. Precision weights (0.1% accuracy) are used to apply the reference force (`r input_unit`) to the load cell and the resulting voltage readings (`r output_unit`) from the sensor are recorded. The test procedure follows the ANSI/ISA standard.
 
 ```{r 05-04, fig.cap = 'Figure 1. Load cell calibration test setup'}
 knitr::include_graphics("../resources/load-cell-setup-786x989px.png")
@@ -70,8 +66,6 @@ knitr::include_graphics("../resources/load-cell-setup-786x989px.png")
 # Data
 
 The calibration data are shown in Table 1. The maximum force (`r input_max` `r input_unit`) is `r input_range_fraction`% of the `r force_max` `r force_unit`  sensor limit, per the ANSI/ISA standard. The NA entries in the first and last columns are artifacts of the ANSI/ISA test procedure (the test starts and stops at a mid-range test point in the same direction). 
-
-##### page break
 
 ```{r 05-05}
 # tabulated data we saved earlier
@@ -87,8 +81,6 @@ The calibration data and calibration curve are shown in Figure 2. The maximum $\
 knitr::include_graphics("../results/03_calibr_graph.png")
 ```
 
-##### page break
-
 The calibration equation is
 $$
 y = `r sprintf("%.3f", slope)`  x + `r sprintf("%.3f", intercept)`
@@ -101,5 +93,9 @@ $$
 $$
 The accuracy of the precision weights, 0.1%, is less than one tenth the load cell accuracy, thereby meeting the requirements of the ANSI/ISA standard.  
 
-# References
+```{r 05-07, include = FALSE}
+# make a copy of the docx file
+file.copy(from = "reports/05_calibr_report.docx", to = "reports/05_calibr_report_copy.docx"
+)
+```
 

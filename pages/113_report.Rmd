@@ -340,6 +340,33 @@ Math in Rmd
 
 Again, we use inline code chunks as often as possible to avoid hard-coding results and support reproducibility. 
 
+### preparing the report for transmittal
+
+Never make changes to the `docx` output file created from your Rmd script. If you run the script again, those changes will be lost. 
+
+My usual practice is to make a copy of this file, then manually convert it to a PDF file that I can send electronically to the client. When creating the PDF, I add the transmittal date to the file name. 
+
+`r code_icon`
+
+```{r}
+# make a copy of the docx file
+file.copy(from = "reports/05_calibr_report.docx", to = "reports/05_calibr_report_copy.docx"
+)
+```
+
+Learn R
+
+- `file.copy()` is one of several file management functions in R 
+- Type `?files` in the Console to browse other file manipulation functions in R
+- add `include = FALSE` to the code chunk header to prevent R from printing an output message from this code chunk 
+
+On my machine, to create the PDF, 
+
+- Manually open the  `05_calibr_report_copy.docx` file
+- Print to PDF and edit the file name, e.g., `05_calibr_report_to-client_2016-08-24.pdf`
+
+If later I should edit and knit the report again, the PDF remains unchanged as a  record of the report I sent the client on that date. 
+
 ### check yourself
 
 
@@ -351,6 +378,8 @@ Your directories should contain these files:
 
     reports\
       |-- 05_calibr_report.docx
+      |-- 05_calibr_report_copy.docx
+      |-- 05_calibr_report_to-client_2016-08-24.pdf
       `-- 05_calibr_report.Rmd 
       
     resources\
