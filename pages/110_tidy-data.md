@@ -52,7 +52,7 @@ Knowing the packages we'll be using, we can load them right away, near the top o
 library(readr)
 library(tidyr)
 library(stringr)
-suppressMessages(library(dplyr))
+suppressPackageStartupMessages(library(dplyr))
 ```
 
 ### plan the data reshaping
@@ -336,9 +336,7 @@ Your directories should contain these files:
       `-- 01_calibr_data-wide.csv 
       
     scripts\
-      |-- 01_calibr_data-wide.html
       |-- 01_calibr_data-wide.Rmd 
-      |-- 02_calibr_data-tidy.html
       `-- 02_calibr_data-tidy.Rmd 
       
 

@@ -37,6 +37,10 @@ file.copy(from = "resources/images/load-cell-setup-786x989px.png"
 file.copy(from = "resources/images/load-cell-setup-786x989px.png"
 					, to = "resources/"
 )
+# copy word template one level up
+file.copy(from = "resources/docs/mystyles-01.docx"
+					, to = "resources/"
+)
 
 # delete byproduct files
 unlink("./*.html")

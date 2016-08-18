@@ -309,11 +309,8 @@ Your directories should contain these files:
       `-- 03_calibr_graph.png
       
     scripts\
-      |-- 01_calibr_data-wide.html
       |-- 01_calibr_data-wide.Rmd 
-      |-- 02_calibr_data-tidy.html
       |-- 02_calibr_data-tidy.Rmd 
-      |-- 03_calibr_graph.html
       `-- 03_calibr_graph.Rmd
 
 

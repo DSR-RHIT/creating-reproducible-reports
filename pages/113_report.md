@@ -31,11 +31,10 @@ Edit the YAML header:
     title: "Load-cell calibration report"
     author: "your name"
     date: "date"
-    output: word_document
+    output: "word_document"
     ---
 
 - LaTeX users can use `output: pdf_document` if they choose 
-- Anyone can use `output: html_document` while editing then change to another output format for the final document sent to the client. 
 
 Delete the rest of the pre-populated text. Insert knitr setup code
 
@@ -46,8 +45,8 @@ Delete the rest of the pre-populated text. Insert knitr setup code
     opts_chunk$set(echo = FALSE)
 
 
-- `echo = TRUE` is useful when writing Rmd scripts to do the work
-- `echo = FALSE` is useful when writing Rmd scripts that produce a client report
+- `echo = TRUE` is useful for working drafts
+- `echo = FALSE` for the final client report
 
 Knowing the packages we'll be using, we can load them right away, near the top of the file.
 
@@ -61,17 +60,173 @@ suppressPackageStartupMessages(library(dplyr))
 library(readr)
 ```
 
-Start the prose for the client report. 
+### assign sensor make and model
+
+The make and model number of the sensor were provided by the test lab but do not appear in the data set. Here, we'll assign those characteristics to variables so that if they change, we only have to change them in one place in the report.  
+
+![](../resources/images/code-icon.png)<!-- -->
+
+
+```r
+# sensor characteristics (hard-coded) 
+sensor_model <- "Omega LCL-005"
+force_limit    <- 5
+force_unit   <- "lb"
+```
+
+### import regression outcomes
+
+I'm going to import these values here so I can compare them to the hard-coded sensor characteristics I assigned above. 
+
+![](../resources/images/code-icon.png)<!-- -->
+
+
+```r
+# itemized results that are cited in the report 
+results_df <- read_csv('results/04_calibr_outcomes.csv')
+```
+
+Learn R
+
+- `read_csv()` produces a data frame object
+
+Selecting specific numbers from these regression outcomes is easier if we convert the data frame to a list. 
+
+![](../resources/images/code-icon.png)<!-- -->
+
+
+```r
+# specific numbers are easier to extract from a list
+results_list <- dlply(results_df, 'item')
+```
+
+Learn R
+
+- `dlply()` is a function in the `plyr` package that operates on a data frame (`results_df`) and produces a list (`results_list`). 
+- the `'item'` argument creates `results_list` as a "list of 8" --- each observation in the data frame `item` column becomes one entry in the list. 
+
+To see the structure of these objects for yourself, in the Console, type
+
+- `glimpse(results_df)` to see the data frame
+- `glimpse(results_list)` to see the list of 8
+
+Note that `results_list` is a list of data frames. Each item in the list (accuracy, input_max, etc) is a  data frame containing one row from the original data frame with columns: `item` (a string), `num` (a number), and `unit` (another string).
+ 
+### extracting specific values
+
+To extract a specific value, we use `$` notation to subset twice, first to subset the top-level list, second to subset the lower-level data frame. 
+
+![](../resources/images/code-icon.png)<!-- -->
+
+
+```r
+# extract slope
+slope <- results_list$slope$num 
+```
+
+- `$slope` subsets the top-level list
+- `$num` subsets the slope data frame
+
+Repeat for the remaining values we want for the report. 
+
+![](../resources/images/code-icon.png)<!-- -->
+
+
+```r
+# extract the remaining values
+intercept   <- results_list$intercept$num  
+accuracy    <- results_list$accuracy$num 
+resid_bound <- results_list$resid_bound$num  
+input_min   <- results_list$input_min$num  
+input_max   <- results_list$input_max$num 
+output_min  <- results_list$output_min$num 
+output_max  <- results_list$output_max$num  
+
+# extract units
+input_unit  <- results_list$input_min$unit 
+output_unit <- results_list$output_min$unit 
+```
+
+When drafting this report, I did not necessarily know which regression outcomes I would want. The values and units listed above were developed iteratively as I drafted and revised the client report. 
+
+Next,there are a couple of values I have to compute to use in the report. 
+
+![](../resources/images/code-icon.png)<!-- -->
+
+
+```r
+# compute range and span
+output_span <- output_max - output_min
+input_range_fraction <- round(input_max / force_limit * 100, 1)
+```
+
+Good coding practice 
+
+- Avoid hard-coding numbers when possible.
+- If you must hard-code values like the sensor characteristics I assigned at the top of this file, perform a check to be sure that hard-coded values are consistent with the data (especially important for reproducibility when the data change). 
+
+Below, I check two conditions comparing the maximum force in the data set to the hard-coded sensor range. The maximum force in the data set: 
+
+1. Should not exceed the sensor range
+2. Should be at least 90\% of the sensor range (required by the ANSI standard)
+
+![](../resources/images/code-icon.png)<!-- -->
+
+
+```r
+# Max force in data should not exceed the sensor range
+stopifnot(input_max <= force_limit)
+
+# Max force in data should be at least 90% of the sensor range
+stopifnot(input_range_fraction >= 90)
+```
+
+Learn R
+
+- `stopifnot()` stops the code execution and produces an error message if any argument returns  `FALSE`
+
+To test these error-detecting tests, change the argument to read 
+
+- `stopifnot(10 * input_max <= force_limit)`
+
+Alternatively, 
+
+- `stopifnot(0.1 * input_range_fraction >= 90)`
+
+In either case, you should see an error statement in the `R Markdown` pane. Make sure you undo the changes. 
+
+### start the prose and use inline code
 
 ![](../resources/images/text-icon.png)<!-- -->
 
-    # Introduction
+<pre class="r"><code># Introduction
 
-    The goal of this analysis is to determine the calibration equation and sensor accuracy for an Omega LCL-005 (0--5 lb) load cell. 
+The goal of this analysis is to determine the calibration equation and sensor accuracy for an <code>`</code>r sensor_model<code>`</code> (0--<code>`</code>r force_limit<code>`</code> <code>`</code>r force_unit<code>`</code>) load cell. 
+</code></pre>
 
-    The test setup is illustrated in Figure 1. Precision weights (0.1% accuracy) are used to apply the reference force (lb) to the load cell and the resulting voltage readings (mV) from the sensor are recorded. The test procedure follows the ANSI/ISA-1979 standard. 
-    
-### add an image
+Learn Rmd
+
+- Code results can be inserted directly into the text of a .Rmd file by enclosing the code with \`r \`. 
+
+Here, for example, I've used three inline code chunks to report values in the  first paragraph. 
+
+- \`r sensor\_model\` is replaced in the output document by its value, "Omega LCL-005" 
+- \`r force\_limit\` is replaced in the output document by its value, "5"
+- \`r force\_unit\` is replaced in the output document by its value, "lb"
+
+Inline code is one of our tools for reproducibility. If the data or analysis change, inline expressions reported in the prose are automatically updated. 
+
+### add an image 
+
+![](../resources/images/text-icon.png)<!-- -->
+
+<pre class="r"><code>The test setup is illustrated in Figure 1. Precision weights (0.1% accuracy) are used to apply the reference force (<code>`</code>r input_unit<code>`</code>) to the load cell and the resulting voltage readings (<code>`</code>r output_unit<code>`</code>) from the sensor are recorded. The test procedure follows the ANSI/ISA standard.
+</code></pre>
+
+Inline code is used again to write the units of input and output. 
+
+- \`r input\_unit\` is replaced in the output document by its value, "lb" 
+- \`r output\_unit\` is replaced in the output document by its value, "mV"
 
 ![](../resources/images/code-icon.png)<!-- -->
 
@@ -82,134 +237,48 @@ knitr::include_graphics("../resources/load-cell-setup-786x989px.png")
 
 - To add a figure caption, we add an argument to the code chunk header, e.g. `{r fig.cap = "Figure 1. Load cell calibration test setup"} `. 
 
-### prepare data and results for display
-
-Here we load the data we need for the report and isolate several variables used in the prose. 
+### create a data table 
 
 ![](../resources/images/text-icon.png)<!-- -->
 
-    # Data
+<pre class="r"><code># Data
 
-![](../resources/images/code-icon.png)<!-- -->
-
-
-```r
-# itemized results that are cited in the report 
-results <- read_csv('results/04_calibr_outcomes.csv')
-
-# find and extract the slope of the regression curve
-slope_position <- results$item == "slope"
-slope          <- results$num[slope_position]
-```
-
-Learn R
-
-- `results$item` yields the `item` vector of strings
-- `==` is a logical operator, comparing each element of the `results$item` vector to the string `"slope"`
-- `slope_position` is a logical vector, with `TRUE` in the position of the `"slope"` element
-- `results$num` yields the `num` vector of numbers which is then subset further by `[slope_position]` to return a single numerical value 
-
-The code could be shortened by combining the two lines of code into one, e.g. `slope <- results$num[results$item == "slope"]`, eliminating the explicit `slope_position` variable. In the next code chunk, we use this shortcut and repeat the process for variables stored in the `results` data frame that we might need in the report. 
-
-![](../resources/images/code-icon.png)<!-- -->
-
-
-```r
-intercept   <- results$num[results$item == "intercept"]
-accuracy    <- results$num[results$item == "accuracy"]
-resid_bound <- results$num[results$item == "resid_bound"]
-input_min   <- results$num[results$item == "input_min"]
-input_max   <- results$num[results$item == "input_max"]
-output_min  <- results$num[results$item == "output_min"]
-output_max  <- results$num[results$item == "output_max"]
-```
-
-We can extract units from the data frame in the same way. 
-
-![](../resources/images/code-icon.png)<!-- -->
-
-
-```r
-input_units  <- results$unit[results$item == "input_max"]
-output_units <- results$unit[results$item == "output_max"]
-```
-
-Next we can compute quantities we will need in the report that depend on the numbers we just isolated. 
-
-![](../resources/images/code-icon.png)<!-- -->
-
-
-```r
-# compute range and span
-output_span <- output_max - output_min
-input_range_fraction <- round(input_max / 5 * 100, 1)
-```
-
-### use inline code chunks
-
-![](../resources/images/text-icon.png)<!-- -->
-
-<pre class="r"><code>The calibration data are shown in Table 1. The maximum force (<code>`</code>r input_max<code>`</code> lb) is <code>`</code>r input_range_fraction<code>`</code>% of the 5 lb sensor limit, meeting the requirements of the ANSI/ISA standard.
+The calibration data are shown in Table 1. The maximum force (<code>`</code>r input_max<code>`</code> <code>`</code>r input_unit<code>`</code>) is <code>`</code>r input_range_fraction<code>`</code>% of the <code>`</code>r force_limit<code>`</code> <code>`</code>r force_unit<code>`</code>  sensor limit, per the ANSI/ISA standard. The NA entries in the first and last columns are artifacts of the ANSI/ISA test procedure (the test starts and stops at a mid-range test point in the same direction).
 </code></pre>
 
-Learn knitr
-
-- \` r ... \` is an *inline code chunk*. Anything inside the chunk is evaluated as R code with the result printed in the sentence. 
-
-Inline code chunks are useful for reporting values in your prose that depend on computations. Thus the inline code chunk  \``r` `input_max` \` is replaced by the number 4.5 in the sentence. 
-
-### print a table
+Again, we've used several inline code chunks for reproducibility. 
 
 ![](../resources/images/code-icon.png)<!-- -->
 
 
 ```r
-# read the data set as received
-data_received <- read_csv('data/007_wide-data.csv')
-```
-
-If you type `names(data_received)` in the Console, you see that the column names use underscores, e.g., test_point, input_lb, cycle_1, etc. --- good for machine readability but not so much for human clients.   
-
-![](../resources/images/code-icon.png)<!-- -->
-
-
-```r
-readable_data <- data_received %>%
-	select("Input (lb)" = input_lb, "Cycle 1 (mV)" = cycle_1, "Cycle 2 (mV)" = 
-cycle_2, "Cycle 3 (mV)" = cycle_3)
-```
-
-- `select("new name" = old_name)` edits the column names
-
-We choose columns names punctuated as we want them to appear in the table heading row. 
-
-![](../resources/images/code-icon.png)<!-- -->
-
-
-```r
-kable(readable_data, caption = "Table 1. Calibration data")
+# tabulated data we saved earlier
+tabulated_data <- read_csv('results/01_calibr_data-wide.csv')
+kable(tabulated_data, caption = "Table 1. Calibration data")
 ```
 
 Learn knitr
 
-- `kable()` is a `knitr` function that produces simple tables in the output document
-- `caption = "..."` argument produces a caption for the table. Tables made with `kable()` are not automatically numbered, though one can write a function to do that. 
+- `kable()` prints a data frame as a table to the output document. The format is simple, but fast and easy to create
+- If the `kable()` output format does not meet your needs, the `pander` package offers additional control for tables and other elements. See the paragraph [Tables using pander](http://rmarkdown.rstudio.com/articles_docx.html) for an introduction. 
 
-### write inline math
+### inline math symbols 
 
 ![](../resources/images/text-icon.png)<!-- -->
 
-    # Results
-    
-    The calibration data and calibration curve are shown in Figure 2. The maximum $\pm$ deviations of the data from the best-fit curve (residuals) are the values used to estimate sensor accuracy. 
-    
-Learn LaTeX math syntax
+<pre class="r"><code># Results
 
-- `$\pm$` is LaTeX math syntax to produce the plus/minus symbol $\pm$
+The calibration data and calibration curve are shown in Figure 2. The maximum $\pm$ deviations of the data from the best-fit curve (residuals) are the values used to estimate sensor accuracy. 
+</code></pre>
 
-R markdown evaluates LaTeX math syntax ([introduction here](https://www.sharelatex.com/learn/List_of_Greek_letters_and_math_symbols)) and prints the result to the output document. 
+Math in Rmd
 
-### add a graph 
+- Inline math expressions use LaTeX syntax enclosed in $ $. 
+- `\pm` is the LaTeX markup for the plus-minus symbol, $\pm$
+- See [here](https://www.sharelatex.com/learn/List_of_Greek_letters_and_math_symbols) for basic LaTeX symbols
+
+
+### import the graph 
 
 ![](../resources/images/code-icon.png)<!-- -->
 
@@ -218,52 +287,79 @@ R markdown evaluates LaTeX math syntax ([introduction here](https://www.sharelat
 knitr::include_graphics("../results/03_calibr_graph.png")
 ```
 
-- To add a figure caption, we add an argument to the code chunk header, e.g. `{r fig.cap = "Figure 2. Load cell calibration curve"} `. 
-
-### write display-style math
-
-Use LaTeX display math to write the calibration equation. The display math includes inline R code chunks. 
+### display equation
 
 ![](../resources/images/text-icon.png)<!-- -->
 
-<pre><code>The calibration equation is
+<pre class="r"><code>The calibration equation is
 $$
 y = <code>`</code>r sprintf("%.3f", slope)<code>`</code>  x + <code>`</code>r sprintf("%.3f", intercept)<code>`</code>
 $$
-with *x* in <code>`</code>r input_units<code>`</code> and *y* in <code>`</code>r output_units<code>`</code>.
+with *x* in <code>`</code>r input_unit<code>`</code> and *y* in <code>`</code>r output_unit<code>`</code>.
 </code></pre>
 
-Learn R
+Math in Rmd
 
-- Double dollar signs mark a LaTeX math expression displayed on its own line 
-- `sprintf("format", variable)` prints the value of the variable name using the format shown, in this case, a floating point number with 3 decimal places. To learn more, type `?sprintf` in the R console.
-- Placing this R code inside an inline code chunk prints the value to the output
-    
+- Display equations use LaTeX expressions enclosed in `$$  $$`. 
+- Display equations start a new line in the document and are centered in the page width. 
 
+Inline code with `sprintf` formatting
+
+- The inline code chunks replace `slope` and `intercept` with their values and units. 
+- `sprintf()` formats the values using conventional C-style formatting, e.g., `"%.3f"` formats a double precision value with 3 decimal places. 
+
+### conclude the report findings
 
 ![](../resources/images/text-icon.png)<!-- -->
 
-<pre><code>The largest residual is <code>`</code>r sprintf("%.1f", resid_bound)<code>`</code> mV and the output span is <code>`</code>r sprintf("%.1f", output_span)<code>`</code> mV, yielding a sensor accuracy as a percent of reading of
+<pre class="r"><code>The largest residual is <code>`</code>r sprintf("%.1f", resid_bound)<code>`</code> <code>`</code>r output_unit<code>`</code> and the output span is <code>`</code>r sprintf("%.1f", output_span)<code>`</code> <code>`</code>r output_unit<code>`</code>, yielding a sensor accuracy as a percent of reading of 
 $$
 \pm <code>`</code>r sprintf("%.1f", accuracy)<code>`</code>\%. 
 $$
-The accuracy of the precision weights, 0.1%, is less than one tenth the load cell accuracy, as expected by the ANSI/ISA standard.
+The accuracy of the precision weights, 0.1%, is less than one tenth the load cell accuracy, thereby meeting the requirements of the ANSI/ISA standard. 
 </code></pre>
 
-- Again, several instances of inline R code with numbers formatted using `sprintf()`
-- To print the percent symbol (%) in a LaTeX math expression, we have to "escape it" by typing `\%`, otherwise, LaTeX treats the symbol as the comment character. 
- 
+Math in Rmd
+
+- To get the percent symbol in the math expression, it has to be "escaped" using a backslash, i.e., `\%`
+
+Again, we use inline code chunks as often as possible to avoid hard-coding results and support reproducibility. 
+
 ### check yourself
 
-Navigate to your reports directory. it should look like this:
+
+Your directories should contain these files:
+
+    data\
+      |-- 007_wide-data.csv
+      `-- 02_calibr_data-tidy.csv
 
     reports\
       |-- 05_calibr_report.docx
-      `-- 05_calibr_report.Rmd
+      `-- 05_calibr_report.Rmd 
+      
+    resources\
+      `-- load-cell-setup-786x989px.png 
+      
+    results\
+      |-- 01_calibr_data-wide.csv 
+      |-- 03_calibr_graph.png
+      `-- 04_calibr_outcomes.csv
+      
+    scripts\
+      |-- 01_calibr_data-wide.Rmd 
+      |-- 02_calibr_data-tidy.Rmd 
+      |-- 03_calibr_graph.Rmd
+      `-- 04_calibr_regression.Rmd
 
 ---
 Back [perform a linear regression](112_regression.html)<br>
-Next [adding references](114_references.html)
+Next [main page](../index.html)
+
+
+
+
+ 
 
 
 

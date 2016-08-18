@@ -55,7 +55,7 @@ Knowing the packages we'll be using, we can load them right away, near the top o
 # load packages
 library(readr)
 library(tibble)
-suppressMessages(library(dplyr))
+suppressPackageStartupMessages(library(dplyr))
 
 # for numbers printed to the screen
 options(digits = 3)
@@ -344,13 +344,9 @@ Your directories should contain these files:
       `-- 04_calibr_outcomes.csv
       
     scripts\
-      |-- 01_calibr_data-wide.html
       |-- 01_calibr_data-wide.Rmd 
-      |-- 02_calibr_data-tidy.html
       |-- 02_calibr_data-tidy.Rmd 
-      |-- 03_calibr_graph.html
       |-- 03_calibr_graph.Rmd
-      |-- 04_calibr_regression.html
       `-- 04_calibr_regression.Rmd
       
 

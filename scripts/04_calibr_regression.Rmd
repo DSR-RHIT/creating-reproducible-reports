@@ -14,7 +14,7 @@ opts_chunk$set(echo = TRUE, collapse = TRUE)
 ```{r 04-02}
 library(readr)
 library(tibble)
-suppressMessages(library(dplyr))
+suppressPackageStartupMessages(library(dplyr))
 
 # for numbers printed to the screen
 options(digits = 3)

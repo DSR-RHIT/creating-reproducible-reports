@@ -53,7 +53,7 @@ library(stringr)
 library(readr)
 ```
 
-By itself,  `library(dplyr)` produces several message in our output. To suppress those messages, we use the `suppressPackageStartupMessages()` function to load the `dplyr` library.
+By itself,  `library(dplyr)` produces several start-up messages in our output. To suppress those messages, we use the `suppressPackageStartupMessages()` function to load the `dplyr` library.
 
 ### import the image 
 
