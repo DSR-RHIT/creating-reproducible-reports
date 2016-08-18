@@ -76,7 +76,7 @@ force_unit   <- "lb"
 
 ### import regression outcomes
 
-I'm going to import these values here (before writing any prose)  because I use some of these values in the first paragraph and so I can do a test comparing the data to the sensor characteristics I assigned above. 
+Here we import and manipulate regression outcomes we computed earlier and saved in the `results` directory. I import them before starting the prose because some of these values are used in the early paragraphs. 
 
 This section is another example of code that was developed iteratively while  drafting the report. Initially, I just started the draft prose. As I worked, I  identified variables I would need in my workspace before the first paragraph, e.g., `sensor_model`, `force_limit`, and `force_unit`. 
 
@@ -186,6 +186,8 @@ stopifnot(input_range_fraction >= 90)
 Learn R
 
 - `stopifnot()` stops the code execution and produces an error message if any argument returns  `FALSE`
+- `<=` (less than or equal) and `>=`(greater than or equal) are logical operators that return logical values `TRUE` or `FALSE`
+- Go [here](http://www.statmethods.net/management/operators.html) for a quick introduction to logical operators
 
 To test these error-detecting tests, change the argument to read 
 
@@ -198,6 +200,8 @@ Alternatively,
 In either case, you should see an error statement in the `R Markdown` pane. Make sure you undo the changes. 
 
 ### start the prose and use inline code
+
+In my very first draft of the report file, the heading and introduction below were right at the top of the file. The code we just completed came later, as I worked out what variables I wanted to assign to support reproducibility.  
 
 ![](../resources/images/text-icon.png)<!-- -->
 
@@ -218,7 +222,9 @@ Here, for example, I've used three inline code chunks to report values in the  f
 
 Inline code is one of our tools for reproducibility. If the data or analysis change, inline expressions reported in the prose are automatically updated. 
 
-### add an image 
+### import an image 
+
+Here we import and discuss the test setup image given to us by the lab that we saved in the `resources` directory. 
 
 ![](../resources/images/text-icon.png)<!-- -->
 
@@ -240,6 +246,8 @@ knitr::include_graphics("../resources/load-cell-setup-786x989px.png")
 - To add a figure caption, we add an argument to the code chunk header, e.g. `{r fig.cap = "Figure 1. Load cell calibration test setup"} `. 
 
 ### create a data table 
+
+Here we import and discuss the table we created earlier and saved in the `results` directory. 
 
 ![](../resources/images/text-icon.png)<!-- -->
 
@@ -282,7 +290,7 @@ Math in Rmd
 
 ### import the graph 
 
-We import the PNG image of the calibration curve we saved earlier. 
+Here we import and discuss the graph we created earlier and saved in the `results` directory. 
 
 ![](../resources/images/code-icon.png)<!-- -->
 
@@ -293,7 +301,7 @@ knitr::include_graphics("../results/03_calibr_graph.png")
 
 ### display equation
 
-The calibration equation is a main result. 
+The calibration equation is the first of the two main results. 
 
 ![](../resources/images/text-icon.png)<!-- -->
 
@@ -314,7 +322,9 @@ Inline code with `sprintf` formatting
 - The inline code chunks replace `slope` and `intercept` with their values and units. 
 - `sprintf()` formats the values using conventional C-style formatting, e.g., `"%.3f"` formats a double precision value with 3 decimal places. 
 
-### conclude the report findings
+### conclude the findings
+
+The accuracy of the sensor is the second of the two main results. 
 
 ![](../resources/images/text-icon.png)<!-- -->
 
