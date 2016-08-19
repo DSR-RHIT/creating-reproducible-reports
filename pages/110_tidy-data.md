@@ -84,8 +84,8 @@ The next code chunk finds the columns with `cycle` in their name.
 
 
 ```r
-# original data set
-data_received <- read_csv("data/007_wide-data.csv")
+# active data set
+data_received <- read_csv('data/01_calibr_data_active-report.csv')
 # extract the column names
 all_col_names <- colnames(data_received)
 ```
@@ -325,6 +325,7 @@ Your directories should contain these files:
 
     data\
       |-- 007_wide-data.csv
+      |-- 01_calibr_data_active-report.csv
       `-- 02_calibr_data-tidy.csv
 
     reports\

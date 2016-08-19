@@ -297,6 +297,7 @@ Your directories should contain these files:
 
     data\
       |-- 007_wide-data.csv
+      |-- 01_calibr_data_active-report.csv
       `-- 02_calibr_data-tidy.csv
 
     reports\

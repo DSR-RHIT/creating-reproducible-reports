@@ -312,7 +312,10 @@ Learn knitr
 
 
 ```r
-# save to results directory
+# save active data set for subsequent scripts
+write_csv(data_received, "data/01_calibr_data_active-report.csv")
+
+# save tabulated data to results directory
 write_csv(input_output_data, "results/01_calibr_data-wide.csv")
 ```
 
@@ -326,7 +329,8 @@ write_csv(input_output_data, "results/01_calibr_data-wide.csv")
 Your directories should contain these files:
 
     data\
-      `-- 007_wide-data.csv
+      |-- 007_wide-data.csv
+      `-- 01_calibr_data_active-report.csv
 
     reports\
     

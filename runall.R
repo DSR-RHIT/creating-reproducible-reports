@@ -30,6 +30,9 @@ file.rename(from = 'scripts/index.md', to = './index.md')
 file.copy(from = "data/007_wide-data.csv"
 					, to = "resources/downloads/"
 )
+file.copy(from = "data/008_wide-data_6-cycles.csv"
+					, to = "resources/downloads/"
+)
 file.copy(from = "resources/images/load-cell-setup-786x989px.png"
 					, to = "resources/downloads/"
 )
