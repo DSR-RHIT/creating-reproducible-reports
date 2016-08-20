@@ -9,12 +9,8 @@ output:
       width: 1200
 ---
 
-
-
-
-
-
 ## <br>Creating reproducible reports
+<!-- custom title page -->
 
 A workshop in reproducible research for the R novice
 
@@ -53,9 +49,78 @@ Does everyone have the handout for Mystery Question 1?
 
 <br><p style="text-align:center">
 <span class="fragment fade-down">
-*What does reproducible research mean to you?*
+<large>*What is reproducible research?*</large>
 </span>
 </p>
 
+
+
+
+
+## Attributes of reproducible research
+
+<div id="left20">
+![](../resources/images/stodden-cover.jpg) 
+</div>
+<div id="right80">
+- Independent scientists compute quantitative results using the original datasets and methods 
+
+- Large data sets, sophisticated models, computation 
+
+- New scientists are generally unprepared to work reproducibly    
+</div>
+
+
+
+
+## Attributes of reproducible research
+
+<div id="left20">
+![](../resources/images/gandrud-cover.jpg) 
+</div>
+<div id="right80">
+- Data and code used to make a finding are available and sufficient to recreate the finding  
+
+- Data gathering, data analysis, and presentation of results
+
+- Resesarch will be reproduced only if it is easy to reproduce   
+</div>
+
+
+
+## Initial steps towards reproducibility
+
+<br>
+
+- Everything with a script  
+- Organize your data and code  
+- Automate the process  
+- Turn scripts into reproducible reports  
+- Turn repeated code into functions  
+- Package functions for reuse  
+- Use version control  
+- License your software  
+
+
+<br><small>Karl Broman  
+http://kbroman.org/steps2rr/ </small>
+
+
+
+
+
+## Good enough practices 
+
+<br>
+
+- Plan the data management    
+- Use readable, reusable, and testable software   
+- Aim for simplicity and clarity  to engance collaboration 
+- Organize files in a logical and consistent  fashion 
+- Use version control  
+- Agree on a workflow before starting a manuscript 
+
+<br><small>Jenny Bryan, Karen Cranston, Justin Kitzes, Lex Nederbragt, Tracy Teal, and Greg Wilson  
+https://github.com/swcarpentry/good-enough-practices-in-scientific-computing/blob/gh-pages/index.md </small>
 
 
