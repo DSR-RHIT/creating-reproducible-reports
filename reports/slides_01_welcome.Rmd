@@ -1,0 +1,59 @@
+---
+output:
+  revealjs::revealjs_presentation:
+    css: my_simple.css
+    transition: fade
+    center: false
+    reveal_options:
+      slideNumber: true
+---
+
+
+
+
+## <br>Creating reproducible reports
+
+A workshop in reproducible research for the R novice
+
+<br>Richard Layton
+
+<small>
+Department of Mechanical Engineering  
+Rose-Hulman Institute of Technology  
+2016-08-24  
+</small>
+ 
+
+
+
+## Welcome
+
+How complete is your homework? Find a partner at the same level.  
+
+- Homework is complete. 
+- Homework is partially complete.   
+- What homework?  
+
+<br>Get connected
+
+- Guests: network, login, password  
+- Tutorials: https://dsr-rhit.github.io/creating-reproducible-reports/  
+- Connect your device to the pod.   
+
+
+
+
+## Getting started
+
+Introductions
+
+Does everyone have the handout for Mystery Question 1?
+
+<p style="text-align:center">
+<span class="fragment fade-down">
+*What does reproducible research mean to you?*
+</span>
+</p>
+
+
+

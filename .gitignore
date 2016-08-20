@@ -15,4 +15,6 @@ data/holding/*
 scripts/holding/*
 resources/docs/*
 
+reports/*.css
+
 
