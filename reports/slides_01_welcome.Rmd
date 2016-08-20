@@ -6,7 +6,10 @@ output:
     center: false
     reveal_options:
       slideNumber: true
+      width: 1200
 ---
+
+
 
 
 
@@ -23,7 +26,6 @@ Rose-Hulman Institute of Technology
 2016-08-24  
 </small>
  
-
 
 
 ## Welcome
@@ -49,7 +51,7 @@ Introductions
 
 Does everyone have the handout for Mystery Question 1?
 
-<p style="text-align:center">
+<br><p style="text-align:center">
 <span class="fragment fade-down">
 *What does reproducible research mean to you?*
 </span>
