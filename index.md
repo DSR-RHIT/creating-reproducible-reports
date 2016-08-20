@@ -16,7 +16,7 @@ The pre-workshop homework should take about 30 minutes.
 The day of the workshop:  
 
 - <a href="reports/slides_01_welcome.html" target="_blank">welcome</a>
-- <a href="pages/103_agenda.html" target="_blank">workshop agenda</a>
+- [workshop agenda](pages/103_agenda.html) 
 - surveying the reproducible research ecosystem 
 - considering a sample report 
 
