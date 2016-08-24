@@ -33,7 +33,7 @@ From launching a project to developing a basic report
 
 ### next steps 
 
-- what to do when the data change 
+- [what to do when the data change](pages/117_data-change.html) 
 - planning for reproducibility 
 - starting your own project 
 - looking ahead 
