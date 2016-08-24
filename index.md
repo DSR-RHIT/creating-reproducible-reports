@@ -19,8 +19,8 @@ Workshop objectives and agenda
 
 Slides 
 
--[session 1](slides/slides_session_01.html) 
--[session 2](slides/slides_session_02.html) 
+- [session 1](slides/slides_session_01.html) 
+- [session 2](slides/slides_session_02.html) 
 
 ### tutorials 
 
