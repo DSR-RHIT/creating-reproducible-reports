@@ -9,47 +9,388 @@ output:
       width: 1200
 ---
 
+
+
+
 ## <br>Creating reproducible reports
 <!-- custom title page -->
 
-A workshop in reproducible research for the R novice
+<p style="color:#808080">A workshop in reproducible research for the R novice</p >
 
-<br>Richard Layton
+<br>
+<br>
+Richard Layton
 
-<small>
+<footnotesize>
 Department of Mechanical Engineering  
 Rose-Hulman Institute of Technology  
 2016-08-24  
-</small>
+</footnotesize>
  
+
+
 
 
 ## Welcome
 
-How complete is your homework? Find a partner at the same level.  
+<br>How complete is your homework? Find a partner at the same level   
 
-- Homework is complete. 
-- Homework is partially complete.   
-- What homework?  
+- complete  
+- partially complete   
+- we had homework?  
 
-<br>Get connected
+<br>Get connected 
 
-- Guests: network, login, password  
-- Tutorials: https://dsr-rhit.github.io/creating-reproducible-reports/  
-- Connect your device to the pod.   
-
+- Guests:  RHIT-Guest, browser (any website), valid email at prompt  
+- Connect your device to the pod  
+- Agenda and tutorials at  
+https://dsr-rhit.github.io/creating-reproducible-reports/  
 
 
 
 ## Getting started
 
-Introductions
+<br>Introductions  
+Handouts
 
-Does everyone have the handout for Mystery Question 1?
+<br>Write down your ideas in response to Mystery question 1: 
 
-<br><p style="text-align:center">
+<br><p style="text-align:center; color:#6566AE;">
 <span class="fragment fade-down">
-<large>*What is reproducible research?*</large>
+*What is reproducible research?*
+</span>
+</p>
+
+
+
+
+## Practitioners tell us:  
+
+<div id="left15">
+
+![](../resources/images/stodden-cover.jpg)![](../resources/images/gandrud-cover.jpg) 
+
+</div>
+
+<div id="right80">  
+
+<p style="color:#6566AE">Research is reproducible when the data and the code used to obtain a finding are available and sufficient for an independent researcher to recreate the finding.</p>
+
+- computational, data-intensive
+
+- spans the full data, analysis, & publication workflow
+
+- most of us have received only perfunctory training (if any) 
+
+<footnotesize>
+<br>Victoria Stodden, F. Leisch, & R. Peng, ed., *Implementing Reproducible Research*, CRC Press, 2014.  
+<br>Christopher Gandrud, *Reproducible Research with R and RStudio, 2/e*, CRC Press, 2015.  
+</footnotesize>
+
+</div>
+
+
+
+***
+
+<div id="left35">
+
+<h2>Events tell us:</h2>  
+
+More accountability is needed because of    
+
+- data falsification 
+- erroneous analysis 
+- misleading presentation of results 
+
+<footnotesize>
+<br>Karen EC Levy & David Merritt Johns, [When open data is a Trojan Horse: The weaponization of transparency in science and governance](http://bds.sagepub.com/content/3/1/2053951715621568), *Big Data and Society*, 2016.   
+</footnotesize> 
+
+</div>
+
+<div id="right60"> 
+
+![](../resources/images/reproducibility-in-the-news.png)
+
+</div>
+
+
+
+
+## Attempts to reproduce this work revealed . . .  
+
+<div id="left60">
+
+the <span style="color:#6566AE">*primary findings were false*</span>. The major effect disappeared after correcting for 
+
+- coding errors
+
+- selective exclusion of available data
+
+- unconventional weighting of summary statistics
+
+</div>
+ 
+<div id="right30">
+
+![](../resources/images/rogoff-reinhart.png)  
+<mycaption>Kenneth Rogoff & Carmen Reinhart</mycaption>
+
+</div>
+
+ <footnotesize>
+ <br>Thomas Herdon, Michael Ash, & Robert Pollin, [Does high public debt consistently stifle economic growth? A critique of Reinhart and Rogoff](http://www.peri.umass.edu/fileadmin/pdf/working_papers/working_papers_301-350/WP322.pdf), Political Economy Research Institute, U Mass Amherst, 2013. 
+ </footnotesize>
+
+
+
+
+
+
+## Attempts to reproduce this work revealed . . .  
+
+<div id="left60">
+
+<span style="color:#6566AE">*data were falsified*</span>  to obtain the research outcomes he wanted, resulting in 
+
+- retracted journal articles (11 to date) 
+
+- terminated clinical trials 
+
+- cancelled research funding   
+
+- civil suit by patients 
+
+</div>
+ 
+<div id="right30">
+
+![](../resources/images/anil-potti.jpg)  
+<mycaption>Anil Potti</mycaption>
+
+</div>
+
+<footnotesize>
+<br>Jason deBruyn, [Trial involving disgraced scientist and bunk Duke research to begin Monday.](http://www.bizjournals.com/triangle/news/2015/01/23/trial-involving-disgraced-scientist-and-bunk-duke.html), *Triangle Business Journal*, 2015-01-23.  
+<br>Ivan Oransky, [It's official: Anil Potti faked cancer research data, say Feds](http://retractionwatch.com/2015/11/07/its-official-anil-potti-faked-data-say-feds/), *Retraction Watch*, 2015-11-07. 
+</footnotesize>
+
+
+
+
+
+
+## However, open science has also been "weaponized"
+
+<div id="left55">
+
+<span style="color:#6566AE">*Scientists and skeptics are in a knife fight,  and you don’t bring data to a knife fight.*</span>    
+<small>--- Paul Erlich</small>
+
+<span style="color:#6566AE">*Why should I make the data available to you, when your aim is to try and find something wrong with it?*</span>     
+<small>--- Phil Jones</small>
+
+</div>
+ 
+<div id="right40">
+
+![](../resources/images/hockey-stick-graph.png)  
+<mycaption>1000 years of temperature variation: the ”hockey stick” graph by Michael Mann</mycaption>
+
+</div>
+
+<footnotesize>
+<br>Freed Pearce, [Climate change debate overheated after sceptic grasped 'hockey stick'](https://www.theguardian.com/environment/2010/feb/09/hockey-stick-michael-mann-steve-mcintyre), *The Guardian*, 2010-02-09.  
+<br>Brad Keyes, [Mann retirement: Analysis, reax](https://cliscep.com/2016/05/08/mann-retirement-analysis-reax), *Climate Sceptic*, 2016-05-08.  
+<br>Jeff Leek, [De-weaponizing reproducibility](http://simplystatistics.org), 2015-03-13.  
+</footnotesize>  
+
+
+
+
+***
+
+<div id="left60">
+
+<h2>The primary benficiary is you</h2> 
+
+<span style="color:#6566AE">*If you do anything "by hand"" once, you’ll do it 100 times.*</span>  
+ 
+ <small>--- Paul Wilson, UW--Madison</small>
+
+
+<span style="color:#6566AE">*Your closest collaborator is you, six months ago. Have you  tried to email that slacker?*</span>  
+
+<small>--- Karl Broman, UW--Madison</small>
+
+
+<span style="color:#6566AE">*To preserve sanity, stop collaborating via email, attachments, and tracking changes in Word.*</span>  
+
+<small>--- Jenny Bryan, UBC</small>
+
+</div>
+
+<div id="right40">
+
+![](../resources/images/final-final.gif)  
+
+
+</div>
+
+
+
+
+
+
+
+
+
+## Steps you can take towards reproducibility
+
+<div id="left55">
+
+- Write scripts (avoid manual copy, paste, mouse-clicks)
+
+- Plan the organization and naming scheme for files 
+
+- Strive for simplicity, readability, reusability, and testability
+
+- Agree on a workflow for collaborating before starting a manuscript
+
+</div>
+
+<div id="right40">
+
+- DRY (don't repeat yourself)
+
+- Link files explicitly
+
+- Plan data management 
+
+- Postpone optimization
+
+- Use version control 
+
+- License your software
+
+</div>
+
+<footnotesize>
+<br>Karl Broman, [Initial steps toward reproducible research](http://kbroman.org/steps2rr/).  
+<br>Jenny Bryan, Karen Cranston, Justin Kitzes, Lex Nederbragt, Tracy Teal, and Greg Wilson, [Good enough practices for scientific computing](https://github.com/swcarpentry/good-enough-practices-in-scientific-computing/blob/gh-pages/index.md), 2016-01.  
+</footnotesize>
+
+
+
+
+## Steps you can take towards reproducibility <span style="color:#6566AE">today</span>
+
+<div id="left55">
+
+- <span style="color:#6566AE">Write scripts (avoid manual copy, paste, mouse-clicks)</span>
+
+- <span style="color:#6566AE"> Plan the organization and naming scheme for files</span> 
+
+</div>
+
+<div id="right40">
+
+- <span style="color:#6566AE">DRY (don't repeat yourself)</span>
+
+- <span style="color:#6566AE">Link files explicitly</span>
+
+</div>
+
+
+
+
+## Learning objectives
+
+<br>
+
+- Describe the problems that reproducibility helps solve 
+
+- Identify non-reproducible practices in their current workflow 
+
+- List two basic principles of reproducible research 
+
+- Organize directories and files for reproducibility 
+
+- Create a reproducible report using R and RStudio 
+
+
+
+
+***
+
+<div id="left50">
+
+<h2>Consider a sample report</h2>
+
+<br>Imagine that you were the author of the "Load cell calibration report"
+
+<br>Carefully review the report and answer Mystery question 2: 
+
+<br><p style="text-align:center; color:#6566AE;">
+<span class="fragment fade-down">
+*Identify as many "manual operations"*  
+*as possible.*
+</span>
+</p>
+
+</div>
+
+<div id="right40">
+
+![](../resources/images/calibr-report-first-page.png)  
+
+</div>
+
+
+
+
+
+## Agenda for the remainder of this session 
+
+- tutorials 
+- two 15 minute breaks 
+- session concludes with Mystery Question 3 
+
+<br>[Tutorials](https://dsr-rhit.github.io/creating-reproducible-reports/) to create a dynamic report
+
+- pre-workshop homework (if incomplete) 
+- organize your files 
+- start your first script 
+- explore the data 
+- tidy the data 
+- create the calibration graph 
+- perform a linear regression 
+- write the client report 
+
+
+
+
+
+
+
+
+## Session 1 wrap-up
+
+<br>Homework: 
+
+1. Continue the tutorials as far as you wish  
+
+2. If you want to start your own reproducible project 
+ 
+    - complete as much of the self-paced tutorials as you can  
+    - bring your project data, analysis, etc. to session 2 
+
+<br>Mystery question 3 (turn this one in to me)
+
+<p style="text-align:center; color:#6566AE;">
+<span class="fragment fade-down">
+<br>*What was the muddiest point in the workshop so far?*
 </span>
 </p>
 
@@ -57,70 +398,9 @@ Does everyone have the handout for Mystery Question 1?
 
 
 
-## Attributes of reproducible research
-
-<div id="left20">
-![](../resources/images/stodden-cover.jpg) 
-</div>
-<div id="right80">
-- Independent scientists compute quantitative results using the original datasets and methods 
-
-- Large data sets, sophisticated models, computation 
-
-- New scientists are generally unprepared to work reproducibly    
-</div>
 
 
 
 
-## Attributes of reproducible research
-
-<div id="left20">
-![](../resources/images/gandrud-cover.jpg) 
-</div>
-<div id="right80">
-- Data and code used to make a finding are available and sufficient to recreate the finding  
-
-- Data gathering, data analysis, and presentation of results
-
-- Resesarch will be reproduced only if it is easy to reproduce   
-</div>
-
-
-
-## Initial steps towards reproducibility
-
-<br>
-
-- Everything with a script  
-- Organize your data and code  
-- Automate the process  
-- Turn scripts into reproducible reports  
-- Turn repeated code into functions  
-- Package functions for reuse  
-- Use version control  
-- License your software  
-
-
-<br><small>Karl Broman  
-http://kbroman.org/steps2rr/ </small>
-
-
-
-
-
-## Good enough practices 
-
-<br>
-
-- Plan the data management    
-- Use readable, reusable, and testable software   
-- Aim for simplicity and clarity  to engance collaboration 
-- Organize files in a logical and consistent  fashion 
-- Use version control  
-- Agree on a workflow before starting a manuscript 
-
-<br><small>Jenny Bryan, Karen Cranston, Justin Kitzes, Lex Nederbragt, Tracy Teal, and Greg Wilson  
-https://github.com/swcarpentry/good-enough-practices-in-scientific-computing/blob/gh-pages/index.md </small>
 
 
