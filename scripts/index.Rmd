@@ -13,16 +13,19 @@ Welcome! The goal of the workshop is to introduce the R novice to reproducible r
 
 ### getting started
 
-The pre-workshop homework should take about 30 minutes. 
+The pre-workshop homework should take less than 30 minutes. 
 
-- [learning objectives](pages/101_objectives.html)
 - [pre-workshop homework](pages/102_pre-hw.html) 
 
-The day of the workshop:  
+Workshop objectives and agenda
 
+- [learning objectives](pages/101_objectives.html) 
 - [workshop agenda](pages/103_agenda.html) 
-- surveying the reproducible research ecosystem 
-- considering a sample report 
+
+Slides 
+
+-[session 1](slides/slides_session_01.html) 
+-[session 2](slides/slides_session_02.html)  
 
 ### tutorials 
 
@@ -35,10 +38,10 @@ From launching a project to developing a basic report
 - [create the calibration graph](pages/111_graph.html)
 - [perform a linear regression](pages/112_regression.html) 
 - [write the client report](pages/113_report.html) 
+- [what to do when the data change](pages/117data-change.html)
 
 ### next steps 
 
-- what to do when the data change 
 - planning for reproducibility 
 - starting your own project 
 - looking ahead 
