@@ -401,7 +401,7 @@ Your directories should contain these files:
 
 ---
 Back [perform a linear regression](112_regression.html)<br>
-Next [main page](../index.html)
+Next [what to do when the data change](117_data-change.html) 
 
 
 
