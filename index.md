@@ -16,8 +16,8 @@ The pre-workshop homework should take about 30 minutes.
 The day of the workshop:  
 
 - [workshop agenda](pages/103_agenda.html) 
-- [slides session 1](slides/slides_session_01.html)
-- [slides session 2](slides/slides_session_02.html)
+- surveying the reproducible research ecosystem 
+- considering a sample report 
 
 ### tutorials 
 
@@ -30,10 +30,10 @@ From launching a project to developing a basic report
 - [create the calibration graph](pages/111_graph.html)
 - [perform a linear regression](pages/112_regression.html) 
 - [write the client report](pages/113_report.html) 
-- [what to do when the data change](pages/117_data-change.html) 
 
 ### next steps 
 
+- what to do when the data change 
 - planning for reproducibility 
 - starting your own project 
 - looking ahead 

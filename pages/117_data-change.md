@@ -50,9 +50,12 @@ Find the line of code that reads the data.
 
     data_received <- read_csv('data/007_wide-data.csv') 
     
-![](../resources/images/code-icon.png)<!-- --> Comment-out that line and add a new line to read the new data set. 
+![](../resources/images/code-icon.png)<!-- --> Comment-out that line and add a new line to read the new data set.
 
+    # comment out the original read_csv() function 
     # data_received <- read_csv('data/007_wide-data.csv')
+    
+    # read the new data set 
     data_received <- read_csv('data/008_wide-data_6-cycles.csv')
     glimpse(data_received)
 
