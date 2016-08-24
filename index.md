@@ -16,7 +16,7 @@ The day of the workshop:
 
 - [learning objectives](pages/101_objectives.html) 
 - [workshop agenda](pages/103_agenda.html) 
-- <a href="reports/slides_session_01.html" target="_blank">welcome</a> 
+- <a href="reports/slides_session_01.html" target="_blank">session 1 slides</a> 
 
 ### tutorials 
 
