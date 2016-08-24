@@ -90,11 +90,11 @@ Wrap-up
 - When the data change 
 
 
-## Reviewing the tasks we've scripted 
+## Principle 1: Blend computing, results, and narrative
 
 <div id="left60"> 
 
-<br>
+Reviewing the tasks we've scripted
 
 - import an image file  
 - read a data file 
@@ -106,16 +106,46 @@ Wrap-up
 - extract relevant results and write to file 
 - write a reproducible client report 
 
+</div> 
+
+
+<div id="right40">  
+
+![](../resources/images/script-screen.png) 
+
+</div> 
+
+
+***
+
+<div id="left75">
+
+<h2>Principle 2: Organize for reproducibility from the beginning</h2>
+
+<br> 
+
+- everything is a script 
+
+- every script is connected 
+
+- file management is planned 
+
+    - directory structure 
+ 
+    - file naming scheme 
+
+</div>
+
+<div id="right25">
+
+![](../resources/images/directory-tree.png) 
+
 </div>
 
 
-<div id="right40"> 
 
-<br>
 
-![](../resources/images/script-screen.png)
 
-</div>
 
 
 
