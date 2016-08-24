@@ -1,0 +1,123 @@
+---
+output:
+  revealjs::revealjs_presentation:
+    css: my_simple.css
+    transition: fade
+    center: false
+    reveal_options:
+      slideNumber: true
+      width: 1200
+---
+
+
+
+
+## <br>Creating reproducible reports
+<!-- custom title page -->
+
+<p style="color:#808080">A workshop in reproducible research for the R novice</p >
+
+<br>
+<p style="color:#808080">Session 2</p >
+
+<br>
+<br>
+Richard Layton
+
+<footnotesize>
+Department of Mechanical Engineering  
+Rose-Hulman Institute of Technology  
+2016-08-24  
+</footnotesize>
+
+
+
+***
+
+<div id="left45">
+
+<h2>Session 2 agenda</h2>
+
+<br>
+
+![](../resources/images/tools-575622.png)  
+<mycaption>What's in your data science toolbox?</mycaption> 
+
+<br> 
+
+<footnotesize>Image courtesy  [Pixabay.](https://pixabay.com/en/tools-hammer-saw-shovel-575622/)</footnotesize>
+
+</div>
+
+
+<div id="left10">
+<br>
+</div>
+
+
+<div id="right45"> 
+
+Reproducible reports
+
+- Q&A 
+- Continue the tutorials
+- When the data change 
+
+Take the next steps 
+
+- What tasks have we scripted? 
+- Plan for reproducibility 
+- Start your own project 
+
+Wrap-up 
+
+- Summarize your progress 
+- Look ahead	 
+- Assess the workshop 
+
+</div>
+
+
+
+## Reproducible reports
+
+<br>
+
+- Q&A 
+
+- Continue the tutorials
+
+- When the data change 
+
+
+## Reviewing the tasks we've scripted 
+
+<div id="left60"> 
+
+<br>
+
+- import an image file  
+- read a data file 
+- create a data table and write it to file 
+- perform data carpentry to tidy the data 
+- reshape data from wide to long form 
+- create a graph and save it to file 
+- perform a linear regression 
+- extract relevant results and write to file 
+- write a reproducible client report 
+
+</div>
+
+
+<div id="right40"> 
+
+<br>
+
+![](../resources/images/script-screen.png)
+
+</div>
+
+
+
+
+

@@ -52,8 +52,10 @@ unlink("reports/*.html")
 unlink("scripts/*.html")
 unlink(".Rhistory")
 
-
-
+# compile slides, html is the output
+library(rmarkdown)
+render("reports/slides_session_01.Rmd")
+render("reports/slides_session_02.Rmd")
 
 
 
