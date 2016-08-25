@@ -49,7 +49,7 @@ From launching a project to developing a basic report
 Additional tutorials for fine-tuning the report
 
 - [adding references](pages/114_reference.html)
-- [formatting docx](pages/115_formatting.html)
+- [formatting docx styles ](http://rmarkdown.rstudio.com/articles_docx.html)
 - [graph extras](pages/116_graph-extras.html)
 
 ### acknowledgments 

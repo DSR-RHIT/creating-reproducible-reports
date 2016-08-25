@@ -115,7 +115,6 @@ Reviewing the tasks we've scripted
 
 </div> 
 
-
 ***
 
 <div id="left75">
@@ -146,8 +145,43 @@ Reviewing the tasks we've scripted
 
 
 
+***
+
+<div id="left55">
+
+<h2>Managing files</h2>
+<br> 
+<span style="font-family:monospace; font-size: 0.8em;">
+<p class="fragment" data-fragment-index="0">data/</p> 
+<p class="fragment" data-fragment-index="2"> &nbsp;&nbsp; --- 007_wide-data.csv</p>
+<p class="fragment" data-fragment-index="4"> &nbsp;&nbsp; --- 01_calibr_data_active-report.csv</p> 
+<p class="fragment" data-fragment-index="6"> &nbsp;&nbsp; --- 02_calibr_data-tidy.csv</p>
+<br> 
+<p class="fragment" data-fragment-index="0">reports/</p> 
+<p class="fragment" data-fragment-index="11"> &nbsp;&nbsp; --- 05_calibr_report.Rmd</p> 
+<p class="fragment" data-fragment-index="12"> &nbsp;&nbsp; --- 05_calibr_report.docx</p> 
+<p class="fragment" data-fragment-index="12"> &nbsp;&nbsp; --- 05_calibr_report_copy.docx</p> 
+<p class="fragment" data-fragment-index="13"> &nbsp;&nbsp; --- 05_calibr_report_to-client_2016-08-24.pdf</p> 
+</span>
+</div>
 
 
 
-
-
+<div id="right45">
+<span style="font-family:monospace; font-size: 0.8em;"> 
+<p class="fragment" data-fragment-index="0">resources/</p> 
+<p class="fragment" data-fragment-index="2"> &nbsp;&nbsp; --- load-cell-setup-786x989px.png</p>
+<br>
+<p class="fragment" data-fragment-index="0">results/</p> 
+<p class="fragment" data-fragment-index="4"> &nbsp;&nbsp; --- 01_calibr_data-wide.csv</p> 
+<p class="fragment" data-fragment-index="8"> &nbsp;&nbsp; --- 03_calibr_graph.png</p> 
+<p class="fragment" data-fragment-index="10"> &nbsp;&nbsp; --- 04_calibr_outcomes.csv</p> 
+<br> 
+<p class="fragment" data-fragment-index="0">scripts/</p> 
+<p class="fragment" data-fragment-index="3"> &nbsp;&nbsp; --- 01_calibr_data-wide.Rmd</p> 
+<p class="fragment" data-fragment-index="5"> &nbsp;&nbsp; --- 02_calibr_data-tidy.Rmd</p> 
+<p class="fragment" data-fragment-index="7"> &nbsp;&nbsp; --- 03_calibr_graph.Rmd</p> 
+<p class="fragment" data-fragment-index="9"> &nbsp;&nbsp; --- 04_calibr_regression.Rmd</p>
+</span>
+  
+</div>
