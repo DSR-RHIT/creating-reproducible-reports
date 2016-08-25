@@ -182,6 +182,81 @@ Reviewing the tasks we've scripted
 <p class="fragment" data-fragment-index="5"> &nbsp;&nbsp; --- 02_calibr_data-tidy.Rmd</p> 
 <p class="fragment" data-fragment-index="7"> &nbsp;&nbsp; --- 03_calibr_graph.Rmd</p> 
 <p class="fragment" data-fragment-index="9"> &nbsp;&nbsp; --- 04_calibr_regression.Rmd</p>
-</span>
+</span> 
   
 </div>
+
+
+## Two basic princples for reproducible research
+
+
+<span style="color:#6566AE;">Blend computing, results, and narrative</span>
+
+  - write everything as a text file
+  - make file links explicit 
+  - commingle computation and narrative  
+
+
+<span style="color:#6566AE;">Organize for reproducibility from the beginning</span>
+
+  - plan the directory structure  
+  - plan the file naming scheme  
+
+
+
+## Back to work 
+
+Continue working on the sample calibration report
+
+OR
+
+Start your own reproducible project 
+
+
+
+## Mystery question 4 (pink)
+
+
+<br><p style="text-align:left; color:#6566AE;">
+<span class="fragment fade-down">
+*Plus-delta on your own progress:*
+<br><br>$+$ What did you accomplish in the workshop?
+<br><br>$\Delta$ What could you have done better? 
+</span>
+</p>
+
+
+## Looking ahead
+
+Makefiles
+
+- `01_calibr_data-wide.Rmd` 
+- `02_calibr_data-tidy.Rmd` 
+- `03_calibr_graph.Rmd` 
+- `04_calibr_regression.Rmd` 
+- `05_calibr_report.Rmd` 
+
+Other skillz  
+
+  - use version control from the beginning 
+  - plan workflow with collaborators   
+  - plan the management and structure of data  
+  - create software compendium 
+
+
+
+
+
+## Workshop assessment
+
+Please use the back of the pink sheet. 
+
+
+<br><p style="text-align:left; color:#6566AE;">
+<span class="fragment fade-down">
+*Plus-delta on the workshop:*
+<br><br>$+$ What went well?
+<br><br>$\Delta$ What could I have done better? 
+</span>
+</p>
+

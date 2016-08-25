@@ -7,63 +7,85 @@ title: "adding references"
 
 
 
-How to use this tutorial 
-
-- ![](../resources/images/text-icon.png)<!-- --> *add text*: type the prose verbatim into the Rmd file 
-- ![](../resources/images/code-icon.png)<!-- --> *add code*: insert a code chunk, then transcribe the R code 
-- ![](../resources/images/knit-icon.png)<!-- --> *knit* after each addition. 
-- *Install* packages one time only
-- *Load* a package using `library()` every session
-
-Packages used in this tutorial 
-
-- 
-- 
-- 
 
 
-I use the `.bib` format to automate the formatting of citations and references. This format comes to us from the LaTeX/BiBTeX world, but like the formatting of mathematics, has been adapted to R Markdown.  
 
-### write the `.bib` file 
+### summary 
 
-Open a new text file: File > New File > Text File. Save As `06_calibr_report.bib`. The ANSI/ISA standard we've referred to is typed into the .bib file as follows. 
+I use the bib format (from BiBTeX) for bibliographies (other formats are available). The  basic steps are: 
+
+- create the bib file  
+- specify the bib file in the Rmd header  
+- add the citation to the report  
+- add a references heading 
+
+
+
+### create the bib file 
+
+To create the bib file: 
+
+- Open a new text file in RStudio, *File* > *New File* > *Text File* 
+- *Save As* `calibration.bib` in the `reports` directory 
+
+![](../resources/images/text-icon.png)<!-- --> type in the new bib file
+
+<pre class="r"><code>@manual{ansi-isa-1995,
+    title = {Process instrumentation terminology},
+    edition = {ANSI/ISA-S51.1-1979, reaffirmed 1995},
+    organization = {Instrument Society of America},
+    address = {Research Triangle Park, NC},
+    year = {1995},
+    note = {ISBN 0-87664-390-4},
+}</code></pre>
+
+- `ansi-isa-1995` is a label I assign for the in-text citation 
+- `@manual` denotes the document type using standard BiBTeX syntax.  The site  [verbosus](https://verbosus.com/bibtex-style-examples.html) gives some guidance to the many document types, e.g., articles, proceedings, books, etc., and their bib arguments.   
+
+
+
+
+### specify the bib file in the Rmd header
+
+Add the bibliography argument to the front matter including the relative path if needed.  
 
 ![](../resources/images/text-icon.png)<!-- -->
 
-    @manual{ansi-isa-1995,
-        title = {Process instrumentation terminology},
-        edition = {ANSI/ISA-S51.1-1979, reaffirmed 1995},
-        organization = {Instrument Society of America},
-        address = {Research Triangle Park, NC},
-        year = {1995},
-        note = {ISBN 0-87664-390-4},
-    }
+<pre class="r"><code>---
+title: "Load-cell calibration report"
+author: "name"
+date: "date"
+output: word_document
+bibliography: "calibration.bib"
+---</code></pre>
 
-Learn .bib
-
-- `@manual` describes the type of entry, such as article, book, conference, etc. 
-- `ansi-isa-1995` is a label to uniquely identify the reference. I typically use `author-yyyy` labels
-- The rest of the fields are self-explanatory. See [here for a guide](https://verbosus.com/bibtex-style-examples.html) to the different fields in different types of .bib entries. 
+ 
 
 
-### specify the bibliography file in the front matter
+### add the citation to the report
 
-Open the report Rmd file. Add the bibliography argument to the front matter,  including the relative path if needed.
+In the report Rmd file, add the citation for the ANSI/ISA standard at the end of the paragraph where the standard is first mentioned. 
 
 
 
+![](../resources/images/text-icon.png)<!-- -->
 
-### cite references in R Markdown format
+<pre class="r"><code> . . . from the sensor are recorded. The test procedure follows the ANSI/ISA standard [@ansi-isa-1995]. 
+</code></pre>
+
+The citation syntax has the form `[@ansi-isa-1995]`: brackets indicate a citation using `@`  followed by the reference label we assigned in the bib file.
 
 
-
-### include a references section heading at the end of the Rmd script
-
+ 
 
 
----
+### add a references heading
 
-Back [write the client report](113_report.html)<br>
-Next [formatting docx](115_formatting.html)
+At the end of the Rmd script, add a references section heading.
+
+![](../resources/images/text-icon.png)<!-- -->
+
+<pre class="r"><code># References
+</code></pre>
 
 
