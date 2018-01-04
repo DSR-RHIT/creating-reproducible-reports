@@ -11,9 +11,10 @@ output:
 ---
 
 ```{r 05-01, include = FALSE}
+# http://citationstyles.org/styles/ for CSL files
 library(knitr)
 opts_knit$set(root.dir = '../')
-opts_chunk$set(echo = FALSE)
+opts_chunk$set(echo = FALSE, message = FALSE)
 ```
 
 ```{r 05-02}
@@ -99,7 +100,7 @@ The largest residual is `r sprintf("%.1f", resid_bound)` `r output_unit` and the
 $$
 \pm `r sprintf("%.1f", accuracy)`\%. 
 $$
-The accuracy of the precision weights, 0.1%, is less than one tenth the load cell accuracy, thereby meeting the requirements of the ANSI/ISA standard.  
+The accuracy of the precision weights, 0.1%, is less than one tenth the load cell accuracy, thereby meeting the requirements of the ANSI/ISA standard.[@gandrud2015]
 
 # References
 

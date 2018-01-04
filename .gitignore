@@ -5,15 +5,19 @@ _site
 .Rproj.user
 *.Rproj
 
+*.xlsx
+
 *.docx
 */*.docx
 */notebook*
 pages/*.html
+scripts/*.html
 index.html
 
 data/holding/*
 scripts/holding/*
 resources/docs/*
+resources/images/*.pptx
 
 reports/*.css
 

@@ -3,13 +3,13 @@ title: "Load-cell calibration report"
 author: "Richard Layton"
 date: "2016-08-24"
 output: word_document
-
+bibliography: calibration.bib
 ---
 
 ```{r 05-01, include = FALSE}
 library(knitr)
 opts_knit$set(root.dir = '../')
-opts_chunk$set(echo = FALSE)
+opts_chunk$set(echo = FALSE, message = FALSE)
 ```
 
 ```{r 05-02}

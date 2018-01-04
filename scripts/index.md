@@ -1,13 +1,4 @@
----
-layout: page
-title: workshop
-tagline: reproducible research for the R novice
-description: Introduces R, RStudio, and R Markdown as tools to create
-             a dynamically reproducible report. For R novices. 
-output: 
-  html_document:
-    keep_md: TRUE
----
+# workshop
 
 Welcome! The goal of the workshop is to introduce the R novice to reproducible research in the context of creating a reproducible report using R, RStudio, and knitr.  
 

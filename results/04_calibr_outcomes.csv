@@ -3,7 +3,7 @@ input_min,0.5,lb
 input_max,4.5,lb
 output_min,8.7,mV
 output_max,91.6,mV
-slope,19.95,mV/lb
-intercept,0.136764705882338,mV
-resid_bound,1.68823529411764,mV
-accuracy,2.11558307533538,%
+slope,20.041666666666657,mV/lb
+intercept,-0.0870934959349377,mV
+resid_bound,1.5829268292682959,mV
+accuracy,1.9745449013741736,%
